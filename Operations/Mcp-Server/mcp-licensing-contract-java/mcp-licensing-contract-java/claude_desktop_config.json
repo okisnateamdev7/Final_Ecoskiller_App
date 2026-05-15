@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "ecoskiller-licensing-contract": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-licensing-contract-java/target/licensing-contract-mcp-1.0.0.jar"
+      ],
+      "env": {
+        "SIMULATION_MODE": "true",
+        "KEYCLOAK_ISSUER_URL": "http://keycloak.ecoskiller.internal/realms/ecoskiller",
+        "DEFAULT_MIN_ROYALTY_RATE": "0.0001",
+        "DEFAULT_MAX_ROYALTY_RATE": "0.0005",
+        "DEFAULT_MIN_TERM_YEARS": "10",
+        "DEFAULT_MAX_TERM_YEARS": "15",
+        "SIGNATURE_TTL_DAYS": "7",
+        "MINOR_CACHE_TTL_SECONDS": "3600",
+        "RATE_CONFIG_CACHE_TTL_SECONDS": "600"
+      }
+    }
+  }
+}

@@ -1,0 +1,1054 @@
+# 🥋 DOJO SAAS — LOCKED & SEALED PRODUCTION ARTIFACT SPEC v1.0
+
+**Artifact Class:** Production System Blueprint
+**Mutation Policy:** Add-only via version bump
+**Execution Mode:** Deterministic
+**Stack Lock:** Enforced
+**Interface Freeze:** Required
+
+---
+
+# 🔒 SECTION A — STACK LOCK (NON-NEGOTIABLE)
+
+## Client Stack Lock
+
+### Flutter (Primary App Runtime — Required)
+
+Used for:
+
+* Desktop app
+* Mobile app
+* Tablet app
+
+```
+Flutter stable channel
+Material 3
+Riverpod state
+WebRTC plugin
+LiveKit Flutter SDK
+```
+
+---
+
+## React (SEO Web Layer — Required)
+
+Used ONLY for:
+
+* Marketing site
+* SEO pages
+* Public skill pages
+* Landing pages
+* Program pages
+* Instructor pages
+* Dojo curriculum pages
+
+```
+React + Next.js
+SSR enabled
+Static generation where possible
+Structured data schema
+```
+
+🚫 React NOT used for live match room
+🚫 Flutter NOT used for SEO pages
+
+Split is locked.
+
+---
+
+# 🔒 SECTION B — MODULE FREEZE MAP
+
+---
+
+## Core Engines (Immutable)
+
+```
+Match Engine
+Scenario Engine
+Scoring Engine
+Rating Engine
+Belt Engine
+Tournament Engine
+Replay Engine
+Analytics Engine
+Mentor Control Engine
+```
+
+Interfaces frozen. Only internal improvements allowed.
+
+---
+
+## Video Engine Lock
+
+```
+WebRTC SFU model
+LiveKit class provider
+Token-based join
+Room = match_id
+Metadata = role binding
+```
+
+Provider swappable — architecture not.
+
+---
+
+# 🔒 SECTION C — DATA MODEL FREEZE
+
+Primary entities cannot be renamed:
+
+```
+User
+Skill
+Scenario
+Match
+Score
+Belt
+Tournament
+Replay
+Analytics
+Certification
+```
+
+Fields may extend — not mutate.
+
+---
+
+# 🔒 SECTION D — UI SYSTEM LOCK
+
+---
+
+## Flutter App Responsibilities
+
+Must contain:
+
+```
+Student dashboard
+Skill tracks
+Arena join
+Live match room
+Mentor panel
+Score panel
+Replay viewer
+Tournament UI
+Certification UI
+```
+
+Flutter = operational interface.
+
+---
+
+## React SEO Web Responsibilities
+
+Must contain:
+
+```
+Skill pages
+Program pages
+Landing pages
+Public leaderboard (read-only)
+Instructor profiles
+Curriculum pages
+Case studies
+```
+
+React = discovery + SEO surface.
+
+---
+
+# 🔒 SECTION E — REALTIME PROTOCOL LOCK
+
+Transport separation required:
+
+```
+Video → WebRTC
+Game Events → WebSocket
+Commands → Mentor Socket
+Analytics → Event Bus
+```
+
+No mixing channels.
+
+---
+
+# 🔒 SECTION F — SCORING GOVERNANCE LOCK
+
+Scoring formula immutable class:
+
+```
+Weighted metric model
+Peer + Mentor + Self merge
+Audit log on override
+Variance anomaly detection
+```
+
+---
+
+# 🔒 SECTION G — BELT & CERTIFICATION LOCK
+
+Promotion requires:
+
+```
+Match count
+Score threshold
+Pressure scenario pass
+Mentor certification
+Audit record
+```
+
+Auto promotion forbidden.
+
+---
+
+# 🔒 SECTION H — SECURITY LOCK
+
+Mandatory controls:
+
+```
+JWT auth
+Short-lived video tokens
+Role-based permissions
+Mentor command audit
+Score override logging
+Recording consent capture
+```
+
+---
+
+# 🔒 SECTION I — BUILD PIPELINE LOCK
+
+---
+
+## Flutter Builds
+
+```
+Windows
+macOS
+Linux
+Android
+iOS
+Tablet layouts required
+```
+
+Responsive breakpoints locked.
+
+---
+
+## React Builds
+
+```
+Next.js SSR
+Schema.org markup
+Sitemap auto
+Meta automation
+Static pre-render
+```
+
+---
+
+# 🔒 SECTION J — EXECUTION GOVERNANCE
+
+---
+
+## Change Rules
+
+Allowed:
+
+```
+Add scenario
+Add drill
+Add skill
+Add UI theme
+Add analytics metric
+```
+
+Not allowed without version bump:
+
+```
+Change scoring math
+Change belt rules
+Change entity names
+Change transport model
+Change stack split
+```
+
+
+# SECTION P1 — SECURITY HARDENING LOCK
+
+System must implement all controls below. None optional.
+
+Auth Layer:
+
+* OAuth + email auth supported
+* MFA capability required
+* refresh token rotation mandatory
+* device session registry required
+* remote session revoke required
+
+API Security:
+
+* JWT short-lived access tokens
+* per-route RBAC enforcement
+* rate limiting per IP + per user
+* abuse detection thresholds
+* WAF in front of API
+
+Media Security:
+
+* signed video room tokens
+* signed recording URLs
+* time-limited replay access
+* role-based replay permission
+
+Data Security:
+
+* row-level security enforced
+* tenant isolation enforced
+* PII encryption at rest
+* secret manager only (no env plaintext in prod)
+
+Audit:
+
+* mentor commands immutable log
+* score overrides immutable log
+* certification decisions immutable log
+
+---
+
+# SECTION P2 — BILLING & SUBSCRIPTION LOCK
+
+Monetization layer mandatory.
+
+Billing Engine Must Support:
+
+* subscription plans
+* monthly + annual cycles
+* seat-based pricing
+* mentor license pricing
+* tournament entry fees
+* certification fees
+
+Controls:
+
+* feature gating by plan
+* usage metering (matches, hours, recordings)
+* invoice generation
+* GST/VAT handling
+* refund workflow
+* coupon system
+
+Payment Providers:
+
+* Stripe primary
+* provider abstraction required (swappable)
+
+No feature access without billing check middleware.
+
+---
+
+# SECTION P3 — DEVOPS & DEPLOYMENT LOCK
+
+Deployment must be automated and reversible.
+
+Pipelines Required:
+
+* CI build pipeline
+* automated tests gate
+* staging environment
+* production environment
+* blue/green deploy
+* rollback automation
+
+Infra Rules:
+
+* infrastructure as code required
+* containerized services required
+* DB migrations versioned
+* secrets manager required
+* environment config separated
+
+Release Governance:
+
+* version tags required
+* schema migration tied to version
+* backward compatibility window defined
+
+---
+
+# SECTION P4 — TEST & QA LOCK
+
+No production deploy without passing test gates.
+
+Test Layers Required:
+
+Engine Tests:
+
+* scoring math tests
+* rating update tests
+* belt promotion tests
+* tournament pairing tests
+
+Realtime Tests:
+
+* socket event ordering tests
+* reconnect tests
+* duplicate event handling tests
+
+Video Tests:
+
+* 2–10 participant rooms
+* join/leave mid match
+* bandwidth downgrade tests
+
+Load Tests:
+
+* concurrent room simulation
+* scoring concurrency tests
+
+Integrity Tests:
+
+* peer scoring variance checks
+* override audit checks
+
+Test coverage threshold required before release.
+
+---
+
+# SECTION P5 — OBSERVABILITY LOCK
+
+System must be observable in production.
+
+Required Telemetry:
+
+* structured logs
+* request tracing
+* match lifecycle tracing
+* video QoS metrics
+* socket disconnect metrics
+* scoring anomaly metrics
+
+Dashboards Required:
+
+* match failure rate
+* room crash rate
+* rating calc errors
+* mentor override frequency
+* replay processing failures
+
+Alerting:
+
+* match start failure alert
+* recording failure alert
+* analytics pipeline failure alert
+
+---
+
+# SECTION P6 — INTEGRATION GLUE LOCK
+
+Cross-engine wiring is mandatory.
+
+Must exist:
+
+* match engine ↔ video room lifecycle binding
+* match end ↔ recording finalize trigger
+* recording finalize ↔ analytics job trigger
+* analytics result ↔ belt eligibility check
+* mentor override ↔ rating recompute
+* certification ↔ certificate generator
+* tournament result ↔ leaderboard update
+
+No manual sync allowed.
+
+Event-driven only.
+
+---
+
+# SECTION P7 — FLUTTER PRODUCTION UX LOCK
+
+Flutter apps must support:
+
+Device Classes:
+
+* desktop
+* mobile
+* tablet
+
+UX Controls:
+
+* responsive breakpoints
+* reconnect UX for live match
+* network drop recovery
+* background resume handling
+* push notifications
+* device permission flows
+* crash recovery screen
+
+Offline:
+
+* queued score submit
+* replay download queue (optional)
+
+---
+
+# SECTION P8 — REACT / NEXT SEO LOCK
+
+SEO layer must implement:
+
+Rendering:
+
+* SSR enabled
+* SSG where possible
+
+SEO Controls:
+
+* schema.org structured data
+* canonical strategy
+* auto sitemap
+* meta automation
+* OG tags
+* programmatic skill pages
+
+Content System:
+
+* skill pages generated from DB
+* scenario libraries public pages (read-only)
+* curriculum pages
+
+React layer must not host match room.
+
+---
+
+# SECTION P9 — LEGAL & COMPLIANCE LOCK
+
+Mandatory documents + flows:
+
+* Terms of Service
+* Privacy Policy
+* Recording Consent
+* Performance Assessment Disclosure
+* Mentor Conduct Terms
+* Student Data Use Disclosure
+
+Controls:
+
+* consent capture before recording
+* replay access logging
+* data deletion workflow
+* export user data workflow
+
+Jurisdiction readiness:
+
+* GDPR pattern
+* India DPDP pattern
+
+---
+
+# SECTION P10 — AI ANALYTICS GOVERNANCE LOCK
+
+AI usage must be governed.
+
+Required:
+
+* model version tagging
+* prompt logging
+* AI output audit trail
+* human override rights
+* bias review sampling
+* explainability notes on AI scores
+
+AI cannot directly award belts — mentor confirmation required.
+
+---
+
+# SECTION P11 — MULTI-TENANT SAAS LOCK
+
+Tenant model required.
+
+Must support:
+
+* tenant isolation
+* tenant admin
+* tenant billing
+* tenant branding
+* tenant skill catalogs
+* tenant mentor pools
+
+Cross-tenant data access forbidden.
+
+---
+
+# SECTION P12 — SUPPORT & DISPUTE LOCK
+
+Operations layer required.
+
+Must include:
+
+* support ticket system
+* match dispute workflow
+* score dispute review
+* mentor misconduct review
+* refund approval workflow
+* abuse reporting
+
+All disputes tied to match_id.
+
+---
+
+# SECTION P13 — CONTENT OPS LOCK
+
+Curriculum governance required.
+
+Must support:
+
+* scenario versioning
+* rubric versioning
+* skill track versioning
+* release notes per version
+* backward compatibility tags
+
+No silent rubric change allowed.
+
+---
+
+# SECTION P14 — BACKUP & RECOVERY LOCK
+
+Recovery rules mandatory.
+
+Must define:
+
+* DB daily backups
+* recording backups
+* transcript backups
+* restore drills quarterly
+* RPO target
+* RTO target
+
+---
+
+# SECTION P15 — FINAL GOVERNANCE SEAL
+
+Add this block to your master prompt:
+
+DOJO SAAS PRODUCTION MODE ENABLED
+Security Hardened Required
+Billing Required
+DevOps Automated Required
+Testing Gate Required
+Observability Required
+Compliance Required
+Multi-Tenant Ready
+AI Governed
+Stack Locked Flutter + React
+Mutation Add-Only Versioned
+Architecture Interpretation Forbidden
+
+SECTION T1 — SKILL VALIDITY FRAMEWORK LOCK
+
+Each dojo skill must have a defined assessment construct.
+
+Mandatory per skill:
+
+construct definition
+
+observable behaviors list
+
+measurable indicators
+
+rubric justification
+
+metric-to-skill mapping
+
+performance level descriptors
+
+exclusion indicators (what does NOT count)
+
+Belts cannot be awarded without construct mapping.
+
+SECTION T2 — SCORING VALIDITY & RELIABILITY LOCK
+
+Scoring system must implement:
+
+inter-rater reliability tracking
+
+scorer variance measurement
+
+score normalization curves
+
+difficulty normalization factor
+
+metric weighting transparency
+
+confidence score per match result
+
+Low confidence scores cannot trigger belt promotion without mentor board review.
+
+SECTION T3 — RATER CALIBRATION LOCK
+
+Mentor / evaluator calibration required.
+
+System must run:
+
+periodic calibration matches
+
+gold-standard scored matches
+
+mentor score drift detection
+
+mentor bias reports
+
+calibration scorecards
+
+mentor re-certification cycles
+
+Mentors outside calibration tolerance lose certification authority automatically.
+
+SECTION T4 — SCENARIO DIFFICULTY CALIBRATION LOCK
+
+Scenario difficulty cannot be static.
+
+System must track:
+
+pass rate per scenario
+
+score distribution
+
+average completion time
+
+failure clustering
+
+abandonment rate
+
+System must support:
+
+automatic difficulty reclassification
+
+scenario retirement rules
+
+scenario fairness audit
+
+Difficulty labels must be data-derived, not author-declared.
+
+SECTION T5 — MATCH FAIRNESS ENGINE LOCK
+
+Match fairness controls required.
+
+System must enforce:
+
+opponent rating band limits
+
+repeat opponent avoidance
+
+role rotation fairness
+
+first-speaker rotation
+
+scenario order randomization
+
+constraint randomness balance
+
+Tournament fairness audits mandatory.
+
+SECTION T6 — LEARNING EFFECTIVENESS LOOP LOCK
+
+Platform must measure learning gain.
+
+Required metrics:
+
+pre-assessment score
+
+post-track score
+
+delta improvement
+
+retention check matches
+
+regression detection
+
+drill effectiveness scores
+
+Skill tracks without measurable improvement signals must be flagged for curriculum review.
+
+SECTION T7 — MENTOR TRAINING & CERTIFICATION LOCK
+
+Mentor role requires its own dojo track.
+
+Required:
+
+mentor onboarding program
+
+referee simulation training
+
+scoring practice certification
+
+override ethics training
+
+dispute handling training
+
+re-certification interval
+
+Uncertified mentors cannot run ranked or certification matches.
+
+SECTION T8 — CONTENT GOVERNANCE LOCK
+
+Scenario and rubric content must be governed.
+
+Required controls:
+
+scenario versioning
+
+rubric versioning
+
+approval workflow
+
+change audit trail
+
+rollback ability
+
+fairness review before publish
+
+No direct production content edits allowed.
+
+SECTION T9 — COLLUSION & MANIPULATION DETECTION LOCK
+
+System must detect:
+
+reciprocal high scoring pairs
+
+abnormal peer score clustering
+
+match farming patterns
+
+rating inflation clusters
+
+mentor favoritism patterns
+
+Flagged matches require audit review before counting toward belts.
+
+SECTION T10 — BEHAVIORAL SAFETY LOCK
+
+Live match behavioral safeguards required.
+
+System must support:
+
+harassment reporting
+
+intimidation detection signals
+
+forced match exit option
+
+mentor emergency intervention
+
+cooldown enforcement
+
+abuse flag tagging
+
+Safety overrides scoring.
+
+SECTION T11 — ACCESSIBILITY LOCK
+
+Accessibility compliance required.
+
+Platform must support:
+
+captions for recordings
+
+transcript access
+
+keyboard navigation
+
+screen reader compatibility
+
+color contrast modes
+
+low-vision UI mode
+
+Accessibility cannot be deferred.
+
+SECTION T12 — LOCALIZATION & CULTURAL FAIRNESS LOCK
+
+Global fairness controls required.
+
+System must support:
+
+multi-language UI
+
+culturally neutral scenarios
+
+regional negotiation style variants
+
+bias detection by region
+
+translation governance
+
+No skill scoring rule may be culture-exclusive.
+
+SECTION T13 — OUTCOME VALIDATION LOCK
+
+Skill belts must be externally validated over time.
+
+System must collect:
+
+employer feedback signals
+
+job performance correlation
+
+hiring outcome mapping
+
+longitudinal skill performance
+
+Belts must have predictive validity tracking.
+
+SECTION T14 — TALENT MARKETPLACE TRUST LOCK
+
+If hiring marketplace enabled:
+
+Required:
+
+employer verification
+
+candidate skill vector model
+
+replay evidence access
+
+skill proof reports
+
+assessment authenticity seal
+
+Hiring decisions must reference verified match data.
+
+SECTION T15 — ECONOMIC ABUSE CONTROLS LOCK
+
+Billing + certification abuse controls required.
+
+Detect:
+
+refund abuse
+
+multi-account farming
+
+mentor collusion billing
+
+fake tournament loops
+
+Flagged economic abuse triggers account review.
+
+SECTION T16 — APPEALS & GOVERNANCE BOARD LOCK
+
+Formal appeals system required.
+
+Must support:
+
+score appeal workflow
+
+certification appeal workflow
+
+mentor discipline review
+
+scenario fairness review
+
+governance board decisions
+
+Appeals decisions must be logged and versioned.
+
+SECTION T17 — BELT VERSION GOVERNANCE LOCK
+
+Belts must be versioned.
+
+Required:
+
+belt model version tag
+
+rubric version tag
+
+certificate version stamp
+
+backward compatibility rules
+
+re-certification triggers on major rubric change
+
+SECTION T18 — ENTERPRISE INTEGRATION LOCK
+
+Enterprise readiness requires:
+
+LMS integration support
+
+LTI compatibility model
+
+HRIS export
+
+skill report APIs
+
+SSO enterprise mode
+
+audit export capability
+
+SECTION T19 — PRODUCT ANALYTICS LOCK
+
+Product behavior analytics required.
+
+Track:
+
+scenario completion rates
+
+drill engagement rates
+
+skill drop-off points
+
+mentor load metrics
+
+certification pass ratios
+
+Curriculum decisions must use analytics.
+
+SECTION T20 — FINAL TRUST SEAL BLOCK (FOR MASTER PROMPT)
+
+Add this block to ECOSKILLER master prompt:
+
+DOJO TRUST & FAIRNESS MODE ENABLED
+Assessment Validity Required
+Rater Calibration Required
+Scenario Calibration Required
+Fairness Engine Active
+Mentor Certification Required
+Behavior Safety Enforced
+Accessibility Enforced
+Governance Board Active
+Outcome Validation Required
+Belt Versioning Enforced
+Appeals System Active
+Institutional Trust Mode Locked
+
+# 🔒 SECTION K — ECOSKILLER MASTER PROMPT INSERT BLOCK
+
+You can paste this into your master prompt:
+
+---
+
+**BEGIN LOCKED DOJO ARTIFACT**
+
+System Role: Skill Dojo SaaS Engine
+Stack: Flutter operational + React SEO
+Execution: Deterministic
+Mutation: Versioned Add-Only
+Transport: WebRTC + WS separated
+Scoring: Weighted audited
+Certification: Mentor governed
+Video: SFU tokenized
+Replay: Mandatory analytics
+Governance: Audit enforced
+* architecture
+* engines
+* UI
+* video
+* mentor
+* analytics
+* security
+* billing
+* devops
+* compliance
+* operations
+* governance
+
+Interpretation Authority: NONE
+Architecture Authority: LOCKED
+
+**END LOCKED DOJO ARTIFACT**

@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "ecoskiller-cat19-platform-stability-risk": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/path/to/cat19-platform-stability-risk-mcp-1.0.0-ANTIGRAVITY.jar"
+      ],
+      "env": {
+        "SERVER_PORT": "8019",
+        "ANTIGRAVITY_PLATFORM": "ECOSKILLER",
+        "MCP_CATEGORY": "CAT-19"
+      },
+      "metadata": {
+        "name": "CAT-19: Platform Stability & Risk",
+        "platform": "ECOSKILLER ANTIGRAVITY",
+        "version": "1.0.0-ANTIGRAVITY-SEALED",
+        "agents": [
+          "POLICY_VERSION_CONTROL_AGENT",
+          "REGULATORY_COMPLIANCE_MAPPING_AGENT",
+          "RESOURCE_CONSUMPTION_GUARD_AGENT",
+          "REVENUE_SHARE_RECONCILIATION_AGENT"
+        ]
+      }
+    }
+  }
+}

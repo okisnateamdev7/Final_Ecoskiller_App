@@ -1,0 +1,1960 @@
+# 🥋 DOJO SAAS — LOCKED & SEALED PRODUCTION ARTIFACT SPEC v1.0
+
+**Artifact Class:** Production System Blueprint
+**Mutation Policy:** Add-only via version bump
+**Execution Mode:** Deterministic
+**Stack Lock:** Enforced
+**Interface Freeze:** Required
+
+---
+
+# 🔒 SECTION A — STACK LOCK (NON-NEGOTIABLE)
+
+## Client Stack Lock
+
+### Flutter (Primary App Runtime — Required)
+
+Used for:
+
+* Desktop app
+* Mobile app
+* Tablet app
+
+```
+Flutter stable channel
+Material 3
+Riverpod state
+WebRTC plugin
+LiveKit Flutter SDK
+```
+
+---
+
+## React (SEO Web Layer — Required)
+
+Used ONLY for:
+
+* Marketing site
+* SEO pages
+* Public skill pages
+* Landing pages
+* Program pages
+* Instructor pages
+* Dojo curriculum pages
+
+```
+React + Next.js
+SSR enabled
+Static generation where possible
+Structured data schema
+```
+
+🚫 React NOT used for live match room
+🚫 Flutter NOT used for SEO pages
+
+Split is locked.
+
+---
+
+# 🔒 SECTION B — MODULE FREEZE MAP
+
+---
+
+## Core Engines (Immutable)
+
+```
+Match Engine
+Scenario Engine
+Scoring Engine
+Rating Engine
+Belt Engine
+Tournament Engine
+Replay Engine
+Analytics Engine
+Mentor Control Engine
+```
+
+Interfaces frozen. Only internal improvements allowed.
+
+---
+
+## Video Engine Lock
+
+```
+WebRTC SFU model
+LiveKit class provider
+Token-based join
+Room = match_id
+Metadata = role binding
+```
+
+Provider swappable — architecture not.
+
+---
+
+# 🔒 SECTION C — DATA MODEL FREEZE
+
+Primary entities cannot be renamed:
+
+```
+User
+Skill
+Scenario
+Match
+Score
+Belt
+Tournament
+Replay
+Analytics
+Certification
+```
+
+Fields may extend — not mutate.
+
+---
+
+# 🔒 SECTION D — UI SYSTEM LOCK
+
+---
+
+## Flutter App Responsibilities
+
+Must contain:
+
+```
+Student dashboard
+Skill tracks
+Arena join
+Live match room
+Mentor panel
+Score panel
+Replay viewer
+Tournament UI
+Certification UI
+```
+
+Flutter = operational interface.
+
+---
+
+## React SEO Web Responsibilities
+
+Must contain:
+
+```
+Skill pages
+Program pages
+Landing pages
+Public leaderboard (read-only)
+Instructor profiles
+Curriculum pages
+Case studies
+```
+
+React = discovery + SEO surface.
+
+---
+
+# 🔒 SECTION E — REALTIME PROTOCOL LOCK
+
+Transport separation required:
+
+```
+Video → WebRTC
+Game Events → WebSocket
+Commands → Mentor Socket
+Analytics → Event Bus
+```
+
+No mixing channels.
+
+---
+
+# 🔒 SECTION F — SCORING GOVERNANCE LOCK
+
+Scoring formula immutable class:
+
+```
+Weighted metric model
+Peer + Mentor + Self merge
+Audit log on override
+Variance anomaly detection
+```
+
+---
+
+# 🔒 SECTION G — BELT & CERTIFICATION LOCK
+
+Promotion requires:
+
+```
+Match count
+Score threshold
+Pressure scenario pass
+Mentor certification
+Audit record
+```
+
+Auto promotion forbidden.
+
+---
+
+# 🔒 SECTION H — SECURITY LOCK
+
+Mandatory controls:
+
+```
+JWT auth
+Short-lived video tokens
+Role-based permissions
+Mentor command audit
+Score override logging
+Recording consent capture
+```
+
+---
+
+# 🔒 SECTION I — BUILD PIPELINE LOCK
+
+---
+
+## Flutter Builds
+
+```
+Windows
+macOS
+Linux
+Android
+iOS
+Tablet layouts required
+```
+
+Responsive breakpoints locked.
+
+---
+
+## React Builds
+
+```
+Next.js SSR
+Schema.org markup
+Sitemap auto
+Meta automation
+Static pre-render
+```
+
+---
+
+# 🔒 SECTION J — EXECUTION GOVERNANCE
+
+---
+
+## Change Rules
+
+Allowed:
+
+```
+Add scenario
+Add drill
+Add skill
+Add UI theme
+Add analytics metric
+```
+
+Not allowed without version bump:
+
+```
+Change scoring math
+Change belt rules
+Change entity names
+Change transport model
+Change stack split
+```
+
+
+# SECTION P1 — SECURITY HARDENING LOCK
+
+System must implement all controls below. None optional.
+
+Auth Layer:
+
+* OAuth + email auth supported
+* MFA capability required
+* refresh token rotation mandatory
+* device session registry required
+* remote session revoke required
+
+API Security:
+
+* JWT short-lived access tokens
+* per-route RBAC enforcement
+* rate limiting per IP + per user
+* abuse detection thresholds
+* WAF in front of API
+
+Media Security:
+
+* signed video room tokens
+* signed recording URLs
+* time-limited replay access
+* role-based replay permission
+
+Data Security:
+
+* row-level security enforced
+* tenant isolation enforced
+* PII encryption at rest
+* secret manager only (no env plaintext in prod)
+
+Audit:
+
+* mentor commands immutable log
+* score overrides immutable log
+* certification decisions immutable log
+
+---
+
+# SECTION P2 — BILLING & SUBSCRIPTION LOCK
+
+Monetization layer mandatory.
+
+Billing Engine Must Support:
+
+* subscription plans
+* monthly + annual cycles
+* seat-based pricing
+* mentor license pricing
+* tournament entry fees
+* certification fees
+
+Controls:
+
+* feature gating by plan
+* usage metering (matches, hours, recordings)
+* invoice generation
+* GST/VAT handling
+* refund workflow
+* coupon system
+
+Payment Providers:
+
+* Stripe primary
+* provider abstraction required (swappable)
+
+No feature access without billing check middleware.
+
+---
+
+# SECTION P3 — DEVOPS & DEPLOYMENT LOCK
+
+Deployment must be automated and reversible.
+
+Pipelines Required:
+
+* CI build pipeline
+* automated tests gate
+* staging environment
+* production environment
+* blue/green deploy
+* rollback automation
+
+Infra Rules:
+
+* infrastructure as code required
+* containerized services required
+* DB migrations versioned
+* secrets manager required
+* environment config separated
+
+Release Governance:
+
+* version tags required
+* schema migration tied to version
+* backward compatibility window defined
+
+---
+
+# SECTION P4 — TEST & QA LOCK
+
+No production deploy without passing test gates.
+
+Test Layers Required:
+
+Engine Tests:
+
+* scoring math tests
+* rating update tests
+* belt promotion tests
+* tournament pairing tests
+
+Realtime Tests:
+
+* socket event ordering tests
+* reconnect tests
+* duplicate event handling tests
+
+Video Tests:
+
+* 2–10 participant rooms
+* join/leave mid match
+* bandwidth downgrade tests
+
+Load Tests:
+
+* concurrent room simulation
+* scoring concurrency tests
+
+Integrity Tests:
+
+* peer scoring variance checks
+* override audit checks
+
+Test coverage threshold required before release.
+
+---
+
+# SECTION P5 — OBSERVABILITY LOCK
+
+System must be observable in production.
+
+Required Telemetry:
+
+* structured logs
+* request tracing
+* match lifecycle tracing
+* video QoS metrics
+* socket disconnect metrics
+* scoring anomaly metrics
+
+Dashboards Required:
+
+* match failure rate
+* room crash rate
+* rating calc errors
+* mentor override frequency
+* replay processing failures
+
+Alerting:
+
+* match start failure alert
+* recording failure alert
+* analytics pipeline failure alert
+
+---
+
+# SECTION P6 — INTEGRATION GLUE LOCK
+
+Cross-engine wiring is mandatory.
+
+Must exist:
+
+* match engine ↔ video room lifecycle binding
+* match end ↔ recording finalize trigger
+* recording finalize ↔ analytics job trigger
+* analytics result ↔ belt eligibility check
+* mentor override ↔ rating recompute
+* certification ↔ certificate generator
+* tournament result ↔ leaderboard update
+
+No manual sync allowed.
+
+Event-driven only.
+
+---
+
+# SECTION P7 — FLUTTER PRODUCTION UX LOCK
+
+Flutter apps must support:
+
+Device Classes:
+
+* desktop
+* mobile
+* tablet
+
+UX Controls:
+
+* responsive breakpoints
+* reconnect UX for live match
+* network drop recovery
+* background resume handling
+* push notifications
+* device permission flows
+* crash recovery screen
+
+Offline:
+
+* queued score submit
+* replay download queue (optional)
+
+---
+
+# SECTION P8 — REACT / NEXT SEO LOCK
+
+SEO layer must implement:
+
+Rendering:
+
+* SSR enabled
+* SSG where possible
+
+SEO Controls:
+
+* schema.org structured data
+* canonical strategy
+* auto sitemap
+* meta automation
+* OG tags
+* programmatic skill pages
+
+Content System:
+
+* skill pages generated from DB
+* scenario libraries public pages (read-only)
+* curriculum pages
+
+React layer must not host match room.
+
+---
+
+# SECTION P9 — LEGAL & COMPLIANCE LOCK
+
+Mandatory documents + flows:
+
+* Terms of Service
+* Privacy Policy
+* Recording Consent
+* Performance Assessment Disclosure
+* Mentor Conduct Terms
+* Student Data Use Disclosure
+
+Controls:
+
+* consent capture before recording
+* replay access logging
+* data deletion workflow
+* export user data workflow
+
+Jurisdiction readiness:
+
+* GDPR pattern
+* India DPDP pattern
+
+---
+
+# SECTION P10 — AI ANALYTICS GOVERNANCE LOCK
+
+AI usage must be governed.
+
+Required:
+
+* model version tagging
+* prompt logging
+* AI output audit trail
+* human override rights
+* bias review sampling
+* explainability notes on AI scores
+
+AI cannot directly award belts — mentor confirmation required.
+
+---
+
+# SECTION P11 — MULTI-TENANT SAAS LOCK
+
+Tenant model required.
+
+Must support:
+
+* tenant isolation
+* tenant admin
+* tenant billing
+* tenant branding
+* tenant skill catalogs
+* tenant mentor pools
+
+Cross-tenant data access forbidden.
+
+---
+
+# SECTION P12 — SUPPORT & DISPUTE LOCK
+
+Operations layer required.
+
+Must include:
+
+* support ticket system
+* match dispute workflow
+* score dispute review
+* mentor misconduct review
+* refund approval workflow
+* abuse reporting
+
+All disputes tied to match_id.
+
+---
+
+# SECTION P13 — CONTENT OPS LOCK
+
+Curriculum governance required.
+
+Must support:
+
+* scenario versioning
+* rubric versioning
+* skill track versioning
+* release notes per version
+* backward compatibility tags
+
+No silent rubric change allowed.
+
+---
+
+# SECTION P14 — BACKUP & RECOVERY LOCK
+
+Recovery rules mandatory.
+
+Must define:
+
+* DB daily backups
+* recording backups
+* transcript backups
+* restore drills quarterly
+* RPO target
+* RTO target
+
+---
+
+# SECTION P15 — FINAL GOVERNANCE SEAL
+
+Add this block to your master prompt:
+
+DOJO SAAS PRODUCTION MODE ENABLED
+Security Hardened Required
+Billing Required
+DevOps Automated Required
+Testing Gate Required
+Observability Required
+Compliance Required
+Multi-Tenant Ready
+AI Governed
+Stack Locked Flutter + React
+Mutation Add-Only Versioned
+Architecture Interpretation Forbidden
+
+SECTION T1 — SKILL VALIDITY FRAMEWORK LOCK
+
+Each dojo skill must have a defined assessment construct.
+
+Mandatory per skill:
+
+construct definition
+
+observable behaviors list
+
+measurable indicators
+
+rubric justification
+
+metric-to-skill mapping
+
+performance level descriptors
+
+exclusion indicators (what does NOT count)
+
+Belts cannot be awarded without construct mapping.
+
+SECTION T2 — SCORING VALIDITY & RELIABILITY LOCK
+
+Scoring system must implement:
+
+inter-rater reliability tracking
+
+scorer variance measurement
+
+score normalization curves
+
+difficulty normalization factor
+
+metric weighting transparency
+
+confidence score per match result
+
+Low confidence scores cannot trigger belt promotion without mentor board review.
+
+SECTION T3 — RATER CALIBRATION LOCK
+
+Mentor / evaluator calibration required.
+
+System must run:
+
+periodic calibration matches
+
+gold-standard scored matches
+
+mentor score drift detection
+
+mentor bias reports
+
+calibration scorecards
+
+mentor re-certification cycles
+
+Mentors outside calibration tolerance lose certification authority automatically.
+
+SECTION T4 — SCENARIO DIFFICULTY CALIBRATION LOCK
+
+Scenario difficulty cannot be static.
+
+System must track:
+
+pass rate per scenario
+
+score distribution
+
+average completion time
+
+failure clustering
+
+abandonment rate
+
+System must support:
+
+automatic difficulty reclassification
+
+scenario retirement rules
+
+scenario fairness audit
+
+Difficulty labels must be data-derived, not author-declared.
+
+SECTION T5 — MATCH FAIRNESS ENGINE LOCK
+
+Match fairness controls required.
+
+System must enforce:
+
+opponent rating band limits
+
+repeat opponent avoidance
+
+role rotation fairness
+
+first-speaker rotation
+
+scenario order randomization
+
+constraint randomness balance
+
+Tournament fairness audits mandatory.
+
+SECTION T6 — LEARNING EFFECTIVENESS LOOP LOCK
+
+Platform must measure learning gain.
+
+Required metrics:
+
+pre-assessment score
+
+post-track score
+
+delta improvement
+
+retention check matches
+
+regression detection
+
+drill effectiveness scores
+
+Skill tracks without measurable improvement signals must be flagged for curriculum review.
+
+SECTION T7 — MENTOR TRAINING & CERTIFICATION LOCK
+
+Mentor role requires its own dojo track.
+
+Required:
+
+mentor onboarding program
+
+referee simulation training
+
+scoring practice certification
+
+override ethics training
+
+dispute handling training
+
+re-certification interval
+
+Uncertified mentors cannot run ranked or certification matches.
+
+SECTION T8 — CONTENT GOVERNANCE LOCK
+
+Scenario and rubric content must be governed.
+
+Required controls:
+
+scenario versioning
+
+rubric versioning
+
+approval workflow
+
+change audit trail
+
+rollback ability
+
+fairness review before publish
+
+No direct production content edits allowed.
+
+SECTION T9 — COLLUSION & MANIPULATION DETECTION LOCK
+
+System must detect:
+
+reciprocal high scoring pairs
+
+abnormal peer score clustering
+
+match farming patterns
+
+rating inflation clusters
+
+mentor favoritism patterns
+
+Flagged matches require audit review before counting toward belts.
+
+SECTION T10 — BEHAVIORAL SAFETY LOCK
+
+Live match behavioral safeguards required.
+
+System must support:
+
+harassment reporting
+
+intimidation detection signals
+
+forced match exit option
+
+mentor emergency intervention
+
+cooldown enforcement
+
+abuse flag tagging
+
+Safety overrides scoring.
+
+SECTION T11 — ACCESSIBILITY LOCK
+
+Accessibility compliance required.
+
+Platform must support:
+
+captions for recordings
+
+transcript access
+
+keyboard navigation
+
+screen reader compatibility
+
+color contrast modes
+
+low-vision UI mode
+
+Accessibility cannot be deferred.
+
+SECTION T12 — LOCALIZATION & CULTURAL FAIRNESS LOCK
+
+Global fairness controls required.
+
+System must support:
+
+multi-language UI
+
+culturally neutral scenarios
+
+regional negotiation style variants
+
+bias detection by region
+
+translation governance
+
+No skill scoring rule may be culture-exclusive.
+
+SECTION T13 — OUTCOME VALIDATION LOCK
+
+Skill belts must be externally validated over time.
+
+System must collect:
+
+employer feedback signals
+
+job performance correlation
+
+hiring outcome mapping
+
+longitudinal skill performance
+
+Belts must have predictive validity tracking.
+
+SECTION T14 — TALENT MARKETPLACE TRUST LOCK
+
+If hiring marketplace enabled:
+
+Required:
+
+employer verification
+
+candidate skill vector model
+
+replay evidence access
+
+skill proof reports
+
+assessment authenticity seal
+
+Hiring decisions must reference verified match data.
+
+SECTION T15 — ECONOMIC ABUSE CONTROLS LOCK
+
+Billing + certification abuse controls required.
+
+Detect:
+
+refund abuse
+
+multi-account farming
+
+mentor collusion billing
+
+fake tournament loops
+
+Flagged economic abuse triggers account review.
+
+SECTION T16 — APPEALS & GOVERNANCE BOARD LOCK
+
+Formal appeals system required.
+
+Must support:
+
+score appeal workflow
+
+certification appeal workflow
+
+mentor discipline review
+
+scenario fairness review
+
+governance board decisions
+
+Appeals decisions must be logged and versioned.
+
+SECTION T17 — BELT VERSION GOVERNANCE LOCK
+
+Belts must be versioned.
+
+Required:
+
+belt model version tag
+
+rubric version tag
+
+certificate version stamp
+
+backward compatibility rules
+
+re-certification triggers on major rubric change
+
+SECTION T18 — ENTERPRISE INTEGRATION LOCK
+
+Enterprise readiness requires:
+
+LMS integration support
+
+LTI compatibility model
+
+HRIS export
+
+skill report APIs
+
+SSO enterprise mode
+
+audit export capability
+
+SECTION T19 — PRODUCT ANALYTICS LOCK
+
+Product behavior analytics required.
+
+Track:
+
+scenario completion rates
+
+drill engagement rates
+
+skill drop-off points
+
+mentor load metrics
+
+certification pass ratios
+
+Curriculum decisions must use analytics.
+
+SECTION T20 — FINAL TRUST SEAL BLOCK (FOR MASTER PROMPT)
+
+Add this block to ECOSKILLER master prompt:
+
+DOJO TRUST & FAIRNESS MODE ENABLED
+Assessment Validity Required
+Rater Calibration Required
+Scenario Calibration Required
+Fairness Engine Active
+Mentor Certification Required
+Behavior Safety Enforced
+Accessibility Enforced
+Governance Board Active
+Outcome Validation Required
+Belt Versioning Enforced
+Appeals System Active
+Institutional Trust Mode Locked
+
+# 🔒 SECTION K — ECOSKILLER MASTER PROMPT INSERT BLOCK
+
+You can paste this into your master prompt:
+
+---
+
+**BEGIN LOCKED DOJO ARTIFACT**
+
+System Role: Skill Dojo SaaS Engine
+Stack: Flutter operational + React SEO
+Execution: Deterministic
+Mutation: Versioned Add-Only
+Transport: WebRTC + WS separated
+Scoring: Weighted audited
+Certification: Mentor governed
+Video: SFU tokenized
+Replay: Mandatory analytics
+Governance: Audit enforced
+* architecture
+* engines
+* UI
+* video
+* mentor
+* analytics
+* security
+* billing
+* devops
+* compliance
+* operations
+* governance
+
+Interpretation Authority: NONE
+Architecture Authority: LOCKED
+
+**END LOCKED DOJO ARTIFACT**
+
+
+
+================================================================================
+     ECOSKILLER — OFFLINE GROUP DISCUSSION VIA PHONE CALL
+            COMPLETE CAPABILITIES REPORT v2.0
+================================================================================
+        19 Sections | 9 Original + 10 New | All Gaps Addressed
+        Tools: FreeSWITCH · Whisper.cpp · Faster-Whisper · Mistral Voxtral
+               Vosk · Pyannote · RTPengine · MCUBE SIP · Fast2SMS
+               META WhatsApp Business API · DPDP Act 2023 Compliant
+================================================================================
+
+QUICK STATS:
+  - 9  Original Sections
+  - 10 New Sections Added
+  - 12 Capabilities (6 Core + 6 Advanced)
+  - ₹0.28 Per Session (OSS) — Revised to ~₹0.48 in real-world
+  - 2G Minimum Network Required (phone user side)
+  - 0  App Installs Needed (phone user)
+
+================================================================================
+SECTION 01 — THE CORE IDEA: WHAT THIS IS
+================================================================================
+
+This system is called a PSTN-to-WebRTC Bridge. It is the same technology used
+behind Zoom and Google Meet dial-in numbers. A phone call from a 2G phone is
+converted into a WebRTC audio stream and injected into a live Group Discussion
+(GD) room. The phone caller hears everyone in the room, and everyone in the room
+hears the phone caller — in real-time. No AI fake participants. It is the exact
+same live session.
+
+HOW A PHONE USER JOINS THE LIVE GD SESSION:
+  📱 Rural User (No internet, 2G voice only)
+     → Dials a Number (Any phone, no app needed)
+     → Goes through PSTN / GSM (Normal call, 2G works fine)
+     → FreeSWITCH (Open source, FREE bridge)
+     → Enters the Live GD Room (Same room as app users)
+     → App Users hear the phone user in real-time
+
+IMPORTANT: NO FAKE AI — THE PHONE USER IS A REAL PARTICIPANT IN THE ACTUAL
+LIVE SESSION.
+
+WHAT WE ARE NOT BUILDING:
+  ✗ A separate "offline GD" where user talks alone
+  ✗ AI-simulated fake discussion partners
+  ✗ Post-session analysis only (after call ends)
+  ✗ A new app the user must install
+  ✗ Something that needs internet on the user's phone
+
+WHAT WE ARE BUILDING:
+  ✓ User dials a number — instantly joins live GD
+  ✓ Hears all app users in real-time
+  ✓ App users hear the phone user in real-time
+  ✓ AI scores the phone user's participation live
+  ✓ Report delivered via SMS/WhatsApp after session
+
+
+================================================================================
+SECTION 02 — ALL CAPABILITIES WE CAN BUILD
+================================================================================
+
+Every feature below is technically possible with the open-source stack. Core
+features are must-haves for MVP. Advanced features are production enhancements.
+
+--- CORE CAPABILITIES (Must Have) ---
+
+1. PHONE DIAL-IN TO LIVE SESSION
+   User calls a number, enters a PIN, and is instantly bridged into the exact
+   live GD room. They hear and speak in real-time — just like Zoom dial-in.
+   [Core Feature]
+
+2. IVR IN HINDI & ENGLISH
+   Automated voice greets the caller in Hindi or English, asks for session PIN,
+   confirms joining. Fully customizable prompts.
+   [Core Feature]
+
+3. REAL-TIME SPEECH TRANSCRIPTION
+   Phone user's speech transcribed live using Whisper or Vosk (self-hosted,
+   free). Feeds into the existing EcoSkiller analysis pipeline.
+   [Core Feature]
+
+4. FULL GD ANALYSIS — SAME AS APP USERS
+   Phone user gets same AI analysis: participation score, speaking time, topic
+   relevance, language quality, interruption count, confidence.
+   [Core Feature]
+
+5. REPORT VIA SMS / WHATSAPP
+   After GD ends, phone user receives their score via SMS (₹0.08) or WhatsApp
+   (free first 1000/month via META). Works on any phone.
+   [Core Feature]
+
+6. APP USERS SEE PHONE USER LIVE
+   "📞 Phone User joined" notification shown to app users. Speaking indicator
+   when phone user talks. Live transcript in sidebar. Full visibility both ways.
+   [Core Feature]
+
+--- ADVANCED CAPABILITIES (Production Polish) ---
+
+7. SPEAKER DIARIZATION
+   Identifies "who said what" even if multiple people speak from one phone.
+   Uses Pyannote Audio (open source). Each speaker analyzed separately.
+   [Advanced]
+
+8. MODERATOR CONTROLS
+   Mute/unmute phone participants from the app. Remove disruptive callers.
+   FreeSWITCH conference controls exposed via API.
+   [Advanced]
+
+9. PUSH-TO-TALK MODE
+   Phone user presses * key to request speaking turn. Prevents chaotic
+   overlapping in structured GD formats.
+   [Advanced]
+
+10. SPEAKING TIME ENFORCER
+    Audio cue plays when phone user speaks too long ("30 seconds remaining").
+    Equal time for all — even phone users.
+    [Advanced]
+
+11. AUTO-RECONNECT ON CALL DROP
+    If rural user's call drops (common on 2G), system auto-calls them back.
+    No need to re-dial and re-enter PIN.
+    [Advanced]
+
+12. SESSION RECORDING
+    Entire GD including phone users recorded on server. App users can replay
+    later. Phone users request audio link via SMS.
+    [Advanced]
+
+
+================================================================================
+SECTION 03 — OPEN SOURCE TOOLS: WHAT POWERS EACH CAPABILITY
+================================================================================
+
+Every tool listed is free and open-source. Self-host on your VPS. The only
+unavoidable cost is actual phone call minutes (₹0.01–0.03/min via Indian SIP
+trunk) and your server (₹440/month).
+
+  CAPABILITY                    | TOOL                        | HINDI SUPPORT | COST
+  ------------------------------|-----------------------------|--------------|---------
+  PSTN-to-WebRTC Bridge         | FreeSWITCH (MPL 2.0)        | ✅ IVR any lang | ₹0/min
+  Real-Time STT (Option A)      | Whisper.cpp small (MIT)     | ✅ 99 languages | ₹0/min
+  Real-Time STT (Option B)      | Vosk vosk-model-hi (Apache) | ✅ Dedicated Hindi | ₹0/min
+  STT Best Accuracy 2025        | Mistral Voxtral Mini 3B     | ✅ Beats Whisper V3 | ₹0/min
+  Speaker Diarization           | Pyannote Audio (MIT)        | ✅ Language-agnostic | ₹0/min
+  SMS Reports                   | Fast2SMS / TextLocal        | ✅ Hindi SMS | ₹0.08/SMS
+  WhatsApp Reports              | META WhatsApp Business API  | ✅ Hindi templates | ₹0 (1st 1000)
+  Server Infrastructure         | Hetzner VPS CPX21           | N/A | ₹440/month
+  Indian Phone Number           | MCUBE / Knowlarity SIP Trunk| ✅ TRAI compliant | ₹0.01–0.03/min
+
+⚠ SMS COST CORRECTION (See Section 17):
+Hindi text in SMS uses Unicode encoding — each SMS can only hold 70 characters
+instead of 160. A typical GD report message will consume 2–3 SMS credits =
+₹0.16–₹0.24, not ₹0.08. This is fully explained in the Real Cost section.
+
+
+================================================================================
+SECTION 04 — WHICH STT ENGINE TO USE: FULL COMPARISON
+================================================================================
+
+OPTION 1: VOSK — vosk-model-hi  [RECOMMENDED FOR MVP]
+  Streaming-first, 50MB Hindi model, runs on any CPU. Fastest real-time
+  response (~50ms). Designed for telephony.
+  Pros:
+    - Streaming API — no chunking needed
+    - Runs on cheapest VPS (1 vCPU, 1GB RAM)
+    - Dedicated Hindi model available
+    - Used in call centers worldwide
+  Cons:
+    - Less accurate on Hinglish, heavy accents, noisy PSTN audio
+
+OPTION 2: WHISPER.CPP — small model  [FOR QUALITY]
+  OpenAI's Whisper in C++. Best accuracy for Hindi + Hinglish. Runs on CPU.
+  MIT license.
+  Pros:
+    - Handles noisy 8kHz PSTN audio well
+    - Robust on UP, Bihar, MP, Rajasthan accents
+    - 99 languages — handles Hinglish perfectly
+    - Small model: 244MB, 2-3s latency
+  Cons:
+    - Not truly streaming — processes in 2-3s chunks
+
+OPTION 3: MISTRAL VOXTRAL MINI (3B)  [BEST IN 2025]
+  New in 2025. Apache 2.0. Outperforms Whisper Large V3 AND GPT-4o mini
+  Transcribe on Hindi benchmarks.
+  Pros:
+    - Built-in language understanding, not just STT
+    - Can answer: "what was speaker's main argument?"
+    - Apache 2.0 — completely free, commercial use OK
+    - 3B model runs on CPU (needs 4-8GB RAM)
+  Cons:
+    - Higher RAM requirements, higher server cost
+
+OPTION 4: FASTER-WHISPER  [BALANCED]
+  Community-optimized Whisper via CTranslate2. 4x faster than original with
+  same accuracy.
+  Pros:
+    - 4x faster, 2-3x lower memory than Whisper
+    - Real-time friendly with chunked streaming
+    - Same accuracy as Whisper large
+    - Most used in production 2025
+  Cons:
+    - Still 2s window, not true streaming
+
+RECOMMENDATION BY STAGE:
+  🚀 MVP     → Vosk — fast, lightweight, 1 week to integrate
+  📈 Growth  → Faster-Whisper medium — better quality, ₹800/mo VPS
+  🎯 Scale   → Mistral Voxtral Mini — best accuracy + semantic understanding
+
+
+================================================================================
+SECTION 05 — COST BREAKDOWN: PAID VS OPEN SOURCE
+================================================================================
+
+PAID STACK (Twilio + Deepgram + Twilio SMS) — Per 10-min session:
+  Twilio PSTN bridge (10 min)       : ₹1.50
+  Deepgram Nova-3 STT (10 min)      : ₹3.50
+  Twilio SMS (1 report)             : ₹0.45
+  Server (managed, amortized)       : ₹0.05
+  TOTAL                             : ≈ ₹5.50
+
+OPEN SOURCE STACK (FreeSWITCH + Whisper + Fast2SMS) — Per 10-min session:
+  Indian SIP Trunk PSTN (10 min)    : ₹0.10
+  Whisper STT (self-hosted)         : ₹0.00
+  Fast2SMS (1 SMS report)           : ₹0.08
+  Hetzner VPS amortized             : ₹0.10
+  TOTAL                             : ≈ ₹0.28
+
+SAVINGS: 95% cost reduction per session.
+  At 1,000 sessions/month: ₹5,500 → ₹280
+  At 10,000 sessions/month: ₹55,000 → ₹2,800
+
+KEY INFRASTRUCTURE:
+  - Hetzner CPX21: ₹440/mo | 3 vCPU, 4GB RAM
+    (Upgrade to CPX31 at ₹880 for Whisper-medium or Voxtral)
+  - Indian SIP Trunk: ₹0.01–0.03/min (MCUBE, Knowlarity, Tata Comm)
+    (5-10x cheaper than Twilio India)
+  - WhatsApp (META): ₹0 first 1000/month
+    (Better than SMS for rural India. Works on Jio ₹10 recharge)
+
+
+================================================================================
+SECTION 06 — USER EXPERIENCE: WHAT EACH PERSON SEES & DOES
+================================================================================
+
+APP USERS (Online / Normal Experience):
+  - Session page shows "Join via Call" card with number + PIN
+  - "Share with offline friends" WhatsApp button
+  - "📞 Phone User has joined" notification in real-time
+  - Phone user in participant list with 📞 icon
+  - Speaking indicator when phone user is talking
+  - Live transcript in sidebar
+  - Phone user contribution in real-time analysis bar
+
+PHONE USER (Offline / Rural Experience):
+  - Gets number + PIN via WhatsApp or SMS before session
+  - Dials from any phone — no app, no internet required
+  - Hears Hindi IVR: "Enter your 6-digit session PIN"
+  - Enters PIN → immediately joins live room
+  - Hears all participants in real-time
+  - Can speak — others hear instantly
+  - Receives SMS/WhatsApp report with score after session ends
+
+APP UI — Dial-In Card in Session:
+  ┌─────────────────────────────────────┐
+  │ No Internet? Join via Call          │
+  │ +91-80691-XXXXX                     │
+  │ Works on 2G · Any phone · No app    │
+  │ Session PIN: 823941                 │
+  │ 👥 2 joined via phone call          │
+  └─────────────────────────────────────┘
+
+
+================================================================================
+SECTION 07 — INDIA-SPECIFIC CONSIDERATIONS
+================================================================================
+
+1. TRAI COMPLIANCE
+   Use Indian SIP trunk providers — they handle TRAI compliance for you.
+   Do NOT use Twilio at scale for Indian numbers — licensing gets complex.
+
+2. 2G COVERAGE WORKS
+   Voice works on 2G. BSNL/MTNL covers 90%+ rural India. Jio ₹10 recharge
+   includes voice. Zero data needed from the phone user's side.
+
+3. FEATURE PHONE SUPPORT
+   Jio KaiOS, basic Nokia keypad phones — all work. No smartphone, no app
+   required. Truly accessible to rural users.
+
+4. HINDI + HINGLISH STT
+   Whisper and Voxtral handle Hinglish natively. Use Vosk's Hindi model for
+   pure Hindi. Use Faster-Whisper medium for mixed speech (Hinglish).
+
+5. CALL AUDIO QUALITY
+   PSTN is 8kHz (narrowband). Enable FreeSWITCH mod_noise to clean background
+   noise before sending audio to STT engine.
+
+6. WHATSAPP > SMS
+   WhatsApp works on Jio ₹10 recharge. Free 1000/month via META. Hindi
+   templates supported. PDF report link works on basic Android phones.
+
+
+================================================================================
+SECTION 08 — WHAT TO BUILD FIRST: PRIORITY ORDER
+================================================================================
+
+P1 — MUST HAVE: Phone Dial-In → Live Session Join
+  FreeSWITCH + Indian SIP trunk. User calls, enters PIN, joins live GD.
+  This alone solves the rural access problem. Everything else is enhancement.
+
+P2 — MUST HAVE: Real-Time Transcription + AI Analysis
+  Vosk (fast) or Whisper (accurate). Feed transcript into existing EcoSkiller
+  pipeline. Phone user gets same analysis as app users.
+
+P3 — IMPORTANT: SMS / WhatsApp Report After Session
+  Fast2SMS or META API. Closes the loop — rural user gets result without
+  needing internet.
+
+P4 — IMPORTANT: App UI — Show Phone User Presence
+  Speaking indicator, live transcript sidebar, participant count. Makes
+  experience seamless for both sides.
+
+P5 — NICE-TO-HAVE: Auto-Reconnect + Moderator Controls + Push-to-Talk
+  Production polish. Build after core is validated.
+  - Auto-callback on call drop
+  - Mute controls for moderator
+  - Structured GD push-to-talk mode
+
+
+================================================================================
+SECTION 09 — SECURITY & PIN PROTECTION  [NEW — CRITICAL FOR PRODUCTION]
+================================================================================
+
+⚠ MISSING FROM PREVIOUS REPORT — CRITICAL FOR PRODUCTION
+
+A 6-digit PIN has only 1,000,000 combinations. Without protection, a bad actor
+can brute-force their way into any live GD session in minutes. This section
+covers every security layer needed before going live.
+
+THREAT 1: PIN BRUTE-FORCE ATTACK
+  Risk: Attacker scripts a call that tries 000000, 000001, 000002... until they
+  find a valid session PIN and join someone else's GD.
+  Solution — 3 layers of protection:
+    - Rate limit: Max 3 wrong PIN attempts per phone number per 10 minutes,
+      then block the number for 30 minutes
+    - Lockout: After 5 total wrong attempts on a session PIN, disable that PIN
+      entirely and notify the session host
+    - PIN expiry: Session PIN expires automatically 5 minutes after session ends
+
+THREAT 2: SESSION HIJACKING VIA CALLER ID SPOOFING
+  Solution:
+    - Never rely on Caller ID as the only auth — always require PIN
+    - Use PIN + phone number whitelist (optional) for high-security sessions
+    - Log all joining attempts with timestamp + Caller ID + IP of FreeSWITCH
+      gateway
+
+THREAT 3: STALE PINs BEING REUSED
+  Risk: A PIN from a GD session 2 days ago still works and someone accidentally
+  joins a new session that reused the same PIN.
+  Solution:
+    - Generate PINs with UUID-based seed, not sequential numbers
+    - Hard expiry: PIN becomes invalid when session status = "ended"
+    - Same 6 digits cannot repeat within 24 hours
+
+THREAT 4: SPAM / ABUSE CALLS
+  Risk: Someone repeatedly dials your conference number to waste SIP trunk
+  minutes (costs you money) or disrupt a live session.
+  Solution:
+    - Global rate limit: max 10 calls per hour from same number to your service
+    - Session max capacity: define max phone participants per session (e.g., 3)
+    - Moderator can hard-ban a phone number from the app UI
+    - Auto-hangup after 3 wrong PINs from same call
+
+SECURITY IMPLEMENTATION CHECKLIST:
+  ✓ Rate limit: 3 wrong PINs per number per 10 min
+  ✓ Session lockout after 5 total wrong attempts
+  ✓ PIN auto-expires when session ends
+  ✓ No sequential PINs — use cryptographically random
+  ✓ Log all join attempts (number, time, success/fail)
+  ✓ Max phone participants cap per session
+  ✓ Moderator can ban phone numbers in real-time
+  ✓ Auto-hangup on repeated wrong PIN from same call
+
+
+================================================================================
+SECTION 10 — AUTHENTICATION FLOW: HOW PHONE USER GETS A PIN  [NEW]
+================================================================================
+
+⚠ MISSING FROM PREVIOUS REPORT — CRITICAL GAP
+
+The previous report assumed the user "already has the PIN" but never explained
+how. This section covers the complete user registration and PIN distribution
+flow — including guest users, verified users, and how their identity maps to
+GD analysis scores.
+
+TYPE A: REGISTERED ECOSKILLER USER
+  User has an EcoSkiller account but their phone is offline during the session.
+  Flow:
+    1. Host creates GD session — app generates PIN + links it to session
+    2. App sends PIN to user's registered phone number via WhatsApp/SMS
+       automatically
+    3. User calls, enters PIN → joined and identified by name in session
+    4. Analysis report linked to their account profile
+    5. Full report visible in their app dashboard later
+
+TYPE B: GUEST / UNREGISTERED USER
+  User doesn't have EcoSkiller app — someone shared the PIN with them.
+  Flow:
+    1. Host shares PIN + number via WhatsApp message
+    2. Guest calls, enters PIN → joined as "📞 Phone Guest"
+    3. IVR asks: "Press 1 to enter your name via keypad spell-out OR press 2
+       to stay as Guest"
+    4. Report sent to their calling number via SMS after session
+    5. Host can optionally assign name later from moderator panel
+
+COMPLETE IVR STATE MACHINE — ALL SCENARIOS:
+
+  State                  | Trigger                        | IVR Response (Hindi)                         | Action
+  -----------------------|--------------------------------|----------------------------------------------|--------------------------------
+  Welcome                | Call connects                  | "Namaste! EcoSkiller. PIN enter karein."    | Wait for 6 digits, 15s timeout
+  No Input               | 15s timeout, no digits         | "Koi response nahi mila. Dobara try karein."| Repeat once, then hang up
+  Incomplete PIN         | Less than 6 digits + silence   | "Aapne sirf X digit daale. 6 digit chahiye."| Re-prompt
+  Wrong PIN (1st/2nd)    | PIN not found in DB            | "Galat PIN. Aapke paas X aur mauka hai."    | Re-prompt
+  Wrong PIN (3rd)        | 3 failed attempts              | "Bohot zyada galat attempts. 10 min baad."  | Block + hang up
+  Session Pending        | PIN valid, session not started | "Session abhi shuru nahi hua. X min mein." | Hang up gracefully
+  Session Full           | Max phone participants reached | "Session mein jagah nahi hai."              | Hang up
+  Session Ended          | PIN valid, session = ended     | "Session khatam ho gaya. Report aayegi."    | Trigger report SMS, hang up
+  Consent Prompt         | Before joining                 | "Call record hogi. Join ke liye 1 dabayein."| 1 = join with, 2 = without
+  Joined Successfully    | All checks passed              | "Aa gaye! Aap ab live session mein hain."   | Bridge to conference
+  Muted by Moderator     | Mod mutes phone user           | "Aapko mute kar diya gaya hai."             | Mute participant
+  Removed by Moderator   | Mod removes phone user         | "Aapko session se remove kar diya gaya."    | Hang up, log event
+  Session Ended Mid-Call | Host ends session              | "Session khatam ho gaya. Dhanyavad!"        | Hang up, trigger report SMS
+
+
+================================================================================
+SECTION 11 — LATENCY & AUDIO SYNC PROBLEM  [NEW]
+================================================================================
+
+⚠ MISSING FROM PREVIOUS REPORT — REAL PRODUCTION ISSUE
+
+PSTN calls introduce a natural 200–400ms delay compared to WebRTC's ~50ms. This
+means the phone user hears app users slightly delayed, and vice versa. Without
+managing this, users will experience echo, double-talk, and awkward overlaps.
+
+LATENCY COMPARISON:
+  WebRTC Users         : ~50ms  (Near-instantaneous, best case)
+  PSTN Phone User      : 200–400ms (PSTN encoding + SIP processing + FS mixing)
+  STT Processing       : +50ms – 2s (Vosk: +50ms | Whisper: +2-3s chunks)
+                         Note: Parallel to audio — doesn't block the call
+
+FIX 1: ECHO CANCELLATION (Critical)
+  Without echo cancellation, the phone user will hear their own voice echoed
+  back ~400ms later. This is highly disruptive.
+  - Enable FreeSWITCH mod_echo_cancellation (built-in, free, one config line)
+  - For BSNL calls (known echo issues), add aggressive echo suppression level 3
+  - FreeSWITCH conference does AEC by default when configured correctly
+
+FIX 2: JITTER BUFFER MANAGEMENT
+  Rural 2G calls have inconsistent packet timing (jitter). Without a buffer,
+  audio sounds choppy and broken to all participants.
+  - Configure FreeSWITCH jitter buffer: jitter-buffer-msec=60
+  - Set adaptive buffer that increases automatically if packet loss detected
+  - Adds ~60ms latency but gives smooth audio even on unstable 2G signals
+
+FIX 3: AUDIO QUALITY UPSAMPLING
+  Phone user audio comes in at 8kHz. App users are at 48kHz. When mixed, the
+  phone user sounds "muffled" compared to everyone else.
+  - FreeSWITCH automatically resamples 8kHz → 48kHz during conference mixing
+  - Enable mod_samplerate with Speex resample algorithm (better quality)
+  - Result: phone user's voice sounds cleaner to app users
+
+FIX 4: DOUBLE-TALK PREVENTION
+  Because of the 200-400ms delay gap, phone users often accidentally interrupt
+  because they can't hear that someone already started speaking.
+  - In structured GDs: use push-to-talk for phone users (press * to speak)
+  - In free-form GDs: add a 200ms "hold-off" before phone user audio unmutes
+  - Show app users a "⚠️ Phone user may hear you delayed" notice in UI
+
+REALISTIC EXPECTATION:
+  With all fixes applied, phone user experience will be similar to a
+  speakerphone on a Group Call. Perfectly usable for GD. The 200–400ms delay
+  is perceptible but not conversation-breaking. Most rural users are already
+  accustomed to this from normal conference calls on BSNL/MTNL.
+
+
+================================================================================
+SECTION 12 — SCALING STRATEGY: CONCURRENT SESSIONS  [NEW]
+================================================================================
+
+⚠ MISSING FROM PREVIOUS REPORT — NEEDED FOR GROWTH PLANNING
+
+TIER 1 — SINGLE VPS (MVP): 0–50 sessions/day
+  1 Hetzner CPX21 (₹440/mo). FreeSWITCH + Vosk STT on same machine.
+  No load balancer needed. Handles up to 50 concurrent phone calls easily.
+  Spec: 1 VPS | 3 vCPU / 4GB | ₹440/mo
+
+TIER 2 — SPLIT ARCHITECTURE: 50–500 sessions/day
+  Separate FreeSWITCH (telephony) from STT (compute). FreeSWITCH on CPX21,
+  Whisper STT on dedicated CPX31. FreeSWITCH streams audio to STT via internal
+  network. Queue-based so spikes don't crash analysis.
+  Spec: 2 VPS | Split calls + STT | ₹1,320/mo
+
+TIER 3 — HORIZONTAL SCALE: 500–5000 sessions/day
+  Multiple FreeSWITCH instances behind a SIP load balancer (Kamailio, also
+  free). STT cluster with multiple Faster-Whisper workers. Redis queue between
+  FreeSWITCH and STT workers.
+  Spec: 4–6 VPS | Kamailio LB | ₹3,500–₹5,000/mo
+
+TIER 4 — CLOUD NATIVE: 5000+ sessions/day
+  FreeSWITCH on Kubernetes. STT as auto-scaling worker pods. Consider managed
+  SIP trunk from Tata/Airtel for better uptime SLA. At this scale, evaluate
+  Voxtral API ($0.001/min) vs self-hosted to reduce ops burden.
+  Spec: K8s cluster | Auto-scale | ₹15,000+/mo
+
+FREESWITCH CAPACITY — SINGLE SERVER:
+  Concurrent Calls   : 300–500 (CPX21, 3 vCPU — telephony only, no STT)
+  STT Bottleneck     : 10–15 concurrent (Whisper-small on CPX21)
+  Vosk Concurrent    : 50–80 concurrent (Vosk is much lighter — best for MVP)
+
+
+================================================================================
+SECTION 13 — SCORE FAIRNESS: 8kHz vs 48kHz PROBLEM  [NEW]
+================================================================================
+
+⚠ MISSING FROM PREVIOUS REPORT — AFFECTS CORE PRODUCT FAIRNESS
+
+Phone users call in at 8kHz audio (PSTN narrowband). App users stream at 48kHz
+(WebRTC wideband). This quality difference directly causes STT to produce
+lower-quality transcripts for phone users — fewer words recognized, more errors
+— which means the AI will unfairly score phone users lower. This is a product
+integrity issue.
+
+WITHOUT FAIRNESS CORRECTION:
+  - Phone user says "climate change mitigation" — STT hears "climate hang
+    mitigation" (8kHz garble)
+  - STT Word Error Rate: ~15-20% for phone users vs ~3-5% for app users
+  - AI penalizes phone user for "lower quality speech" when it's actually
+    audio quality degradation
+  - Phone user gets 58/100 score; same performance app user gets 75/100
+  - Rural students disadvantaged purely because of infrastructure
+
+WITH FAIRNESS CORRECTION APPLIED:
+  - System detects participant type: phone vs app at join time
+  - Apply "phone participant" flag to all their transcription data
+  - STT confidence threshold lowered for phone users (accept lower-confidence
+    words)
+  - Apply +10–15% score normalization for known audio quality disadvantage
+  - Show "📞 Joined via phone call" note in their report so evaluators are aware
+
+TECHNICAL FIXES FOR SCORE FAIRNESS:
+
+  1. FreeSWITCH Preprocessing
+     Apply wideband simulation (bandwidth extension) before sending 8kHz audio
+     to STT. mod_opus can upsample PSTN audio. Adds ~20ms latency but
+     significantly improves STT accuracy.
+
+  2. Score Normalization Algorithm
+     Track historical STT accuracy per connection type. If phone users
+     consistently get 15% lower STT word confidence, apply 15% upward
+     normalization to their linguistic quality score. Recalibrate monthly.
+
+  3. Transparent Disclosure
+     Show in report: "Score calculated with phone-call audio adjustment
+     applied." Both the student and evaluator know the context. Builds trust
+     rather than hiding the normalization.
+
+IMPORTANT: Score normalization must be based on measured data, not a hardcoded
+offset. Measure actual STT error rates on 100+ real phone calls from Indian
+telecom networks, then derive the correction factor empirically. This makes the
+scoring defensible to users.
+
+
+================================================================================
+SECTION 14 — DATA PRIVACY & LEGAL COMPLIANCE  [NEW]
+================================================================================
+
+⚠ MISSING FROM PREVIOUS REPORT — LEGAL REQUIREMENT IN INDIA
+
+India's Digital Personal Data Protection Act 2023 (DPDP Act) came into force
+in 2023. Recording phone calls, storing transcripts, and retaining phone numbers
+without consent is a legal violation with potential fines. This must be
+addressed before production launch.
+
+1. CALL RECORDING CONSENT
+   You MUST inform callers they are being recorded. The IVR must say:
+   "This call may be recorded for analysis purposes. Press 1 to consent and
+   continue. Press 2 to join without recording (analysis will be limited)."
+   Consent must be logged with timestamp.
+
+2. TRANSCRIPT DATA RETENTION
+   Under DPDP Act, personal data cannot be retained longer than necessary.
+   Policy:
+   - Transcripts retained for 30 days after session, then auto-deleted
+   - Raw audio deleted within 24 hours of session end
+   - User can request earlier deletion via SMS reply "DELETE"
+
+3. PHONE NUMBER STORAGE
+   Phone numbers are personal data under DPDP. You cannot store them without
+   explicit purpose declaration. In your privacy policy:
+   - Phone numbers stored only for report delivery and session management
+   - Not shared with third parties
+   - Deleted after 90 days of inactivity
+
+4. AUDIO DATA SECURITY
+   - Call recordings must be encrypted at rest (AES-256)
+   - Access to call recordings restricted to authorized personnel only
+   - Audit log required for all access
+   - FreeSWITCH can write recordings directly to encrypted storage
+
+5. MINOR PROTECTION
+   EcoSkiller likely serves students including minors under 18. Under DPDP,
+   processing personal data of minors requires parental consent. Add age
+   verification in user registration and treat all unverified phone users as
+   potential minors — apply stricter data handling.
+
+6. WHAT YOUR PRIVACY POLICY MUST SAY
+   Explicitly state:
+   (1) What data is collected from phone users
+   (2) How long it's retained
+   (3) Who has access
+   (4) How to request deletion
+   (5) That calls may be recorded and transcribed
+   (6) Right to withdraw consent
+   Display at ecoskiller.com/privacy and link from the SMS that sends the PIN.
+
+QUICK COMPLIANCE CHECKLIST:
+  ✓ IVR consent prompt
+  ✓ 30-day auto-delete transcripts
+  ✓ 24h audio delete
+  ✓ Encrypted storage
+  ✓ Privacy policy page
+  ✓ Deletion request via SMS
+
+
+================================================================================
+SECTION 15 — FAILOVER & RELIABILITY: WHAT HAPPENS WHEN SERVER CRASHES  [NEW]
+================================================================================
+
+⚠ INCOMPLETE IN PREVIOUS REPORT
+
+A rural user walked away from internet connectivity, joined via phone, is
+mid-GD — and your FreeSWITCH server crashes. The call drops. They cannot
+re-join from the app. They have no idea what happened. Without a failover plan,
+this destroys trust with exactly the users you're trying to help.
+
+FAILURE SCENARIOS TO PLAN FOR:
+  - FreeSWITCH process crashes mid-session
+  - VPS goes down (host maintenance, OOM kill)
+  - SIP trunk provider outage (MCUBE downtime)
+  - Network connectivity lost between VPS and SIP trunk
+  - STT service crashes — analysis stops but call continues
+  - Database unavailable — PIN validation fails for new joiners
+
+MITIGATION STRATEGIES:
+  ✓ Watchdog process: Supervisor/systemd auto-restarts FreeSWITCH within 10
+    seconds of crash
+  ✓ Session state in Redis: If FS crashes, Redis still has PIN→session mapping.
+    Restart re-reads state
+  ✓ Auto-reconnect: After restart, system auto-calls back known phone
+    participants
+  ✓ STT is non-blocking: If STT crashes, call continues — analysis is paused,
+    not the GD
+  ✓ Backup SIP trunk: Configure 2 SIP providers. If MCUBE is down, failover to
+    Tata/Knowlarity automatically
+
+UPTIME TARGET & MONITORING:
+  Target Uptime       : 99.5% (~3.6 hours downtime/month for MVP)
+                        99.9% for production (43 min/month)
+  Monitoring Stack    : UptimeRobot (free, 5min checks) + Grafana on same VPS
+  Alert Channels      : Telegram bot alert when FreeSWITCH is down (instant,
+                        free to set up)
+
+RECOVERY USER COMMUNICATION:
+  When server recovers and auto-reconnect fires, send the phone user:
+  SMS: "EcoSkiller: Technical issue resolved. We are reconnecting you to your
+  session. Please answer the incoming call."
+  This proactive communication prevents rural users from thinking they did
+  something wrong or that the service is unreliable.
+
+
+================================================================================
+SECTION 16 — COMPLETE IVR DESIGN: ALL EDGE CASES COVERED  [NEW]
+================================================================================
+
+⚠ INCOMPLETE IN PREVIOUS REPORT — ORIGINAL HAD ONLY HAPPY PATH
+
+The original report only showed the happy path (correct PIN → join). Real IVR
+design must handle every possible state. A poorly designed IVR leaves rural
+users confused and stuck on hold, which is worse than not having the feature.
+
+FULL IVR STATE TABLE:
+  State                 | Trigger                          | IVR Response (Hindi)                               | Action
+  ----------------------|----------------------------------|-----------------------------------------------------|----------------------------
+  Welcome               | Call connects                    | "Namaste! EcoSkiller. PIN enter karein."           | Wait 6 digits, 15s timeout
+  No Input              | 15s timeout, no digits           | "Koi response nahi mila. Dobara try karein."       | Repeat once, then hang up
+  Incomplete PIN        | Less than 6 digits + silence     | "Aapne sirf X digit daale. 6 digit chahiye."       | Re-prompt
+  Wrong PIN (1st/2nd)   | PIN not in DB                    | "Galat PIN. Aapke paas X aur mauka hai."           | Re-prompt
+  Wrong PIN (3rd)       | 3 failed attempts                | "Bohot zyada galat attempts. 10 min baad."         | Block + hang up
+  Session Pending       | PIN valid, session not started   | "Session abhi shuru nahi hua. X min mein."         | Hang up gracefully
+  Session Full          | Max participants reached          | "Is session mein jagah nahi."                      | Hang up
+  Session Ended         | Status = ended                   | "Yeh session khatam ho chuka hai."                 | Send report SMS, hang up
+  Consent Prompt        | Before join, recording enabled   | "Call record hogi. Join ke liye 1 dabayein."       | 1=join with, 2=join without
+  Joined Successfully   | All checks passed                | "Aa gaye! Aap ab live session mein hain."          | Bridge to conference
+  Muted by Moderator    | Mod mutes phone user             | "Aapko mute kar diya gaya hai."                    | Mute participant
+  Removed by Moderator  | Mod removes phone user           | "Aapko session se remove kar diya gaya."           | Hang up, log event
+  Session Ended Mid-Call| Host ends session while in call  | "Session khatam ho gaya. Dhanyavad!"               | Hang up, trigger report
+
+IVR DESIGN BEST PRACTICES:
+  - Always use human-recorded voice for Hindi, not TTS (TTS sounds robotic)
+  - Maximum 2 retry attempts before any action — don't frustrate users
+  - State the number of remaining attempts clearly after each failure
+  - Always give a recovery path — never dead-end the user
+  - Confirm successful join with audio confirmation, not silence
+
+PRE-RECORDED AUDIO FILES NEEDED:
+  - welcome.wav — opening greeting
+  - enter_pin.wav — "please enter PIN"
+  - wrong_pin_1.wav / wrong_pin_2.wav — wrong attempt with count
+  - blocked.wav — too many attempts
+  - session_pending.wav / session_full.wav / session_ended.wav
+  - consent.wav — recording consent prompt
+  - joined.wav — confirmation of successful join
+  - muted.wav / removed.wav / session_closing.wav
+
+
+================================================================================
+SECTION 17 — REAL COST CALCULATION: ALL EDGE CASES INCLUDED  [NEW]
+================================================================================
+
+⚠ INCOMPLETE IN PREVIOUS REPORT — ORIGINAL COST WAS OPTIMISTIC
+
+The original cost section showed ₹0.28 per session — but that assumed 1 phone
+user, English SMS, and no call drops. Real-world GD sessions will have multiple
+phone users, Hindi Unicode SMS, and occasional re-dials.
+
+ORIGINAL VS CORRECTED COST COMPARISON:
+  Cost Item                           | Original | Corrected  | Reason
+  ------------------------------------|----------|------------|----------------------------------
+  PSTN Bridge (10 min, 1 phone user)  | ₹0.10   | ₹0.10      | Same — accurate
+  PSTN Bridge (10 min, 3 phone users) | N/A      | ₹0.30      | Multiplies per phone user
+  SMS Report (Hindi Unicode)          | ₹0.08   | ₹0.16–0.24 | Hindi Unicode = 70 chars/SMS
+  Auto-reconnect outbound call        | N/A      | ₹0.05–0.10 | Outbound calls cost extra
+  STT for 3 phone users (parallel)    | ₹0.00   | ₹0.00      | Still free — self-hosted
+  VPS amortized (at 100 sessions/day) | ₹0.10   | ₹0.04      | ₹440/mo ÷ 3000 sessions = ₹0.14
+  WhatsApp report (instead of SMS)    | ₹0.00   | ₹0.00      | Free first 1000/month
+
+REALISTIC SCENARIO: 3 phone users, Hindi SMS, 1 drop & reconnect
+  SIP Trunk: 3 phone users × 10 min          : ₹0.30
+  Outbound reconnect call (1 user drops)      : ₹0.08
+  Hindi SMS report × 3 users (2 SMS each)    : ₹0.48
+  Whisper STT (self-hosted)                  : ₹0.00
+  VPS amortized                               : ₹0.10
+  REALISTIC TOTAL                             : ≈ ₹0.96
+
+OPTIMIZED SCENARIO: WhatsApp instead of SMS
+  SIP Trunk: 3 phone users × 10 min          : ₹0.30
+  Outbound reconnect call                     : ₹0.08
+  WhatsApp report × 3 (META API, free tier)  : ₹0.00
+  Whisper STT (self-hosted)                  : ₹0.00
+  VPS amortized                               : ₹0.10
+  OPTIMIZED TOTAL                             : ≈ ₹0.48
+
+KEY INSIGHT: Use WhatsApp instead of SMS for report delivery. This completely
+eliminates the Hindi Unicode SMS cost multiplication problem. WhatsApp supports
+rich messages with no character limits, in any language. The first 1,000
+conversations per month are free from META. This is the recommended path.
+
+
+================================================================================
+SECTION 18 — WEBRTC ↔ FREESWITCH BRIDGE INTEGRATION  [NEW]
+================================================================================
+
+⚠ INCOMPLETE IN PREVIOUS REPORT — THE HARDEST TECHNICAL PART
+
+The original report explained how phone users join via FreeSWITCH, and
+separately how app users use WebRTC — but never explained how these two systems
+are connected to each other. This is actually the hardest integration step.
+
+THE PROBLEM:
+  Your EcoSkiller app users are in a WebRTC room (Daily.co, Agora, or your own
+  WebRTC server). Phone users join a FreeSWITCH conference room. These are two
+  completely different audio systems. Without an explicit bridge, app users and
+  phone users are in entirely separate audio sessions and cannot hear each other.
+
+--- 3 ARCHITECTURE OPTIONS — CHOOSE ONE ---
+
+OPTION A: FULL FREESWITCH (Simplest) — RECOMMENDED FOR LONG-TERM
+  Idea: Migrate ALL participants (app users too) to FreeSWITCH conference.
+  App users connect via WebRTC-SIP using their browser. Phone users connect via
+  PSTN-SIP. Everyone is in the same FreeSWITCH conference room — no bridge.
+  Advantages:
+    - Simplest architecture — one system for everyone
+    - No bridge to maintain or troubleshoot
+    - FreeSWITCH natively supports WebRTC via WebSocket SIP
+    - Works with standard SIP.js in browser (open source)
+  Disadvantages:
+    - Must migrate existing WebRTC infrastructure
+    - Lose features from Daily.co/Agora (video, recording, etc.)
+    - FreeSWITCH WebRTC setup is complex — requires STUN/TURN config
+  Best for: Long-term scale
+
+OPTION B: SIP GATEWAY BRIDGE (Balanced) — GOOD FOR EXISTING APPS
+  Idea: Keep existing WebRTC (Daily.co/Agora/Jitsi) for app users. Run
+  FreeSWITCH separately for phone users. Use a SIP-WebRTC gateway to bridge the
+  two. Audio from FreeSWITCH forwarded to WebRTC room and vice versa.
+  Architecture:
+    📱 App Users (WebRTC) ⇄ 🔗 SIP Gateway (RTPengine/Bridgit) ⇄ ⚙️ FreeSWITCH ⇄ ☎️ Phone Users
+  Advantages:
+    - App users stay on existing WebRTC — no migration needed
+    - RTPengine (open source, Kamailio project) handles SIP↔WebRTC bridge
+  Disadvantages:
+    - Higher latency (~100ms extra hop through gateway)
+    - More moving parts to configure and maintain
+  Best for: Existing WebRTC apps
+
+OPTION C: TWILIO AS BRIDGE ONLY (Fastest to Build) — HYBRID
+  Idea: Use Twilio Conference specifically as the audio bridge between PSTN
+  and WebRTC. App users connect to Twilio Conference using Twilio SDK. Phone
+  users dial in via Twilio PSTN. Self-hosted Whisper still handles STT.
+  Only Twilio Conference bridging is paid.
+  Advantages:
+    - Easiest and fastest to implement (1-2 days)
+    - Twilio handles all WebRTC↔PSTN complexity
+    - Battle-tested, production-ready immediately
+    - Use free self-hosted Whisper for STT to cut cost
+  Disadvantages:
+    - Twilio Conference: ₹0.15/min per participant (app + phone)
+    - Dependency on Twilio vendor — not 100% open source
+    - Higher cost at scale
+  Best for: MVP validation. Move to Option A or B after product-market fit.
+
+DECISION MATRIX:
+  Criteria              | Option A (Full FreeSWITCH) | Option B (SIP Gateway) | Option C (Twilio)
+  ----------------------|---------------------------|------------------------|------------------
+  Dev time              | 3-4 weeks                 | 4-6 weeks              | 3-5 days
+  Monthly cost (100 ses)| ₹500 (VPS only)           | ₹800 (VPS × 2)         | ₹1,800 (Twilio)
+  Migration required    | Yes — full WebRTC migrate  | No                     | No
+  Vendor dependency     | None — 100% OSS            | None — 100% OSS        | Twilio
+  Recommended for       | Long-term scale            | Existing WebRTC apps   | MVP validation
+
+
+================================================================================
+SECTION 19 — COMPLETE SUMMARY: v2.0 FULL PICTURE
+================================================================================
+
+ORIGINAL REPORT COVERED (9 Sections):
+  ✓ Core PSTN bridge concept and architecture
+  ✓ 12 capabilities (6 core + 6 advanced)
+  ✓ Open source tool list with licenses
+  ✓ STT comparison: Vosk vs Whisper vs Voxtral vs Faster-Whisper
+  ✓ Cost comparison (Twilio vs OSS)
+  ✓ User experience and UI mockup
+  ✓ India-specific considerations (2G, TRAI, Hindi)
+  ✓ Priority order for implementation
+  ✓ Summary
+
+NEW SECTIONS ADDED IN v2.0 (10 Sections):
+  ✓ Security & PIN brute-force protection (Section 9)
+  ✓ Authentication flow + IVR state machine (Section 10)
+  ✓ Latency & audio sync with fixes (Section 11)
+  ✓ Scaling strategy: MVP → Enterprise (Section 12)
+  ✓ Score fairness: 8kHz vs 48kHz normalization (Section 13)
+  ✓ DPDP Act 2023 privacy & legal compliance (Section 14)
+  ✓ Failover & reliability plan (Section 15)
+  ✓ Complete IVR design with all edge cases (Section 16)
+  ✓ Real-world cost with Unicode SMS & multi-user (Section 17)
+  ✓ WebRTC ↔ FreeSWITCH bridge integration (Section 18)
+
+CRITICAL DECISIONS BEFORE YOU START BUILDING:
+
+  1. BRIDGE ARCHITECTURE?
+     Option C (Twilio) for MVP. Option A (Full FreeSWITCH) for scale.
+     Decide before writing any code.
+
+  2. STT ENGINE?
+     Vosk for 1-week MVP. Faster-Whisper for quality.
+     Don't over-engineer at the start.
+
+  3. REPORT DELIVERY?
+     WhatsApp only — avoids Hindi Unicode SMS doubling cost.
+     Free 1000/month via META.
+
+  4. SECURITY FIRST?
+     Build PIN rate-limiting on Day 1. Never launch without it.
+     Brute force takes minutes without protection.
+
+  5. PRIVACY POLICY?
+     Write DPDP-compliant privacy policy before first real user.
+     IVR consent prompt is mandatory under Indian law.
+
+  6. SCORE FAIRNESS?
+     Tag all phone participants at join time. Apply normalization from first
+     session — don't retrofit it later.
+
+FINAL NUMBERS:
+  Total capabilities    : 12 (6 Core + 6 Advanced)
+  New sections added    : 10
+  OSS Tools             : FreeSWITCH · Whisper · Vosk · Voxtral · Pyannote · RTPengine
+  Real cost per session : ~₹0.48 (OSS + WhatsApp) — not ₹0.28 as original claimed
+  Legal requirement     : DPDP Act 2023 compliance + IVR consent prompt mandatory
+  Bridge recommendation : Option C (Twilio) for MVP → Option A for scale
+
+================================================================================
+          ECOSKILLER · COMPLETE CAPABILITIES REPORT v2.0
+       19 Sections · 9 Original + 10 New · All Gaps Addressed
+================================================================================

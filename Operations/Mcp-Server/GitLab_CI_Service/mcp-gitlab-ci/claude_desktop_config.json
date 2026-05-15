@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "mcp-gitlab-ci": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-gitlab-ci/target/mcp-gitlab-ci.jar"
+      ],
+      "env": {
+        "GITLAB_URL":        "https://gitlab.ecoskiller.com",
+        "HARBOR_URL":        "https://harbor.ecoskiller.com",
+        "MINIO_ENDPOINT":    "https://minio.ecoskiller.com",
+        "SLACK_WEBHOOK_URL": "${SLACK_WEBHOOK_URL}",
+        "KUBECONFIG_DEV":    "${KUBECONFIG_DEV}",
+        "KUBECONFIG_TEST":   "${KUBECONFIG_TEST}",
+        "KUBECONFIG_STAGE":  "${KUBECONFIG_STAGE}",
+        "KUBECONFIG_PROD":   "${KUBECONFIG_PROD}"
+      }
+    }
+  }
+}

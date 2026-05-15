@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "mcp-19-platform-stability": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-19-platform-stability/target/mcp-19-platform-stability-1.0.0.jar"
+      ]
+    }
+  }
+}

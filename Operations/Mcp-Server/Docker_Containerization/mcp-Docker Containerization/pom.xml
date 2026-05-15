@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.ecoskiller.mcp</groupId>
+  <artifactId>mcp-05-docker</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <name>Ecoskiller MCP-05 Docker Containerization Server</name>
+  <description>
+    Java MCP Server — CAT-05 Docker Containerization.
+    15 agents: Dockerfile generation, BuildKit pipeline, Harbor push,
+    Trivy CVE scanning, SBOM, Cosign signing, base image management,
+    layer cache optimisation, multi-arch builds, health checks,
+    retention policies, env injection, build log analysis,
+    audit trail, and multi-cloud distribution.
+    Zero external dependencies — pure Java 17 stdlib only.
+  </description>
+
+  <properties>
+    <java.version>17</java.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <mainClass>io.ecoskiller.mcp.docker.DockerMCPServer</mainClass>
+  </properties>
+
+  <!-- Zero runtime dependencies — pure Java stdlib only -->
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+          <compilerArgs><arg>-Xlint:all</arg></compilerArgs>
+        </configuration>
+      </plugin>
+
+      <!-- Executable JAR (no shading needed — zero deps) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>${mainClass}</mainClass>
+            </manifest>
+          </archive>
+          <finalName>mcp-05-docker-${project.version}</finalName>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.1.2</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>

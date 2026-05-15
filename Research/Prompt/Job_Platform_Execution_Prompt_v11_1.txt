@@ -1,0 +1,22 @@
+JOB PLATFORM — APPLICATION-SPECIFIC EXECUTION PROMPT
+
+Scope:
+- Hiring lifecycle management
+- Job postings, candidate evaluation, offers
+
+Owned Domains:
+- Job requisitions
+- Hiring workflow state machines
+- Offer & acceptance events
+
+Explicit Prohibitions:
+- No education or curriculum mutation
+- No project scoring override
+
+Dashboard Rules:
+- Pipeline & candidate status widgets
+- No financial/legal widgets on mobile
+
+Execution Contract:
+- Exactly ONE Problem ID per session
+- Human approval mandatory for offer issuance

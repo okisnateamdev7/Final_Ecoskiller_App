@@ -1,0 +1,19 @@
+{
+  "_comment": "Ecoskiller Antigravity MCP Server — mcp-01-platform",
+  "_doc": "Add this config to your MCP host (Claude Desktop, Continue, etc.)",
+
+  "mcpServers": {
+    "mcp-01-antigravity": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/path/to/mcp-01-antigravity-1.0.0.jar"
+      ],
+      "env": {
+        "ANTIGRAVITY_ENV":       "production",
+        "ANTIGRAVITY_NAMESPACE": "core",
+        "ANTIGRAVITY_LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}

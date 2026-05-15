@@ -1,0 +1,102 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Helm values — mcp-analytics-service
+# Namespace: analytics | HPA: 3–15 replicas
+# Scales on Kafka consumer lag (>50K events) OR CPU >70%
+# ─────────────────────────────────────────────────────────────────────────────
+
+replicaCount: 3
+
+image:
+  repository: harbor.ecoskiller.internal/ecoskiller/mcp-analytics-service
+  tag: "1.0.0"
+  pullPolicy: IfNotPresent
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1001
+  fsGroup: 1001
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: false
+  capabilities:
+    drop: ["ALL"]
+
+# HPA — scale 3–15 on Kafka lag or CPU
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 15
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: External
+      external:
+        metric:
+          name: kafka_consumer_lag
+        target:
+          type: AverageValue
+          averageValue: "50000"
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 1Gi
+  limits:
+    cpu: 1000m
+    memory: 2Gi
+
+env:
+  KEYCLOAK_ISSUER: "https://keycloak.ecoskiller.internal/realms/ecoskiller"
+  JWT_STRICT_SIGNATURE: "true"
+  AUDIT_LOG_FILE: "/app/logs/analytics-audit.log"
+
+volumes:
+  - name: audit-logs
+    emptyDir: {}
+
+volumeMounts:
+  - name: audit-logs
+    mountPath: /app/logs
+
+service:
+  type: ClusterIP
+  port: 8080
+
+livenessProbe:
+  exec:
+    command: ["pgrep", "-f", "app.jar"]
+  initialDelaySeconds: 20
+  periodSeconds: 30
+
+readinessProbe:
+  exec:
+    command: ["pgrep", "-f", "app.jar"]
+  initialDelaySeconds: 15
+  periodSeconds: 10
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 2  # keep 2 pods up during rolling deploy
+
+networkPolicy:
+  enabled: true
+  ingressFrom:
+    - podSelector:
+        matchLabels:
+          app: analytics-dashboard
+
+# GCP asia-south1 affinity for DPDPA data residency
+affinity:
+  nodeAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        preference:
+          matchExpressions:
+            - key: topology.kubernetes.io/region
+              operator: In
+              values: ["asia-south1"]

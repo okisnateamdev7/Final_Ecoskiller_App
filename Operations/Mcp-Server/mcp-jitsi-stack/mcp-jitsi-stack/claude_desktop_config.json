@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-jitsi-stack": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-jitsi-stack/target/mcp-jitsi-stack.jar"]
+    }
+  }
+}

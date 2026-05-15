@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "ecoskiller-job-service": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/job-service-mcp/target/job-service-mcp-1.0.0.jar"
+      ],
+      "env": {
+        "KEYCLOAK_ISSUER": "https://keycloak.ecoskiller.com/realms/ecoskiller",
+        "KEYCLOAK_JWKS_URI": "https://keycloak.ecoskiller.com/realms/ecoskiller/protocol/openid-connect/certs",
+        "LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}

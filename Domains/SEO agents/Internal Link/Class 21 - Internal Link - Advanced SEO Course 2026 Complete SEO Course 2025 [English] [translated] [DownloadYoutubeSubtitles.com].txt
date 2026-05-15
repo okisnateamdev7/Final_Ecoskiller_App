@@ -1,0 +1,2315 @@
+Hello everyone, I am Amit Tiwari
+
+from tiwari.net and this is the
+
+21st class of our Advanced SEO course in which we will
+
+talk about internal links.
+
+What are internal links?  Why are there
+
+internal links?  Why should you create it
+
+, how should you create it, where should you
+
+create it and what are some other special things
+
+that you should keep in mind while
+
+
+
+making your strategy regarding internal linking.
+
+We will discuss all these things in today's only class.
+
+But as always, first of all warning,
+
+if you have missed any class till now,
+
+please go and watch it and then
+
+continue it.  Otherwise, As I Always will
+
+not benefit from this class.  And this is
+
+true.  People who have completed all the classes
+
+and
+
+attended all the doubt sessions will already
+
+tell you how much benefit they are getting in their work flow
+
+, their website traffic, and their
+
+understanding of SEO.
+
+Apart from this, we have started another course,
+
+Simple AI Course, which is available on this YouTube
+
+only.  It is available for free and there we are
+
+talking about AI technologies.
+
+I will not talk much about that course.
+
+You will see the link in the top right
+
+corner.  She has
+
+gone to first class.  Go and see.
+
+Understand from there.  Here we will only talk about SEO.
+
+So let's go
+
+to the computer screen and start understanding internal links.
+
+
+
+[Music]
+
+So the topic in class is called Internal Links.
+
+This is the link but because it is internal.  There is a
+
+saying that a home grown hen is worth nothing.
+
+So something similar happens with internal links also.
+
+Because these links are given here and there on their website itself.
+
+That is why their
+
+value is not considered very high.
+
+And it is important to break this myth today.
+
+But before that, let us understand the links.
+
+What is a link after all?  So suppose
+
+this is a drawing of two different pages.  Page
+
+one, page two.  There are two separate pages.  Now
+
+whatever text is written inside page one, let's say the
+
+text is written here.  And so here is
+
+page two.  Ok?  This is a page two
+
+mention here.  Now because I have mentioned page two.
+
+That's why I will have to provide a
+
+hyperlink here as well.  Correct?  Because
+
+if I am telling people about page two then
+
+people will not go and search on Google.
+
+Right?  Here I can either write
+
+go to Google and search for page two and
+
+click the
+
+first.  You understand how radical it will become.
+
+What could be easier than
+
+
+
+creating a link directly from page two here?  How do I create a link?
+
+I clicked here.  And then
+
+after this I will create a hyper link here.
+
+So page two will be our anchor text.
+
+When I put a link to page two on this,
+
+it will become a link.  A hyper
+
+link will be created.  Now when I add a link,
+
+if I want to show that link visually,
+
+how will I show it?  This page is linked to this
+
+page here.  Correct?  This will be
+
+said that this page has been linked to this page.
+
+What the arrow shows is that
+
+this particular page is linked to this particular page.
+
+This is the flow.  Ok now
+
+how is this link?  Is this an internal link
+
+or an external link?  How will we know?   This will be evident
+
+if this particular link is
+
+
+
+given from a page on one website to a page on another website.  Then this becomes an internal
+
+link.  And if it is given to the page of another website then it is an
+
+external link.  For
+
+example, if the domain here is the
+
+entire URL of this page one, it is abc.com
+
+page one.  Ok?  And the URL of this particular page
+
+becomes abc.com
+
+page two.  So how did this link happen?  Internal
+
+link.  Because one page of abc.com is
+
+linked to another page of abc.com.
+
+This is done internal link here.  Right?   Let's
+
+write this here as internal link.
+
+Correct?  Those who have already learnt SEO and have been
+
+practicing it for a long time, might be thinking that I am
+
+telling you such a boring thing.
+
+But wait for a while, things will get
+
+advanced.  Ok?
+
+That moment is also going to come in just a short while.  Now if
+
+this is the second page instead of abc.com, this is
+
+my xyz.com.
+
+Ok?  So what will this link be like?  This will be the
+
+external link.  Backlinks are never speaking.
+
+Why are you not speaking?
+
+Why are we not calling it backlink?  Then
+
+what is the difference between external link and backlink
+
+?  Well, this is the external link for this particular page.  Let's
+
+
+
+come here once again.  Let's change the orientation a little bit.
+
+This is an external link to page one for this page.
+
+Why?  Because this
+
+external page is being given to the external domain.
+
+Correct?  But, if I click on this link a
+
+little below here, its
+
+small name will appear.  Another name will appear for
+
+this link.  If I
+
+look at this link from the perspective of this particular domain.
+
+From the perspective of which domain?
+
+If I look from the perspective of page two, this is
+
+my backlink.  The external link is
+
+for page one.  There is a backlink for page two.
+
+Page two is being
+
+
+
+brought from another domain to this domain.  So
+
+this same link became the backlink for this page two.  And
+
+this is the external link for page one.  So what is the difference between internal
+
+links, external links and backlinks
+
+?  belongs to the domain.
+
+And where are you watching from?  So if the
+
+domain of our first page is abc.com and the
+
+domain of the second page is also abc.com
+
+then this link becomes an internal link.
+
+Ok?  This is an internal link to page one.
+
+Still have a backlink to page two.
+
+Ok.  There is still this backlink to page two.
+
+This is not something else.  It's still a
+
+backlink.  Correct.  And if here it was
+
+xyz.com instead of abc.com then it would have become an
+
+external link instead of an internal link.
+
+For whom?  For page one.
+
+This is still a backlink to page two.  Every
+
+kind of link to page two that's
+
+sending Google, bots, to his page is linking.
+
+That is backlink.  A backlink is a backlink.
+
+Okay now it might be coming to your mind
+
+that then we will get
+
+backlink value only from internal links.  Will come to that point
+
+also.  But for now, we have to
+
+remove the difference between these three words.
+
+
+
+What happened to internal links, external links and backlinks?  Understand?  Internal links
+
+and external links are
+
+different things from the perspective of the page that links them.  The
+
+link that is being received for a particular page
+
+may come from an internal domain or an external
+
+domain or from a YouTube video
+
+or from a Google site or from a free
+
+blog.  What happened to all this
+
+?  There are backlinks only.  OK now why is this
+
+happening?  We did a video some time ago
+
+in which I explained
+
+what is the use of backlinks?  Ok.  Now
+
+when Google was in its initial stages, Google
+
+search engine became popular because Google
+
+created a page ranking algorithm.  The PageRank
+
+algorithm states that whenever
+
+a page links to another page, the
+
+page being linked increases in importance.
+
+Because you link to a page only
+
+when it is important.  If someone
+
+asks you which is the best mall nearby
+
+?  So if nine out of ten of your
+
+friends are praising a particular mall,
+
+it means it must be good.  Right?  That
+
+word-of-mouth publicity was
+
+taken by Google and converted into an algorithm.
+
+Now there are
+
+many different differences in this algorithm and
+
+we have already talked about that in this video.
+
+You will see the link to this video
+
+in the top right corner.  But let
+
+us simplify it for now.
+
+And the simplified explanation is that the
+
+more links a particular page
+
+gets from different pages, the more its popularity increases.
+
+But this also means that the
+
+
+
+page rank of this particular page one from let's say, a supposed page rank which used to be
+
+100.  Correct?  This 100
+
+page rank of this page, when it is
+
+linking to some other page and if the value of this page is
+
+increasing automatically, then
+
+it means that some value must be decreasing here also.
+
+Right?  The 100 page
+
+rank given here is of this page and it links to this page.  The
+
+page in blue links to another page.
+
+Earlier let's assume that this
+
+page used to have its own rank of 20 only.
+
+Ok?  A high value page with a page rank of 100
+
+links to it.  So its page
+
+rank will increase in the eyes of Google.   Let's
+
+increase it from 20 to 30.  That is how it should go.
+
+Right?  Now obviously there are a lot of
+
+different ranking factors that come into play.
+
+So let
+
+us ignore it for a while.  Otherwise you will
+
+not be able to understand the link.  Now during this class
+
+all your ranking factors become null and
+
+void.  Nothing is working.  There
+
+is silence in the nails.  All it takes is just
+
+page rank.  So when a
+
+particular page links to another page and
+
+gives a backlink,
+
+from the perspective of page two, something must have changed.
+
+If its value used to be 20 earlier,
+
+now that 20 value has increased to 30.
+
+Ok?  Earlier it used to be 20.  Now it has increased to
+
+30.  Let's bold this so that the
+
+difference can be understood.  Ok?  Now its
+
+value has become 30.  So the more pages keep
+
+linking to it, the more its value will
+
+increase.  Correct?  Done?  Now, this is where the
+
+
+
+
+
+difference between the backlink created from internal links and the backlink created from external links starts to emerge.
+
+Always keep in mind that Google never confirms the
+
+complete calculation of page rank that we are telling you.
+
+
+
+But let's say we're
+
+only creating internal links here because there's a
+
+class for internal links.  So
+
+I change XYZ back to ABCD.com.
+
+So if this entire domain has its own rank.
+
+Lately it ranks 75th here.
+
+So the rank of this entire domain, whatever it is
+
+for page one, it will be the same for page two.
+
+So if we keep taking money from one pocket and
+
+putting it in the other, will
+
+we become rich?  You had
+
+kept some money in your left and right pockets.
+
+You put it in the right pocket, did it make any difference
+
+?  It won't matter, right?  Right?  If you are
+
+holding a weight in one hand.  If you remove it and put it
+
+in your other hand, you will
+
+not feel lighter.  So similarly, if your
+
+domain has a particular rank and you
+
+shift it from one page to another, then will your
+
+entire domain
+
+increase in value or not?  If the value does not
+
+increase then what is the benefit?  Correct?  That's why
+
+we always focus on
+
+getting backlinks from other domains.  Right?  But that does
+
+n’t mean internal links don’t have value.
+
+Why?  Because from the point of view of page two
+
+again I am saying that whether it is an internal
+
+link or an external link.  This page is definitely
+
+getting something.  So when we
+
+take or give links even on internal pages,
+
+we pass some value.  Always we are
+
+passing some value.  Now
+
+how Google passes or perceives this value,
+
+we will understand this in this class in a while.
+
+But just imagine this, whether you
+
+
+
+link from one page to another page on the same domain or bring a link from another domain.  Be it an
+
+internal link or an external link.
+
+That's the backlink for this page two.  She is going to
+
+give him some benefit or the other.
+
+That benefit will be available in the form of page rank.
+
+That benefit comes from many different things.
+
+Now what are these things?
+
+We understand these now.  I'll stop it here right now.
+
+Ok?  Now let us come and see
+
+what benefits we are going to get from internal links.   The
+
+number one benefit that you get is the
+
+structure of the website.
+
+Correct?  If all these pages are different.   There
+
+may be many pages on this website.
+
+Ok?  There may be 100 pages on this website.
+
+They are not linking each other.
+
+So what is the structure of the website?   Nothing.
+
+Once again, we redraw the
+
+diagram.  I'll keep drawing diagrams until
+
+you guys get tired.
+
+I have a this from Let's Page Page One.
+
+Ok?  This is available on our website abc.com.
+
+Ok?  We have this page on abc.com.
+
+After this we create another page
+
+which is page two.  Let's create the third page
+
+which is page three.  Then these
+
+pages are duplicated once.
+
+Ok?  This is page four.  This is page
+
+five.  This is Page
+
+Six.  There are six pages.
+
+No one is giving any link to each other.
+
+Totally unknown.  So
+
+what is the structure of this website?  Of ABC.com?  There are many
+
+different pages lying around.  It doesn't matter.
+
+Even if Google bot comes,
+
+it will come to page one and will not go to the second page.  It will
+
+come to the second page,
+
+not the third page.  Because no link is being
+
+passed.  Right?  So let's
+
+click save again.  The structure of this type of website
+
+is nil.  There is nothing on this website.
+
+So what do internal links do?
+
+Provides a structure to this website.
+
+Let's see that this particular
+
+page one we have links to page two.
+
+So we start building links.
+
+Links are going from page one to page two.
+
+Link is going from page two to page three.
+
+Link is going from page three to page four.  Then
+
+after this page four links to page five and
+
+page five links to page six.  This
+
+became a structure.  It is a very straight
+
+structure.  Right?  If
+
+we create some more structure here again.
+
+Let's say that this page six of mine
+
+also links to page two.  Page two
+
+links to page four.  Page one links to page five.
+
+And page three is also
+
+linking to page six.  Now
+
+what has this structure become?  It is a messy structure.
+
+Right?
+
+You can make the structure any way you want.  Ok?  There
+
+is no problem.  But what will happen?  That this
+
+structure has gone wrong in itself.
+
+Why?  Every page is linking to each other.
+
+What will Google Bird
+
+understand?  Nothing.  If I
+
+ask here which page has the highest keysens?
+
+You can't tell.  If I may ask which page
+
+is the least important?  You can't tell because
+
+this link doesn't reveal anything.  So
+
+what is the second benefit of this internal link?
+
+Number one, the structure of the website
+
+is understood.  Number two pages key can be found out.
+
+Ok?  The
+
+more internal links a particular page gets from different pages
+
+of that website, it means that it is the most
+
+important.  Correct?  Pages that do
+
+not get links mean they are less
+
+important.  If I just go
+
+to amazon.com for a little while.  Now here
+
+we see the
+
+pages which are being linked first on this amazon.com website.
+
+Here the link to the Prime Video page is
+
+given first.  Because this will be
+
+important for them.  Otherwise why link to this page
+
+?  Right?  Here, women
+
+fashion or men fashion or home or beauty these
+
+categories are top selling for them.  That is why it is given
+
+above.  Right?  This
+
+is a best seller here.  That is why a link to this product is being given.
+
+But if we look at the
+
+bottom, there is also a Conditions of
+
+Use link given here.  Now why is this link
+
+not given at the top?  Because
+
+it is not important.  This is legality.  It
+
+is legally necessary to give this to them.  He
+
+provided it.  But this is
+
+written at the bottom in the smallest font.  Why is it written
+
+?  Because it's not right.  Even if
+
+I go to this Conditions of Use page, there is nothing to purchase here.
+
+
+
+Why would Amazon put this one at the top?  Right?
+
+So we link the most to those pages
+
+which are either most beneficial for us
+
+or are a legal compulsion.  Every
+
+website has
+
+privacy policy, shipping policy
+
+etc. at the bottom because it is legally
+
+necessary.  You are not forced to give it because it is
+
+most beneficial for you.
+
+So internal links give structure to our website.
+
+Internal links help us find out
+
+who our website is.
+
+Many other useful signals are
+
+passed through internal links.  Now, when I say useful
+
+signals, I mean there are a lot of
+
+little things that are
+
+impacted by the internal link structure.  One of the
+
+best examples of this is canonical tags.
+
+Many times you use canonical tags in the website.
+
+But Google considers any other
+
+URL as the canonical tag.
+
+This happens when your internal linking
+
+structure is wrong.  There is
+
+no plan in that.  There is no clarity in that.
+
+Or else the structure itself is wrongly used in it.
+
+
+
+How can the for example structure be messed up?  We come here late.  Let's go
+
+back to our first graphic
+
+and create the link that I described here.
+
+Now this abc.com
+
+abc.com that they are doing.  There are
+
+no website links like this.  Why?  Because it happens
+
+here https.  Since let's our
+
+website is following https structure.
+
+Correct?  And then after this we come here.
+
+And here also the structure of the website is
+
+HTTPS.
+
+Ok?  We are following this structure.
+
+But when the link is being passed from page one to page two, the
+
+link
+
+used here becomes https
+
+www.
+
+Ok?  Now both pages are running on the without www version.
+
+But you are giving the link from here
+
+through the www version.  There could be a mistake, the
+
+typist made a mistake.  Right?
+
+Or the CMS is such that it repeatedly links to the www version.
+
+So what will happen now is
+
+that the value of this link will automatically
+
+decrease.  Because https
+
+abc.com will go from page one to www.  On page two.
+
+Then after this there will be a redirect here.
+
+But Google is
+
+not getting the link of this page directly from this page.
+
+What happened to the link?  This link has been
+
+redirected.  It will come from here to here and
+
+after this it will go from here to the other page.
+
+Right?  He will go from here to here.  So the link is
+
+messed up, right?  Internal link was
+
+not created.  The redirect has happened.  So,
+
+due to such mistakes, all these
+
+problems occur.  So
+
+we should create internal links carefully.
+
+How should you carefully create it?
+
+Whenever you start creating internal links, pay attention
+
+to how the website is structured.  Is the www
+
+version being used or not?  Now
+
+I will not talk between http and https
+
+because it should be https.  Is there a butt or
+
+not?  Is there a
+
+forward slash at the end of any of your website URLs or
+
+not?  If the website pages
+
+end with a forward slash, the
+
+internal links should also end with a forward slash.  Let's
+
+come back here and take a look again.
+
+
+
+Right here, if I create this link to page two like this.  There
+
+is no www.   Let us go.
+
+Ok?  But there is page two and a forward
+
+slash.  Now the website is using the
+
+structure without forward slash.
+
+You made an internal link with a forward slash.
+
+So if your HT access and
+
+everything else is correct then this link will redirect
+
+but it will go through a redirect.
+
+Internal link is broken again.  So
+
+check carefully that the website is using www.  Is it
+
+using forward slash or not?
+
+And create internal links keeping them in mind.
+
+So
+
+you understood the format of internal linking.
+
+Now let us come to our page and
+
+
+
+understand some more important things related to internal linking.  This is our demo website
+
+coco cat.in ok?  Now if you
+
+come here and see, it looks like any normal You Know
+
+Business website.  There's
+
+a logo here.  Here are links to some headers.
+
+After this some links are given in the side bar.
+
+And then this
+
+is the content of the website.  And then after this the
+
+footer area below.  Links are also given in the footer here.
+
+Correct?  This is how
+
+every website page is.  Now whether you
+
+talk about internal linking or external link
+
+which is a backlink to another website.  The
+
+rules are the same for all of them.  A
+
+link is a link.  Only the domain is making a difference.
+
+Correct?  So here on this page,
+
+in the very first incarnation of Google,
+
+when Google was in its very early stages,
+
+Google used the random surfer model.
+
+Random surfer model.  I will write it here
+
+so that people do not get confused.  And if
+
+you watch our backlink video,
+
+you will also understand the meaning of the random surfer model.  In that
+
+I have
+
+explained this thing in a better way.
+
+We can see the link to this video in the top right corner.
+
+Urging everyone to watch this
+
+video.  So the random surfer model, this surfer
+
+model, expected that
+
+any surfer visiting a website might
+
+randomly click on any link.
+
+He may click on the privacy policy
+
+link.  Maybe he will
+
+click on this link.  Maybe he will
+
+click on this link.  Ok?  That is why every link was
+
+given equal weightage.  But gradually
+
+Google realized that
+
+people do not click on websites randomly like this.
+
+If any person was
+
+searching about Coco The Cat dot online
+
+how to choose best dental clinic
+
+in Delhi.  I don't know why
+
+we have linked articles to dental clinics within the Coco the Cat website.
+
+But ok, let's go.
+
+Someone was searching for the best dental clinic in
+
+Delhi.  He sees this page.
+
+Now here we come to
+
+
+
+tips on finding the best dental clinic in Delhi.  He has not come here to click on the links of this blog
+
+and meta ads or social media ads etc.
+
+
+
+He hasn't come to read the privacy policy.
+
+How many times has it happened that you
+
+go to a website and start reading its privacy policy?  Have you
+
+ever
+
+read the terms and conditions page of any website?  Haven't
+
+read it.  So, Google also realized
+
+that people do not click randomly like this.
+
+That's why he created the second surfer model,
+
+which is the Reasonable Surfer Model.  That is, a
+
+little logic was applied that people can
+
+still use the header links for navigation.
+
+
+
+People mostly do not click on the links in the footer.
+
+People click less on the links in the sidebar.
+
+If a user has come to this page
+
+and wants to visit any page related to this page, then
+
+he
+
+will click on these links which
+
+are inside this main content.  So Reasonable Surfer models
+
+commence links in headers.  It
+
+gives commendations to these side bar links.  It
+
+also gives commence to the links in the footer.
+
+More importance is given to this
+
+main content.  So from now on you will have to
+
+remember two more words.  First of all, the
+
+main content is done.   The
+
+second one is secondary content.
+
+Main content which is the page's own content
+
+which contains information related to the page.  If the
+
+page is How to Choose Best Dental Clinic in
+
+Delhi then in this entire content it is
+
+explained How to Choose Best
+
+Dental Clinic in Delhi.  It is not explained in the side bar.  It is
+
+
+
+not explained in the header.  There is
+
+no explanation at all in the footer.  So the
+
+links on this page that Google will
+
+value the most will be those
+
+within the main content.
+
+Correct?
+
+This is true for internal links as well as
+
+external links.
+
+What is the meaning of this?  In the backlink class,
+
+normally I say that whenever you
+
+go to any other guest post or somewhere else to get a
+
+U-Know link made, whether
+
+someone gives you the link in the side bar
+
+or gives you the link in the photo, it does
+
+not matter.  The link should be within this main content.
+
+That's why
+
+all the links in the comments have become pointless.  Now that
+
+Google knows there's a comment section.  It can
+
+understand that there is a link to the comment section.  I don't have to
+
+give them any credit.
+
+They are not part of the main content of the
+
+page.  Main content is the content that
+
+fulfills the purpose of that page.  The header does not serve the purpose of the page.  The
+
+
+
+header is common throughout the website.  Side Bar This
+
+side bar is running on every web page.   The
+
+common is running.  Why will
+
+Google show this?  Why will he give?  Will not give.  Ok?
+
+So this became the main content.  Now
+
+some things are important in this main content also.
+
+Look, there are some links up here.  There are some
+
+links further down.  There is also a button.  There's
+
+a button here as well and this is a button above as well.  Now if
+
+you are a normal and reasonable visitor to the
+
+website then what are your chances of reading the entire page
+
+?  Very little.  If you
+
+start analyzing your website also.
+
+Only 25-30% of the people who visit your website
+
+reach the bottom of the website page.
+
+Otherwise we put our information at the top
+
+and then
+
+leave it.  We are very good at
+
+skimming.  Even when I used to study
+
+in school or college, I used to
+
+note down the useful things and keep them with me
+
+in rough notes.
+
+Who is remembering the entire chapter?  No one would be doing it.
+
+Correct?  That is why even when people
+
+visit a website, they focus on the top part.  As they
+
+come down, their interest
+
+wanes and if the page is very long, no
+
+one comes till the bottom.  Google
+
+also noticed this and thought,
+
+okay now I will give preference to the links
+
+that appear at the top of the page.  The
+
+value of bottom links decreases.  The
+
+
+
+links in the above the folder section at the top are the most important.
+
+All the links coming below
+
+that are less important.  Gradually, the
+
+further down a link is, the less
+
+important it will be.  Being less important
+
+also means that till now Google was passing this page rank
+
+here, we had
+
+made a small diagram of ours that
+
+here the value was 100, earlier it used to be 20 to 20, after getting
+
+one link the value became 30,
+
+so if this link is being received from the top part then it is
+
+possible that the value may increase from 20 to 30, but
+
+if this link is being received from the bottom part,
+
+let's visualize it so that you do not get confused, let's
+
+remove this also, this is my link,
+
+this page is getting it, right this link will be received
+
+from the top part.  So, this value
+
+went from 20 to 30.  If this link is
+
+available from the bottom part, then the
+
+value may be only 22 instead of 20.  Why?  Because
+
+Google knows that if the link is being given from the bottom
+
+, then the chances of it being valuable and getting
+
+clicked are less.
+
+So,
+
+why would I pass the same value for a link that has a low chance of getting clicked
+
+?  Do you understand the logic?  The
+
+lower the link appears in the main content of the page, the
+
+more or less its value may be.
+
+Link is below in main content
+
+but below will pass the value less.   It is
+
+in the footer and will not pass at all.  Will
+
+not pass at all in the side bar.
+
+Absolutely no value is being passed in the comment section.
+
+Ok?  And this is not a
+
+hypothesis.  It always happens.  Ok?  So now let's
+
+close it again.  Come here.
+
+Here it means that whenever you are going to
+
+create a link or
+
+get a link in a backlink campaign or a guest post, then
+
+always take the link at the top
+
+or
+
+if you get a link in the writer column only, its value is less.
+
+I'm saying again and again it's less.  If
+
+someone tells you that I am paying you money for
+
+a link or for a guest post.
+
+You did not put your link on top.  If he is just
+
+giving the link at the bottom then tell him to negotiate.
+
+Tell me the value of this link is low.
+
+So
+
+why should I pay the premium amount?  OK, it's low.
+
+Understand the difference between less and zero.  Ok
+
+?  Now there is another thing that should always be kept in mind.
+
+That is, the UI of the website is also sometimes so
+
+skewed that we are unable to understand
+
+where we are hurting our website.
+
+
+
+In many websites, there will be a button given at the top part, the header
+
+part.
+
+Click here to book the
+
+appointment.  Click here to contact us.
+
+Click here to get no obligation code.  There is some
+
+button or the other.  You
+
+click on it.  It is said that
+
+like our page, the
+
+Contact Us page will go like this in many websites.
+
+What are you doing now?  You are
+
+providing a top link from the main content of every page to the
+
+Contact Us page.
+
+Understand carefully.  What is on the Contact Us page?
+
+How much detail is there in the Contact Us page?   There is
+
+a form.  Hello Get in Touch with Us.
+
+Here are our contact details.  And here is
+
+our contact form.  Something similar happens with the
+
+Contact Us page.  There is zero nil
+
+value content inside it.  Right?  There is nothing interesting
+
+in your Contact Us page for any search user.  There is nothing
+
+useful.  This is the
+
+phone number which
+
+you have already given somewhere in the footer header.  But
+
+you are giving links to the Contact Us page from many product
+
+pages, service pages, money pages and
+
+top part of the home page of your website.  You are going away with the lamps.   The
+
+
+
+template has been created.  So how much of your
+
+page rank is being collected
+
+in the Contact Us page.  Lots of them.  And
+
+what is the content in the Contact Us page?
+
+Nothing, you are telling Google to
+
+look at the page rank, keep collecting this page on this page
+
+and you are not putting content on that page
+
+and then the question comes in front of me, in the
+
+videos in YouTube, in the classes, I get
+
+comments that sir my service page is
+
+not getting ranked.  Why not why would it rank
+
+?  If you are uploading links from the top of your service pages
+
+
+
+to the Contact Us page and you have not created any content on the Contact Us page,
+
+then why will the service
+
+page rank?  The value is not coming on the service page.
+
+
+
+Many people are struggling with this problem.
+
+Where their service page,
+
+their money page, their product page is
+
+located on the second page.  If they
+
+go to those websites and search their domain here like this site
+
+cococat
+
+dot online.  Do
+
+n't search for Coco the Cat online.  Ok?   Do
+
+this.  So you will see that it is possible that
+
+
+
+their Contact Us page
+
+or About Us page would be visible somewhere in the top 10 results here
+
+because you have collected all the page ranks of the
+
+Contact Us page, so only that page is
+
+ranking, nothing else will rank, okay what does
+
+this mean that we
+
+need to focus on internal links, how do we
+
+focus, let's find out many
+
+different things, found out what not to
+
+do, now let's see what to do, how to do it,
+
+so now let us again
+
+make a diagram and see in it how we can make
+
+links, how should we make them,
+
+okay, insert
+
+drawing, now whatever part is coming next,
+
+when I explain it, it will be
+
+more understandable to those people who have
+
+completed the content class.  The content planning
+
+class has been completed and the keyword
+
+research class has been done thoroughly.
+
+So if you still haven't taken the keyword research
+
+and content planning classes,
+
+go ahead and watch them so that you
+
+understand everything.  We have the keyword Let's Say
+
+a
+
+Best Dental Clinic in Delhi.  Ok?
+
+This was one of my keywords.  Based on this keyword,
+
+we generated 15 different types of content.
+
+Correct?  Did we
+
+generate the content?  Let me start explaining here one by one from the let.
+
+
+
+I don't remember the names of all the topics.  But
+
+I'll keep noting the different content types here.
+
+So, we created a guide
+
+success story.  We created content for 15 types of pages
+
+here.  I am forgetting right now.   Let's
+
+put it here with others.
+
+Ok?  Others page was created.  So here
+
+we have just visualized seven pages.
+
+We created these seven pages.  Ok?
+
+What keywords are the seven pages for?
+
+for the same keyword.  My best dental clinic in Delhi.
+
+Now how will this entire
+
+structure be used?  Let's bring it down here.
+
+I will have another page which will be my money page.
+
+Ok?  This is my best slash
+
+best
+
+dental
+
+clinic in Delhi.  Ok?  You have
+
+created this page here.  Now we will call this particular page
+
+money page.  Why Money Page?  Why would
+
+you say that?  Because this is the page I
+
+want to rank.  This Is My Money
+
+Page.  Now Why Are We Calling It Money Page?
+
+Because you create this page for yourself.  You do not need to keep in mind
+
+any search engine optimization element on this page, whether
+
+
+
+this
+
+content needs to be in the heading or this
+
+content needs to be in the footer or so many percent
+
+keywords have to be included.  You don't have to
+
+think here.  Obviously you will create it with
+
+considering SEO.  Ok?  You
+
+will keep the meta title optimized.  You
+
+will keep the meta description optimized.  You will
+
+
+
+definitely cover the topic Best Dental Clinic in Delhi about that service inside the page.
+
+But there is no need to cover it in so much detail.  A
+
+1000 page block post will
+
+not be created here.  This Will Be Your Service
+
+Page.  Professional Services page which has a
+
+nice form and it was told about the form
+
+that there should be a direct benefit also.
+
+When Everything Is Settled on That
+
+Particular Page.  It Is Your Money Page.  Now, the
+
+
+
+job of all these content pages of yours is to rank this particular page.
+
+How will you rank?
+
+All these pages will link to this page.
+
+How will these pages do?
+
+This page will be linked to the success story page.
+
+This page will be linked to the vocabulary page.
+
+This page will also be linked to the testimonial page.
+
+
+
+This page will also be linked to from the comparison guide page.  A
+
+link to the guide page will also be provided.  A
+
+link will also be given from the interview page
+
+and
+
+links will also be given from all the other pages.  Like
+
+we had created a pillar page.  Now suppose I have
+
+created a pillar page.  A
+
+pillar page is made by me.  Now this pillar page
+
+will also link to this page.  Now the structure may be a
+
+little bit confusing here.
+
+Why?  Because pillar pages by
+
+definition can link to all these pages as well.
+
+Right?  So, this pillar page of mine, this
+
+pillar page will have its own list of content.
+
+And because of this content list, this pillar
+
+page is going to link to all the pages.  This
+
+page has been linked.  So this pillar page
+
+will link to all these pages as well.  There
+
+is no limit on how many pages you
+
+can or cannot link to on the Internet.
+
+So it's linking all these pages.  But
+
+at the same time, it is also going to link its service page to the
+
+money page.  Ok?
+
+Now that you have visualized it once.
+
+Saw it here.  Let us see
+
+how to actually do it on the website.
+
+Suppose I come here and create a new page,
+
+Pillar Page.  Ok?  I'm just calling this a pillar
+
+page.  Here
+
+we can set the parent etc. and decide
+
+which service it is exactly for.
+
+First General Any Anything
+
+We made any particular page the parent page.
+
+Now after coming here, when you
+
+start writing your content.  The
+
+first link that comes here from Lets will be
+
+for this particular page of mine.  Ok
+
+?  Is it a home page or a service page?   I came here
+
+and started writing.
+
+Visit this page to book an appointment.
+
+Here I create the link.   I will
+
+add the link of best dental
+
+clinic
+
+in Delhi.  Ok?  This link became mine
+
+here.  Now after this, all the other
+
+content types are here below.  So no more about
+
+finding best int'l clinic in
+
+Delhi
+
+through
+
+our in depth
+
+articles content whatever it is and then
+
+here you will start making the list.
+
+What happened first?  She became my guide.
+
+Second, my tutorial is done.  Third, my
+
+comparison guide is done.  After this, there will be a
+
+success story here.  Then there will be a
+
+white paper here.
+
+An interview will take place here.
+
+
+
+You will
+
+start linking all the different types of content you have created to individual pages.
+
+So this way I will have a pillar page
+
+which will have links to all the internal pages on the pillar page.
+
+But the top link will
+
+go to my money page.  Ok?  If
+
+I write a guide here also.
+
+This is my guide page from Lets.  But there is
+
+no page.  Ok?  So whatever information of the guide is
+
+there, in the way we have created a guide here.
+
+All the information of this page will be available
+
+here.  Will work.  No
+
+problem.  I can copy and paste the
+
+entire content of this here.
+
+Ok?  But the top part, which is the
+
+text at the top, along with that I will have to
+
+give the link to my money page which is
+
+my money page here.  Whatever
+
+type of content you have, be it a success
+
+story, testimonial or
+
+vocabulary, wherever it is, it will give a link, the
+
+top link will give a link to the money page.
+
+Okay, let's visualize it a little differently.
+
+
+
+I will come here.  This is my content page.
+
+This page is guide
+
+dentist
+
+sash guide from Lets.  Okay and then this is my second page
+
+which is the dentist money page.  Okay and then there
+
+is another page on this and this is a particular page.
+
+Let's have a
+
+testimonial page with dentists.  So dentist
+
+testimonials.  Now here you can see
+
+that this particular page of dentist, the
+
+top link that you will get from this page will be to
+
+my page.  Ok?  So, let's say that we have this
+
+particular text piece
+
+here.  Wrote a text piece here.
+
+Ah visit this page.  Now this link has
+
+come to the top part.  Ok?  This
+
+top link will always be given to which page
+
+?  This is our money page, from here we have given the
+
+link to this page.  Correct?  Link is being given from the top part.
+
+If this
+
+content, if the visit this
+
+page link here was below instead of here, then the
+
+link that the money page is getting, the
+
+internal link that it is getting, will become pointless.
+
+Correct?  It will become absolutely pointless.
+
+Because he is from the very bottom.  The chances of the link
+
+being clicked are low.  The page rank will definitely
+
+not pass.  This page
+
+cannot rank on its own.  So we'll keep it
+
+up.  Let's say that for any reason
+
+you have to link to this testimonial page also.
+
+Ok?  Your internet linking
+
+plan is such that this also has to be done.  So
+
+we use the second method here.  Then Let's Say We Will Say That Here Are Some
+
+
+
+of Our Testimonials.
+
+Ok?  So
+
+if we are mentioning that testimonial page, then
+
+
+
+from where will we create the link for the testimonial page?  Then we will
+
+create from the bottom page.  We will deliberately
+
+place the text in such a way that it comes at the bottom.
+
+Bottom does not mean that it is absolutely
+
+necessary to be in the footer.  You can do it from the middle part
+
+, you can do it from the lower part.  Always
+
+imagine that whenever you
+
+pass a link from the top part of any page to its main content, the
+
+page will rank.  Higher
+
+page rank will increase.  When you do it from the bottom part, the
+
+page rank will decrease.  Ok?
+
+That is why when we talk about pillar pages,
+
+then whatever content we have to create in the pillar pages,
+
+
+
+we always keep all the links in that content on the
+
+top part so that
+
+Google gets to
+
+know about all your pages and after crawling them,
+
+indexes them and also starts ranking them
+
+because the page rank is being passed from the top part and
+
+not from the bottom part.  Okay now let's understand this thing in another
+
+way.
+
+And then after this we will over this class.
+
+And whatever questions you people have,
+
+we will take them in the doubt session.  Let's
+
+insert it here and let's
+
+go to drawing.  Let's go to the new drawing.
+
+Now let us look at the structure here.
+
+Let's say you created a page.  Ok?
+
+Now this is a pillar page.  From Letts to Dentist.
+
+And this dentist of ours,
+
+apart from being a dentist,
+
+also provides derma services.  Ok?  Dermat
+
+service is also provided.  Now here
+
+they have created different types of content pieces.
+
+Let's get to sleep guide.   It became a
+
+success story.  And then there's a
+
+page of testimonials.  Ok?  Similarly,
+
+here the pillar page of Derma, its
+
+color is made a little different so that
+
+you can understand it immediately.   All these
+
+pages are also
+
+made in the same structure.  But these are
+
+made for derma.  Ok?  Their
+
+colours also became different from each other.  Ok?  Now the
+
+link to any page is being given from the top part.
+
+How will we make them?
+
+Mark it with red color.  So let
+
+me create links from pillar pages.  So
+
+now I start giving links from the top part of the pillar page.
+
+I will link to the guide,
+
+starting from the top part.  Ok?
+
+Link will not be given from the bottom part.  Sorry, let's make it green.  All the
+
+high links are made
+
+green so that a slight difference between green and
+
+red can be felt in between.  So this
+
+link will be green.  Ok?  That means a
+
+link is being given from the high part to the top part,
+
+from the pillar page to the guide page.  Ok?
+
+Because pillar pages have
+
+higher chances of ranking on their own.  There are a lot of
+
+links in it.  There is a lot of content in it.   There
+
+
+
+are more chances of that page ranking.  So from there, the guide pages should always be
+
+linked from the top part so that the guide
+
+page gets more page rank so that the guide
+
+page gets ranked.  Also, let
+
+us create the link once again.
+
+Where can I get the link to the other success story pages from here
+
+?  It won't happen that from the pillar page you go to the
+
+guide, from the guide you go to the success story, from the
+
+success story you go to the testimonials.  No,
+
+pillar page means that links are being given to all the pages.
+
+So again, the
+
+link that will be given to the success story page or the
+
+testimonial page will go
+
+from the top part.  But it cannot happen
+
+that the guide page also links to the pillar page
+
+from the top part.  Because if he does
+
+this then there will be trouble.
+
+Let's say that 20% of the page rank was achieved through pillar pages.
+
+You again gave back 20 page rank to the
+
+pillar page.  If you
+
+create a link from the top part, then
+
+another page will be created here.  What would that second page be
+
+?  My money page will be here.
+
+We just talked about the money page.  Here
+
+we have created a money page.  This is my
+
+money page from Lets.  Ok?  There
+
+is a money page with Dentest.  So right now the guide page will
+
+give the guide page link.
+
+He will give the link to the top part but to whom will he give it?  This will give money
+
+to the page.  Ok?  The top link will go
+
+to the money page.  Here we again make
+
+it green.  Similarly, the
+
+top link to the money page will also come from the success story.
+
+Top links will also
+
+come to the money page from testimonials.
+
+If these guide pages or success stories
+
+or testimonials have to be linked to the pillar pages,
+
+then the pillar pages should also
+
+get value from somewhere.  That link will
+
+go from the bottom part.  The guide
+
+will link to the pillar page from the bottom of the page.  I am
+
+talking bottom, not footer.
+
+Remember.  Ok?  So I will
+
+make a link to one success story.  But this will happen
+
+from the bottom part.  Link makes it
+
+red.  Ok?  It will go from below.  It will
+
+go from here down.
+
+Ok?   All
+
+three pages are passing the link but
+
+passing it from the bottom part so that they can
+
+store the link themselves.  Link value
+
+store.  What was the benefit of giving as many links as came
+
+?  Yes, we are giving it for the money page
+
+because we want that
+
+whatever SEO value and link value these pages are getting, all of it should be
+
+
+
+transferred to the money page.  Because we want to
+
+rank money pages.  This is the purpose, right?  The purpose is
+
+not to rank the blog page.  The purpose is
+
+not to rank success stories.
+
+The purpose is not to rank the guide either.  Now
+
+if there is a little confusion here
+
+that friend, I got a link from the pillar page
+
+but I passed a link to it from here.
+
+Passed a link to him.  So don't
+
+think like that.  Because when you create a guide page, you will
+
+also do a backlink campaign for the guide page.
+
+Now we will talk about backlink campaign
+
+in the next class.  So when you
+
+create a guide page, the guide page will
+
+not get value from just the pillar page.  He will
+
+get it only from external pages.  You will
+
+also get it from the traffic that is coming.  Someone else will
+
+provide the link.  If you go to any other page and get a link created,
+
+it will get links from many places.
+
+Ok?  So this guide page is going to have
+
+links from a lot of external sources.
+
+Its value will keep increasing automatically
+
+and when you link the money page from here
+
+to the top part, then automatically the
+
+link value of this money page will increase and it will
+
+automatically start ranking higher.
+
+So whenever you want to give a link to any other page from guide pages
+
+or success stories or testimo,
+
+it will
+
+always be given from the bottom part.  Ok?  Now
+
+here you will see that this
+
+structure that I have created is very upside down,
+
+this structure is not happening in any way
+
+that this guide page
+
+goes and links to this page.  It will neither be black, green
+
+nor red.  Why?  Because these are
+
+absolutely different.  There is no way these
+
+pages will link to each other.
+
+Not under any conditions.  How can I link it?  Links
+
+can be made when this pillar page
+
+links to another pillar page.  Ok?  Now this
+
+link will neither be green nor red.
+
+Because if one pillar page is
+
+linking to another pillar page then it
+
+means let's give itence but not
+
+everything.  So this can be linked somewhere in the middle part.  There should be
+
+some link
+
+which passes the value not too much.  Ok?  So
+
+
+
+start treating link values ​​like exact numbers.  Think in your mind from
+
+which page I am linking to which page.  The
+
+value is going to be passed from that.
+
+It's not about randomly linking.  And yes,
+
+we also calculate the semantic value.
+
+Many times we see whether this
+
+particular page of mine is relevant to other pages
+
+or not.
+
+But if you have planned the content with keywords then
+
+
+
+all the semantic values ​​will be automatically adjusted.
+
+Because you created this pillar page
+
+about how to find a dentist in Delhi.
+
+So the guide that we have now is also
+
+about finding a dentist.  The success
+
+story is also about the dentist.   The
+
+testimonial is also from the same dentist and the
+
+money page is also from the same dentist.  So the
+
+semantic value of all these is anyway the same.  You don't need to think about it.
+
+This is happening automatically.
+
+That is why I say again and again that
+
+these GEO, PEO, LLMO, all these things are
+
+fancy words in themselves.  SEO was already doing this
+
+work automatically.  This
+
+problem, which requires such analysis,
+
+occurs with older websites.
+
+Where this structure has not been
+
+built before.  And
+
+when we talk about website audit etc. then we will
+
+look into other things.  But when we are creating our content
+
+from the beginning and also
+
+planning internal links then
+
+you can do it very systematically.
+
+Ok?  So now you have to go back to the content
+
+class.  The entire
+
+content structure that we had created there, the
+
+different topics of content that we had created,
+
+you must have published them by now.
+
+After publishing, go and see if these pages are
+
+linking to each other.
+
+Right?  And is that link in the correct structure?
+
+I know this internal
+
+linking class becomes a bit heavy.  It seems a
+
+bit confusing to understand.
+
+But you go through the entire class two three
+
+times and then after that note down your doubts
+
+and ask in the next doubt session.
+
+I will explain to you again.  So the
+
+next doubt session class is going to be very busy.
+
+We may cover
+
+some more things about internal links in the next class based on your feedback.
+
+Whatever doubts you have, please
+
+
+
+tell us in the comment section of this class of this video so that we can run the next
+
+class as part two of the internal link
+
+and answer all your questions.
+
+Ok?  So we wrap up today's class
+
+here.  I am waiting for
+
+you guys to ask me good questions in the comment section
+
+so that I can cover them in the next class.
+
+So let's wrap up the
+
+class of internal links.  See you
+
+in the next class where we will solve your doubts.
+
+This will be the class before the doubt session
+
+which we
+
+can present as the next class.  So put all your
+
+doubts in the comment section and we will meet
+
+you in the next class.  Till then
+
+keep learning, keep practicing and
+
+keep attending all the classes.  Thank you so much
+
+for attending this class.  My name is
+
+Amit Tiwari from Tiwari Net and I will see
+
+you next time.  Take Kerr.
+
+

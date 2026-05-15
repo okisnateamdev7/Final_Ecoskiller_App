@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "mcp-recruiter-ecoskiller": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/recruiter-mcp-server/target/recruiter-mcp-server-1.0.0.jar"],
+      "env": {
+        "RECRUITER_JWT_SECRET": "your-keycloak-jwt-secret-here",
+        "RECRUITER_TENANT_DOMAIN": "ecoskiller.io",
+        "RECRUITER_DB_HOST": "localhost",
+        "RECRUITER_REDIS_ENABLED": "false",
+        "RECRUITER_AUDIT_ENABLED": "true",
+        "RECRUITER_LOG_LEVEL": "INFO",
+        "RECRUITER_RATE_PER_SEC": "50",
+        "RECRUITER_RATE_PER_MIN": "500"
+      }
+    }
+  }
+}

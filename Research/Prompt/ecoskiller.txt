@@ -1,0 +1,5624 @@
+
+ECOSKILLER — MASTER EXECUTION PROMPT v12.0 (UNIFIED)
+Status: FINAL · LOCKED · GOVERNED · DETERMINISTIC
+ Mutation Policy: Add-only via version bump
+ Interpretation Authority: NONE
+ Execution Authority: Human declaration only
+
+SECTION A — SYSTEM IDENTITY
+Application Name: ECOSKILLER
+ System Type: Unified Job + Skill + Project + Education + Marketplace SaaS
+ Execution Mode: Single Phase Parallel Contract-Gated Lanes
+ Determinism Rule: Identical input → Identical output
+ Failure Mode: STOP → REPORT → NO PARTIAL OUTPUT
+
+SECTION B — EXECUTION DECLARATION
+Application: Unified Ecosystem Platform
+ Phase Range: Phase-1 (Single Unified Phase)
+ Rollout Wave: Unified Global Wave
+ Execution Mode: Parallel Lane Execution with Contract Gate Enforcement
+ Human Sequencing: NONE
+
+SECTION C — CORE EXECUTION RULE
+All system domains start simultaneously.
+ No domain may pass a dependency gate without validated contracts.
+ No manual phase approvals exist after execution start.
+
+SECTION D — PARALLEL EXECUTION LANES
+A — Foundation
+ Identity, RBAC, Tenancy, API Gateway, Event Registry
+B — Data
+ PostgreSQL/MySQL, CQRS Stores, Audit Logs, Search Index
+C — Core Services
+ Job, Skill, Project, Education, Marketplace
+D — Governance
+ Notification, Billing, Reputation, Moderation
+E — UI
+ Flutter Mobile, Web Dashboards, Navigation, Widgets
+F — Intelligence
+ Matching, Ranking, Discovery, AI Explainability
+G — DevOps
+ Kubernetes, CI/CD, Observability, Secrets
+
+SECTION E — CONTRACT GATE SYSTEM
+Lane A → produces identity_ready, rbac_ready, event_schema_ready
+ Lane B requires event_schema_ready → produces db_ready, search_ready
+ Lane C requires identity_ready & db_ready → produces api_contract_ready
+ Lane D requires identity_ready & db_ready → produces governance_ready
+ Lane E requires api_contract_ready & rbac_ready → produces ui_ready
+ Lane F requires search_ready & api_contract_ready → produces ai_ready
+ Lane G produces deployment_ready
+CI enforces all gates automatically.
+
+SECTION F — CONTRACT-FIRST REGISTRIES
+Must exist before code generation:
+API Contract Registry
+ Event Schema Registry
+ Permission → Screen Matrix
+ Role → Widget Matrix
+ Notification Policy Registry
+ Billing Ledger Schema
+ Search Ranking Policy
+ Audit Log Schema
+Failure → STOP EXECUTION
+
+SECTION G — PRODUCTION READINESS LAW
+Cloud, Database, Identity, Payment, Notification, UI Quality, Search Quality, Security, Legal, Support, Performance, Distribution readiness must all pass enforcement.
+ Failure in any → STOP EXECUTION
+ MULTI-ENVIRONMENT DEV · TEST · STAGING · PRODUCTION SETUP LAW
+SECTION  — MULTI-ENVIRONMENT DEV · TEST · STAGING · PRODUCTION SETUP LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+To guarantee deterministic, repeatable, intern-executable environment setup from local development to production-ready infrastructure, the system must generate a complete Multi-Environment DevOps Setup Package.
+Absence of R96 implementation
+→ STOP EXECUTION
+→ REPORT ENVIRONMENT-SETUP-INCOMPLETE
+→ NO DEPLOYMENT CLAIM PERMITTED
+
+🌍 A. ENVIRONMENT DEFINITIONS
+The system must define four fixed environments:
+DEV — Local developer environment
+TEST — Automated CI test environment
+STAGING — Pre-production environment
+PRODUCTION — Live deployment environment
+Each environment must have:
+Isolated databases
+Isolated caches
+Isolated storage buckets
+Isolated domains (from R47)
+Separate environment variable files
+Absence → STOP EXECUTION
+
+🗂️ B. REQUIRED ENVIRONMENT FILES
+AI must generate:
+/config/environments/
+   dev.env
+   test.env
+   staging.env
+   production.env
+
+Each file must define:
+DB connection
+Redis connection
+Search endpoint
+API base URL
+Web base URL
+App base URL
+Secret placeholders
+No hardcoded credentials allowed.
+Absence → STOP EXECUTION
+
+🧑‍💻 C. INTERN STEP-BY-STEP — GIT REPOSITORY SETUP
+Intern Role: Any Intern
+Steps:
+Install Git
+Run:
+git init ecoskiller
+cd ecoskiller
+
+Add remote repository:
+git remote add origin <YOUR_GIT_REPO_URL>
+
+Create branches:
+git checkout -b dev
+git checkout -b test
+git checkout -b staging
+git checkout -b production
+
+Push branches:
+git push origin dev test staging production
+
+Success Output:
+All four branches visible in Git repository.
+Failure → STOP EXECUTION
+
+⚙️ D. INTERN STEP-BY-STEP — LOCAL DEV ENVIRONMENT
+Intern Role: Any Developer Intern
+Steps:
+Copy:
+/config/environments/dev.env → .env
+
+Run:
+bash local-demo/bootstrap_local.sh
+
+Expected Output:
+LOCAL DEMO READY
+Web: http://localhost:3000
+App: http://localhost:4000
+API: http://localhost:8000
+
+Failure → STOP EXECUTION
+
+🧪 E. INTERN STEP-BY-STEP — TEST ENVIRONMENT (CI)
+Intern Role: DevOps Intern
+Steps:
+Create CI config file:
+/.ci/gitlab-ci.yml
+
+Pipeline stages must include:
+Contract Validator (R49)
+QA Generator (R50)
+Unit Tests
+Integration Tests
+Docker Build
+CI must load:
+/config/environments/test.env
+
+On push to branch test → pipeline auto runs.
+Expected Output:
+Pipeline status = GREEN
+Failure → STOP EXECUTION
+
+🏗️ F. INTERN STEP-BY-STEP — STAGING ENVIRONMENT
+Intern Role: Basic Kubernetes Intern
+Steps:
+Install kubectl & Helm
+Configure staging namespace:
+kubectl create namespace ecoskiller-staging
+
+Apply environment config:
+kubectl apply -f infra/k8s/staging/
+
+Load:
+/config/environments/staging.env
+
+Verify:
+kubectl get pods -n ecoskiller-staging
+
+Expected Output:
+All pods STATUS = Running
+Failure → STOP EXECUTION
+
+🚀 G. INTERN STEP-BY-STEP — PRODUCTION ENVIRONMENT
+Intern Role: DevOps Intern (Human-supervised)
+Steps:
+Create production namespace:
+kubectl create namespace ecoskiller-prod
+
+Apply manifests:
+kubectl apply -f infra/k8s/production/
+
+Load:
+/config/environments/production.env
+
+Verify:
+kubectl get pods -n ecoskiller-prod
+
+Expected Output:
+Pods running
+⚠️ No DNS / SSL / Payment activation allowed under intern role
+(Reserved under L3–M6 Laws)
+Failure → STOP EXECUTION
+
+🔁 H. CI/CD BRANCH DEPLOYMENT RULES
+Branch
+Environment
+Trigger Action
+dev
+DEV
+Local only
+test
+TEST
+CI pipeline auto deploy test containers
+staging
+STAGING
+CI deploys to staging namespace
+production
+PRODUCTION
+CI prepares release artifacts only
+
+No branch may deploy outside mapped environment.
+Violation → STOP EXECUTION
+
+📦 I. REQUIRED DEVOPS ARTIFACTS
+AI must generate:
+/infra/k8s/dev/
+/infra/k8s/test/
+/infra/k8s/staging/
+/infra/k8s/production/
+
+Each containing:
+Deployments
+Services
+Ingress
+ConfigMaps
+Secrets templates
+Autoscalers
+Absence → STOP EXECUTION
+
+🧭 J. INTERN DAILY WORKFLOW
+Pull from dev branch
+Run contract validator
+Run QA generator
+Run local dev environment
+Push to dev
+Merge dev → test
+CI validates
+Merge test → staging
+CI deploys staging
+Merge staging → production
+Failure at any step → STOP EXECUTION
+
+⚖️ K. FINAL ENFORCEMENT
+If any environment:
+Cannot be started by interns
+Missing env files
+Missing CI pipeline
+Missing K8s manifests
+→ STOP EXECUTION
+→ REPORT MULTI-ENV SETUP FAILURE
+→ NO SYSTEM COMPLETION CLAIM PERMITTED
+
+✅ SECTION COMPLETE
+✔ Four environments defined
+✔ Git workflow defined
+✔ CI/CD pipeline defined
+✔ Kubernetes deployment defined
+✔ Intern-executable
+✔ No senior DevOps assumed
+✔ Deterministic and enforceable
+
+SECTION H — REALIZATION PACK (MANDATORY CONCRETE ARTIFACTS)
+✅ R1 — TECHNOLOGY STACK LOCK (DRAFT)
+This establishes the exact baseline stack so all later artifacts are deterministic.
+Copy code
+
+R1 — Technology Stack Lock (INITIAL DRAFT)
+
+Backend Language: Python 3.11
+Backend Framework: FastAPI
+API Style: REST + OpenAPI 3.1
+Event Broker: Redis Streams
+Database: PostgreSQL 15
+Cache: Redis 7
+Search Engine: OpenSearch 2.x
+Frontend Web (SEO): Next.js 14 (SSR/ISR)
+Frontend App (Authenticated): Flutter Web
+Mobile: Flutter (Android + iOS)
+Desktop: Flutter (Windows + macOS)
+Auth Protocol: OAuth2 + OIDC + JWT
+Identity Provider: Keycloak (self-hosted)
+API Gateway: Kong OSS
+Infrastructure IaC: OpenTofu (Terraform OSS fork)
+CI/CD: GitLab CE
+Container Runtime: Docker + Kubernetes
+Monitoring: Prometheus + Grafana
+Logging: Loki + Promtail
+Tracing: Jaeger
+Object Storage: MinIO
+Notification: Postal (Email), FCM Gateway (Push)
+Secrets Vault: Hashicorp Vault OSS
+Reverse Proxy / TLS: Traefik + Cert-Manager
+🔒 R1 STATUS: DRAFT LOCKED BASELINE
+✅ R2 — DOMAIN DATA MODELS (INITIAL DRAFT SCHEMAS)
+Relational schema baseline (PostgreSQL).
+Copy code
+
+User(
+ id UUID PK,
+ email TEXT UNIQUE,
+ phone TEXT,
+ password_hash TEXT,
+ full_name TEXT,
+ avatar_url TEXT,
+ is_verified BOOLEAN,
+ created_at TIMESTAMP
+)
+
+Tenant(
+ id UUID PK,
+ name TEXT,
+ type ENUM('individual','company','institution'),
+ domain TEXT,
+ verified BOOLEAN
+)
+
+Role(
+ id UUID PK,
+ name TEXT,
+ tenant_id FK Tenant
+)
+
+Permission(
+ id UUID PK,
+ code TEXT UNIQUE
+)
+
+RolePermission(
+ role_id FK Role,
+ permission_id FK Permission
+)
+
+Job(
+ id UUID PK,
+ tenant_id FK Tenant,
+ title TEXT,
+ description TEXT,
+ location TEXT,
+ salary_range TEXT,
+ created_at TIMESTAMP
+)
+
+Skill(
+ id UUID PK,
+ name TEXT,
+ category TEXT
+)
+
+UserSkill(
+ user_id FK User,
+ skill_id FK Skill,
+ level INT
+)
+
+Project(
+ id UUID PK,
+ tenant_id FK Tenant,
+ title TEXT,
+ description TEXT,
+ status ENUM('open','in_progress','closed')
+)
+
+EducationCourse(
+ id UUID PK,
+ tenant_id FK Tenant,
+ title TEXT,
+ description TEXT
+)
+
+MarketplaceItem(
+ id UUID PK,
+ tenant_id FK Tenant,
+ title TEXT,
+ price DECIMAL,
+ description TEXT
+)
+
+Payment(
+ id UUID PK,
+ user_id FK User,
+ amount DECIMAL,
+ status ENUM('pending','success','failed')
+)
+
+Notification(
+ id UUID PK,
+ user_id FK User,
+ type TEXT,
+ payload JSONB,
+ read BOOLEAN
+)
+
+AuditLog(
+ id UUID PK,
+ actor_id FK User,
+ action TEXT,
+ entity TEXT,
+ entity_id UUID,
+ timestamp TIMESTAMP
+)
+🔒 R2 STATUS: DRAFT BASELINE SCHEMA LOCK
+✅ R3 — OPENAPI 3.1 INITIAL CONTRACT
+Core endpoints only (expandable later).
+Copy code
+
+openapi: 3.1.0
+info:
+  title: ECOSKILLER API
+  version: 0.1
+
+servers:
+  - url: https://api.ecoskiller.local
+
+paths:
+
+  /auth/register:
+    post:
+      summary: Register new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: {type: string}
+                password: {type: string}
+      responses:
+        "200": {description: Registered}
+
+  /auth/login:
+    post:
+      summary: Login
+      responses:
+        "200": {description: JWT Token}
+
+  /jobs:
+    get:
+      summary: List jobs
+    post:
+      summary: Create job
+
+  /jobs/{id}:
+    get:
+      summary: Get job details
+
+  /skills:
+    get:
+      summary: List skills
+
+  /projects:
+    get:
+    post:
+
+  /notifications:
+    get:
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
+🔒 R3 STATUS: DRAFT API CONTRACT LOCK
+✅ R4 — EVENT SCHEMA (ASYNCAPI BASELINE)
+Copy code
+
+asyncapi: 2.6.0
+info:
+  title: ECOSKILLER Events
+  version: 0.1
+
+channels:
+
+  user.created:
+    publish:
+      message:
+        payload:
+          type: object
+          properties:
+            user_id: {type: string}
+
+  job.created:
+    publish:
+      message:
+        payload:
+          type: object
+          properties:
+            job_id: {type: string}
+
+  application.submitted:
+    publish:
+      message:
+        payload:
+          type: object
+          properties:
+            job_id: {type: string}
+            user_id: {type: string}
+
+  notification.created:
+    publish:
+      message:
+        payload:
+          type: object
+          properties:
+            notification_id: {type: string}
+🔒 R4 STATUS: DRAFT EVENT LOCK
+✅ R5 — WORKFLOW STATE MACHINES
+Job Application Lifecycle
+Copy code
+
+Applied → UnderReview → Shortlisted → Rejected
+                     → Hired
+Project Hiring Lifecycle
+Copy code
+
+ProjectOpen → ProposalSubmitted → ProposalAccepted → InProgress → Completed → Paid
+Payment Settlement
+Copy code
+
+Initiated → PendingGateway → Success → LedgerRecorded
+                       → Failed
+Dispute Resolution
+Copy code
+
+Opened → EvidenceCollected → Moderated → Resolved → Closed
+🔒 R5 STATUS: WORKFLOW LOCK
+✅ R6 — UI/UX DESIGN SYSTEM TOKENS (DRAFT)
+Copy code
+
+design-tokens.json
+
+{
+ "colorPrimary": "#2563EB",
+ "colorSecondary": "#0F172A",
+ "colorAccent": "#22C55E",
+ "colorError": "#EF4444",
+ "radiusSmall": 6,
+ "radiusLarge": 14,
+ "fontFamily": "Inter",
+ "fontSizeBase": 16,
+ "spacingUnit": 8,
+ "shadowCard": "0px 4px 10px rgba(0,0,0,0.08)"
+}
+🔒 R6 STATUS: DESIGN TOKEN LOCK
+✅ R7 — FRONTEND ROUTING MAP
+SEO FRONTEND (Next.js)
+Copy code
+
+/                → Landing
+/jobs            → Job Listings
+/jobs/[id]       → Job Detail
+/skills          → Skill Pages
+/projects        → Project Listings
+/company/[id]    → Company Profile
+/institute/[id]  → Institution Profile
+/blog/[slug]     → Knowledge Content
+APPLICATION FRONTEND (Flutter)
+Copy code
+
+/app/login
+/app/register
+/app/dashboard
+/app/jobs
+/app/jobs/:id
+/app/profile
+/app/notifications
+/app/messages
+/app/settings
+SEO routes → indexable
+Flutter routes → noindex
+🔒 R7 STATUS: ROUTING LOCK
+✅ CONTRACT GATE CHECK
+Contract
+Status
+R1
+LOCKED
+R2
+LOCKED
+R3
+LOCKED
+R4
+LOCKED
+R5
+LOCKED
+R6
+LOCKED
+R7
+LOCKED
+➤ CONTRACT GATE PASSED: api_contract_ready & ui_contract_ready
+
+R8 — Infrastructure-as-Code
+Terraform/Pulumi defining:
+VPC
+ Kubernetes
+ Databases
+ Search cluster
+ Cache
+ Object storage
+ Load balancer
+ DNS
+ SSL
+ Secrets vault
+
+R9 — CI/CD Pipelines
+Pipeline definitions with:
+Contract gate validators
+ Build
+ Test
+ Containerize
+ Deploy
+ Rollback
+
+R10 — Security Policies
+Password rules
+ Token expiry
+ Rate limits
+ Firewall/WAF
+ Secret rotation
+
+R11 — Billing & Pricing
+Plans
+ Limits
+ Metered events
+ Commissions
+ Tax logic
+
+R12 — AI Model Specification
+Model type
+ Features
+ Training data
+ Evaluation metrics
+ Retraining schedule
+ Explainability format
+
+R13 — Seed Data
+Initial admin users
+ Sample jobs
+ Skills
+ Projects
+
+R14 — Test Strategy
+Unit
+ Integration
+ E2E
+ Load
+ Stress
+
+R15 — Legal Text
+Terms of Service
+ Privacy Policy
+ Refund Policy
+
+R16 — Operations
+Monitoring dashboards
+ Alert rules
+ Incident response
+ Support workflow
+
+R17 — Launch Assets
+Landing pages
+ SEO
+ App store assets
+ Onboarding flows
+
+SECTION I — FINAL EXECUTION RULE
+No system may be declared production-ready unless:
+All Contract Registries exist
+ All R1–R17 artifacts exist
+ All enforcement checks pass
+ Audit trail shows zero failures
+Failure → STOP EXECUTION
+
+SECTION J — OUTPUT EXPECTATION FROM AI
+When executed, AI may generate:
+Architecture documents
+ Schema drafts
+ API drafts
+ Workflow diagrams
+ UI starter code
+ Infrastructure templates
+ Pipeline templates
+ Test scaffolds
+AI may NOT claim real cloud deployment or real production readiness.
+
+
+L1 — AI DEPLOYMENT ARTIFACT AUTHORIZATION
+The AI is authorized to generate:
+Infrastructure-as-Code (Terraform / Pulumi / CloudFormation)
+
+
+Kubernetes manifests and Helm charts
+
+
+CI/CD pipeline definitions
+
+
+Backend service source code
+
+
+Frontend (Web + Mobile) source code
+
+
+Database migration scripts
+
+
+Secrets template manifests
+
+
+Deployment runbooks
+
+
+Health-check and smoke-test scripts
+
+
+Rollback procedures
+
+
+Environment configuration templates
+
+
+These outputs together are defined as:
+“Deployment-Ready Artifact Set”
+
+L2 — AI OPERATIONAL RESTRICTION
+The AI is explicitly NOT authorized to:
+Create or access real cloud accounts
+
+
+Execute Terraform or cloud CLI commands
+
+
+Provision real infrastructure
+
+
+Modify DNS or domain records
+
+
+Issue real SSL certificates
+
+
+Push images to real container registries
+
+
+Submit mobile apps to app stores
+
+
+Activate real payment gateways
+
+
+Handle real user data
+
+
+Any claim by AI that real-world deployment has occurred is INVALID.
+
+L3 — REAL-WORLD DEPLOYMENT REQUIREMENTS
+A system may only be declared “Live SaaS” when all below are executed by humans or CI/CD:
+Cloud infrastructure provisioned successfully
+
+
+Kubernetes cluster running
+
+
+Databases reachable
+
+
+Load balancer active
+
+
+DNS resolves correctly
+
+
+SSL certificates valid
+
+
+Application pods healthy
+
+
+API health checks pass
+
+
+UI accessible publicly
+
+
+Monitoring and alerts active
+
+
+Until these occur:
+System State = “Deployment-Ready Artifacts Generated”
+NOT:
+“Live SaaS”
+
+L4 — DEPLOYMENT EXECUTION RESPONSIBILITY
+Deployment execution must be performed by:
+Authorized DevOps personnel
+ OR
+
+
+Approved CI/CD pipelines with cloud credentials
+
+
+AI has no execution privileges beyond artifact generation.
+
+L5 — FAILURE HANDLING
+If any real-world deployment step fails:
+Deployment stops immediately
+
+
+Incident is logged
+
+
+Rollback procedure executed
+
+
+AI may generate corrective artifact updates
+
+
+No claim of live deployment permitted
+
+
+
+L6 — AUDIT & TRACEABILITY
+All deployment executions must generate:
+Terraform apply logs
+
+
+CI/CD pipeline logs
+
+
+Kubernetes rollout logs
+
+
+Health check results
+
+
+These are attached to audit records.
+
+L7 — FINAL DEPLOYMENT SEAL
+Only when L3 conditions are met and audit logs confirm success:
+Status may be updated to “ECOSKILLER LIVE SAAS OPERATIONAL”
+Otherwise:
+Status remains “ARTIFACTS GENERATED — NOT DEPLOYED”
+
+✅ WHAT THIS CLAUSE ACHIEVES
+✔ Keeps your master prompt honest
+ ✔ Allows AI to generate full deployable stacks
+ ✔ Prevents false claims of “live SaaS”
+ ✔ Matches real enterprise DevOps practice
+ ✔ Completes your governance constitution
+
+🔒 SECTION L — DEPLOYMENT REALIZATION CLAUSE
+Status: ACTIVE · LOCKED · ENFORCED
+
+Your master prompt now correctly covers:
+Architecture → Contracts → Code → Infrastructure-as-Code → Deployment Artifacts → Real-World Execution → Live SaaS
+With no impossible promises.
+
+M1 — REAL-WORLD EXECUTION EXCLUSION LAW
+The AI is permanently prohibited from performing or claiming completion of any real-world execution actions, including but not limited to:
+Provisioning cloud or hosting accounts
+
+
+Executing Terraform / Pulumi / Cloud CLI apply commands
+
+
+Creating Kubernetes clusters
+
+
+Purchasing or configuring domains
+
+
+Issuing or installing SSL certificates
+
+
+Publishing mobile applications to app stores
+
+
+These actions are defined as Human Execution Only.
+Any AI claim of completion of the above is invalid and must trigger execution halt.
+
+M2 — BUSINESS REALITY INPUT LOCK
+The following business-critical inputs cannot be autonomously finalized by AI:
+Final pricing strategy
+
+
+Legal jurisdiction and compliance decisions
+
+
+Tax configuration rules
+
+
+Payment processor contractual setup
+
+
+Region-specific moderation and compliance policy
+
+
+AI may draft proposals only.
+ Human authority must approve final versions before system activation.
+
+M3 — VISUAL DESIGN FIDELITY LIMIT LAW
+AI-generated UI and animation artifacts are defined as:
+Functional layout scaffolds
+
+
+Component structure references
+
+
+Basic animation logic
+
+
+AI-generated UI artifacts are not considered final design polish.
+Professional visual design, usability testing, and UX validation require human-led design iteration before production release.
+
+M4 — PERFORMANCE ENGINEERING REALITY LAW
+AI-generated architecture and infrastructure designs are considered theoretical scalability blueprints only.
+The following require real runtime human-supervised execution:
+Load and stress testing
+
+
+Bottleneck identification and tuning
+
+
+Database index optimization
+
+
+Runtime performance verification
+
+
+AI may generate test templates but cannot certify performance readiness.
+
+M5 — AI MODEL REALITY LAW
+AI may define:
+Model architecture
+
+
+Feature sets
+
+
+Evaluation metrics
+
+
+Explainability formats
+
+
+However, the following remain human-executed responsibilities:
+Acquisition of real training data
+
+
+Execution of training pipelines
+
+
+Fairness and bias evaluation
+
+
+Retraining operations
+
+
+AI cannot claim trained or deployed models without human execution logs.
+
+M6 — ONGOING OPERATIONS REALITY LAW
+AI may generate:
+Monitoring dashboard templates
+
+
+Alert rule templates
+
+
+Incident response playbooks
+
+
+However, the following require human or CI/CD operational control:
+Activation of monitoring systems
+
+
+Configuration of alert thresholds
+
+
+Execution of incident response procedures
+
+
+AI cannot claim operational system status without attached runtime evidence.
+
+SECTION N — ENTERPRISE COMPLETENESS EXTENSION LAWS
+Status: ACTIVE · ADD-ONLY · VERSIONED
+
+R18 — BACKUP & DISASTER RECOVERY LAW
+All database and storage systems must define:
+Backup frequency schedules
+
+
+Recovery Point Objective (RPO)
+
+
+Recovery Time Objective (RTO)
+
+
+Multi-region failover strategy
+
+
+No system may be declared production-ready without R18 defined and validated.
+
+R19 — API VERSIONING & DEPRECATION LAW
+All public APIs must define:
+Versioning scheme
+
+
+Backward compatibility policy
+
+
+Deprecation notice process
+
+
+Sunset enforcement timelines
+
+
+Breaking changes without R19 compliance are prohibited.
+
+R20 — ACCESSIBILITY & LOCALIZATION LAW
+All UI applications must define:
+WCAG accessibility compliance target
+
+
+Keyboard and screen-reader support rules
+
+
+Multi-language localization framework
+
+
+Regional content adaptation rules
+
+
+UI systems lacking R20 compliance cannot pass production readiness enforcement.
+
+R21 — INTERNAL OPERATIONS CONSOLE LAW
+The system must include an Internal Operations Console providing:
+Tenant administration
+
+
+User moderation
+
+
+Billing dispute handling
+
+
+System health inspection
+
+
+Emergency override tools
+
+
+Absence of R21 blocks production readiness.
+
+R22 — DATA MIGRATION & ZERO-DOWNTIME UPGRADE LAW
+All schema and service evolution must define:
+Migration scripts
+
+
+Backward-compatible deployment flow
+
+
+Zero-downtime upgrade procedure
+
+
+Seed data upgrade strategy
+
+
+Absence of R22 blocks future system evolution authorization.
+
+R23 — Service ↔ Feature ↔ Screen Wiring Matrix must be generated for every domain service. Absence blocks execution
+
+R24 — Execution Skill Alignment Law
+All generated system artifacts must include intern-friendly templates and step-by-step fill instructions aligned to declared team skills (Flutter, Python, basic Kubernetes, basic Java).
+ No solution may assume senior-level DevOps or infrastructure design tasks by interns.
+ Absence of intern-executable templates → STOP EXECUTION.
+R25 — Infrastructure sizing, instance types, and service replicas must be generated with cost-aware minimal viable defaults suitable for startup-stage budgets. Absence → STOP EXECUTION.
+
+R26 —  Intern Line-Level Execution Instruction Law
+For every generated code artifact, the AI must produce:
+
+1. File path and filename
+2. Exact code to insert
+3. Inline explanation of what each section does
+4. Where this file connects to other services
+5. Command to run or build
+6. Expected success output
+
+Absence of line-level intern-executable instructions → STOP EXECUTION
+
+R27 — One-Click Bootstrap Script Law
+
+For every Deployment-Ready Artifact Set, the AI must generate a single
+bootstrap execution entrypoint that allows authorized human operators
+to initiate full infrastructure and application deployment with one
+controlled command once credentials are provided.
+
+The bootstrap package must include:
+
+1. A single entry script (e.g., bootstrap.sh or bootstrap.ps1)
+2. A Makefile or task runner alias (e.g., make deploy)
+3. Ordered execution of:
+   - Infrastructure provisioning (OpenTofu/Terraform)
+   - Kubernetes cluster access configuration
+   - GitOps controller installation (e.g., ArgoCD)
+   - Root application-of-apps deployment
+4. Pre-execution validation checks:
+   - Cloud credentials present
+   - Required CLI tools installed
+   - Domain and DNS variables supplied
+5. Post-execution verification steps:
+   - Cluster reachable
+   - Core pods running
+   - Gateway responding
+6. Inline comments explaining:
+   - What each step does
+   - Expected execution time
+   - Expected success output
+
+The bootstrap script must NOT:
+- Contain real credentials
+- Auto-execute without explicit human invocation
+- Claim real-world deployment completion
+
+Absence of the One-Click Bootstrap Package → STOP EXECUTION.
+
+
+R28 — Intelligence Cost Optimization Law
+All intelligence features must be implemented using the lowest-cost
+model class that satisfies functional requirements.
+
+1. Deterministic workflows, permissions, billing, and compliance
+   must use rule engines — not ML or AI.
+
+2. Structured prediction, ranking, matching, classification,
+   recommendation, and fraud detection
+   must use traditional ML models
+   (e.g., Gradient Boosting, Logistic Regression, LTR, Anomaly Detection).
+
+3. AI / LLM models may only be used for:
+   - Natural language understanding
+   - Text generation or summarization
+   - Conversational guidance
+   - Human-readable explainability
+
+4. No LLM may be used for tasks solvable
+   by traditional ML or rules.
+
+5. Every AI/ML component must declare:
+   - Model type
+   - Expected inference cost per 1,000 requests
+   - Monthly cost estimate at MVP traffic
+
+Absence of cost-optimized intelligence mapping → STOP EXECUTION
+✅ SECTION R29 — MODERN UI GENERATION & NAVIGATION LAW
+R29 — Modern UI/UX Generation & Navigation Law
+
+For every defined screen in the Service ↔ Feature ↔ Screen Wiring Matrix,
+the AI must generate a complete modern, elegant, and user-friendly UI design
+and implementation package.
+
+Mandatory outputs per screen:
+
+1. Screen purpose definition
+2. User journey entry and exit points
+3. Wireframe layout (structure of header, body, actions, footer)
+4. Flutter widget tree for the screen
+5. Navigation route name and role access rule
+6. State management method (provider / bloc / riverpod)
+7. API endpoints consumed by the screen
+8. Loading, empty, error, and success UI states
+9. Mobile-first responsive behavior
+10. Accessibility rules (WCAG alignment)
+11. Basic animation and transition rules
+12. Component reuse references from design system
+13. Exact Flutter code files:
+    - File path
+    - Code content
+    - Inline explanation
+14. Command to run and preview the screen
+
+Design requirements:
+
+A. Visual Style  
+- Clean whitespace-driven layout  
+- Readable typography hierarchy  
+- Soft rounded components  
+- Clear call-to-action buttons  
+- Minimal but expressive color usage  
+
+B. Navigation Rules  
+- Bottom navigation for primary user flows  
+- Side drawer or top tabs for secondary flows  
+- Deep-link support  
+- Back-stack consistency  
+
+C. Usability Rules  
+- No screen exceeds 3 primary actions  
+- Primary action always visually dominant  
+- Forms use inline validation  
+- Zero unnecessary scroll for primary task  
+
+D. Performance Rules  
+- Lazy loading for lists  
+- Skeleton loaders during fetch  
+- Image caching enabled  
+
+Absence of R29 per-screen UI generation → STOP EXECUTION
+
+SECTION R30 — MULTI-PLATFORM UI + SEO + INSTALLABLE APP LAW
+R30 — SEO-Friendly Web, Desktop, and Mobile Application Generation Law
+
+For every generated UI screen and route, the AI must generate
+a complete multi-platform delivery package including:
+
+------------------------------------
+A. SEO-FRIENDLY WEB GENERATION
+------------------------------------
+
+For every public-facing web page:
+
+1. HTML-renderable Flutter Web output configuration
+2. Page-level SEO metadata:
+   - Title tag
+   - Meta description
+   - Canonical URL
+   - OpenGraph tags
+   - Twitter Card tags
+3. Semantic URL structure
+4. Sitemap.xml generation
+5. robots.txt generation
+6. Schema.org structured data markup where applicable
+7. Lazy-loaded images with alt attributes
+8. Page load performance optimization hints
+
+Absence of SEO metadata for any public page → STOP EXECUTION
+
+------------------------------------
+B. PROGRESSIVE WEB APP (PWA)
+------------------------------------
+
+The web application must include:
+
+1. Web manifest.json
+2. App icons in required sizes
+3. Offline caching rules
+4. Home-screen installation support
+5. Service worker configuration
+6. Splash screen behavior
+
+Absence of PWA installability → STOP EXECUTION
+
+------------------------------------
+C. DESKTOP INSTALLABLE APPLICATIONS
+------------------------------------
+
+The AI must generate:
+
+1. Flutter desktop build configuration
+2. Windows installer package (.exe or .msix)
+3. macOS installer package (.dmg)
+4. Auto-update configuration template
+5. Desktop app icon assets
+
+Absence of desktop packaging → STOP EXECUTION
+
+------------------------------------
+D. MOBILE APPLICATION OUTPUTS
+------------------------------------
+
+The AI must generate:
+
+1. Flutter Android project configuration
+2. Flutter iOS project configuration
+3. App signing configuration templates
+4. Play Store metadata templates
+5. App Store metadata templates
+6. Deep-link routing configuration
+7. Push notification integration stubs
+
+Absence of Android or iOS build output → STOP EXECUTION
+
+------------------------------------
+E. USER-SPECIFIC APP DISTRIBUTION
+
+For platforms requiring individual user installations:
+
+1. Unique application identifiers per environment (dev/staging/prod)
+2. Environment-based API endpoint switching
+3. User session persistence
+4. Secure local storage configuration
+
+Absence of environment-aware builds → STOP EXECUTION
+✅ SECTION R31 — DUAL FRONTEND SEO + APP ARCHITECTURE LAW
+SECTION R31 — DUAL FRONTEND SEO + APPLICATION ARCHITECTURE LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+To achieve optimal search engine indexing, performance,
+and application-grade user experience, the system must implement
+a dual web-frontend architecture as defined below.
+
+------------------------------------
+A. SEO-FIRST PUBLIC WEB FRONTEND
+------------------------------------
+
+1. All public-facing, search-engine-indexable pages must be generated
+   using an SSR or SSG capable SEO-first framework
+   (Next.js / Nuxt / SvelteKit).
+
+2. SEO frontend must generate:
+   - Server-rendered HTML
+   - Full SEO metadata per page
+   - Semantic URLs
+   - Sitemap.xml
+   - robots.txt
+   - Canonical URL tags
+   - Schema.org structured data
+
+3. Public pages include but are not limited to:
+   - Landing pages
+   - Job listings
+   - Skill pages
+   - Course pages
+   - Project pages
+   - Company profiles
+   - Public user portfolios
+   - Blog and knowledge content
+
+4. SEO frontend must consume the same backend APIs
+   and data sources as the application frontend.
+
+Absence of SSR/SSG SEO frontend → STOP EXECUTION
+
+------------------------------------
+B. APPLICATION FRONTEND (FLUTTER)
+------------------------------------
+
+1. Flutter Web must be used for:
+   - Authenticated user dashboards
+   - Real-time interactions
+   - Messaging
+   - Application workflows
+   - Admin and internal consoles
+
+2. Flutter Web routes must not be indexed by search engines.
+
+3. Flutter Web pages must include:
+   - <meta name="robots" content="noindex,nofollow">
+
+Absence of Flutter noindex enforcement → STOP EXECUTION
+
+------------------------------------
+C. CANONICAL URL GOVERNANCE
+------------------------------------
+
+1. Every public page generated by the SEO frontend
+   must include a canonical URL tag referencing itself.
+
+2. No canonical URL may reference Flutter application routes.
+
+3. All public content must have exactly one canonical indexable URL.
+
+Absence of canonical governance → STOP EXECUTION
+
+------------------------------------
+D. ROBOTS & CRAWL CONTROL
+------------------------------------
+
+1. robots.txt must:
+   - Allow crawling of SEO frontend routes
+   - Disallow crawling of Flutter application routes
+   - Disallow internal admin paths
+
+2. Crawl budget must not be wasted on duplicate or private pages.
+
+Absence of robots governance → STOP EXECUTION
+
+------------------------------------
+E. ROUTING CONSISTENCY
+------------------------------------
+
+1. SEO frontend and Flutter frontend must share
+   identical route naming conventions and URL structures.
+
+2. Deep-links from SEO pages must route users
+   seamlessly into the Flutter application when authenticated.
+
+Absence of routing consistency → STOP EXECUTION
+
+------------------------------------
+F. DUPLICATE CONTENT PREVENTION
+------------------------------------
+
+1. No public content may be indexable under more than one URL.
+
+2. Flutter application pages containing public content
+   must always be marked noindex.
+
+3. Canonical tags must always point to SEO frontend pages.
+
+Absence of duplicate prevention enforcement → STOP EXECUTION
+
+This Rule (Optional R32)
+If you want enforcement:
+R32 — SEO Page Auto-Regeneration Law
+
+All SEO frontend pages must use
+Server-Side Rendering (SSR) or
+Incremental Static Regeneration (ISR).
+
+When content is created or updated via backend APIs,
+a revalidation webhook must trigger regeneration
+of the affected SEO page.
+
+Absence of automated SEO page regeneration → STOP EXECUTION
+
+SECTION R33 — SHARED DESIGN SYSTEM & UI CONSISTENCY LAW
+SECTION R33 — SHARED DESIGN SYSTEM & UI CONSISTENCY LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+To ensure that the SEO-first web frontend (Next.js)
+and the application frontend (Flutter)
+exhibit visually identical and behaviorally consistent UI,
+a shared design system contract must be generated and enforced.
+
+------------------------------------
+A. SHARED DESIGN TOKEN SPECIFICATION
+------------------------------------
+
+1. A single machine-readable Design Token file
+   (design-tokens.json or equivalent)
+   must be generated containing:
+
+   - Color palette
+   - Typography scales
+   - Font families
+   - Spacing units
+   - Border radius rules
+   - Shadow rules
+   - Icon references
+   - Animation timing rules
+
+2. Both Flutter UI and SEO frontend UI
+   must derive all visual styling exclusively
+   from the shared design token specification.
+
+Absence of shared design tokens → STOP EXECUTION
+
+------------------------------------
+B. COMPONENT CONTRACT GENERATION
+------------------------------------
+
+1. A UI Component Contract Registry must be generated defining:
+
+   - Component name
+   - Visual purpose
+   - Layout structure
+   - Interactive states
+   - Accessibility behavior
+
+2. For each registered component:
+
+   - A Flutter widget implementation must be generated
+   - A Next.js (React) component implementation must be generated
+
+3. Both implementations must reference
+   the same design tokens and component contract.
+
+Absence of component contract mapping → STOP EXECUTION
+
+------------------------------------
+C. SCREEN LAYOUT CONSISTENCY
+------------------------------------
+
+1. For every screen defined in the
+   Service ↔ Feature ↔ Screen Wiring Matrix:
+
+   - A wireframe layout must be generated
+   - A Flutter widget tree must be generated
+   - A Next.js JSX tree must be generated
+
+2. The Flutter and Next.js trees must match
+   structural layout and visual hierarchy.
+
+Absence of cross-frontend screen mapping → STOP EXECUTION
+
+------------------------------------
+D. INTERACTION & NAVIGATION CONSISTENCY
+------------------------------------
+
+1. Primary and secondary actions,
+   navigation placement,
+   and user flow order
+   must be identical across both frontends.
+
+2. SEO frontend may simplify real-time interactions,
+   but visual positioning and affordances
+   must remain consistent.
+
+Absence of interaction consistency → STOP EXECUTION
+
+------------------------------------
+E. ACCESSIBILITY CONSISTENCY
+------------------------------------
+
+1. Accessibility rules defined in R20
+   must be applied identically
+   in Flutter and Next.js implementations.
+
+Absence of accessibility consistency → STOP EXECUTION
+
+✅ ADD TO SECTION D — PARALLEL EXECUTION LANES
+H — SOCIAL & ORGANIZATION SERVICES
+Groups, Posts, Comments, Reactions, Follows,
+Institution Organization Management,
+Company Organization Management,
+Anonymous Verified Complaint System,
+Verification & Moderation Workflows
+
+
+✅ ADD TO SECTION F — CONTRACT-FIRST REGISTRIES
+Group & Post Schema Registry
+Organization & Department Schema Registry
+Institution Verification Policy Registry
+Anonymous Complaint Policy Registry
+Company Employee Verification Policy Registry
+Tagging & Mention Schema Registry
+
+Failure → STOP EXECUTION
+
+✅ ADD TO SECTION H — REALIZATION PACK
+R34 — SOCIAL GROUPS & POSTS SYSTEM LAW
+R34 — Social Groups & Posts System Law
+
+The system must implement LinkedIn/Facebook-style
+social interaction features.
+
+Must define schemas, APIs, and workflows for:
+
+- Groups (public, private, institutional, company)
+- Group membership & roles (admin, moderator, member)
+- Posts with text, media, and links
+- Comments & threaded replies
+- Reactions (like, support, etc.)
+- User follows & feeds
+- Hashtags & mentions
+- Content visibility rules
+
+Absence of social group & post system → STOP EXECUTION
+
+
+R35 — INSTITUTION ORGANIZATION SYSTEM LAW
+R35 — Institution Organization System Law
+
+The platform must support verified educational institutions.
+
+Must define:
+
+- Institution entity with verified domain
+- Institution admin onboarding flow
+- Department creation
+- Role definitions:
+  Principal, HOD, Professor, Staff, Student
+- Invitation via official institution email
+- Email-domain verification enforcement
+- Student enrollment via institution ID
+- Institution-based group & feed
+
+Absence of institution organization system → STOP EXECUTION
+
+
+R36 — ANONYMOUS VERIFIED COMPLAINT SYSTEM LAW
+R36 — Anonymous Verified Complaint System Law
+
+The platform must allow verified students
+to submit anonymous complaints.
+
+Must define:
+
+- Verified student credential check
+- Anonymous post type
+- Identity masking in public view
+- Secure audit storage of real identity
+- Tagging of:
+  Departments, HODs, Principals, Institutions,
+  External government bodies
+- Public visibility rules
+- Moderation and escalation workflows
+- Anti-abuse and false-report handling
+
+Absence of anonymous complaint system → STOP EXECUTION
+
+
+R37 — COMPANY ORGANIZATION & EMPLOYEE VERIFICATION LAW
+R37 — Company Organization & Employee Verification Law
+
+The platform must support verified company organizations.
+
+Must define:
+
+- Company entity with verified domain
+- Company admin onboarding
+- Employee invitation via official company email
+- Employee acceptance flow
+- Verified employee badge
+- Internal company groups & feeds
+- Company announcements
+- Company-based access control
+
+Absence of company organization system → STOP EXECUTION
+
+
+✅ SECTION R38 — MASTER BUG & FAILURE REGISTRY LAW
+SECTION R38 — MASTER BUG & FAILURE REGISTRY LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+To guarantee production-grade reliability,
+the system must generate a comprehensive
+Bug & Failure Registry before any deployment execution.
+
+------------------------------------
+A. BUG REGISTRY REQUIREMENT
+------------------------------------
+
+A Master Bug & Failure Registry must be generated
+covering all system layers:
+
+- Foundation & Identity
+- RBAC & Tenancy
+- API Gateway & Contracts
+- Core Services (Job, Skill, Project, Education, Marketplace)
+- Social & Organization Services
+- Database & CQRS Stores
+- Search & Indexing
+- Notification Systems
+- Billing & Payment Workflows
+- AI / ML & Ranking Models
+- UI / UX (Flutter + Next.js)
+- SEO / SSR & PWA
+- Desktop & Mobile Builds
+- DevOps / CI/CD / Kubernetes
+- Observability & Logging
+- Security & Compliance
+
+------------------------------------
+B. BUG RECORD STRUCTURE
+------------------------------------
+
+Each bug record must contain:
+
+1. Unique Bug ID
+2. Layer / Domain
+3. Feature Area
+4. Bug Description
+5. Expected Behavior
+6. Failure Behavior
+7. Severity Level  
+   (Critical / High / Medium / Low)
+8. Detection Method  
+   (Unit Test / Integration / E2E / Load / Manual / Monitoring)
+9. Responsible Service or Module
+
+------------------------------------
+C. MINIMUM REGISTRY SIZE
+------------------------------------
+
+The generated registry must contain
+no fewer than **500 distinct bug cases**
+distributed across all system layers.
+
+------------------------------------
+D. OUTPUT FORMAT
+------------------------------------
+
+The registry must be generated in:
+
+- Human-readable table format
+- CSV / Spreadsheet-ready format
+- QA tracker import-ready format
+
+------------------------------------
+E. ENFORCEMENT RULE
+------------------------------------
+
+Absence of a complete Master Bug & Failure Registry
+before deployment execution authorization
+
+→ STOP EXECUTION
+→ REPORT MISSING REGISTRY
+→ NO DEPLOYMENT CLAIM PERMITTED
+
+
+✅ SECTION R39 — CORE INBUILT PLATFORM TOOLS LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+To ensure ECOSKILLER operates as a stable, secure, scalable,
+ enterprise-grade SaaS platform, a mandatory set of
+ Core Inbuilt Platform Tools must be generated and enforced
+ before any system may claim Production-Ready status.
+Absence of any required inbuilt tool
+ → STOP EXECUTION
+ → REPORT MISSING CORE TOOL
+ → NO DEPLOYMENT CLAIM PERMITTED
+
+🔐 A. IDENTITY & ACCESS TOOLS
+The system must generate and wire the following internal tools:
+Authentication Manager (Login, SSO, MFA)
+
+
+Role & Permission Engine (RBAC Enforcement)
+
+
+Tenant Isolation Manager
+
+
+Session Lifecycle Manager
+
+
+Token Issuer & Revocation Service
+
+
+Email & Phone Verification Engine
+
+
+Domain Verification Tool (Company / Institution)
+
+
+Invitation & Onboarding Manager
+
+
+Password Policy Enforcer
+
+
+Brute-Force & Intrusion Protection Tool
+
+
+Absence of any identity or access tool
+ → STOP EXECUTION
+
+🗄️ B. DATA & STORAGE TOOLS
+Database Migration Manager
+
+
+Seed Data Loader
+
+
+Soft-Delete & Recovery Manager
+
+
+Audit Log Writer
+
+
+Backup Scheduler
+
+
+Restore & Disaster Recovery Tool
+
+
+Data Export & GDPR Compliance Tool
+
+
+File Upload & Media Manager
+
+
+Malware & Virus Scan Tool
+
+
+Object Storage Lifecycle Manager
+
+
+Absence → STOP EXECUTION
+
+🔎 C. SEARCH & DISCOVERY TOOLS
+Search Index Builder
+
+
+Full-Text Query Engine
+
+
+Faceted Filter Builder
+
+
+Auto-Suggestion Generator
+
+
+Ranking Weight Adjustment Tool
+
+
+Absence → STOP EXECUTION
+
+🔔 D. NOTIFICATION TOOLS
+Email Delivery Engine
+
+
+Push / SMS / In-App Notification Sender
+
+
+Notification Preference Manager
+
+
+Retry & Failover Handler
+
+
+Notification Template Renderer
+
+
+Absence → STOP EXECUTION
+
+💳 E. BILLING & COMMERCIAL TOOLS
+Subscription & Plan Manager
+
+
+Usage Metering Engine
+
+
+Invoice Generator
+
+
+Payment Webhook Listener
+
+
+Commission & Revenue Calculator
+
+
+Absence → STOP EXECUTION
+
+⚖️ F. GOVERNANCE & MODERATION TOOLS
+Content Moderation Queue
+
+
+Abuse & Report Handling Tool
+
+
+Complaint Escalation Engine
+
+
+Identity Masking Engine (Anonymous Posts)
+
+
+Reputation Score Calculator
+
+
+Absence → STOP EXECUTION
+
+🤖 G. INTELLIGENCE EXECUTION TOOLS
+Matching Score Executor
+
+
+Ranking Model Runner
+
+
+Recommendation Generator
+
+
+Explainability Formatter
+
+
+Deterministic Rule Engine
+
+
+Absence → STOP EXECUTION
+
+🖥️ H. UI & EXPERIENCE TOOLS
+Feature Flag Manager
+
+
+A/B Testing Controller
+
+
+Design Token Loader
+
+
+Localization & Language Manager
+
+
+Accessibility Compliance Checker
+
+
+Absence → STOP EXECUTION
+
+📜 I. CORE TOOLS IMPLEMENTATION REQUIREMENT
+For each tool above, AI must generate:
+Tool purpose definition
+
+
+Internal API or service contract
+
+
+Database or cache dependencies
+
+
+Event hooks if applicable
+
+
+Default configuration template
+
+
+Health-check endpoint
+
+
+Logging & monitoring hooks
+
+
+Absence of implementation details
+ → STOP EXECUTION
+
+⚙️ J. CORE TOOLS ENFORCEMENT RULE
+No deployment pipeline may proceed
+ unless all R39 tools are:
+✔️ Declared
+ ✔️ Implemented
+ ✔️ Wired into service architecture
+ ✔️ Exposed to observability stack
+Failure → STOP EXECUTION
+
+✅ SECTION R40 — INTERNAL ADMIN & OPS CONSOLE LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+To guarantee safe governance, compliance, operational control,
+ and emergency management of the ECOSKILLER platform,
+ a dedicated Internal Admin & Operations Console
+ must be generated and enforced.
+Absence of the Internal Admin & Ops Console
+ → STOP EXECUTION
+ → REPORT MISSING OPS CONSOLE
+ → NO DEPLOYMENT CLAIM PERMITTED
+
+🧭 A. CONSOLE PURPOSE
+The Internal Admin & Ops Console is a secure,
+ restricted-access control center providing:
+Platform-wide administration
+
+
+Tenant management
+
+
+User moderation
+
+
+Billing oversight
+
+
+System health monitoring
+
+
+Emergency intervention tools
+
+
+No public user may access this console.
+
+🔐 B. ACCESS CONTROL
+Console accessible only to Super Admin roles
+
+
+Enforced MFA mandatory
+
+
+IP allowlist support
+
+
+Full audit logging of every action
+
+
+Session timeout after inactivity
+
+
+Absence → STOP EXECUTION
+
+🗂️ C. MANDATORY CONSOLE MODULES
+Identity & Tenancy
+Tenant creation / suspension / deletion
+
+
+Role & permission override editor
+
+
+User account lock / unlock
+
+
+Domain verification status viewer
+
+
+Content & Moderation
+Global post & comment review queue
+
+
+Reported content triage
+
+
+Complaint escalation dashboard
+
+
+Institution & company verification control
+
+
+Billing & Finance
+Subscription plan assignment
+
+
+Invoice & transaction viewer
+
+
+Commission rule editor
+
+
+Payment dispute resolution tool
+
+
+Intelligence Control
+Ranking weight editor
+
+
+Matching threshold editor
+
+
+Recommendation feedback viewer
+
+
+AI/ML retraining trigger panel
+
+
+System Operations
+Service health dashboard
+
+
+Kubernetes pod status viewer
+
+
+API latency & error rate viewer
+
+
+Alert & incident console
+
+
+Security & Compliance
+Audit log explorer
+
+
+Data export request handler
+
+
+Right-to-forget execution tool
+
+
+Policy & legal text publisher
+
+
+Growth & SEO
+Public page index status viewer
+
+
+Sitemap regeneration trigger
+
+
+SEO metadata override editor
+
+
+A/B experiment controller
+
+
+Emergency Controls
+Global feature kill-switch
+
+
+Platform maintenance mode toggle
+
+
+Absence of any module
+ → STOP EXECUTION
+
+🧩 D. IMPLEMENTATION REQUIREMENTS
+For each module, AI must generate:
+Backend service endpoint
+
+
+Permission rule
+
+
+UI screen in Ops Console
+
+
+Audit event emission
+
+
+Monitoring hook
+
+
+Absence → STOP EXECUTION
+
+🧪 E. RELIABILITY RULE
+All console operations must be:
+Transaction-safe
+
+
+Logged
+
+
+Reversible where possible
+
+
+Protected from accidental mass action
+
+
+Absence → STOP EXECUTION
+
+✅ ADD THIS AS NEW SECTION R43 — DOMAIN & ENDPOINT GOVERNANCE LAW
+Copy code
+
+SECTION R43 — DOMAIN & ENDPOINT GOVERNANCE LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+To ensure deterministic routing, SEO correctness,
+API stability, and environment consistency,
+all system-generated artifacts must inherit
+preconfigured domain and endpoint definitions
+declared in this section.
+
+Absence of this section blocks:
+API contract generation,
+frontend routing generation,
+SEO metadata generation,
+deployment artifact generation.
+
+------------------------------------
+A. ENVIRONMENT DOMAIN REGISTRY
+------------------------------------
+
+The system must declare fixed domain sets
+for each environment:
+
+DEV Environment:
+- SEO Web Frontend:   dev.ecoskiller.local
+- Application Frontend: app.dev.ecoskiller.local
+- API Gateway: api.dev.ecoskiller.local
+- Media Storage: media.dev.ecoskiller.local
+
+STAGING Environment:
+- SEO Web Frontend:   staging.ecoskiller.com
+- Application Frontend: app.staging.ecoskiller.com
+- API Gateway: api.staging.ecoskiller.com
+- Media Storage: media.staging.ecoskiller.com
+
+PRODUCTION Environment:
+- SEO Web Frontend:   www.ecoskiller.com
+- Application Frontend: app.ecoskiller.com
+- API Gateway: api.ecoskiller.com
+- Media Storage: media.ecoskiller.com
+
+------------------------------------
+B. CANONICAL URL RULES
+------------------------------------
+
+All public SEO pages must use the SEO Web Frontend domain.
+No canonical URL may reference Application Frontend domains.
+Canonical tags must always self-reference
+the SEO Web Frontend domain.
+
+------------------------------------
+C. API BASE URL RULES
+------------------------------------
+
+All frontend-generated API calls must use
+the API Gateway domain for the active environment.
+No direct service-to-service public URL exposure allowed.
+
+------------------------------------
+D. DEEP LINK RULES
+------------------------------------
+
+SEO pages linking to authenticated flows
+must deep-link to the Application Frontend domain.
+
+------------------------------------
+E. DEPLOYMENT INHERITANCE RULE
+------------------------------------
+
+All Infrastructure-as-Code, Helm charts,
+Ingress definitions, SSL configs,
+robots.txt, sitemap.xml,
+and frontend environment files
+must automatically derive from
+this Domain & Endpoint Registry.
+
+------------------------------------
+F. ENFORCEMENT
+------------------------------------
+
+If any generated artifact hardcodes
+a domain or endpoint not declared
+in this section:
+
+→ STOP EXECUTION  
+→ REPORT DOMAIN GOVERNANCE VIOLATION  
+→ NO DEPLOYMENT CLAIM PERMITTED
+🎯 WHERE TO PLACE THIS
+Add as:
+Copy code
+
+SECTION R43 — DOMAIN & ENDPOINT GOVERNANCE LAW
+after:
+Copy code
+
+SECTION R41 — GLOBAL CONFIGURATION & ENVIRONMENT LAW
+No existing section changed. No numbering conflicts. Add-only respected.
+Understood.
+ You want to add three new enforceable sections to your master prompt so that:
+The AI must generate real clickable UI with actual screens, flows, animations and UI logic contracts
+The AI must generate real runnable backend production code with deployable microservices, APIs, and databases
+The AI must generate deployment-ready infrastructure, Kubernetes, CI/CD, and live-ready URLs
+And you want these written as copy-paste prompt sections, without altering or weakening any existing rule style.
+Below are the three new locked sections, written in the exact tone and enforcement style of your master prompt.
+No commentary. No interpretation.
+ Just sections ready to paste.
+
+✅ SECTION R43 — REAL CLICKABLE UI GENERATION LAW
+SECTION R43 — REAL CLICKABLE UI GENERATION LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+The system must generate fully functional,
+clickable, user-testable frontend applications.
+
+Static mockups, placeholder screens,
+or non-interactive UI artifacts are forbidden.
+
+------------------------------------
+A. MANDATORY UI OUTPUT
+------------------------------------
+
+For every screen defined in the
+Service ↔ Feature ↔ Screen Wiring Matrix,
+the AI must generate:
+
+1. Complete runnable frontend project
+2. All navigation routes wired
+3. Working state management
+4. Real API integration stubs
+5. Clickable buttons and form actions
+6. Working validation
+7. Working loading / empty / error states
+8. Working animations and transitions
+9. Responsive layouts (mobile / tablet / desktop)
+10. Deep-link handling
+
+------------------------------------
+B. USER-TESTABLE FLOW REQUIREMENT
+------------------------------------
+
+All primary user journeys must be runnable:
+
+- Signup / Login
+- Profile creation
+- Core marketplace flows
+- Posting / Applying / Messaging
+- Organization onboarding
+- Admin console access
+
+Each journey must be:
+
+✔ Navigable by mouse/touch  
+✔ Executable without missing handlers  
+✔ Producing visible UI state changes  
+
+------------------------------------
+C. UI LOGIC & CONTRACT REQUIREMENT
+------------------------------------
+
+For each screen the AI must generate:
+
+- ViewModel / Controller logic
+- State classes
+- Event handlers
+- API contract calls
+- Error mapping
+- Analytics hooks
+
+------------------------------------
+D. ENFORCEMENT
+------------------------------------
+
+If any screen is delivered as:
+
+- Static image
+- Wireframe only
+- Non-clickable markup
+- Unwired navigation
+
+→ STOP EXECUTION  
+→ REPORT NON-FUNCTIONAL UI  
+→ NO DEPLOYMENT CLAIM PERMITTED
+
+
+✅ SECTION R44 — REAL RUNNABLE BACKEND & MICROSERVICES LAW
+SECTION R44 — REAL RUNNABLE BACKEND & MICROSERVICES LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+The system must generate fully runnable,
+production-grade backend services.
+
+Architectural diagrams or pseudo-code
+without real compilable services are forbidden.
+
+------------------------------------
+A. MANDATORY BACKEND OUTPUT
+------------------------------------
+
+AI must generate:
+
+1. Complete microservice source code
+2. API controllers / routers
+3. Business logic layers
+4. Database models & migrations
+5. Repository layers
+6. Authentication middleware
+7. Authorization enforcement
+8. Event publishing & consuming
+9. Configuration loaders
+10. Health-check endpoints
+
+------------------------------------
+B. DATABASE REALIZATION
+------------------------------------
+
+AI must generate:
+
+- SQL schema
+- Migration scripts
+- Seed data loaders
+- Connection pools
+- Transaction management
+
+------------------------------------
+C. SERVICE EXECUTION REQUIREMENT
+------------------------------------
+
+Each service must include:
+
+- Build instructions
+- Run commands
+- Environment variable templates
+- Dockerfile
+- Local execution instructions
+
+------------------------------------
+D. API REALITY REQUIREMENT
+------------------------------------
+
+Generated APIs must be:
+
+✔ Valid OpenAPI compliant  
+✔ Returning real JSON responses  
+✔ Connected to real persistence  
+✔ Accepting real authentication tokens  
+
+------------------------------------
+E. ENFORCEMENT
+------------------------------------
+
+If backend artifacts are:
+
+- Pseudocode
+- Interface-only
+- Missing database wiring
+- Non-runnable
+
+→ STOP EXECUTION  
+→ REPORT NON-RUNNABLE BACKEND  
+→ NO DEPLOYMENT CLAIM PERMITTED
+
+
+✅ SECTION R45 — REAL DEPLOYMENT ARTIFACT & LIVE-READINESS LAW
+SECTION R45 — REAL DEPLOYMENT ARTIFACT & LIVE-READINESS LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+The system must generate full
+deployment-ready infrastructure artifacts.
+
+Planning documents without executable
+deployment artifacts are forbidden.
+
+------------------------------------
+A. MANDATORY DEPLOYMENT OUTPUT
+------------------------------------
+
+AI must generate:
+
+1. Docker images build configurations
+2. Kubernetes manifests or Helm charts
+3. Ingress & TLS configuration
+4. Secrets templates
+5. ConfigMaps
+6. Horizontal autoscaling rules
+7. Persistent volume claims
+8. Service discovery wiring
+
+------------------------------------
+B. CI/CD REALIZATION
+------------------------------------
+
+AI must generate:
+
+- Pipeline YAML
+- Build → Test → Containerize → Deploy steps
+- Rollback definitions
+- Artifact versioning rules
+
+------------------------------------
+C. LIVE-READINESS REQUIREMENT
+------------------------------------
+
+Generated infrastructure must include:
+
+✔ Valid domain & ingress rules  
+✔ SSL certificate automation templates  
+✔ API gateway routing  
+✔ Monitoring & logging hooks  
+
+------------------------------------
+D. EXECUTION BOUNDARY
+------------------------------------
+
+AI may generate all artifacts.
+AI may NOT claim actual execution.
+
+------------------------------------
+E. ENFORCEMENT
+------------------------------------
+
+If deployment artifacts are:
+
+- Missing Helm/Terraform/K8s files
+- Non-executable placeholders
+- Lacking ingress or service wiring
+SECTION R46 — INTERN EXECUTION MAPPING FOR R43–R45
+Copy code
+
+SECTION R46 — INTERN EXECUTION MAPPING FOR R43–R45
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+This section defines exactly
+how interns execute R43, R44, and R45 outputs.
+
+All steps are aligned to intern skill levels:
+Flutter, Python, basic Kubernetes, basic Java.
+
+No senior DevOps knowledge assumed.
+
+Absence of intern-executable steps → STOP EXECUTION
+🔷 PART 1 — INTERN EXECUTION: REAL CLICKABLE UI (R43)
+Copy code
+
+R46.1 — Flutter UI Execution Steps
+
+Intern Role: Flutter Developer
+
+Objective:
+Run full clickable frontend locally.
+
+------------------------------------
+A. REQUIRED TOOLS
+------------------------------------
+1. Install Flutter SDK
+2. Install Android Studio or VS Code
+3. Enable Flutter Web
+
+------------------------------------
+B. PROJECT LOCATION
+------------------------------------
+/frontend/flutter_app/
+
+------------------------------------
+C. STEP-BY-STEP EXECUTION
+
+Step 1:
+Open terminal in /frontend/flutter_app/
+
+Step 2:
+Run:
+flutter pub get
+
+Expected Output:
+"Got dependencies!"
+
+Step 3:
+Run:
+flutter run -d chrome
+
+Expected Output:
+Web server starts and opens browser
+
+------------------------------------
+D. WHAT INTERN TESTS
+
+✔ Login screen opens  
+✔ Buttons clickable  
+✔ Navigation works  
+✔ Forms validate  
+✔ Loading states visible  
+
+------------------------------------
+E. API CONNECTION MODE
+
+Default API URL:
+http://localhost:8000/api/
+
+Intern may change API endpoint in:
+lib/config/app_config.dart
+
+------------------------------------
+F. SUCCESS CONDITION
+
+UI fully clickable in browser
+No red error screens
+Navigation flows working
+
+Failure → STOP EXECUTION
+🔷 PART 2 — INTERN EXECUTION: REAL RUNNABLE BACKEND (R44)
+Copy code
+
+R46.2 — Backend Service Execution Steps
+
+Intern Role: Python Backend Developer
+
+Objective:
+Run backend microservices locally.
+
+------------------------------------
+A. REQUIRED TOOLS
+------------------------------------
+1. Install Python 3.11+
+2. Install PostgreSQL
+3. Install Redis
+
+------------------------------------
+B. PROJECT LOCATION
+------------------------------------
+/backend/services/
+
+Each service in its own folder:
+auth_service/
+job_service/
+skill_service/
+etc.
+
+------------------------------------
+C. STEP-BY-STEP EXECUTION
+
+Step 1:
+Open terminal in service folder
+
+Step 2:
+Create virtual environment:
+python -m venv venv
+
+Step 3:
+Activate:
+venv\Scripts\activate (Windows)
+source venv/bin/activate (Mac/Linux)
+
+Step 4:
+Install dependencies:
+pip install -r requirements.txt
+
+Step 5:
+Set environment variables:
+copy .env.example → .env
+
+Step 6:
+Run database migrations:
+alembic upgrade head
+
+Step 7:
+Start service:
+uvicorn main:app --reload --port 8000
+
+Expected Output:
+"Uvicorn running on http://127.0.0.1:8000"
+
+------------------------------------
+D. INTERN TEST
+
+Open browser:
+http://127.0.0.1:8000/docs
+
+✔ Swagger UI visible  
+✔ APIs testable  
+
+------------------------------------
+E. SUCCESS CONDITION
+
+Service responds to API calls
+Database tables created
+No runtime errors
+
+Failure → STOP EXECUTION
+🔷 PART 3 — INTERN EXECUTION: DATABASE SETUP
+Copy code
+
+R46.3 — Database Execution Steps
+
+Intern Role: Basic SQL / Backend Intern
+
+------------------------------------
+A. Install PostgreSQL
+
+------------------------------------
+B. Create database:
+
+psql -U postgres
+CREATE DATABASE ecoskiller;
+
+------------------------------------
+C. Update backend .env:
+
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=ecoskiller
+DB_USER=postgres
+DB_PASS=yourpassword
+
+------------------------------------
+D. Run migrations (from backend step)
+
+Expected Output:
+"Running upgrade -> head"
+
+------------------------------------
+SUCCESS CONDITION:
+Tables created in database
+🔷 PART 4 — INTERN EXECUTION: KUBERNETES DEPLOYMENT (R45)
+Copy code
+
+R46.4 — Kubernetes Execution Steps
+
+Intern Role: Basic Kubernetes Intern
+
+Objective:
+Deploy system to local cluster.
+
+------------------------------------
+A. REQUIRED TOOLS
+------------------------------------
+Install:
+Docker
+kubectl
+Minikube
+
+------------------------------------
+B. START CLUSTER
+
+minikube start
+
+Expected Output:
+"Done! kubectl is now configured"
+
+------------------------------------
+C. BUILD IMAGES
+
+From project root:
+
+docker build -t ecoskiller-auth ./backend/services/auth_service
+docker build -t ecoskiller-job ./backend/services/job_service
+docker build -t ecoskiller-ui ./frontend/flutter_app
+
+------------------------------------
+D. APPLY K8s FILES
+
+kubectl apply -f /infra/k8s/
+
+------------------------------------
+E. CHECK POD STATUS
+
+kubectl get pods
+
+Expected Output:
+STATUS = Running
+
+------------------------------------
+F. OPEN UI
+
+minikube service ecoskiller-ui
+
+Browser opens clickable UI
+
+------------------------------------
+SUCCESS CONDITION:
+
+✔ Pods running  
+✔ Services reachable  
+✔ UI opens in browser  
+
+Failure → STOP EXECUTION
+🔷 PART 5 — INTERN EXECUTION: CI/CD PIPELINE TEST
+Copy code
+
+R46.5 — CI/CD Execution Steps
+
+Intern Role: Basic DevOps Intern
+
+------------------------------------
+A. Push code to Git repository
+
+------------------------------------
+B. Pipeline auto-triggers
+
+------------------------------------
+C. Pipeline stages:
+
+✔ Build backend  
+✔ Run tests  
+✔ Build Docker images  
+✔ Apply K8s manifests  
+
+------------------------------------
+SUCCESS CONDITION
+
+Pipeline green
+Artifacts produced
+🔷 PART 6 — INTERN EXECUTION: FULL SYSTEM LOCAL DEMO
+Copy code
+
+R46.6 — Full Local Demo
+
+------------------------------------
+1. Start Database
+2. Start Backend Services
+3. Start Flutter Web UI
+4. Open Browser
+
+URL:
+http://localhost:3000
+
+------------------------------------
+EXPECTED:
+
+✔ Signup works  
+✔ Login works  
+✔ Dashboard opens  
+✔ Posting flows clickable  
+
+------------------------------------
+If any step fails → STOP EXECUTION
+✅ SECTION R46 COMPLETE
+✔ Fully intern-readable
+✔ No advanced DevOps assumed
+✔ Maps exactly to R43–R45
+✔ Step-by-step
+✔ Clear success conditions
+✔ Deterministic execution
+
+
+SECTION R47 — PRECONFIGURED DOMAIN & ENDPOINT MAPPING LAW
+Copy code
+
+SECTION R47 — PRECONFIGURED DOMAIN & ENDPOINT MAPPING LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+To eliminate configuration ambiguity
+and ensure deterministic deployment,
+all domains, subdomains, service endpoints,
+and environment URLs must be declared
+directly inside the master prompt.
+
+No runtime guessing of endpoints is permitted.
+
+Absence of declared mappings → STOP EXECUTION
+🌐 A. DOMAIN DECLARATION REGISTRY
+Copy code
+
+Primary Root Domain: <LOCK_DOMAIN>
+
+Subdomain Map:
+
+Public SEO Web (Next.js):
+web.<LOCK_DOMAIN>
+
+Application Frontend (Flutter Web):
+app.<LOCK_DOMAIN>
+
+API Gateway:
+api.<LOCK_DOMAIN>
+
+Auth Service:
+auth.<LOCK_DOMAIN>
+
+Job Service:
+jobs.<LOCK_DOMAIN>
+
+Skill Service:
+skills.<LOCK_DOMAIN>
+
+Project Service:
+projects.<LOCK_DOMAIN>
+
+Education Service:
+edu.<LOCK_DOMAIN>
+
+Marketplace Service:
+market.<LOCK_DOMAIN>
+
+Social Service:
+social.<LOCK_DOMAIN>
+
+Admin Ops Console:
+ops.<LOCK_DOMAIN>
+
+Object Storage (MinIO):
+storage.<LOCK_DOMAIN>
+
+Monitoring:
+monitor.<LOCK_DOMAIN>
+Human must replace <LOCK_DOMAIN>
+Example: ecoskiller.com
+No execution until domain filled.
+🔗 B. INTERNAL SERVICE ENDPOINT MAP
+Copy code
+
+Auth Service Internal URL:
+http://auth-service:8000
+
+Job Service Internal URL:
+http://job-service:8001
+
+Skill Service Internal URL:
+http://skill-service:8002
+
+Project Service Internal URL:
+http://project-service:8003
+
+Education Service Internal URL:
+http://education-service:8004
+
+Marketplace Service Internal URL:
+http://market-service:8005
+
+Social Service Internal URL:
+http://social-service:8006
+
+Notification Service:
+http://notification-service:8010
+
+Billing Service:
+http://billing-service:8011
+
+Search Service:
+http://search-service:8020
+These names must match Kubernetes Service names.
+No mismatch allowed.
+⚙️ C. FRONTEND CONFIGURATION CONTRACT
+Flutter Web & Mobile must load:
+Copy code
+
+API_BASE_URL = https://api.<LOCK_DOMAIN>
+AUTH_BASE_URL = https://auth.<LOCK_DOMAIN>
+UPLOAD_BASE_URL = https://storage.<LOCK_DOMAIN>
+SOCIAL_BASE_URL = https://social.<LOCK_DOMAIN>
+Next.js SEO frontend must load:
+Copy code
+
+NEXT_PUBLIC_API_URL = https://api.<LOCK_DOMAIN>
+NEXT_PUBLIC_WEB_URL = https://web.<LOCK_DOMAIN>
+No hardcoded localhost values allowed in production build.
+🔐 D. ENVIRONMENT SEPARATION RULE
+Copy code
+
+Development:
+*.dev.<LOCK_DOMAIN>
+
+Staging:
+*.staging.<LOCK_DOMAIN>
+
+Production:
+*.<LOCK_DOMAIN>
+Same mapping structure applies across environments.
+🧭 E. INGRESS & TLS ENFORCEMENT RULE
+For every declared subdomain:
+✔ DNS record must exist
+✔ TLS certificate must be issued
+✔ Ingress route must map to correct service
+Absence of any mapping → STOP EXECUTION
+📘 F. INTERN EXECUTION MAPPING
+Interns must edit only one file:
+Copy code
+
+/config/domain_mapping.yaml
+Containing above values.
+No other file may redefine endpoints.
+⚖️ G. ENFORCEMENT
+If any service, frontend, or pipeline:
+Uses undefined domain
+Hardcodes localhost in production
+Omits declared mapping
+→ STOP EXECUTION
+→ REPORT DOMAIN CONTRACT VIOLATION
+→ NO DEPLOYMENT CLAIM PERMITTED
+Copy code
+
+---
+
+# ✅ SECTION R47 COMPLETE
+
+✔ Domains declared in prompt  
+✔ Endpoints deterministic  
+✔ Intern-friendly single config file  
+✔ Zero ambiguity in deployment  
+✔ Works with R27 bootstrap and R45 ingress  
+
+✅ SECTION R48 — ONE-COMMAND LOCAL DEMO LAUNCHER LAW
+SECTION R48 — ONE-COMMAND LOCAL DEMO LAUNCHER LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+To allow interns to run the entire platform locally
+without cloud accounts or production credentials,
+a single-command local demo launcher must be generated.
+
+This launcher is for:
+• Local development
+• UI testing
+• API contract verification
+• Intern learning environment
+
+It must NOT claim production deployment.
+
+Absence of R48 → STOP EXECUTION
+
+
+🧩 A. LOCAL DEMO PACKAGE REQUIREMENT
+
+AI must generate a folder:
+/local-demo/
+
+Containing:
+bootstrap_local.sh
+docker-compose.local.yaml
+.env.local.template
+README_INTERN.md
+healthcheck.sh
+
+Absence of any file → STOP EXECUTION
+
+⚙️ B. BOOTSTRAP_LOCAL.SH RULE
+
+The file:
+/local-demo/bootstrap_local.sh
+
+Must:
+Check Docker installed
+Check ports availability
+Load .env.local
+Start all services via docker-compose
+Wait for health checks
+Print local URLs
+Must output:
+LOCAL DEMO READY
+Web: http://localhost:3000
+App: http://localhost:4000
+API: http://localhost:8000
+Ops: http://localhost:9000
+
+No silent failures allowed.
+
+🐳 C. DOCKER COMPOSE LOCAL STACK
+
+docker-compose.local.yaml must include:
+• API Gateway
+ • Auth Service
+ • Core Microservices
+ • PostgreSQL
+ • Redis
+ • Search Engine
+ • MinIO
+ • Next.js SEO Frontend
+ • Flutter Web App
+ • Ops Console
+All wired to internal URLs from R47.
+
+🔐 D. ENV TEMPLATE RULE
+
+.env.local.template must contain:
+DOMAIN=localhost
+API_PORT=8000
+WEB_PORT=3000
+APP_PORT=4000
+OPS_PORT=9000
+DB_USER=ecoskiller
+DB_PASS=ecoskiller
+
+No secrets included.
+
+📘 E. INTERN README RULE
+
+README_INTERN.md must contain:
+Step-by-step:
+Install Docker
+Copy .env.local.template → .env.local
+Run bash bootstrap_local.sh
+Open browser URLs
+Expected success screenshots
+No missing steps allowed.
+
+❤️ F. HEALTH CHECK RULE
+
+healthcheck.sh must verify:
+• API /health returns 200
+ • Web returns HTML
+ • App loads main screen
+ • Database reachable
+If any fail → STOP LOCAL DEMO → PRINT ERROR
+
+⚖️ G. ENFORCEMENT
+
+If interns cannot run entire platform locally with one command and no manual wiring
+→ STOP EXECUTION
+ → REPORT INTERN DEMO FAILURE
+ → NO SYSTEM COMPLETION CLAIM PERMITTED
+
+---
+
+# ✅ SECTION R48 COMPLETE
+
+✔ Intern-friendly  
+✔ One-command full local demo  
+✔ No cloud dependency  
+✔ Matches domain & endpoint mapping  
+✔ Safe and deterministic  
+
+---
+
+## 📌 CURRENT TOTAL SECTION COUNT STATUS
+
+Your master prompt now includes:
+
+R1 – R42 (original)  
+R43 – Real Clickable UI Law  
+R44 – Real Runnable Backend Law  
+R45 – Real Deployment Artifact Law  
+R46 – Intern Execution Mapping  
+R47 – Domain & Endpoint Mapping  
+R48 – One-Command Local Demo Launcher  
+
+All **add-only**.  
+All **locked**.  
+All **non-destructive**.
+
+
+
+✅ SECTION R49 — AUTOMATIC CONTRACT VALIDATOR CLI LAW
+
+SECTION R49 — AUTOMATIC CONTRACT VALIDATOR CLI LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+To prevent interns from accidentally breaking
+API, event, schema, permission, or UI contracts,
+an Automatic Contract Validator CLI
+must be generated and enforced.
+
+The validator acts as a mandatory gate
+before any code, build, or deployment step.
+
+Absence of R49 → STOP EXECUTION
+
+
+---
+
+🧩 A. VALIDATOR TOOL REQUIREMENT
+
+
+---
+
+AI must generate a CLI tool:
+
+/tools/contract-validator/
+
+Containing:
+
+validate_contracts.py
+rules/
+reports/
+README_VALIDATOR.md
+
+Absence of any file → STOP EXECUTION
+
+
+---
+
+⚙️ B. VALIDATE_CONTRACTS.PY RULE
+
+
+---
+
+The CLI must:
+
+1. Load API Contract Registry
+
+
+2. Load Event Schema Registry
+
+
+3. Load Permission → Screen Matrix
+
+
+4. Load Role → Widget Matrix
+
+
+5. Load Service ↔ Feature ↔ Screen Wiring Matrix
+
+
+6. Load UI Component Contract Registry
+
+
+7. Compare them against current codebase
+
+
+
+If mismatch found → FAIL
+
+Must output:
+
+CONTRACT VALIDATION PASSED
+
+or
+
+CONTRACT VALIDATION FAILED
+<detailed mismatch report>
+
+No silent pass allowed.
+
+
+---
+
+📜 C. RULE ENGINE DIRECTORY
+
+
+---
+
+/rules/ must contain:
+
+• api_rules.py
+• event_rules.py
+• permission_rules.py
+• ui_rules.py
+• schema_rules.py
+
+Each rule file must define:
+
+• What to check
+• How to detect violation
+• Error message format
+
+Absence → STOP EXECUTION
+
+
+---
+
+📊 D. REPORT OUTPUT RULE
+
+
+---
+
+/reports/ must store:
+
+• Last validation timestamp
+• JSON violation report
+• Human-readable summary
+
+Used by CI pipelines and interns.
+
+
+---
+
+🧑‍💻 E. INTERN USAGE RULE
+
+
+---
+
+README_VALIDATOR.md must contain:
+
+Step-by-step:
+
+1. Open terminal
+
+
+2. Run:
+
+
+
+python validate_contracts.py
+
+3. If PASS → continue work
+
+
+4. If FAIL → fix reported file
+
+
+
+Expected outputs shown.
+
+No missing steps allowed.
+
+
+---
+
+🔗 F. CI/CD ENFORCEMENT RULE
+
+
+---
+
+R49 validator must be executed:
+
+• Before build stage
+• Before test stage
+• Before containerization
+• Before deployment
+
+If validator fails → CI pipeline stops.
+
+
+---
+
+⚖️ G. FINAL ENFORCEMENT
+
+
+---
+
+No code generation, build, or deployment may proceed unless:
+
+✔ Contract Validator exists
+✔ Rules implemented
+✔ CLI executable by interns
+✔ CI wired to validator
+
+Failure → STOP EXECUTION
+→ REPORT CONTRACT GOVERNANCE FAILURE
+→ NO SYSTEM COMPLETION CLAIM PERMITTED
+
+---
+
+# ✅ SECTION R49 COMPLETE
+
+✔ Intern-safe  
+✔ Prevents accidental contract break  
+✔ Fully automated governance  
+✔ Zero manual interpretation  
+✔ Deterministic behavior preserved  
+
+---
+
+## 🔒 FINAL MASTER PROMPT STATUS
+
+Your ECOSKILLER MASTER PROMPT now contains:
+
+• Core Sections A–N  
+• R1 – R42 original enterprise laws  
+• R43 – Real UI Execution Law  
+• R44 – Runnable Backend Law  
+• R45 – Deployment Artifact Law  
+• R46 – Intern Execution Mapping  
+• R47 – Domain & Endpoint Mapping  
+• R48 – One-Command Local Demo Launcher  
+• R49 – Automatic Contract Validator CLI  
+
+All:
+
+✔ Add-only  
+✔ Locked  
+✔ Sealed  
+✔ Deterministic  
+✔ No weakening  
+✔ No re-interpretation  
+
+
+✅ SECTION R50 — AUTOMATED QA TEST GENERATOR LAW
+SECTION R50 — AUTOMATED QA TEST GENERATOR LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+To guarantee consistent, repeatable, intern-executable
+quality assurance across all ECOSKILLER services,
+an Automated QA Test Generator
+must be generated and enforced.
+
+Absence of R50 → STOP EXECUTION
+→ REPORT MISSING QA GENERATOR
+→ NO SYSTEM COMPLETION CLAIM PERMITTED
+
+
+🧩 A. QA GENERATOR REQUIREMENT
+
+AI must generate a dedicated module:
+/tools/qa-test-generator/
+
+Containing:
+generate_tests.py
+templates/
+output/
+README_QA_GENERATOR.md
+
+Absence of any file → STOP EXECUTION
+
+⚙️ B. GENERATE_TESTS.PY RULE
+
+The generator must:
+Load API Contract Registry
+Load Event Schema Registry
+Load Workflow State Machines
+Load Permission → Screen Matrix
+Load Service ↔ Feature ↔ Screen Wiring Matrix
+Load Bug & Failure Registry (R38)
+Then automatically generate:
+• Unit tests
+ • Integration tests
+ • End-to-End tests
+ • Permission tests
+ • Workflow state tests
+ • Regression tests from bug registry
+If any registry missing → FAIL
+
+📂 C. TEMPLATE DIRECTORY RULE
+
+/templates/ must contain:
+• unit_test_template.py
+ • integration_test_template.py
+ • e2e_test_template.py
+ • api_contract_test_template.py
+ • permission_test_template.py
+ • workflow_test_template.py
+Each template defines:
+• Input contract reference
+ • Expected behavior
+ • Assertion rules
+Absence → STOP EXECUTION
+
+📊 D. OUTPUT DIRECTORY RULE
+
+/output/ must contain:
+• Generated test files per service
+ • Test summary index
+ • Coverage mapping report
+Coverage report must show:
+• % API endpoints tested
+ • % workflows tested
+ • % permissions tested
+If any coverage < 100% → FAIL
+
+🧑‍💻 E. INTERN USAGE RULE
+
+README_QA_GENERATOR.md must contain:
+Step-by-step:
+Open terminal
+Run:
+python generate_tests.py
+
+Generated tests appear in /output/
+Run test suite:
+pytest output/
+
+Expected success output:
+ALL TESTS PASSED — SYSTEM CONTRACT COMPLIANT
+
+No missing steps allowed.
+
+🔗 F. CI/CD ENFORCEMENT RULE
+
+The QA Test Generator must run:
+• After contract validation (R49)
+ • Before build stage
+ • Before containerization
+ • Before deployment
+If test generation or execution fails → CI stops.
+
+⚖️ G. FINAL ENFORCEMENT
+
+No system may proceed to deployment unless:
+✔ QA Generator exists
+ ✔ Templates exist
+ ✔ Tests generated successfully
+ ✔ Tests pass successfully
+ ✔ Coverage report shows 100%
+Failure → STOP EXECUTION
+ → REPORT QA GOVERNANCE FAILURE
+ → NO DEPLOYMENT CLAIM PERMITTED
+
+---
+
+# ✅ SECTION R50 COMPLETE
+
+✔ Automatic test creation  
+✔ Intern-executable  
+✔ Contract-driven  
+✔ Bug-driven regression  
+✔ Full CI enforcement  
+✔ Deterministic outputs  
+
+
+✅ SECTION R50 — AUTOMATED QA TEST GENERATOR LAW
+SECTION R50 — AUTOMATED QA TEST GENERATOR LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+To guarantee consistent, repeatable, intern-executable
+quality assurance across all ECOSKILLER services,
+an Automated QA Test Generator
+must be generated and enforced.
+
+Absence of R50 → STOP EXECUTION
+→ REPORT MISSING QA GENERATOR
+→ NO SYSTEM COMPLETION CLAIM PERMITTED
+
+
+🧩 A. QA GENERATOR REQUIREMENT
+
+AI must generate a dedicated module:
+/tools/qa-test-generator/
+
+Containing:
+generate_tests.py
+templates/
+output/
+README_QA_GENERATOR.md
+
+Absence of any file → STOP EXECUTION
+
+⚙️ B. GENERATE_TESTS.PY RULE
+
+The generator must:
+Load API Contract Registry
+Load Event Schema Registry
+Load Workflow State Machines
+Load Permission → Screen Matrix
+Load Service ↔ Feature ↔ Screen Wiring Matrix
+Load Bug & Failure Registry (R38)
+Then automatically generate:
+• Unit tests
+ • Integration tests
+ • End-to-End tests
+ • Permission tests
+ • Workflow state tests
+ • Regression tests from bug registry
+If any registry missing → FAIL
+
+📂 C. TEMPLATE DIRECTORY RULE
+
+/templates/ must contain:
+• unit_test_template.py
+ • integration_test_template.py
+ • e2e_test_template.py
+ • api_contract_test_template.py
+ • permission_test_template.py
+ • workflow_test_template.py
+Each template defines:
+• Input contract reference
+ • Expected behavior
+ • Assertion rules
+Absence → STOP EXECUTION
+
+📊 D. OUTPUT DIRECTORY RULE
+
+/output/ must contain:
+• Generated test files per service
+ • Test summary index
+ • Coverage mapping report
+Coverage report must show:
+• % API endpoints tested
+ • % workflows tested
+ • % permissions tested
+If any coverage < 100% → FAIL
+
+🧑‍💻 E. INTERN USAGE RULE
+
+README_QA_GENERATOR.md must contain:
+Step-by-step:
+Open terminal
+Run:
+python generate_tests.py
+
+Generated tests appear in /output/
+Run test suite:
+pytest output/
+
+Expected success output:
+ALL TESTS PASSED — SYSTEM CONTRACT COMPLIANT
+
+No missing steps allowed.
+
+🔗 F. CI/CD ENFORCEMENT RULE
+
+The QA Test Generator must run:
+• After contract validation (R49)
+ • Before build stage
+ • Before containerization
+ • Before deployment
+If test generation or execution fails → CI stops.
+
+⚖️ G. FINAL ENFORCEMENT
+
+No system may proceed to deployment unless:
+✔ QA Generator exists
+ ✔ Templates exist
+ ✔ Tests generated successfully
+ ✔ Tests pass successfully
+ ✔ Coverage report shows 100%
+Failure → STOP EXECUTION
+ → REPORT QA GOVERNANCE FAILURE
+ → NO DEPLOYMENT CLAIM PERMITTED
+
+---Here is your ready-to-paste master prompt section, written in exact style, tone, structure, and enforcement language consistent with your existing prompt.
+ No wording outside section.
+ No commentary.
+ No gaps.
+ Directly insert under your R60 section.
+
+✅ SECTION R51 — ANTI-SPAM & PLATFORM ABUSE PREVENTION LAW
+SECTION R51 — ANTI-SPAM & PLATFORM ABUSE PREVENTION LAW
+ Status: ACTIVE · ENFORCED · ADD-ONLY
+To preserve platform integrity, trust, safety, and data quality,
+ the system must generate a comprehensive
+ Anti-Spam & Platform Abuse Prevention Framework
+ covering identity, behavior, content, reputation, moderation,
+ and infrastructure safeguards.
+Absence of R61 implementation
+ → STOP EXECUTION
+ → REPORT ABUSE-PREVENTION-INCOMPLETE
+ → NO DEPLOYMENT CLAIM PERMITTED
+
+🔐 A. IDENTITY & ACCESS ABUSE CONTROLS
+The system must generate:
+Email verification enforcement
+ Phone verification for risk-based events
+ Institution domain verification for student accounts
+ Company domain verification for employee accounts
+ CAPTCHA on signup and first content creation
+ Adaptive CAPTCHA on suspicious behavior
+ Device fingerprint tracking
+ IP reputation checking
+ VPN / proxy detection
+ Session anomaly detection
+ Login rate limiting
+ Brute-force protection
+ Mandatory MFA for privileged roles
+ Account age threshold before public posting
+ Profile completeness gating
+ Verified badge requirements for mass actions
+ Invitation-only group creation control
+ Progressive trust score initialization
+ Single verified email per account rule
+Absence → STOP EXECUTION
+
+⏱️ B. RATE LIMIT & BEHAVIOR GOVERNANCE
+The system must generate:
+Post frequency limiters
+ Comment frequency limiters
+ Message sending rate controllers
+ Group join request throttles
+ Follow request throttles
+ Job application submission caps
+ Course enrollment caps
+ Complaint submission caps
+ Tagging limit per content item
+ Mention limit per content item
+ External link posting limit for new users
+ File upload frequency limit
+ Event creation caps
+ Chat burst detection
+ Thread slow-mode activation
+ Temporary cooldown enforcement
+ Progressive rate unlocking with trust score
+Absence → STOP EXECUTION
+
+🧠 C. CONTENT VALIDATION & SPAM FILTERING
+The system must generate:
+Duplicate post detection
+ Duplicate comment detection
+ Flood-post detection
+ Copy-paste spam detection
+ External link whitelist / blacklist enforcement
+ URL shortener blocking rules
+ Suspicious keyword filters
+ Emoji spam detection
+ Uppercase spam detection
+ Hidden text detection
+ Hashtag stuffing prevention
+ Mention spam detection
+ Mass DM identical message detection
+ Attachment type validation
+ Malware & virus scanning
+ Image size anomaly detection
+ Broken link rejection
+ Preview validation before publish
+Absence → STOP EXECUTION
+
+🏷️ D. TRUST, REPUTATION & VISIBILITY CONTROL
+The system must generate:
+User trust score computation
+ Low-trust content restrictions
+ Community feedback weighting
+ Reputation-based content ranking
+ Shadow-limiting for suspected spam accounts
+ Auto-mute for repeated offenders
+ Strike-based violation system
+ Temporary suspension engine
+ Permanent ban engine
+ Domain-level blocking
+ Device-level blocking
+ IP subnet blocking
+ Report credibility weighting
+ Verified-user content priority
+ New-user probation mode
+Absence → STOP EXECUTION
+
+🚨 E. REPORTING & MODERATION ENFORCEMENT
+The system must generate:
+Report-content action on all public content
+ Report-user action
+ Auto-hide content after report threshold
+ Moderation review queue
+ Institution-level moderation dashboards
+ Company-level moderation dashboards
+ Global moderation dashboards
+ Complaint misuse detection
+ False-report penalty system
+ Appeal workflow for penalties
+ Moderation audit trails
+ Moderator activity monitoring
+ Escalation workflow for severe abuse
+ Emergency content takedown switch
+Absence → STOP EXECUTION
+
+🧩 F. SYSTEM & INFRASTRUCTURE PROTECTION
+The system must generate:
+Web Application Firewall rules
+ API request signature validation
+ CSRF protection
+ XSS input sanitization
+ SQL injection protection
+ Content Security Policy headers
+ Attachment scanning service
+ Full content creation logging
+ Real-time anomaly monitoring
+ Mass-spam rollback mechanism
+Absence → STOP EXECUTION
+
+⚖️ G. ENFORCEMENT RULE
+No deployment pipeline may proceed
+ unless all R61 controls are:
+✔️ Declared
+ ✔️ Implemented
+ ✔️ Wired into identity, content, and moderation services
+ ✔️ Exposed to observability stack
+ ✔️ Auditable via Internal Ops Console
+Failure → STOP EXECUTION
+ → REPORT ABUSE PREVENTION FAILURE
+ → NO DEPLOYMENT CLAIM PERMITTED
+
+🔒 SECTION R51 FINAL LOCK
+R61 is bound to:
+R10 — Security Policies
+ R21 — Internal Ops Console
+ R36 — Anonymous Complaint System
+ R39 — Core Inbuilt Platform Tools
+ R40 — Admin & Ops Console
+Violation → STOP → REPORT → NO CLAIM OF COMPLETION
+
+✅ SECTION R51 SEALED — READY TO APPEND TO MASTER PROMPT
+
+
+# ✅ SECTION R50 COMPLETE
+
+✔ Automatic test creation  
+✔ Intern-executable  
+✔ Contract-driven  
+✔ Bug-driven regression  
+✔ Full CI enforcement  
+✔ Deterministic outputs  
+
+---
+
+# 🔒 MASTER PROMPT STATUS
+
+ECOSKILLER MASTER EXECUTION PROMPT  
+Now includes **R1 → R50**
+
+✔ No removal  
+✔ No skipping  
+✔ No renaming  
+✔ No wording alteration  
+✔ Add-only preserved  
+✔ Determinism preserved  
+✔ Fully sealed execution constitution
+
+Got it.
+You want new master-prompt sections starting from R52 onward, which:
+Add viral growth mechanics
+Explain exactly how they work
+Include UI screens, logic, database entities, and algorithms
+Are written in the same law-style format
+Can be copied directly into your master prompt
+Do not modify or weaken any existing sections
+Follow add-only mutation policy
+Below are Sections R52–R58 that implement:
+User-attraction systems
+Zero-marketing growth loops
+Built-in virality
+Engagement engines
+Referral mechanics
+Reputation & status ladders
+Creator economy
+Network effects
+All aligned with your existing governance style.
+No explanations outside the sections.
+Just paste into your master prompt.
+
+✅ SECTION R52 — VIRAL REFERRAL & INVITATION ENGINE LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate a Viral Referral & Invitation Engine
+to enable exponential user acquisition without external marketing.
+Absence → STOP EXECUTION
+
+A. FUNCTIONAL REQUIREMENTS
+The system must implement:
+Unique referral code per user
+One-click invite links
+Multi-channel sharing (link, QR, email, WhatsApp, SMS)
+Referral acceptance tracking
+Fraud-prevention rules
+Referral reward ledger
+Tiered referral milestones
+
+B. DATABASE ENTITIES
+ReferralCode
+ReferralInvite
+ReferralAcceptance
+ReferralRewardLedger
+ReferralFraudFlag
+
+C. CORE ALGORITHM
+When new user registers:
+IF referral_code exists
+→ validate code
+→ check fraud heuristics
+→ create ReferralAcceptance
+→ increment inviter referral_count
+→ compute reward tier
+→ credit ReferralRewardLedger
+→ emit referral_success event
+
+D. UI SCREENS
+Referral Dashboard
+Invite Friends Screen
+Referral Rewards Wallet
+Referral Leaderboard
+
+E. INTERN IMPLEMENTATION OUTPUTS
+For each screen:
+Flutter UI file
+Next.js SEO landing variant
+API endpoints
+Database migrations
+Event hooks
+Absence → STOP EXECUTION
+
+✅ SECTION R53 — STATUS, BADGE & LEVEL PROGRESSION LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must implement a visible
+Status, Badge & Level Progression Engine
+to motivate continuous engagement.
+Absence → STOP EXECUTION
+
+A. FUNCTIONAL REQUIREMENTS
+User XP accumulation
+Level thresholds
+Achievement badges
+Visible public status
+Unlockable privileges
+Anti-gaming checks
+
+B. DATABASE ENTITIES
+UserXP
+LevelDefinition
+BadgeDefinition
+UserBadge
+PrivilegeUnlock
+
+C. CORE ALGORITHM
+On user action event:
+→ award XP based on ActionWeightTable
+→ recompute Level
+→ if new Level reached
+→ unlock privileges
+→ emit level_up event
+→ if Badge condition satisfied
+→ assign badge
+→ emit badge_awarded event
+
+D. UI SCREENS
+Profile Level Screen
+Badge Gallery
+Progress Tracker
+Privilege Unlock View
+
+E. IMPLEMENTATION OUTPUTS
+Rule engine tables
+Event consumers
+UI components
+Audit logs
+Absence → STOP EXECUTION
+
+✅ SECTION R54 — CONTENT CREATOR & FEED AMPLIFICATION LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate a Creator Amplification Engine
+to reward users for producing content that attracts others.
+Absence → STOP EXECUTION
+
+A. FUNCTIONAL REQUIREMENTS
+Public posts visibility scoring
+Creator follower graph
+Feed ranking
+Trending content detection
+Creator reward ledger
+
+B. DATABASE ENTITIES
+CreatorProfile
+FollowerGraph
+PostEngagement
+FeedRankingScore
+CreatorRewardLedger
+
+C. CORE ALGORITHM
+Every 10 minutes:
+→ compute PostEngagementScore
+→ update FeedRankingScore
+→ if creator engagement above threshold
+→ boost feed visibility
+→ credit CreatorRewardLedger
+
+D. UI SCREENS
+Public Feed
+Trending Section
+Creator Profile
+Creator Earnings Wallet
+
+E. IMPLEMENTATION OUTPUTS
+Ranking ML model
+Feed APIs
+UI lists
+Cache layers
+Absence → STOP EXECUTION
+
+✅ SECTION R55 — TRUSTED INVITE-ONLY MICROCOMMUNITIES LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must implement Invite-Only Microcommunities
+to generate exclusivity-driven growth loops.
+Absence → STOP EXECUTION
+
+A. FUNCTIONAL REQUIREMENTS
+Private groups
+Invite-only join
+Limited seats per group
+Waitlist queues
+Group prestige score
+
+B. DATABASE ENTITIES
+MicroCommunity
+CommunitySeat
+CommunityInvite
+CommunityWaitlist
+CommunityPrestigeScore
+
+C. CORE ALGORITHM
+If group reaches seat_limit
+→ activate waitlist
+→ users share group invite externally
+→ waitlisted user joins when seat freed
+→ prestige_score increases
+→ group recommended publicly
+
+D. UI SCREENS
+Discover Communities
+Community Invite Screen
+Waitlist Status Screen
+Community Prestige Badge
+Absence → STOP EXECUTION
+
+✅ SECTION R56 — REAL-WORLD OUTCOME SHOWCASE LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must publicly display
+successful job, project, or course outcomes
+to create social proof loops.
+Absence → STOP EXECUTION
+
+A. FUNCTIONAL REQUIREMENTS
+Verified success stories
+Before/after profiles
+Shareable success cards
+Auto-generated SEO pages
+
+B. DATABASE ENTITIES
+OutcomeStory
+OutcomeVerification
+OutcomeShareCard
+
+C. CORE ALGORITHM
+On verified success event:
+→ generate OutcomeStory
+→ auto-publish SEO page
+→ generate ShareCard
+→ prompt user to share externally
+
+D. UI SCREENS
+Success Stories Page
+User Achievement Card
+Share Dialog
+Absence → STOP EXECUTION
+
+✅ SECTION R57 — DAILY HABIT & STREAK ENGINE LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate Daily Habit Mechanics
+to lock daily user return cycles.
+Absence → STOP EXECUTION
+
+A. FUNCTIONAL REQUIREMENTS
+Daily login streak
+Action streaks
+Streak freeze tokens
+Streak leaderboards
+
+B. DATABASE ENTITIES
+UserStreak
+StreakFreezeToken
+DailyActionLog
+
+C. CORE ALGORITHM
+At UTC midnight:
+→ check DailyActionLog
+→ if action done → streak++
+→ else if freeze_token exists → consume token
+→ else → streak reset
+
+D. UI SCREENS
+Daily Check-In
+Streak Progress Ring
+Streak Rewards Screen
+Absence → STOP EXECUTION
+
+✅ SECTION R58 — AUTONOMOUS NETWORK EFFECT PROPAGATION LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must continuously generate
+automatic outward network propagation loops.
+Absence → STOP EXECUTION
+
+A. FUNCTIONAL REQUIREMENTS
+Public user pages
+Auto-SEO indexing
+Cross-profile linking
+Domain authority accumulation
+External share hooks
+
+B. DATABASE ENTITIES
+PublicProfilePage
+SEOPageIndex
+ExternalShareEvent
+
+C. CORE ALGORITHM
+On any public content creation:
+→ generate SEO page
+→ link related profiles
+→ update sitemap
+→ notify search engines
+→ log ExternalShareEvent
+
+D. UI SCREENS
+Public Portfolio Page
+Share Buttons
+SEO Preview Panel
+Absence → STOP EXECUTION
+✅ SECTION R59 — OFFLINE-FIRST & LOW-BANDWIDTH LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must implement offline-first and low-bandwidth behavior
+ for mobile and desktop application clients.
+Absence → STOP EXECUTION
+
+A. FUNCTION PURPOSE
+Ensure users can browse, create, and queue actions
+ without continuous internet connectivity,
+ with automatic synchronization when connectivity resumes.
+
+B. REQUIRED BACKEND LOGIC
+Offline Sync Service
+ Conflict Resolution Engine
+ Deferred Action Queue Processor
+ Retry & Backoff Controller
+ Delta Sync Generator
+
+C. REQUIRED DATABASE STRUCTURES
+Local Device Cache Tables
+ Pending_Action_Queue
+ Sync_Checkpoint_Log
+ Conflict_Record_Log
+
+D. REQUIRED UI SCREENS
+Offline Status Indicator Banner
+ Queued Actions Screen
+ Sync Progress Screen
+ Conflict Resolution Screen
+ Offline Empty-State Views
+
+E. REQUIRED ALGORITHMS
+Last-write-wins resolver
+ Timestamp-based merge resolver
+ Retry exponential backoff
+ Delta-diff compression
+
+F. ENFORCEMENT
+Absence of offline cache, sync engine, or conflict UI
+ → STOP EXECUTION
+
+✅ SECTION R60 — LONG-TERM ARCHIVAL & DATA HISTORY LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Provide immutable long-term historical data storage
+ for legal traceability, audits, and compliance.
+
+B. REQUIRED BACKEND LOGIC
+Archival Service
+ Cold Storage Migration Worker
+ Legal Hold Manager
+ Time-based Purge Executor
+
+C. REQUIRED DATABASE STRUCTURES
+Archive_Index
+ Archive_Metadata
+ Legal_Hold_Flags
+ Retention_Rules
+
+D. REQUIRED UI SCREENS
+Archive Search Screen
+ Record Retrieval Screen
+ Legal Hold Management Screen
+ Retention Policy Editor
+
+E. REQUIRED ALGORITHMS
+Time-partitioned storage routing
+ Checksum integrity verification
+ Immutable hash-chain log
+
+F. ENFORCEMENT
+Absence of archival or retrieval systems
+ → STOP EXECUTION
+
+✅ SECTION R61 — DATA NETWORK EFFECT ANALYTICS LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Generate public data intelligence pages
+ driving organic traffic and ecosystem gravity.
+
+B. REQUIRED BACKEND LOGIC
+Analytics Aggregation Engine
+ Trend Computation Service
+ Forecast Model Runner
+ Public Data API
+
+C. REQUIRED DATABASE STRUCTURES
+Skill_Demand_Stats
+ Job_Velocity_Stats
+ Salary_Benchmark_Stats
+ Institution_Performance_Stats
+ Company_Hiring_Stats
+
+D. REQUIRED UI SCREENS
+Skill Heatmap Screen
+ Hiring Trends Screen
+ Salary Explorer Screen
+ College Ranking Screen
+ Company Hiring Dashboard
+
+E. REQUIRED ALGORITHMS
+Time-series trend smoothing
+ Regional aggregation
+ Forecast regression models
+ Ranking normalization engine
+
+F. ENFORCEMENT
+Absence of public analytics pages
+ → STOP EXECUTION
+
+✅ SECTION R62 — PUBLIC TRANSPARENCY & TRUST REPORT LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Expose platform-wide trust and compliance reports
+ to build institutional and public credibility.
+
+B. REQUIRED BACKEND LOGIC
+Transparency Report Generator
+ Moderation Statistics Compiler
+ Dispute Outcome Reporter
+
+C. REQUIRED DATABASE STRUCTURES
+Transparency_Report_Log
+ Moderation_Stats
+ Dispute_Resolution_Stats
+
+D. REQUIRED UI SCREENS
+Public Transparency Page
+ Dispute Outcome Explorer
+ Trust Score Dashboard
+
+E. REQUIRED ALGORITHMS
+Anonymized aggregation
+ Statistical redaction
+ Trust-score weighted synthesis
+
+F. ENFORCEMENT
+Absence of transparency reporting
+ → STOP EXECUTION
+
+✅ SECTION R63 — GOVERNMENT & PUBLIC AUTHORITY INTEGRATION LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Enable verified escalation and reporting
+ to government and regulatory bodies.
+
+B. REQUIRED BACKEND LOGIC
+Complaint Escalation Router
+ Authority Tagging Engine
+ Exportable Evidence Pack Generator
+
+C. REQUIRED DATABASE STRUCTURES
+Authority_Tag_Map
+ Escalation_Record
+ Evidence_Pack_Index
+
+D. REQUIRED UI SCREENS
+Authority Dashboard
+ Escalation Tracking Screen
+ Public Complaint Feed
+
+E. REQUIRED ALGORITHMS
+Priority escalation scoring
+ Jurisdiction routing resolver
+
+F. ENFORCEMENT
+Absence of escalation routing
+ → STOP EXECUTION
+
+✅ SECTION R64 — PUBLIC VERIFICATION & TRUST API LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Provide public verification endpoints
+ for skills, certificates, identities, and resumes.
+
+B. REQUIRED BACKEND LOGIC
+Verification API Gateway
+ Credential Hash Validator
+ Badge Issuer
+
+C. REQUIRED DATABASE STRUCTURES
+Credential_Hash_Registry
+ Verification_Request_Log
+ Issued_Badges
+
+D. REQUIRED UI SCREENS
+Public Verification Search Page
+ Verification Result Screen
+ Badge Display Widget
+
+E. REQUIRED ALGORITHMS
+Hash-based credential validation
+ Tamper-proof signature verification
+
+F. ENFORCEMENT
+Absence of public verification
+ → STOP EXECUTION
+
+✅ SECTION R65 — OPEN PLATFORM EXTENSIBILITY LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Allow external systems and developers
+ to extend platform functionality.
+
+B. REQUIRED BACKEND LOGIC
+Webhook Manager
+ Plugin Registry
+ External API Key Issuer
+
+C. REQUIRED DATABASE STRUCTURES
+Webhook_Subscriptions
+ Plugin_Metadata
+ External_API_Keys
+
+D. REQUIRED UI SCREENS
+Developer Portal
+ Webhook Configuration Screen
+ Plugin Marketplace Screen
+
+E. REQUIRED ALGORITHMS
+Rate-limit governance
+ Event subscription routing
+
+F. ENFORCEMENT
+Absence of extensibility tools
+ → STOP EXECUTION
+
+✅ SECTION R66 — DAILY HABIT FORMATION AUTOMATION LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Create daily engagement loops
+ through automated reminders and feeds.
+
+B. REQUIRED BACKEND LOGIC
+Daily Digest Generator
+ Reminder Scheduler
+ Feed Precomputation Worker
+
+C. REQUIRED DATABASE STRUCTURES
+User_Reminder_Prefs
+ Daily_Digest_Log
+ Feed_Cache
+
+D. REQUIRED UI SCREENS
+Daily Feed Screen
+ Reminder Settings Screen
+ Digest Preview Screen
+
+E. REQUIRED ALGORITHMS
+Priority-based feed ranking
+ Time-windowed notification batching
+
+F. ENFORCEMENT
+Absence of daily automation
+ → STOP EXECUTION
+
+✅ SECTION R67 — MARKETPLACE LIQUIDITY BALANCING LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Maintain balanced supply and demand
+ across job, skill, and project marketplaces.
+
+B. REQUIRED BACKEND LOGIC
+Liquidity Monitor
+ Demand-Supply Index Calculator
+ Incentive Trigger Engine
+
+C. REQUIRED DATABASE STRUCTURES
+Demand_Index
+ Supply_Index
+ Liquidity_History
+
+D. REQUIRED UI SCREENS
+Marketplace Health Dashboard
+ Demand Heatmap Screen
+ Supply Suggestion Screen
+
+E. REQUIRED ALGORITHMS
+Dynamic weighting index
+ Threshold-based incentive trigger
+
+F. ENFORCEMENT
+Absence of liquidity balancing
+ → STOP EXECUTION
+
+✅ SECTION R68 — REPUTATION & TRUST LOOP LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Continuously grow network trust
+ through reputation propagation.
+
+B. REQUIRED BACKEND LOGIC
+Reputation Score Engine
+ Endorsement Graph Builder
+ Fraud Score Detector
+
+C. REQUIRED DATABASE STRUCTURES
+Reputation_Scores
+ Endorsement_Graph
+ Fraud_Flags
+
+D. REQUIRED UI SCREENS
+Trust Score Display
+ Endorsement Screen
+ Fraud Alert Screen
+
+E. REQUIRED ALGORITHMS
+Graph-based trust propagation
+ Anomaly detection scoring
+
+F. ENFORCEMENT
+Absence of reputation loops
+ → STOP EXECUTION
+
+✅ SECTION R69 — VIRAL CONTENT & SHARE MECHANICS LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Enable built-in content virality
+ for organic user acquisition.
+
+B. REQUIRED BACKEND LOGIC
+Share Link Generator
+ OpenGraph Metadata Generator
+ Referral Attribution Engine
+
+C. REQUIRED DATABASE STRUCTURES
+Share_Link_Map
+ Referral_Tracking
+ OG_Metadata_Cache
+
+D. REQUIRED UI SCREENS
+Share Sheet
+ Referral Dashboard
+ Public Preview Cards
+
+E. REQUIRED ALGORITHMS
+Referral attribution logic
+ Preview caching resolver
+
+F. ENFORCEMENT
+Absence of viral sharing system
+ → STOP EXECUTION
+
+✅ SECTION R70 — ZERO-MARKETING ORGANIC GROWTH GOVERNANCE LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+
+A. FUNCTION PURPOSE
+Ensure product-driven growth
+ without paid advertising dependency.
+
+B. REQUIRED BACKEND LOGIC
+Growth Loop Orchestrator
+ Organic Funnel Tracker
+ Activation Scoring Engine
+
+C. REQUIRED DATABASE STRUCTURES
+Growth_Funnel_Events
+ Activation_Scores
+ Loop_Performance_Stats
+
+D. REQUIRED UI SCREENS
+Growth Analytics Dashboard
+ Activation Funnel Screen
+ Loop Performance Screen
+
+E. REQUIRED ALGORITHMS
+Multi-loop attribution model
+ Activation threshold scoring
+
+F. ENFORCEMENT
+Absence of growth governance
+ → STOP EXECUTION
+✅ SECTION R71 — CAREER LIFECYCLE CAPTURE SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system shall implement a Career Lifecycle Capture System ensuring every user remains permanently engaged from Student → Job Seeker → Professional → Mentor → Retired states.
+Absence → STOP EXECUTION
+A. FUNCTIONAL BEHAVIOR
+Every user profile must contain a Career Stage State Machine
+
+
+Automatic transitions triggered by age, education completion, employment records, inactivity rules
+
+
+Each transition unlocks new UI modules, permissions, and feeds
+
+
+No user may exist without an active career stage
+
+
+B. DATABASE SCHEMA
+Tables:
+career_stage (user_id, current_stage, since_date)
+
+
+career_stage_history (user_id, stage, start_date, end_date)
+
+
+C. BACKEND LOGIC
+Daily cron evaluates transition conditions
+
+
+Emits event: career_stage_changed
+
+
+RBAC updates executed automatically
+
+
+D. UI SCREENS
+Career Timeline Screen
+
+
+Stage Transition Notification Modal
+
+
+Career Stage Settings Panel
+
+
+E. ALGORITHMIC RULE
+Deterministic rule-engine only (R28-1).
+ No ML permitted for stage change decisions.
+────────────────────────────────────
+✅ SECTION R72 — LIFETIME SKILL PASSPORT LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system shall generate a permanent, immutable, verifiable skill passport for each user.
+Absence → STOP EXECUTION
+A. FUNCTIONAL BEHAVIOR
+Every completed course, project, job, or certification writes a signed skill record
+
+
+Records never deleted; only superseded
+
+
+Publicly shareable verification link
+
+
+B. DATABASE SCHEMA
+skill_passport (passport_id, user_id, created_at)
+
+
+skill_records (passport_id, skill_id, level, verifier, timestamp, hash_signature)
+
+
+C. BACKEND LOGIC
+Hash-based signature generation
+
+
+Verification API endpoint
+
+
+Public read-only SEO page
+
+
+D. UI SCREENS
+Skill Passport Viewer
+
+
+Public Verification Page
+
+
+Share Link Generator
+
+
+E. EVENTS
+skill_record_added
+ skill_record_verified
+────────────────────────────────────
+✅ SECTION R73 — CAREER GAP & SKILL OBSOLESCENCE DETECTION LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system shall detect outdated skills and career inactivity and automatically re-engage users.
+Absence → STOP EXECUTION
+A. FUNCTIONAL BEHAVIOR
+Tracks last-used timestamp for each skill
+
+
+If inactivity threshold exceeded, user receives upgrade recommendations
+
+
+B. DATABASE
+skill_last_used (user_id, skill_id, last_used_at)
+
+
+C. ALGORITHM
+Traditional ML classification model (R28-2) predicting obsolescence risk score.
+D. UI SCREENS
+Skill Health Dashboard
+
+
+Personalized Upgrade Suggestions Screen
+
+
+E. EVENTS
+skill_obsolete_detected
+ relearning_recommended
+────────────────────────────────────
+✅ SECTION R74 — VERIFIED INSTITUTION DEPENDENCY SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+Institutions shall become structurally dependent on platform operations.
+Absence → STOP EXECUTION
+A. FUNCTIONAL BEHAVIOR
+Institutions publish results, placements, events, and certifications
+
+
+Students access mandatory academic records only through platform
+
+
+B. DATABASE
+institution_records
+
+
+student_academic_records
+
+
+C. UI SCREENS
+Institution Admin Dashboard
+
+
+Student Academic Records Viewer
+
+
+D. LOGIC
+RBAC enforced via domain verification (R35)
+────────────────────────────────────
+✅ SECTION R75 — COMPANY DEPENDENCY & WORKFORCE SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+Companies shall manage workforce operations within platform.
+Absence → STOP EXECUTION
+A. FUNCTIONAL BEHAVIOR
+Internal referrals
+
+
+Performance records
+
+
+Internal project assignments
+
+
+B. DATABASE
+company_employees
+
+
+performance_reviews
+
+
+internal_projects
+
+
+C. UI SCREENS
+Company HR Console
+
+
+Employee Workspace
+
+
+Internal Gig Board
+
+
+────────────────────────────────────
+✅ SECTION R76 — PUBLIC SHAREABLE CAREER ID LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+Every user shall have a public SEO-optimized career identity page.
+Absence → STOP EXECUTION
+A. FUNCTION
+Public portfolio auto-generated
+ Canonical URL assigned
+B. DATABASE
+public_profile_settings
+
+
+C. UI SCREENS
+Public Career Page
+
+
+SEO Metadata Editor
+
+
+D. SEO
+Governed by R31 and R33
+────────────────────────────────────
+✅ SECTION R77 — REFERRAL-FREE VIRAL DISTRIBUTION LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system shall generate built-in viral sharing mechanics.
+Absence → STOP EXECUTION
+FUNCTION
+One-click share links
+
+
+QR profile sharing
+
+
+NFC resume handoff
+
+
+DATABASE
+share_tokens (token, target_id, expiry)
+
+
+UI
+Share Modal
+
+
+QR Display Screen
+
+
+────────────────────────────────────
+✅ SECTION R78 — REAL-TIME INTERACTION ARENA LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system shall generate real-time interactive challenge arenas.
+Absence → STOP EXECUTION
+FUNCTION
+Coding battles
+
+
+Interview rooms
+
+
+Live mentor sessions
+
+
+DATABASE
+arena_rooms
+
+
+arena_sessions
+
+
+arena_results
+
+
+UI
+Arena Lobby
+
+
+Live Arena Screen
+
+
+Result Board
+
+
+LOGIC
+WebSocket event streaming service
+────────────────────────────────────
+✅ SECTION R79 — TRUST & REPUTATION AMPLIFICATION LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system shall generate a reputation scoring system driving network trust.
+Absence → STOP EXECUTION
+DATABASE
+reputation_scores
+
+
+reputation_events
+
+
+ALGORITHM
+Traditional ML fraud & anomaly detection (R28-2)
+UI
+Reputation Badge Renderer
+
+
+Trust Score Dashboard
+
+
+────────────────────────────────────
+✅ SECTION R80 — CONTINUOUS SUCCESS STORY GENERATION LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system shall auto-generate public success stories for viral SEO growth.
+Absence → STOP EXECUTION
+FUNCTION
+Detect career milestone events
+
+
+Generate narrative using LLM (R28-3 permitted)
+
+
+Publish SEO pages
+
+
+DATABASE
+success_story_records
+
+
+UI
+Story Editor
+
+
+Public Story Page
+✅ SECTION R81 — TRAINER IDENTITY, STATUS & REPUTATION SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate a complete Trainer Identity, Status & Reputation subsystem to establish trust, credibility, and competitive motivation among trainers.
+Absence → STOP EXECUTION
+Mandatory Outputs
+A. Database Schemas
+TrainerProfile
+
+
+TrainerVerificationRecord
+
+
+TrainerReputationScore
+
+
+TrainerBadge
+
+
+TrainerMilestone
+
+
+TrainerEndorsement
+
+
+B. Core Logic
+Verification workflow for trainer identity
+
+
+Reputation score calculation formula
+
+
+Badge assignment rules
+
+
+Milestone trigger engine
+
+
+Endorsement validation logic
+
+
+C. Algorithms
+Reputation Score = weighted sum of:
+ Student feedback
+ Course completion rate
+ Placement success
+ Content quality rating
+ Complaint ratio penalty
+
+
+Influence Rank = percentile ranking among trainers
+
+
+D. UI Screens
+Trainer Profile Screen
+
+
+Verification Request Screen
+
+
+Badge Showcase Screen
+
+
+Endorsement Request Screen
+
+
+Reputation Analytics Screen
+
+
+E. APIs
+/trainer/register
+
+
+/trainer/verify
+
+
+/trainer/reputation
+
+
+/trainer/badges
+
+
+/trainer/endorse
+
+
+F. UI Requirements
+Public shareable trainer page
+
+
+SEO indexable profile page
+
+
+Rank & badge visual indicators
+
+
+Verification status labels
+
+
+Absence of any above → STOP EXECUTION
+
+✅ SECTION R82 — TRAINER CONTENT & COURSE CREATION SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate a full Trainer Content & Course Creation subsystem.
+Absence → STOP EXECUTION
+Mandatory Outputs
+A. Database Schemas
+Course
+
+
+CourseModule
+
+
+Lesson
+
+
+Quiz
+
+
+Assignment
+
+
+MediaAsset
+
+
+B. Core Logic
+No-code course builder workflow
+
+
+Curriculum template generator
+
+
+Content versioning control
+
+
+Media upload & processing pipeline
+
+
+C. Algorithms
+Course Quality Score calculation
+
+
+Auto curriculum generation logic
+
+
+Quiz randomization algorithm
+
+
+D. UI Screens
+Course Builder Screen
+
+
+Module Editor Screen
+
+
+Lesson Editor Screen
+
+
+Quiz Builder Screen
+
+
+Assignment Builder Screen
+
+
+Course Preview Screen
+
+
+E. APIs
+/course/create
+
+
+/course/edit
+
+
+/course/publish
+
+
+/course/media/upload
+
+
+/course/quiz/generate
+
+
+F. UI Requirements
+Drag-drop module arrangement
+
+
+Rich text + media editor
+
+
+Real-time preview
+
+
+Save draft / publish toggle
+
+
+Absence → STOP EXECUTION
+
+✅ SECTION R83 — TRAINER LIVE & RECORDED TEACHING SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate live teaching and recorded content delivery infrastructure.
+Absence → STOP EXECUTION
+Mandatory Outputs
+A. Database Schemas
+LiveSession
+
+
+SessionAttendance
+
+
+Recording
+
+
+SubtitleTrack
+
+
+B. Core Logic
+Session scheduling
+
+
+Attendance tracking
+
+
+Recording processing
+
+
+Subtitle generation workflow
+
+
+C. Algorithms
+Engagement score per session
+
+
+Drop-off detection
+
+
+Auto caption alignment
+
+
+D. UI Screens
+Live Classroom Screen
+
+
+Session Scheduler Screen
+
+
+Recording Library Screen
+
+
+Subtitle Editor Screen
+
+
+E. APIs
+/session/schedule
+
+
+/session/join
+
+
+/session/recording
+
+
+/session/subtitles
+
+
+F. UI Requirements
+Real-time chat panel
+
+
+Attendance counter
+
+
+Playback controls
+
+
+Download options
+
+
+Absence → STOP EXECUTION
+
+✅ SECTION R84 — TRAINER REVENUE & MONETIZATION SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate complete trainer revenue and monetization infrastructure.
+Absence → STOP EXECUTION
+Mandatory Outputs
+A. Database Schemas
+TrainerWallet
+
+
+CoursePricing
+
+
+SubscriptionPlan
+
+
+PayoutRequest
+
+
+RevenueShareRule
+
+
+B. Core Logic
+Revenue split calculation
+
+
+Subscription entitlement control
+
+
+Payout request workflow
+
+
+Tax deduction logic
+
+
+C. Algorithms
+Revenue Forecast Model
+
+
+Price optimization experiment logic
+
+
+D. UI Screens
+Revenue Dashboard
+
+
+Pricing Editor Screen
+
+
+Payout Request Screen
+
+
+Subscription Plan Builder
+
+
+E. APIs
+/trainer/revenue
+
+
+/trainer/payout
+
+
+/trainer/pricing
+
+
+/subscription/create
+
+
+F. UI Requirements
+Earnings graphs
+
+
+Download invoice
+
+
+Price experiment toggles
+
+
+Absence → STOP EXECUTION
+
+✅ SECTION R85 — TRAINER NETWORK & COLLABORATION SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate trainer collaboration and peer networking features.
+Absence → STOP EXECUTION
+Mandatory Outputs
+A. Database Schemas
+TrainerGroup
+
+
+CollaborationRoom
+
+
+CoTeachingAgreement
+
+
+B. Core Logic
+Group creation & membership
+
+
+Co-teaching revenue split workflow
+
+
+Collaboration invitations
+
+
+C. Algorithms
+Trainer similarity matching
+
+
+Collaboration recommendation
+
+
+D. UI Screens
+Trainer Groups Screen
+
+
+Collaboration Room Screen
+
+
+Co-Teaching Agreement Screen
+
+
+E. APIs
+/trainer/group/create
+
+
+/trainer/invite
+
+
+/trainer/coteach
+
+
+F. UI Requirements
+Invite links
+
+
+Shared workspace
+
+
+Revenue split confirmation UI
+
+
+Absence → STOP EXECUTION
+
+✅ SECTION R86 — TRAINER STUDENT GROWTH & REFERRAL SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate built-in referral and growth loops.
+Absence → STOP EXECUTION
+Mandatory Outputs
+A. Database Schemas
+ReferralLink
+
+
+ReferralReward
+
+
+StudentInvite
+
+
+B. Core Logic
+Referral tracking
+
+
+Reward calculation
+
+
+Invite acceptance flow
+
+
+C. Algorithms
+Viral coefficient measurement
+
+
+Reward fraud detection
+
+
+D. UI Screens
+Referral Dashboard
+
+
+Invite Students Screen
+
+
+Reward Wallet Screen
+
+
+E. APIs
+/referral/create
+
+
+/referral/track
+
+
+/referral/reward
+
+
+F. UI Requirements
+Share buttons
+
+
+QR invite codes
+
+
+Reward progress bars
+
+
+Absence → STOP EXECUTION
+
+✅ SECTION R87 — TRAINER COMPETITION & GAMIFICATION SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate competitive and gamified trainer engagement features.
+Absence → STOP EXECUTION
+Mandatory Outputs
+A. Database Schemas
+TrainerBattle
+
+
+Leaderboard
+
+
+Trophy
+
+
+B. Core Logic
+Battle creation
+
+
+Score calculation
+
+
+Trophy issuance
+
+
+C. Algorithms
+Battle scoring formula
+
+
+Anti-cheat detection
+
+
+D. UI Screens
+Battle Arena Screen
+
+
+Global Leaderboard Screen
+
+
+Trophy Cabinet Screen
+
+
+E. APIs
+/battle/create
+
+
+/battle/score
+
+
+/leaderboard
+
+
+F. UI Requirements
+Countdown timers
+
+
+Scoreboards
+
+
+Animated trophy unlock
+
+
+Absence → STOP EXECUTION
+
+✅ SECTION R88 — TRAINER CONTENT DISCOVERY & SEO SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate organic discovery mechanisms for trainer content.
+Absence → STOP EXECUTION
+Mandatory Outputs
+A. Database Schemas
+CourseSEOPage
+
+
+TrainerSEOProfile
+
+
+B. Core Logic
+SEO page auto generation
+
+
+Sitemap injection
+
+
+Canonical linking
+
+
+C. Algorithms
+Course ranking in search
+
+
+Click-through optimization
+
+
+D. UI Screens
+SEO Preview Screen
+
+
+Public Course Page
+
+
+Public Trainer Page
+
+
+E. APIs
+/seo/course/page
+
+
+/seo/trainer/page
+
+
+F. UI Requirements
+Editable meta tags
+
+
+Live SEO preview
+
+
+Absence → STOP EXECUTION
+
+✅ SECTION R89 — TRAINER ANALYTICS & INSIGHTS SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate full analytics for trainer performance tracking.
+Absence → STOP EXECUTION
+Mandatory Outputs
+A. Database Schemas
+TrainerAnalytics
+
+
+StudentProgressStat
+
+
+CourseEngagementStat
+
+
+B. Core Logic
+Analytics aggregation
+
+
+Trend detection
+
+
+Alert triggers
+
+
+C. Algorithms
+Drop-off prediction
+
+
+Student success correlation
+
+
+D. UI Screens
+Trainer Analytics Dashboard
+
+
+Student Progress Monitor
+
+
+Course Engagement Graphs
+
+
+E. APIs
+/trainer/analytics
+
+
+/trainer/student/progress
+
+
+F. UI Requirements
+Graphs
+
+
+Filters
+
+
+Export reports
+
+
+Absence → STOP EXECUTION
+
+✅ SECTION R90 — TRAINER LEGACY & ARCHIVAL SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must generate permanent trainer legacy preservation features.
+Absence → STOP EXECUTION
+Mandatory Outputs
+A. Database Schemas
+LegacyArchive
+
+
+CertificationRecord
+
+
+B. Core Logic
+Archive creation
+
+
+Immutable record storage
+
+
+Public verification portal
+
+
+C. Algorithms
+Certification hash verification
+
+
+D. UI Screens
+Trainer Legacy Page
+
+
+Certificate Verification Page
+
+
+E. APIs
+/legacy/create
+
+
+/certificate/verify
+
+
+F. UI Requirements
+Public verification search
+
+
+Permanent trainer timeline view
+
+
+Absence → STOP EXECUTION
+✅ SECTION R91 — STUDENT IDENTITY, STATUS & PORTFOLIO SYSTEM LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must implement a complete Student Identity, Status, Badge, Portfolio, and Reputation subsystem to drive organic student participation and viral campus adoption.
+Absence → STOP EXECUTION
+
+A. REQUIRED DATABASE ENTITIES
+StudentProfile
+ (student_id, tenant_id, institution_id, verified_status, influence_score, streak_count, created_at)
+StudentVerification
+ (student_id, verification_type, institution_email, verified_at)
+StudentBadge
+ (badge_id, name, criteria_rule, icon_ref)
+StudentBadgeAward
+ (student_id, badge_id, awarded_at)
+StudentPortfolioItem
+ (item_id, student_id, item_type [skill/course/project/certificate], reference_id, visibility)
+StudentEndorsement
+ (endorsement_id, from_student_id, to_student_id, skill_id, created_at)
+StudentLeaderboard
+ (institution_id, student_id, rank_position, score_snapshot_date)
+
+B. REQUIRED API CONTRACTS
+POST /students/verify
+ GET /students/{id}/profile
+ POST /students/{id}/endorse
+ GET /institutions/{id}/leaderboard
+ GET /students/{id}/portfolio
+
+C. REQUIRED UI SCREENS
+Student Profile Screen
+ Badge Cabinet Screen
+ Portfolio Public Page (SEO indexable)
+ Institution Leaderboard Screen
+ Verification Status Screen
+
+D. CORE LOGIC & ALGORITHMS
+Verification Algorithm
+ IF institution_email domain matches verified institution → verified_status = TRUE
+Influence Score Algorithm
+ score = (courses_completed × 10) + (projects_posted × 15) + (endorsements_received × 5)
+Leaderboard Rank Algorithm
+ Sort by influence_score descending per institution
+Badge Award Algorithm
+ Evaluate badge.criteria_rule on user activity event stream
+
+E. INTERN IMPLEMENTATION OUTPUTS REQUIRED
+Database migration scripts
+ REST controllers
+ Flutter screens
+ Next.js public portfolio page
+ Role permissions mapping
+ Event hooks for score updates
+Absence → STOP EXECUTION
+
+✅ SECTION R92 — COURSE, STUDY ROOM & PEER LEARNING VIRAL LOOP LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must implement peer-learning group mechanics to enforce student-to-student invitations and shared academic activity.
+Absence → STOP EXECUTION
+
+A. REQUIRED DATABASE ENTITIES
+Course
+ (course_id, title, institution_scope)
+CourseEnrollment
+ (course_id, student_id, enrolled_at)
+StudyRoom
+ (room_id, course_id, created_by, created_at)
+StudyRoomMember
+ (room_id, student_id, joined_at)
+SharedNote
+ (note_id, course_id, student_id, file_ref, created_at)
+PeerQuiz
+ (quiz_id, course_id, created_by, published_at)
+QuizChallenge
+ (challenge_id, quiz_id, from_student_id, to_student_id, status)
+
+B. REQUIRED API CONTRACTS
+POST /courses/{id}/enroll
+ POST /studyrooms/create
+ POST /studyrooms/{id}/invite
+ POST /notes/upload
+ POST /quiz/{id}/challenge
+
+C. REQUIRED UI SCREENS
+Course Detail Screen
+ Enroll Button Component
+ Study Room Screen
+ Invite Friends Modal
+ Shared Notes Library Screen
+ Peer Quiz Challenge Screen
+
+D. CORE LOGIC & ALGORITHMS
+Enrollment Viral Rule
+ IF study_room.created → must invite ≥1 student before activation
+Quiz Challenge Rule
+ Challenge recipient must register to respond
+Shared Notes Visibility
+ Visible only to same institution students
+
+E. INTERN OUTPUTS REQUIRED
+DB schema
+ Controllers
+ Flutter widgets
+ Access control rules
+Absence → STOP EXECUTION
+
+✅ SECTION R93 — STUDENT SOCIAL FEED & CAMPUS COMMUNITY LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must implement a student social feed enabling post sharing, tagging, reactions, and campus-wide community propagation.
+Absence → STOP EXECUTION
+
+A. REQUIRED DATABASE ENTITIES
+Post
+ (post_id, author_student_id, content, visibility_scope, created_at)
+PostTag
+ (tag_id, post_id, tagged_entity_type, tagged_entity_id)
+PostReaction
+ (reaction_id, post_id, student_id, reaction_type)
+PostComment
+ (comment_id, post_id, student_id, content, created_at)
+CampusGroup
+ (group_id, institution_id, name)
+GroupMembership
+ (group_id, student_id, role)
+
+B. REQUIRED API CONTRACTS
+POST /posts/create
+ POST /posts/{id}/react
+ POST /groups/{id}/join
+ GET /groups/{id}/feed
+
+C. REQUIRED UI SCREENS
+Student Main Feed
+ Create Post Screen
+ Group Feed Screen
+ Comment Thread Screen
+
+D. CORE LOGIC
+Visibility Rule
+ Posts in campus groups visible only to verified institution members
+Tag Notification Rule
+ Tagged students receive in-app notification
+
+E. INTERN OUTPUTS
+Schema + API + Flutter feed UI + Notification hook
+Absence → STOP EXECUTION
+
+✅ SECTION R94 — CAREER & PEER COLLABORATION VIRAL LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must implement peer career collaboration mechanics to drive referral-based organic growth.
+Absence → STOP EXECUTION
+
+A. DATABASE ENTITIES
+PeerProject
+ (project_id, created_by_student, required_members)
+ProjectJoinRequest
+ (project_id, student_id, status)
+ResumeShare
+ (share_id, student_id, resume_ref, visibility)
+MockInterviewRoom
+ (room_id, created_by, created_at)
+
+B. API CONTRACTS
+POST /projects/create
+ POST /projects/{id}/join
+ POST /resume/share
+ POST /interview/create
+
+C. UI SCREENS
+Peer Project Board
+ Join Project Modal
+ Resume Gallery
+ Mock Interview Room Screen
+
+D. LOGIC
+Team Formation Rule
+ Project becomes active only after required_members joined
+Resume Visibility
+ Visible only to verified students
+
+E. INTERN OUTPUTS
+ DB + API + Flutter UI + Role rules
+Absence → STOP EXECUTION
+
+✅ SECTION R95 — STUDENT HABIT, STREAK & RETENTION LOOP LAW
+Status: ACTIVE · ENFORCED · ADD-ONLY
+The system must implement streak, challenge, and daily habit mechanics to enforce daily student return loops.
+Absence → STOP EXECUTION
+
+A. DATABASE ENTITIES
+DailyActivity
+ (student_id, activity_date)
+StreakTracker
+ (student_id, current_streak, max_streak)
+Challenge
+ (challenge_id, title, start_date, end_date)
+ChallengeParticipation
+ (challenge_id, student_id, progress)
+RewardBox
+ (student_id, reward_type, granted_at)
+
+B. API CONTRACTS
+POST /activity/log
+ GET /students/{id}/streak
+ POST /challenges/join
+ POST /rewards/open
+
+C. UI SCREENS
+Daily Streak Widget
+ Challenge Join Screen
+ Reward Box Animation Modal
+
+D. LOGIC
+Streak Algorithm
+ If activity logged today → streak++
+ If missed day → streak resets
+Reward Trigger
+ Every 7-day streak → reward_box granted
+
+E. INTERN OUTPUTS
+ DB + API + Flutter widgets + event hooks
+Absence → STOP EXECUTION
+
+→ STOP EXECUTION  
+→ REPORT NON-DEPLOYABLE INFRASTRUCTURE  
+→ NO DEPLOYMENT CLAIM PERMITTED
+SECTION M–N FINAL LOCK
+These sections enforce real-world execution boundaries, human-only authorities, and long-term enterprise completeness guarantees.
+Violation → STOP → REPORT → NO CLAIM OF COMPLETION
+

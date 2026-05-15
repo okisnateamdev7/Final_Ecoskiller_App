@@ -1,0 +1,381 @@
+# MinIO MCP Server - Helm Values (Production Configuration)
+# 
+# Usage:
+#   helm install minio-mcp ecoskiller-charts/minio-mcp -f values-prod.yaml
+#   helm upgrade minio-mcp ecoskiller-charts/minio-mcp -f values-prod.yaml
+
+# ============= DEPLOYMENT CONFIGURATION =============
+
+# Number of replicas
+replicaCount: 3
+
+# Update strategy
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 0
+
+# ============= IMAGE CONFIGURATION =============
+
+image:
+  # Use Harbor private registry
+  repository: harbor.ecoskiller.internal/ecoskiller/minio-mcp-server
+  tag: "2.0"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: harbor-credentials
+
+# ============= RESOURCE CONFIGURATION =============
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 512Mi
+  limits:
+    cpu: 2000m
+    memory: 1Gi
+
+# ============= JVM TUNING =============
+
+jvm:
+  heapMin: 512m
+  heapMax: 1024m
+  gcFlags: "-XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+ParallelRefProcEnabled"
+
+# ============= AUTOSCALING =============
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+  
+  # Scaling behavior
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+      - type: Percent
+        value: 100
+        periodSeconds: 15
+      - type: Pods
+        value: 2
+        periodSeconds: 15
+
+# ============= MININO CONNECTION =============
+
+minio:
+  # MinIO endpoint (use Kubernetes DNS for internal cluster access)
+  endpoint: "minio.default.svc.cluster.local:9000"
+  
+  # Enable SSL/TLS (recommended for production)
+  useSSL: true
+  
+  # Credentials (MUST be provided via Helm --set or sealed-secrets)
+  # Example: --set minio.accessKey=$(kubectl get secret -o jsonpath='{.data.access-key}' minio-credentials | base64 -d)
+  accessKey: ""  # OVERRIDE in sealed-secrets
+  secretKey: ""  # OVERRIDE in sealed-secrets
+
+# ============= TENANT & RBAC =============
+
+rbac:
+  # Tenant ID for multi-tenant isolation
+  tenantId: "default"
+  
+  # Service account name
+  serviceAccount: "minio-mcp-server"
+  
+  # Create service account if not exists
+  create: true
+
+# ============= LOGGING & MONITORING =============
+
+logging:
+  level: "INFO"
+  format: "json"  # JSON logging for structured parsing
+  outputPath: "/var/log/minio-mcp/server.log"
+
+monitoring:
+  # Prometheus metrics endpoint
+  metrics:
+    enabled: true
+    port: 9090
+    path: "/metrics"
+    interval: "30s"
+  
+  # Service monitor for Prometheus Operator
+  serviceMonitor:
+    enabled: true
+    namespace: monitoring
+    interval: 30s
+    scrapeTimeout: 10s
+
+# ============= SECURITY =============
+
+securityContext:
+  # Pod-level security context
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 1000
+  seccompProfile:
+    type: RuntimeDefault
+
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: false
+  capabilities:
+    drop:
+    - ALL
+
+# ============= PERSISTENCE =============
+
+persistence:
+  # Use ephemeral storage for stateless operations
+  enabled: false  # MinIO stores data, not this server
+
+# ============= NETWORK POLICIES =============
+
+networkPolicy:
+  enabled: true
+  
+  # Allow ingress from MCP clients
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: core
+    - namespaceSelector:
+        matchLabels:
+          name: analytics
+  
+  # Allow egress to MinIO
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: storage
+    ports:
+    - protocol: TCP
+      port: 9000
+
+# ============= POD DISRUPTION BUDGET =============
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+# ============= AFFINITY & TOPOLOGY =============
+
+affinity:
+  # Pod anti-affinity for high availability
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - minio-mcp-server
+        topologyKey: kubernetes.io/hostname
+  
+  # Node affinity for specific node pools
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: workload
+          operator: In
+          values:
+          - core
+        - key: zone
+          operator: In
+          values:
+          - us-central1-a
+          - us-central1-b
+
+# ============= PROBES =============
+
+probes:
+  startup:
+    enabled: true
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+  
+  liveness:
+    enabled: true
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  
+  readiness:
+    enabled: true
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 2
+
+# ============= INGRESS =============
+
+ingress:
+  enabled: false  # MCP is stdio-based, no HTTP ingress needed
+  # If needed for gRPC or metrics:
+  # className: nginx
+  # annotations:
+  #   cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  # hosts:
+  # - host: minio-mcp.ecoskiller.com
+  #   paths:
+  #   - path: /
+  #     pathType: Prefix
+  # tls:
+  # - secretName: minio-mcp-tls
+  #   hosts:
+  #   - minio-mcp.ecoskiller.com
+
+# ============= ENVIRONMENT VARIABLES =============
+
+env:
+  # Logging
+  LOG_LEVEL: "INFO"
+  LOG_FORMAT: "json"
+  
+  # JVM
+  JAVA_OPTS: "-XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xms512m -Xmx1024m"
+  
+  # Performance
+  MAX_POOL_CONNECTIONS: "50"
+  CONNECTION_TIMEOUT_MS: "30000"
+  READ_TIMEOUT_MS: "60000"
+  
+  # Security
+  ENABLE_AUDIT_LOG: "true"
+  AUDIT_LOG_PATH: "/var/log/minio-mcp/audit.log"
+
+# ============= ENVIRONMENT SECRETS =============
+
+envSecrets:
+  minio:
+    name: minio-mcp-credentials
+    keys:
+    - MINIO_ENDPOINT
+    - MINIO_ACCESS_KEY
+    - MINIO_SECRET_KEY
+    - TENANT_ID
+
+# ============= CONFIG MAPS =============
+
+configMaps:
+  minio-mcp-config:
+    LOG_LEVEL: "INFO"
+    JAVA_OPTS: "-XX:+UseG1GC -Xms512m -Xmx1024m"
+
+# ============= RBAC BINDING =============
+
+rbacBinding:
+  # Allow service account to read minio-mcp-credentials secret
+  rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get"]
+    resourceNames: ["minio-mcp-credentials"]
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get"]
+    resourceNames: ["minio-mcp-config"]
+
+# ============= LABELS & ANNOTATIONS =============
+
+labels:
+  app: minio-mcp-server
+  version: "2.0"
+  component: storage
+  tier: backend
+
+annotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/port: "9090"
+  prometheus.io/path: "/metrics"
+  vault.hashicorp.com/agent-inject: "true"
+  vault.hashicorp.com/agent-inject-secret-minio: "secret/prod/minio"
+
+# ============= TOLERATIONS =============
+
+tolerations:
+  # Allow deployment on tainted nodes (if needed)
+  - key: workload
+    operator: Equal
+    value: batch
+    effect: NoSchedule
+
+# ============= PRIORITY CLASS =============
+
+priorityClassName: "high-priority"
+
+# ============= NAMESPACE =============
+
+namespace: minio-mcp
+
+# ============= SERVICE =============
+
+service:
+  type: ClusterIP
+  port: 9000
+  targetPort: 9000
+  
+  metricsPort: 9090
+  metricsTargetPort: 9090
+
+# ============= TESTING & CI/CD =============
+
+# Test configuration for staging environment
+test:
+  enabled: false
+  env:
+    LOG_LEVEL: "DEBUG"
+    JAVA_OPTS: "-XX:+UseG1GC -Xms256m -Xmx512m"
+
+# ============= DEPLOYMENT OVERRIDES =============
+
+# Override for different environments
+environments:
+  staging:
+    replicaCount: 2
+    autoscaling:
+      minReplicas: 2
+      maxReplicas: 5
+    resources:
+      requests:
+        cpu: 250m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  
+  production:
+    replicaCount: 3
+    autoscaling:
+      minReplicas: 3
+      maxReplicas: 10
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 2000m
+        memory: 1Gi
+
+# ============= END OF VALUES =============

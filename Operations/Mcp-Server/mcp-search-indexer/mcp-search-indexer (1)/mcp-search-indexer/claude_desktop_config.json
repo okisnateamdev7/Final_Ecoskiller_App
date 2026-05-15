@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcp-search-indexer": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-search-indexer-1.0.0.jar"],
+      "env": {
+        "ENV":            "prod",
+        "AUDIT_LOG_PATH": "/var/log/ecoskiller/mcp-search-indexer-audit.log"
+      }
+    }
+  }
+}

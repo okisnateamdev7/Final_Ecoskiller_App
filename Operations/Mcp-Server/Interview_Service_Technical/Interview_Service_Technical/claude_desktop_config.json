@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ecoskiller-interview-service": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-interview-service/interview-service-mcp.jar"],
+      "env": {
+        "KEYCLOAK_JWKS_URL": "https://auth.ecoskiller.internal/realms/ecoskiller/protocol/openid-connect/certs",
+        "LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}

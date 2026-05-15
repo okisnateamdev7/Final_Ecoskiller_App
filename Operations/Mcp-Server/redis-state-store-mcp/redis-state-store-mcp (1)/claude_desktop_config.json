@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "redis-state-store": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/redis-state-store-mcp-1.0.0.jar"],
+      "env": {
+        "REDIS_HOST":         "redis.realtime.svc.cluster.local",
+        "REDIS_PORT":         "6379",
+        "REDIS_PASSWORD":     "your-redis-password-from-k8s-secret",
+        "REDIS_TLS_ENABLED":  "true",
+        "REDIS_TLS_CA_PATH":  "/etc/ssl/redis/ca.jks",
+        "REDIS_DB":           "0",
+        "ENV":                "prod",
+        "AUDIT_LOG_PATH":     "/var/log/ecoskiller/redis-mcp-audit.log"
+      }
+    }
+  }
+}

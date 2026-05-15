@@ -1,0 +1,25 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: mcp-03-security
+
+mcp:
+  server:
+    name: mcp-03-security
+    version: "1.0.0"
+    description: "Ecoskiller CAT-03 — Security, Tenancy & Migration Control"
+    namespace: core
+    priority: CRITICAL
+
+logging:
+  level:
+    com.ecoskiller: DEBUG
+    root: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

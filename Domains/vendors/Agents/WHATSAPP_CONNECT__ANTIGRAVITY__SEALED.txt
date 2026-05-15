@@ -1,0 +1,982 @@
+
+╔══════════════════════════════════════════════════════════════════════════════════════╗
+║         🔒 SEALED & LOCKED MASTER PROMPT — WHATSAPP_CONNECT MODULE                 ║
+║              EXECUTION_ENGINE = ANTIGRAVITY  ·  PLATFORM = ECOSKILLER              ║
+╚══════════════════════════════════════════════════════════════════════════════════════╝
+
+PROMPT_CLASS              = WHATSAPP_CONNECT_LOCK
+EXECUTION_ENGINE          = ANTIGRAVITY
+PARENT_PROMPT             = ECOSKILLER_MASTER_SEALED
+SIBLING_PROMPTS           = MARKETING_CONNECT (peer, not parent)
+SCOPE                     = WHATSAPP_BUSINESS_API_INTEGRATION_LAYER
+MUTATION_POLICY           = ADD_ONLY
+CREATIVE_INTERPRETATION   = FORBIDDEN
+ASSUMPTION_FILLING        = FORBIDDEN
+DEFAULT_BEHAVIOR          = DENY
+FAILURE_MODE              = STOP_EXECUTION
+INHERITANCE_MODE          = STRICT
+  → Inherits: RBAC + ABAC, MFA, Session Management, Tenant Isolation,
+              Encryption at Rest, Domain Isolation, Audit Immutability,
+              Four-Stage Model, Async Event Architecture
+  → NO DUPLICATION of parent rules allowed
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🧩 MODULE IDENTITY (NON-NEGOTIABLE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MODULE_NAME               = WHATSAPP_CONNECT
+MODULE_TYPE               = COMMUNICATION_CHANNEL_LAYER
+MODULE_CATEGORY           =
+  - WhatsApp Business API Integration (Meta Cloud API)
+  - WABA Account & Tenant Namespace Management
+  - HSM Template Message Engine
+  - Interactive Message Engine (Buttons, Lists, Flows)
+  - Conversational Bot / Automation Layer
+  - Opt-In / Opt-Out Lifecycle Management
+  - Webhook Ingestion & Event Routing Engine
+  - Message Delivery Tracking & Analytics
+  - Media Message Handler
+  - Compliance & Policy Enforcement Layer
+
+PURPOSE =
+  Integrate WhatsApp Business API (Meta Cloud API v18+) as a first-class
+  communication channel into the Ecoskiller platform. This module connects
+  platform lifecycle events (jobs, skills, GD, gamification, ERP) to
+  WhatsApp notifications, transactional messages, interactive bots,
+  and conversational flows — all within a multi-tenant, compliance-enforced,
+  fully async architecture.
+
+  WHATSAPP_CONNECT does NOT own notification routing.
+  It is a CHANNEL ADAPTER registered with the Notification Service and
+  MARKETING_CONNECT. All dispatch is triggered via Kafka events.
+
+ASYNC_MANDATORY           = TRUE (inherits Global Async Architecture Law)
+SYNCHRONOUS_DISPATCH      = FORBIDDEN
+TENANT_ISOLATION          = HARD (per-WABA namespace per tenant)
+WABA_OWNERSHIP            = PLATFORM_MANAGED (tenant sub-accounts, not shared)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  MODULE BOUNDARY DECLARATION (HARD LOCK)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHATSAPP_CONNECT is a DEDICATED CHANNEL ADAPTER MODULE. It:
+
+✅ ALLOWED:
+  - Receive dispatch commands via Kafka from Notification Service
+  - Receive dispatch commands via Kafka from MARKETING_CONNECT
+  - Register, manage, and rotate WABA credentials per tenant
+  - Submit, approve, and version HSM message templates (Meta API)
+  - Send template messages (transactional, marketing, authentication)
+  - Send interactive messages (buttons, list pickers, reply buttons)
+  - Send media messages (image, video, document, audio)
+  - Receive and route inbound WhatsApp messages (webhooks)
+  - Manage user opt-in and opt-out state (write to own DB table only)
+  - Track message status: sent, delivered, read, failed
+  - Expose delivery analytics to Analytics Service (read-only push)
+  - Run pre-defined conversational flows (bot engine)
+  - Trigger platform actions from inbound bot replies (via event emit)
+  - Enforce per-tenant and per-user rate limits
+  - Handle webhook signature validation (HMAC-SHA256, Meta standard)
+
+🚫 FORBIDDEN:
+  - Sending messages to users who have NOT opted in
+  - Sending marketing messages without MARKETING template category
+  - Sharing phone numbers across tenant namespaces
+  - Storing message body content beyond delivery confirmation window
+    (72hr max for compliance — then purge or anonymize)
+  - Free-form messaging outside 24-hour customer service window
+    without an approved template
+  - Calling Meta API synchronously from API endpoints
+    (all calls MUST go through async job queue)
+  - Bypassing opt-out — once opted out, ZERO messages regardless of
+    campaign type, admin override, or tenant instruction
+  - Writing to User Service, Job Service, or any platform service DB
+  - Cross-tenant WABA credential sharing
+  - Storing WhatsApp phone numbers in plaintext outside encrypted vault
+  - Accepting inbound webhooks without HMAC verification
+  - Sending bulk messages outside approved rate windows
+  - Any action that violates Meta WhatsApp Business Policy
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2️⃣  TECHNICAL ARCHITECTURE (FIXED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MICROSERVICE_NAME         = whatsapp-connect-service
+LANGUAGE                  = Go (primary microservice)
+                            Node.js (webhook receiver sub-process)
+                            Python (bot NLP sub-module, optional Stage 3)
+DB_PRIMARY                = PostgreSQL (whatsapp schema, tenant-partitioned)
+DB_CACHE                  = Redis
+  → Conversation session state (24hr window TTL)
+  → Rate limit counters (per tenant, per user, per template)
+  → Deduplication cache (idempotency keys, 24hr TTL)
+EVENT_BUS                 = Kafka
+  → Subscriptions: notification.dispatch.whatsapp, marketing.dispatch.whatsapp,
+                   user.opted_out, user.deleted, campaign.triggered
+  → Publishes:    whatsapp.message.sent, whatsapp.message.delivered,
+                  whatsapp.message.read, whatsapp.message.failed,
+                  whatsapp.inbound.received, whatsapp.bot.action.triggered,
+                  whatsapp.optin.changed
+QUEUE                     = BullMQ (backed by Redis)
+  → whatsapp-outbound-queue  (per-tenant partitioned)
+  → whatsapp-inbound-queue   (webhook payload processing)
+  → whatsapp-template-sync-queue (template approval polling)
+SECRETS_VAULT             = HashiCorp Vault (HSM-backed)
+  → WABA access tokens (per tenant, encrypted, rotated ≤90 days)
+  → Webhook verify tokens (per tenant)
+  → Phone number IDs (per tenant namespace)
+EXTERNAL_API              = Meta WhatsApp Cloud API v18+ (graph.facebook.com)
+BSP_STRATEGY              = DIRECT (Meta Cloud API direct — no BSP middleman)
+  NOTE: If BSP is required (e.g., 360dialog, Gupshup, Infobip),
+        BSP_ADAPTER must be created as a sub-adapter. Core logic unchanged.
+
+COMMUNICATION_FLOW (OUTBOUND):
+  Platform Event (Kafka)
+      ↓
+  WHATSAPP_CONNECT Service (consumer)
+      ↓ (validate: opt-in, rate limit, template exists, tenant WABA valid)
+  BullMQ Outbound Queue (per-tenant partition)
+      ↓ (worker picks up)
+  Meta Cloud API → send message
+      ↓
+  Delivery status webhook → Inbound Queue
+      ↓
+  Status event published to Kafka
+      ↓
+  Analytics Service + Notification Log
+
+COMMUNICATION_FLOW (INBOUND / BOT):
+  User sends WhatsApp message
+      ↓
+  Meta Webhook → Webhook Receiver (Node.js sub-process)
+      ↓ (HMAC-SHA256 verify)
+  BullMQ Inbound Queue
+      ↓ (worker: parse intent / button reply / list selection)
+  Bot Engine (rule-based Stage 1, NLP Stage 3)
+      ↓
+  Platform action emitted → Kafka → relevant service
+      ↓
+  Response dispatched via Outbound Queue
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3️⃣  WABA ACCOUNT & TENANT NAMESPACE MANAGEMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WABA_MODEL = MULTI-TENANT EMBEDDED SIGNUP
+  Each tenant (Institute / Enterprise / Recruiter / Platform) gets:
+    - Their own WABA (WhatsApp Business Account)
+    - Their own Phone Number ID (display number)
+    - Their own Business Display Name (verified with Meta)
+    - Their own template namespace
+    - Isolated message sending quota
+    - Isolated rate limit budget
+    - Isolated opt-in registry
+
+WABA LIFECYCLE STATES:
+  PENDING_SETUP → EMBEDDING_SIGNUP → META_REVIEW → VERIFIED
+  → ACTIVE | SUSPENDED | BANNED | DEPROVISIONED
+
+WABA ONBOARDING FLOW (Embedded Signup):
+  1. Tenant admin initiates WABA setup from ERP dashboard
+  2. Meta Embedded Signup iframe loaded (React web layer ONLY)
+  3. Tenant completes business verification via Meta
+  4. Platform receives WABA ID + Phone Number ID via OAuth callback
+  5. Credentials stored in Vault (never in DB plaintext)
+  6. WABA record created in PostgreSQL (tenant-scoped)
+  7. Default templates submitted for approval (async)
+  8. Tenant notified on approval (in-app + email)
+
+DB Tables:
+  waba_accounts(
+    id, tenant_id, waba_id_encrypted, phone_number_id_encrypted,
+    display_name, verification_status, tier, daily_limit,
+    created_at, updated_at
+  )
+  waba_phone_numbers(
+    id, waba_account_id, phone_number_masked, country_code,
+    display_phone, quality_rating, messaging_limit_tier, active
+  )
+
+QUALITY RATING ENFORCEMENT:
+  GREEN  → Normal operations
+  YELLOW → Alert tenant + reduce burst rate
+  RED    → Pause non-critical sends, notify platform admin, trigger review
+  BANNED → Immediate full suspension, alert, remediation workflow
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4️⃣  MESSAGE TEMPLATE ENGINE (HSM — LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TEMPLATE_STANDARD         = Meta HSM (Highly Structured Message)
+TEMPLATE_CATEGORIES       =
+  AUTHENTICATION    → OTP, login verification (fastest approval)
+  UTILITY           → Transactional: job status, application update, interview
+  MARKETING         → Campaigns, referrals, achievements, re-engagement
+  SERVICE           → Inbound-initiated responses (24hr window, no template needed)
+
+TEMPLATE LIFECYCLE:
+  DRAFT → SUBMITTED_TO_META → PENDING_REVIEW → APPROVED | REJECTED
+  → IN_USE | PAUSED | DEPRECATED
+
+TEMPLATE RULES:
+  - Every outbound message outside 24hr window MUST use an APPROVED template
+  - Templates are tenant-namespaced (no cross-tenant template sharing)
+  - Template variables MUST be validated before dispatch (no null/empty params)
+  - Rejected templates trigger auto-alert to Tenant Admin
+  - Template changes require new submission (cannot edit approved templates)
+  - Deprecated templates are flagged and replaced via migration plan
+  - Maximum variable count per template = 10 (Meta limit)
+  - Character limits enforced at creation: header ≤60, body ≤1024, footer ≤60
+
+PLATFORM-STANDARD TEMPLATES (Pre-built, require per-tenant approval):
+
+  [AUTHENTICATION CATEGORY]
+  ┌─────────────────────────────────────────────────────────────┐
+  │ TMPL-AUTH-001: OTP Verification                             │
+  │ "Your Ecoskiller OTP is {{1}}. Valid for 5 minutes.         │
+  │  Do not share this with anyone."                            │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-AUTH-002: Login Alert                                  │
+  │ "New login detected on your Ecoskiller account from         │
+  │  {{1}} at {{2}}. Not you? Secure your account: {{3}}"       │
+  └─────────────────────────────────────────────────────────────┘
+
+  [UTILITY CATEGORY]
+  ┌─────────────────────────────────────────────────────────────┐
+  │ TMPL-UTIL-001: Job Application Submitted                    │
+  │ "Hi {{1}}, your application for *{{2}}* at *{{3}}* has been │
+  │  submitted. Track status: {{4}}"                            │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-UTIL-002: Application Status Update                    │
+  │ "Update on your application for *{{2}}* at *{{3}}*:         │
+  │  Status → *{{4}}*. {{5}}"                                   │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-UTIL-003: Interview Scheduled                          │
+  │ "Interview confirmed! *{{1}}* with *{{2}}* on *{{3}}*       │
+  │  at *{{4}}*. Join: {{5}}"                                   │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-UTIL-004: Skill Course Completion                      │
+  │ "🎓 You completed *{{1}}*! Your certificate is ready: {{2}}" │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-UTIL-005: GD Session Reminder                         │
+  │ "⏰ Reminder: Your Group Discussion *{{1}}* starts in        │
+  │  {{2}} minutes. Join: {{3}}"                                │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-UTIL-006: Project Milestone Approved                   │
+  │ "✅ Milestone *{{1}}* in project *{{2}}* has been approved   │
+  │  by {{3}}. View portfolio: {{4}}"                           │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-UTIL-007: Offer Letter Received                        │
+  │ "🎉 You have received an offer from *{{1}}*! Role: *{{2}}*. │
+  │  Review and respond: {{3}}"                                 │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-UTIL-008: Mentor Assignment                            │
+  │ "You have been assigned a mentor: *{{1}}*. Schedule your    │
+  │  first session: {{2}}"                                      │
+  └─────────────────────────────────────────────────────────────┘
+
+  [MARKETING CATEGORY]
+  ┌─────────────────────────────────────────────────────────────┐
+  │ TMPL-MKTG-001: Badge / Belt Earned                          │
+  │ "🏅 You earned the *{{1}}* badge on Ecoskiller!             │
+  │  Share your achievement: {{2}}"                             │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-MKTG-002: Referral Reward                              │
+  │ "🎁 {{1}} joined using your link! You've earned {{2}} points.│
+  │  View your referrals: {{3}}"                                │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-MKTG-003: Re-engagement (Dormant User)                 │
+  │ "👋 Hi {{1}}, we miss you! {{2}} new jobs match your        │
+  │  profile. Come back: {{3}}"                                 │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-MKTG-004: Weekly Digest                                │
+  │ "📊 Your weekly summary: {{1}} jobs viewed, {{2}} skills    │
+  │  in progress, {{3}} GD sessions. Full report: {{4}}"        │
+  ├─────────────────────────────────────────────────────────────┤
+  │ TMPL-MKTG-005: Campus Campaign (Institutional)              │
+  │ "📢 {{1}} is hosting an exclusive session for {{2}}          │
+  │  students. Register: {{3}} | Code: {{4}}"                   │
+  └─────────────────────────────────────────────────────────────┘
+
+DB Tables:
+  message_templates(
+    id, tenant_id, template_name, category, language_code,
+    header_type, header_content, body_text, footer_text,
+    button_config JSONB, variable_count, meta_template_id,
+    approval_status, submitted_at, approved_at, deprecated_at
+  )
+  template_variables(
+    id, template_id, position, example_value, validation_regex
+  )
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5️⃣  INTERACTIVE MESSAGE ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+INTERACTIVE_TYPES_SUPPORTED =
+  BUTTON_MESSAGE      → Up to 3 quick reply buttons
+  LIST_MESSAGE        → Up to 10 rows in sectioned list
+  REPLY_BUTTON        → Contextual reply to prior message
+  CTA_URL_BUTTON      → Single call-to-action URL button
+  FLOW_MESSAGE        → Meta Flows (multi-step form inside WhatsApp)
+  LOCATION_REQUEST    → Request user location (future use)
+
+INTERACTIVE COMPONENT RULES:
+  - Button text ≤20 characters (Meta hard limit)
+  - List row title ≤24 characters
+  - List row description ≤72 characters
+  - Maximum sections per list = 10
+  - Maximum rows per list = 10
+  - CTA URL must be HTTPS and whitelisted in Meta Business Manager
+  - Button IDs must be unique per session (used for reply routing)
+
+PLATFORM USE CASES FOR INTERACTIVE MESSAGES:
+
+  USE CASE 1 — Job Quick Actions
+    Trigger: Job matched to student
+    Type: BUTTON_MESSAGE
+    Buttons: [Apply Now] [Save for Later] [View Details]
+    Reply routing: button_id → Job Service event
+
+  USE CASE 2 — Interview Confirmation
+    Trigger: TMPL-UTIL-003 sent
+    Type: BUTTON_MESSAGE
+    Buttons: [Confirm] [Reschedule] [Cancel]
+    Reply routing → Interview Service state update
+
+  USE CASE 3 — Skill Path Selection
+    Trigger: Post-registration onboarding bot
+    Type: LIST_MESSAGE
+    List: Domain tracks (Tech / Commerce / Arts / Science / Admin)
+    Reply routing → Skill Development Service → learning path activation
+
+  USE CASE 4 — GD Session Join Reminder
+    Trigger: 15 min before GD start
+    Type: BUTTON_MESSAGE
+    Buttons: [Join Now] [I'll be late] [Skip]
+    Reply routing → GD Service participant status
+
+  USE CASE 5 — Offer Letter Response
+    Trigger: Offer received event
+    Type: BUTTON_MESSAGE
+    Buttons: [Accept Offer] [Decline] [Need More Time]
+    Reply routing → Offer Lifecycle state machine
+
+  USE CASE 6 — Parent Visibility Digest
+    Trigger: Weekly, for accounts with parent_trust_link enabled
+    Type: LIST_MESSAGE (read-only digest, no action buttons)
+    Sections: Academic progress / Applications / Certifications
+    Note: Parent view — ZERO mutation triggers allowed
+
+DB Tables:
+  interactive_messages(
+    id, tenant_id, user_id, template_id, interactive_type,
+    buttons_config JSONB, list_config JSONB, sent_at,
+    reply_received_at, reply_button_id, reply_payload JSONB,
+    action_triggered, action_event_id
+  )
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+6️⃣  OPT-IN / OPT-OUT LIFECYCLE MANAGEMENT (CRITICAL)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPT_IN_REQUIRED           = TRUE (ABSOLUTE — no message can be sent to a user
+                            who has not explicitly opted in to WhatsApp comms)
+OPT_OUT_ENFORCEMENT       = IMMEDIATE (zero queued messages post opt-out)
+OPT_OUT_BYPASS            = FORBIDDEN (no campaign, admin, or system override)
+
+OPT-IN CHANNELS (all must be recorded with consent metadata):
+  IN_APP_TOGGLE       → Settings > Notifications > WhatsApp
+  REGISTRATION_FLOW   → Checkbox during sign-up (unchecked by default)
+  INSTITUTIONAL_BULK  → Admin can pre-opt-in cohort ONLY with
+                         documented institutional consent proof (uploaded)
+  INBOUND_TRIGGER     → User messages the platform's WhatsApp number first
+                         (inbound = implicit opt-in for SERVICE window only)
+
+OPT-IN RECORD SCHEMA:
+  whatsapp_consent(
+    id, user_id, tenant_id,
+    phone_number_hash VARCHAR,          -- NEVER store plaintext
+    phone_number_encrypted TEXT,        -- Vault-encrypted, AES-256
+    opted_in BOOLEAN,
+    optin_channel VARCHAR,              -- IN_APP | REGISTRATION | INSTITUTIONAL | INBOUND
+    consent_version VARCHAR,            -- version of ToS/Privacy at time of consent
+    optin_at TIMESTAMP,
+    optout_at TIMESTAMP,
+    optout_reason VARCHAR,
+    optout_channel VARCHAR,             -- USER_INITIATED | ADMIN | META_BLOCK | SYSTEM
+    minor_flag BOOLEAN DEFAULT FALSE,   -- if true, guardian consent required
+    guardian_consent_id UUID,
+    tenant_isolation_key UUID           -- hard link to tenant namespace
+  )
+
+OPT-OUT TRIGGERS:
+  USER_INITIATED      → User toggles off in-app, or replies STOP / Unsubscribe
+  META_BLOCK          → Meta signals user blocked the business number
+  ADMIN_ACTION        → Platform admin opts out user (compliance/abuse case)
+  ACCOUNT_DELETION    → Right to Forget hook fires (GDPR / DPDP)
+
+OPT-OUT PROCESSING RULES:
+  1. On opt-out event received → immediate write to whatsapp_consent
+  2. Redis blacklist updated (TTL = 30 days minimum, then DB becomes source)
+  3. Any in-flight message for this user pulled from BullMQ queue (best effort)
+  4. Kafka event published: whatsapp.optin.changed (opted_in: false)
+  5. Notification Service + MARKETING_CONNECT consume and update their states
+  6. Opt-out audit log written (immutable, tamper-evident)
+  7. User receives single final message confirming opt-out (AUTHENTICATION
+     category or in-app only — no more WhatsApp messages after this)
+
+MINOR PROTECTION:
+  - Users flagged minor_flag = TRUE require guardian_consent_id
+  - No marketing category messages to minors, ever
+  - Parent WhatsApp notifications: READ-ONLY digest format only
+  - No interactive action buttons in parent/minor flows
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+7️⃣  WEBHOOK INGESTION & EVENT ROUTING ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WEBHOOK_ENDPOINT          = POST /webhooks/whatsapp/{tenant_id}
+WEBHOOK_VERIFY_ENDPOINT   = GET  /webhooks/whatsapp/{tenant_id}
+  (Hub Challenge response: Meta verification handshake)
+
+WEBHOOK SECURITY (MANDATORY — all steps required):
+  Step 1: X-Hub-Signature-256 header MUST be present
+  Step 2: HMAC-SHA256 computed using tenant's verify_token from Vault
+  Step 3: Computed signature compared to header (constant-time comparison only)
+  Step 4: If mismatch → HTTP 403 + security event emitted → audit log
+  Step 5: If valid → parse payload → push to BullMQ inbound-queue immediately
+  Step 6: Return HTTP 200 to Meta within 5 seconds (Meta SLA requirement)
+  NOTE: Heavy processing happens ONLY in worker — never in webhook handler
+
+WEBHOOK EVENT TYPES HANDLED:
+  messages         → New inbound message (text, button reply, list reply, media)
+  statuses         → Delivery status update (sent, delivered, read, failed)
+  errors           → Message delivery failure details
+  flows            → Meta Flow completion events
+
+INBOUND MESSAGE ROUTING RULES:
+  If message_type = "button"    → route to Interactive Message reply handler
+  If message_type = "list_reply"→ route to Interactive Message reply handler
+  If message_type = "text"      → route to Bot Engine (keyword/intent match)
+  If message_type = "image" /
+     "video" / "document"       → route to Media Intake (if flow expects it)
+                                   else → generic acknowledgement response
+  If message_type = "reaction"  → log only, no action
+  If sender is OPTED_OUT        → discard payload, log, no response
+
+STATUS TRACKING:
+  sent           → Message dispatched to Meta API, acknowledgement received
+  delivered      → Meta confirmed delivery to device
+  read           → User opened and read message
+  failed         → Delivery failed (error code + reason logged)
+  expired        → Message not delivered within 24hr (for service window msgs)
+
+DB Tables:
+  webhook_events(
+    id, tenant_id, waba_account_id, event_type, raw_payload JSONB,
+    received_at, processed_at, processing_status, error_detail
+  )
+  message_delivery_log(
+    id, tenant_id, user_id, outbound_message_id, meta_message_id,
+    template_id, status, sent_at, delivered_at, read_at,
+    failed_at, failure_code, failure_reason
+  )
+  inbound_messages(
+    id, tenant_id, from_phone_hash, from_waid, message_type,
+    text_body, button_id, list_row_id, media_id, media_type,
+    received_at, processed, bot_action_triggered
+  )
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+8️⃣  CONVERSATIONAL BOT / AUTOMATION ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BOT_STAGE_1               = RULE_BASED (Foundation — keyword + button reply)
+BOT_STAGE_3               = NLP_ENHANCED (Ecosystem — intent classification)
+LIVE_AGENT_HANDOFF        = SUPPORTED (Stage 3 — escalation to human via
+                            Admin Governance Service)
+
+STAGE 1 — RULE-BASED BOT FLOWS:
+
+  FLOW-001: New User Onboarding Bot
+    Trigger: First inbound message OR post-registration opt-in
+    Step 1: "👋 Hi! I'm your Ecoskiller assistant. Choose your track:"
+            → LIST: [Technology] [Commerce] [Arts] [Science] [Administration]
+    Step 2: Based on selection → domain track activated (Kafka event)
+    Step 3: "Great! Are you a: " → BUTTONS: [Student] [Trainer] [Recruiter]
+    Step 4: Role context set → personalized next step message sent
+
+  FLOW-002: Job Search Assistant
+    Trigger: User sends "jobs" / "find jobs" / "job" keyword
+    Step 1: "What kind of role are you looking for?"
+            → Free text capture (stored, sent to Job Service search)
+    Step 2: Return top 3 matching jobs as list message
+    Step 3: BUTTONS per job: [Apply] [Details] [Skip]
+
+  FLOW-003: Application Status Check
+    Trigger: User sends "status" / "my applications"
+    Step 1: Identity verified via phone_hash ↔ user_id mapping
+    Step 2: Fetch last 5 applications from Job Service (read-only API call)
+    Step 3: Render status list (no mutations via bot)
+
+  FLOW-004: Certificate / Badge Request
+    Trigger: User sends "certificate" / "my badges"
+    Step 1: Fetch user's earned credentials (read-only)
+    Step 2: Send PDF certificate download link (signed URL, 1hr expiry)
+
+  FLOW-005: OTP Delivery (Authentication Flow)
+    Trigger: Auth Service emits whatsapp.otp.dispatch event
+    Step 1: TMPL-AUTH-001 sent immediately via priority queue
+    Step 2: Delivery confirmed → Auth Service notified
+    Step 3: OTP expiry enforced server-side (bot does NOT manage OTP logic)
+
+  FLOW-006: Opt-Out Handler
+    Trigger: User sends "STOP" / "stop" / "unsubscribe" / "opt out"
+    Step 1: Immediate opt-out processing (see Section 6)
+    Step 2: Final confirmation sent: "You've been unsubscribed from
+            WhatsApp notifications. Manage in app: [link]"
+    Step 3: No further messages
+
+  FLOW-007: Help / Menu
+    Trigger: User sends "help" / "menu" / "?"
+    Step 1: Send master menu as list:
+      Sections:
+        Career: [Find Jobs] [Check Application] [Schedule Interview]
+        Learning: [My Courses] [My Badges] [My Projects]
+        Account: [My Profile] [Notifications Settings] [Opt Out]
+
+BOT SESSION STATE:
+  Stored in Redis (TTL = 24 hours from last activity)
+  Keys: bot_session:{tenant_id}:{from_waid}
+  State machine: IDLE → FLOW_ACTIVE → AWAITING_INPUT → COMPLETED | TIMEOUT
+
+BOT CONSTRAINTS:
+  - Bot CANNOT approve jobs, projects, or credentials
+  - Bot CANNOT mutate user profile data
+  - Bot CANNOT access other users' data
+  - Bot CANNOT process payments
+  - All bot-triggered platform actions go through Kafka events (not direct DB)
+  - If bot cannot resolve intent after 2 attempts → offer live agent or app link
+
+DB Tables:
+  bot_sessions(
+    id, tenant_id, user_id, from_waid_hash, current_flow,
+    current_step, session_state JSONB, started_at, last_active_at,
+    completed_at, escalated_to_human BOOLEAN
+  )
+  bot_flows(
+    id, tenant_id, flow_name, version, steps JSONB,
+    active, created_at, deprecated_at
+  )
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+9️⃣  MEDIA MESSAGE HANDLER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SUPPORTED_MEDIA_TYPES     = IMAGE | VIDEO | DOCUMENT | AUDIO
+MEDIA_SOURCE              = URL (hosted on platform CDN — HTTPS only)
+                            OR Meta Media ID (for outbound)
+
+OUTBOUND MEDIA USE CASES:
+  Certificate PDF         → DOCUMENT type, signed CDN URL (1hr expiry)
+  Achievement Badge PNG   → IMAGE type, share card
+  Course Promo Video      → VIDEO type (max 16MB Meta limit)
+  Audio Interview Tip     → AUDIO type (OGG/Opus only per Meta spec)
+
+INBOUND MEDIA HANDLING:
+  - Inbound media ONLY accepted during active Meta Flow or admin-defined intake flow
+  - Media downloaded from Meta servers within 30 minutes (Meta media expiry policy)
+  - Stored in platform object storage (S3-compatible) under tenant namespace
+  - Virus scan MANDATORY before storage (async worker)
+  - Media stored with user_id + tenant_id reference; NO cross-tenant access
+  - Media purge policy: 7 days unless linked to a platform record
+  - Plaintext media content NOT stored — only object storage reference
+
+MEDIA RULES:
+  - Maximum file size enforced per Meta limits:
+      Image: 5MB | Video: 16MB | Document: 100MB | Audio: 16MB
+  - Unsupported formats → bot sends polite rejection message
+  - Media IDs (from Meta) cached in Redis for re-use (24hr TTL)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔟  RATE LIMITING & QUOTA MANAGEMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RATE_LIMITS (enforced at WHATSAPP_CONNECT before queue entry):
+
+  PER USER / PER DAY:
+    MARKETING messages       → MAX 1 per day per user
+    UTILITY messages         → MAX 5 per day per user
+    AUTHENTICATION messages  → MAX 10 per day per user (OTP context)
+    INTERACTIVE messages     → MAX 3 per day per user
+
+  PER TENANT / PER HOUR:
+    Burst limit              → MAX 1,000 messages/hour (default tier)
+    Upgrade path             → Meta tier upgrade request via admin
+
+  PER PLATFORM / GLOBAL:
+    Global daily cap         → Enforced by Meta (tier-based, monitored)
+    Quality rating monitor   → Auto-throttle if rating drops to YELLOW
+
+  RATE LIMIT STORE:
+    Redis → rl:{tenant_id}:{user_id}:{category}:{date} (TTL = midnight reset)
+
+  THROTTLE BEHAVIOR:
+    If limit hit → message queued for next available window
+    If window expired → message dropped + failed event emitted + logged
+    Priority order: AUTHENTICATION > UTILITY > MARKETING
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣1️⃣  ANALYTICS & DELIVERY INTELLIGENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+METRICS TRACKED (published to Analytics Service via Kafka):
+  Delivery rate           = delivered / sent
+  Read rate               = read / delivered
+  Failure rate            = failed / sent (categorized by error code)
+  Response rate           = replied / interactive_sent
+  Bot completion rate     = flows_completed / flows_started
+  Opt-out rate            = optouts / active_opted_in_users (daily)
+  Template performance    = per-template delivery + read + CTR
+  Channel comparison      = WhatsApp vs Email vs Push vs SMS
+
+DASHBOARDS (powered by Grafana, exposed via custom React admin panel):
+  Platform Admin          → Cross-tenant WhatsApp health overview
+  Tenant Admin            → Own WABA quality, template performance, opt-in rate
+  Marketing Team          → Campaign delivery rates by template + audience
+  Compliance Officer      → Opt-out compliance, minor protection status,
+                            consent version distribution
+
+ALERT RULES:
+  Delivery rate < 85%       → Warning alert to Tenant Admin
+  Opt-out rate > 5%/day     → Critical alert + pause marketing messages
+  WABA quality = RED        → Stop all non-auth sends + escalate
+  Template rejected         → Notify Tenant Admin immediately
+  Webhook failure rate > 1% → Engineering alert + circuit breaker review
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣2️⃣  COMPLIANCE & POLICY ENFORCEMENT LAYER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+REGULATORY COMPLIANCE:
+  GDPR                    = ENABLED
+    → Right to forget hook: phone_number purged from all tables on user deletion
+    → Data minimization: phone stored only in encrypted vault + hashed reference
+    → Consent versioning: consent_version recorded at opt-in time
+
+  DPDP ACT (India)        = ENABLED
+    → Explicit opt-in required (no assumed consent)
+    → Minor protection mandatory (guardian consent for under-18)
+    → Data localization: India tenant data stored in India region by default
+
+  CAN-SPAM / PECR         = APPLICABLE
+    → Unsubscribe must be honored within 24 hours (platform enforces immediately)
+
+  META WHATSAPP BUSINESS POLICY = ENFORCED
+    → No prohibited content categories (gambling, adult, weapons, etc.)
+    → No spam or harassment — rate limits enforce this technically
+    → No misleading business identity
+    → Quality rating maintained at GREEN target
+    → Template content must match approved template (variable substitution only)
+    → No message content that violates Meta Community Standards
+
+IMMUTABLE AUDIT LOG (every WhatsApp action recorded):
+  Events logged:
+    - WABA provisioned / suspended / banned
+    - Template submitted / approved / rejected / deprecated
+    - Message dispatched (template_id, category, user_id hashed)
+    - Delivery status received
+    - Opt-in recorded
+    - Opt-out processed
+    - Webhook received + signature result
+    - Rate limit hit
+    - Bot flow started / completed / escalated
+  Audit records: append-only, tamper-evident, tenant-isolated
+  Retention: 7 years minimum (compliance standard)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣3️⃣  KAFKA EVENT CONTRACTS (WHATSAPP_CONNECT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TOPICS SUBSCRIBED (INBOUND to WHATSAPP_CONNECT):
+  notification.dispatch.whatsapp
+    Payload: { tenant_id, user_id, template_name, variables[], priority }
+
+  marketing.dispatch.whatsapp
+    Payload: { tenant_id, campaign_id, user_id, template_name, variables[] }
+
+  auth.otp.whatsapp
+    Payload: { tenant_id, user_id, otp_value, expiry_seconds }
+
+  user.deleted
+    Payload: { tenant_id, user_id }
+    Action: Trigger phone number purge + opt-out finalization
+
+  user.opted_out.whatsapp
+    Payload: { tenant_id, user_id, channel: "whatsapp" }
+    Action: Update consent table, blacklist in Redis
+
+TOPICS PUBLISHED (OUTBOUND from WHATSAPP_CONNECT):
+  whatsapp.message.sent
+    Payload: { tenant_id, user_id, meta_message_id, template_id, sent_at }
+
+  whatsapp.message.delivered
+    Payload: { tenant_id, user_id, meta_message_id, delivered_at }
+
+  whatsapp.message.read
+    Payload: { tenant_id, user_id, meta_message_id, read_at }
+
+  whatsapp.message.failed
+    Payload: { tenant_id, user_id, meta_message_id, error_code, reason, failed_at }
+
+  whatsapp.inbound.received
+    Payload: { tenant_id, from_waid_hash, message_type, bot_flow_triggered,
+               action_event_type, timestamp }
+
+  whatsapp.optin.changed
+    Payload: { tenant_id, user_id, opted_in BOOLEAN, channel, timestamp }
+
+  whatsapp.bot.action.triggered
+    Payload: { tenant_id, user_id, flow_id, step_id, action_type,
+               action_payload JSONB, timestamp }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣4️⃣  INTEGRATION DEPENDENCY MAP (READ-ONLY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WHATSAPP_CONNECT consumes but does NOT own:
+
+  Auth Service            → User phone number retrieval (via secure lookup,
+                            not direct DB access), OTP dispatch trigger
+  User Service            → opt-in status check, minor_flag, role, lifecycle state
+  Notification Service    → Receives dispatch commands (Kafka), reports delivery status
+  MARKETING_CONNECT       → Receives campaign dispatch commands (Kafka)
+  Job Service             → Bot: read job listings, application status (read API)
+  Gamification Service    → Receives badge/belt events for MKTG template triggers
+  Analytics Service       → Pushes delivery metrics (Kafka publish)
+  Admin Governance Svc    → Receives live agent escalation triggers, WABA review
+  Integration Hub         → Shares BSP adapter pattern (if BSP used)
+  Object Storage (S3)     → Media file storage (tenant-namespaced buckets)
+  HashiCorp Vault         → WABA credentials, webhook tokens, phone encryption keys
+  Redis                   → Session state, rate limits, dedup cache
+  BullMQ                  → Outbound + inbound job queues
+  Kafka                   → All async event publish / subscribe
+
+  WHATSAPP_CONNECT writes ONLY to:
+    whatsapp schema in PostgreSQL (its own namespace)
+    Redis (its own key namespace: wa:*)
+    BullMQ (its own queues)
+    Object Storage (its own tenant bucket path: /whatsapp/media/)
+    Kafka (its own topics: whatsapp.*)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣5️⃣  STAGE ROLLOUT (SEQUENTIAL — SKIPPING = INVALID BUILD)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STAGE 1 — FOUNDATION WHATSAPP_CONNECT
+  ✅ WABA Embedded Signup + Provisioning
+  ✅ Webhook receiver + HMAC validation
+  ✅ BullMQ outbound queue (basic)
+  ✅ Template engine (AUTHENTICATION + UTILITY categories)
+  ✅ Opt-in / opt-out registry
+  ✅ OTP delivery via WhatsApp (TMPL-AUTH-001)
+  ✅ Basic delivery tracking (sent / delivered / read / failed)
+  ✅ Rate limiting (user-level, tenant-level)
+  ✅ Kafka event contracts (all outbound topics)
+  ✅ Audit log (all actions)
+
+STAGE 2 — INTELLIGENCE WHATSAPP_CONNECT
+  ✅ MARKETING template category + campaign dispatch
+  ✅ Interactive messages (BUTTON, LIST, CTA_URL)
+  ✅ Delivery analytics dashboard (Grafana + custom)
+  ✅ WABA quality rating monitor + auto-throttle
+  ✅ Template performance analytics
+  ✅ Smart send-time optimization (ML model: best open-time per user)
+  ✅ A/B test support for template variants
+
+STAGE 3 — ECOSYSTEM WHATSAPP_CONNECT
+  ✅ Full bot engine with all 7 flows
+  ✅ NLP intent classification (fine-tuned model, async inference)
+  ✅ Live agent handoff (Admin Governance integration)
+  ✅ Meta Flows (multi-step forms inside WhatsApp)
+  ✅ Inbound media intake (CV upload via WhatsApp)
+  ✅ Parent visibility digest (WhatsApp weekly digest for parent role)
+  ✅ Institutional bulk campaigns (Campus Ambassador, TPO)
+  ✅ BSP adapter pattern (if required for specific regions)
+
+STAGE 4 — COMPLIANCE & SCALE WHATSAPP_CONNECT
+  ✅ Full GDPR / DPDP audit report generation
+  ✅ Consent versioning audit
+  ✅ Minor protection audit report
+  ✅ Cross-tenant isolation penetration test hooks
+  ✅ Multi-region WABA deployment (India data locality)
+  ✅ Chaos test scenarios for queue failures + Meta API outage
+  ✅ Auto-scaling worker pools per tenant tier
+  ✅ Zero-downtime WABA credential rotation
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣6️⃣  WHATSAPP_CONNECT UI (ANTIGRAVITY GENERATION RULES)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+UI INHERITS: All master UI rules (Flutter-first, WCAG 2.1 AA, CLEAN | SOLID,
+              dashboard 40/60 rule, no decorative UI)
+
+WHATSAPP_CONNECT exposes these UI surfaces:
+
+  ROLE: Platform Admin
+    → WABA Registry (all tenants, read-only)
+    → Global delivery health dashboard
+    → Compliance audit viewer
+    → Quality rating alerts dashboard
+
+  ROLE: Tenant Admin / ERP Admin
+    → WABA Setup Wizard (Embedded Signup flow — React web only)
+    → Phone Number Management
+    → Template Library (create, submit, track approval)
+    → Campaign WhatsApp Sender (linked to MARKETING_CONNECT)
+    → Delivery Analytics Dashboard
+    → Opt-In Registry Viewer (aggregated, not individual-level)
+    → Rate Limit Monitor
+
+  ROLE: Student / User (Flutter app)
+    → Notification Preferences → WhatsApp toggle
+    → "Connected number" display (masked: +91 XXXXX X1234)
+    → Opt-out control (single-tap, confirmation dialog)
+
+  ROLE: Parent
+    → Opt-in control for digest
+    → Digest preview (read-only)
+
+UI GENERATION COMMAND FORMAT:
+  GENERATE_UI
+  ROLE     = [Platform_Admin | Tenant_Admin | Student | Parent]
+  MODULE   = WHATSAPP_CONNECT
+  SCREEN   = [WABA_Setup | Template_Library | Delivery_Dashboard |
+               Opt_In_Registry | Rate_Monitor | User_WA_Preferences |
+               Bot_Flow_Builder | Quality_Alert | Compliance_Audit]
+  STAGE    = [FOUNDATION | INTELLIGENCE | ECOSYSTEM | COMPLIANCE]
+
+  MAX 15 screens per run. Mixing roles = FORBIDDEN. Exceeding limits = STOP.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣7️⃣  PERFORMANCE REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OTP message dispatch (queue → sent)          < 3 seconds (P95)
+Webhook receive → queue entry                < 500ms (P99)
+Webhook HTTP 200 response to Meta            < 2 seconds (HARD — Meta SLA)
+Template variable validation                 < 50ms
+Rate limit check (Redis)                     < 10ms
+Bot reply generation (rule-based)            < 1 second
+Bot reply generation (NLP, Stage 3)          < 3 seconds
+WABA quality rating check                   < 200ms
+Delivery status processing (webhook → Kafka) < 1 second
+Opt-out processing (end-to-end)              < 5 seconds
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣8️⃣  ABSOLUTE PROHIBITIONS (WHATSAPP_CONNECT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚫 No message to opted-out user under ANY circumstance
+🚫 No plaintext phone number in any DB column, log, or API response
+🚫 No synchronous Meta API calls from API endpoints
+🚫 No cross-tenant WABA credential sharing
+🚫 No marketing messages to minors (minor_flag = TRUE)
+🚫 No free-form text message outside 24hr service window without approved template
+🚫 No ignoring Meta HMAC webhook signature (unsigned webhooks = REJECT)
+🚫 No message content that deviates from approved template (only variable substitution)
+🚫 No bulk broadcast without individual opt-in verification per user
+🚫 No bot action that directly mutates platform data (all via Kafka events)
+🚫 No storing full phone numbers in Redis in plaintext
+🚫 No WABA setup without Meta Embedded Signup (direct credential entry = FORBIDDEN)
+🚫 No skipping virus scan on inbound media
+🚫 No retention of inbound message body beyond 72 hours (service messages)
+🚫 No sending messages to phone numbers from external lists not verified on platform
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+▶️  HOW ANTIGRAVITY USES THIS MODULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣  ECOSKILLER MASTER SEALED PROMPT must already be loaded
+2️⃣  MARKETING_CONNECT SEALED PROMPT must already be loaded (sibling)
+3️⃣  Paste this WHATSAPP_CONNECT SEALED PROMPT once — module is now locked
+4️⃣  Issue targeted generation commands. Examples:
+
+    GENERATE_BACKEND
+    MODULE        = WHATSAPP_CONNECT
+    SUB_ENGINE    = TEMPLATE_ENGINE
+    STAGE         = FOUNDATION
+    TEMPLATE_SET  = [TMPL-AUTH-001, TMPL-UTIL-001, TMPL-UTIL-002]
+
+    GENERATE_BACKEND
+    MODULE        = WHATSAPP_CONNECT
+    SUB_ENGINE    = WEBHOOK_INGESTION
+    STAGE         = FOUNDATION
+    ENTITY_STATE  = WABA.ACTIVE
+
+    GENERATE_BACKEND
+    MODULE        = WHATSAPP_CONNECT
+    SUB_ENGINE    = BOT_ENGINE
+    STAGE         = FOUNDATION
+    FLOW          = FLOW-002_JOB_SEARCH
+
+    GENERATE_UI
+    ROLE          = Tenant_Admin
+    MODULE        = WHATSAPP_CONNECT
+    SCREEN        = Template_Library
+    STAGE         = FOUNDATION
+
+5️⃣  Each run = 1 sub-engine OR 1 screen set. Mixed runs = INVALID
+6️⃣  NEVER regenerate this prompt. APPEND ONLY if gaps discovered.
+
+⚠️  Antigravity MUST NOT:
+    - Invent new template categories outside Meta-defined set
+    - Skip HMAC verification in webhook handler
+    - Allow free-form messaging in any generated code
+    - Reinterpret opt-out rules
+    - Mix WABA credentials across tenants
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+╔══════════════════════════════════════════════════════════════════════════════════════╗
+║                              🔐 FINAL SEAL                                         ║
+║                                                                                    ║
+║   THIS PROMPT IS:                                                                  ║
+║   ✔  LOCKED                                                                        ║
+║   ✔  SEALED                                                                        ║
+║   ✔  DETERMINISTIC                                                                 ║
+║   ✔  ENTERPRISE SAFE                                                               ║
+║   ✔  META POLICY COMPLIANT                                                         ║
+║   ✔  GDPR · DPDP · CAN-SPAM ENFORCED                                              ║
+║   ✔  MINOR PROTECTED                                                               ║
+║   ✔  FULLY ASYNC (Global Async Law Inherited)                                      ║
+║   ✔  MULTI-TENANT ISOLATED (per-WABA namespace)                                    ║
+║   ✔  PARENT PROMPT INHERITED (NO DUPLICATION)                                      ║
+║   ✔  ANTIGRAVITY COMPATIBLE                                                        ║
+║                                                                                    ║
+║   MODULE        = WHATSAPP_CONNECT                                                 ║
+║   ENGINE        = ANTIGRAVITY                                                      ║
+║   PLATFORM      = ECOSKILLER                                                       ║
+║   VERSION       = 1.0.0                                                            ║
+║   CHANGE_POLICY = APPEND_ONLY · ARCHITECT_APPROVAL_REQUIRED                       ║
+║                                                                                    ║
+║              ANY DEVIATION = STOP EXECUTION                                        ║
+╚══════════════════════════════════════════════════════════════════════════════════════╝

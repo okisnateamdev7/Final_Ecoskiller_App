@@ -1,0 +1,99 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Helm values — mcp-admin-service
+# Namespace: ops | Replicas: 2-3 | Not HPA (admin is not latency-critical)
+# ─────────────────────────────────────────────────────────────────────────────
+
+replicaCount: 2
+
+image:
+  repository: harbor.ecoskiller.internal/ecoskiller/mcp-admin-service
+  tag: "1.0.0"
+  pullPolicy: IfNotPresent
+
+nameOverride: "mcp-admin-service"
+fullnameOverride: "mcp-admin-service"
+
+# ── Security Context ──────────────────────────────────────────────────────────
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 1000
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: false   # needs /app/logs write
+  capabilities:
+    drop: ["ALL"]
+
+# ── Resources ─────────────────────────────────────────────────────────────────
+resources:
+  requests:
+    cpu: 500m
+    memory: 512Mi
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+
+# ── Environment ───────────────────────────────────────────────────────────────
+env:
+  KEYCLOAK_ISSUER: "https://keycloak.ecoskiller.internal/realms/ecoskiller"
+  JWT_STRICT_SIGNATURE: "true"
+  AUDIT_LOG_FILE: "/app/logs/audit.log"
+
+# ── Secrets (mounted from Kubernetes secrets) ─────────────────────────────────
+# These are referenced by name — values stored in k8s secrets, never in helm values
+envFromSecrets: []
+  # - secretRef:
+  #     name: admin-service-secrets   # contains DB_URL, KEYCLOAK_CLIENT_SECRET etc.
+
+# ── Volumes (audit log persistence) ──────────────────────────────────────────
+volumes:
+  - name: audit-logs
+    emptyDir: {}
+
+volumeMounts:
+  - name: audit-logs
+    mountPath: /app/logs
+
+# ── Service (ClusterIP only — MCP uses stdio, no HTTP port) ──────────────────
+service:
+  type: ClusterIP
+  port: 8080   # reserved for future health endpoint
+
+# ── Health Check (process-level for MCP stdio servers) ───────────────────────
+livenessProbe:
+  exec:
+    command: ["pgrep", "-f", "app.jar"]
+  initialDelaySeconds: 15
+  periodSeconds: 30
+
+readinessProbe:
+  exec:
+    command: ["pgrep", "-f", "app.jar"]
+  initialDelaySeconds: 10
+  periodSeconds: 10
+
+# ── Pod Disruption Budget ─────────────────────────────────────────────────────
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+# ── Network Policy ────────────────────────────────────────────────────────────
+networkPolicy:
+  enabled: true
+  # Only allow ingress from admin portal pod label
+  ingressFrom:
+    - podSelector:
+        matchLabels:
+          app: admin-portal
+
+# ── Node affinity (prefer GCP asia-south1 nodes for DPDPA data residency) ─────
+affinity:
+  nodeAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        preference:
+          matchExpressions:
+            - key: topology.kubernetes.io/region
+              operator: In
+              values: ["asia-south1"]

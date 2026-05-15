@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "mcp-innovation-registry": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-innovation-registry/target/mcp-innovation-registry-1.0.0.jar"
+      ],
+      "env": {
+        "JAVA_OPTS": "-Xmx512m -Xms128m"
+      }
+    }
+  }
+}

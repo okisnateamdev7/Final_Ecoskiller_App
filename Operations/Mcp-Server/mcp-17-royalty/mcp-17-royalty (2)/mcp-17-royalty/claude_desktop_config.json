@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcp-17-royalty": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-17-royalty-1.0.0.jar"],
+      "env": {
+        "ENV":            "prod",
+        "AUDIT_LOG_PATH": "/var/log/ecoskiller/mcp-17-royalty-audit.log"
+      }
+    }
+  }
+}

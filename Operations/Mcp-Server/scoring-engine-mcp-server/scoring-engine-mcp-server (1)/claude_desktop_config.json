@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "mcp-scoring-engine-ecoskiller": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/scoring-engine-mcp-server/target/scoring-engine-mcp-server-1.0.0.jar"],
+      "env": {
+        "SCORING_JWT_SECRET":           "your-keycloak-jwt-secret-here",
+        "SCORING_DB_HOST":              "localhost",
+        "SCORING_REDIS_ENABLED":        "false",
+        "SCORING_AUDIT_ENABLED":        "true",
+        "SCORING_SLA_MINUTES":          "15",
+        "SCORING_WEIGHT_COMMUNICATION": "35",
+        "SCORING_WEIGHT_TECHNICAL":     "40",
+        "SCORING_WEIGHT_CULTURAL_FIT":  "25",
+        "SCORING_FAIRNESS_THRESHOLD":   "0.8",
+        "SCORING_MODEL_PRODUCTION_VER": "v1",
+        "SCORING_CANDIDATE_TRAFFIC_PCT":"10"
+      }
+    }
+  }
+}

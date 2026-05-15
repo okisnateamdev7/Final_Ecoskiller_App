@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "websocket-service-mcp": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/websocket-service-mcp/target/websocket-service-mcp.jar"
+      ]
+    }
+  }
+}

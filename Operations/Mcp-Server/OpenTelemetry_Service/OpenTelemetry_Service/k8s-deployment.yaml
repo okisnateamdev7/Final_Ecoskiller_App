@@ -1,0 +1,329 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: observability
+  labels:
+    name: observability
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otel-mcp-server-config
+  namespace: observability
+data:
+  application.conf: |
+    server {
+        host = "0.0.0.0"
+        port = 9090
+        threadPoolSize = 16
+    }
+
+    collector {
+        otlpEndpoint = "http://otel-collector.ops.svc.cluster.local:4317"
+        batchSize = 128
+        batchTimeoutMs = 5000
+        queueSize = 2048
+        samplingRate = 0.1
+    }
+
+    security {
+        tlsEnabled = true
+        tlsCertPath = "/etc/otel-certs/tls.crt"
+        tlsKeyPath = "/etc/otel-certs/tls.key"
+        tlsCACertPath = "/etc/otel-certs/ca.crt"
+        authenticationRequired = false
+    }
+
+    service {
+        name = "ecoskiller-otel-mcp"
+        version = "1.0.0"
+    }
+
+    environment = "production"
+
+    logging {
+        level = "INFO"
+        format = "json"
+    }
+
+    multiTenant {
+        isolation {
+            enabled = true
+            level = "COMPLETE"
+        }
+        retentionDays = 90
+    }
+
+    compliance {
+        auditLogging {
+            enabled = true
+            level = "FULL"
+        }
+        dataGovernance {
+            encryption = "AES-256-GCM"
+            piiRedaction = true
+        }
+    }
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: otel-mcp-server-tls
+  namespace: observability
+type: kubernetes.io/tls
+data:
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN0akNDQVoxZ0F3SUJBZ0lVRm9CVjFCeFYzaUpOVDMwNnBqbVhxb3J3QjBjd0NnWUlLb1pJamswRVF3RHcKQ2cwR0NTZW55MG1WZTAxcGFWMD0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  tls.key: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2UUlCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktjd2dnU2pBZ0VBQW9JQkFRREp4QTIwTGhROUg1L0YKQ3JnPQotLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tCg==
+  ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN1RENDQVF3Q0NRRHpENW5MbHo3bEhUQU5CZ2txaGtpRzl3MEJBUXNGQURCSE1Rc3dDUVlEVlFRR0V3SlYKVXpFVk1Cc0dBMVVFQ0F3VFUybG5iaUJXYjNKNWNIUnZNUmt3RndZRFZRUUtEQkJSU1V4RklGeE9UVKRQMFRSRGJ3dwpReWsxTVRFeUJnTlZIUkVFTHpBdGhpbHNiMk5oYkdodmMzUXhMV1JsZWkxbGVHRnRjR3hsTG1SdmJXRnBiaUI2CmRYQTNIa2d3TUI0WERUSXhNalV5TmpNNE16RTJOVm9YRFRVeFRFWkROalJDTkRrMk5qbGFNRkV4Q3pBSkJnTlYKQkFZVEFsVlRNUlV3RXdZRFZRUUlEQXhUYVdkdUlGWnliM0o1Y0hSdk1Sa3dGd1lEVlFRS0RCQlJTVXhGSQpGeE9UVKRQMFRSRGJ3d1FZazFNVEV5QmdOVkJSRWZNQzh1YW05dmR6RXhMV1JsZWkxbGVHRnRjR3hsTG1SdgpiV0ZwYmpCWk1CTUdCeXFHU000OUFnRUdDQ3FHU000OUJBTUNNQTRCQU5CcDMzSjhkMzBBMUhGMzc5SThNeXBRClA9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-mcp-server
+  namespace: observability
+  labels:
+    app: otel-mcp-server
+    version: "1.0.0"
+    component: observability
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: otel-mcp-server
+  template:
+    metadata:
+      labels:
+        app: otel-mcp-server
+        version: "1.0.0"
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: otel-mcp-server
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      
+      # Init container for certificate validation
+      initContainers:
+      - name: cert-validation
+        image: busybox:latest
+        command:
+        - /bin/sh
+        - -c
+        - |
+          echo "Validating TLS certificates..."
+          ls -la /etc/otel-certs/
+          echo "Certificates validated"
+        volumeMounts:
+        - name: tls-certs
+          mountPath: /etc/otel-certs
+          readOnly: true
+
+      containers:
+      - name: otel-mcp-server
+        image: ecoskiller/otel-mcp-server:1.0.0
+        imagePullPolicy: Always
+        
+        ports:
+        - name: rpc
+          containerPort: 9090
+          protocol: TCP
+
+        env:
+        # Server configuration
+        - name: SERVER_HOST
+          value: "0.0.0.0"
+        - name: SERVER_PORT
+          value: "9090"
+        - name: THREAD_POOL_SIZE
+          value: "16"
+
+        # Collector configuration
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: "http://otel-collector.ops.svc.cluster.local:4317"
+        - name: BATCH_SIZE
+          value: "128"
+        - name: BATCH_TIMEOUT_MS
+          value: "5000"
+        - name: QUEUE_SIZE
+          value: "2048"
+        - name: SAMPLING_RATE
+          value: "0.1"
+
+        # Security configuration
+        - name: TLS_ENABLED
+          value: "true"
+        - name: TLS_CERT_PATH
+          value: "/etc/otel-certs/tls.crt"
+        - name: TLS_KEY_PATH
+          value: "/etc/otel-certs/tls.key"
+        - name: TLS_CA_CERT_PATH
+          value: "/etc/otel-certs/ca.crt"
+
+        # Service configuration
+        - name: SERVICE_NAME
+          value: "ecoskiller-otel-mcp"
+        - name: SERVICE_VERSION
+          value: "1.0.0"
+        - name: ENVIRONMENT
+          value: "production"
+        - name: LOG_LEVEL
+          value: "INFO"
+
+        # JVM configuration
+        - name: JAVA_OPTS
+          value: "-Xms512m -Xmx1024m -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
+
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+          limits:
+            cpu: "1000m"
+            memory: "1024Mi"
+
+        # Health checks
+        livenessProbe:
+          httpGet:
+            path: /
+            port: rpc
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+
+        readinessProbe:
+          httpGet:
+            path: /
+            port: rpc
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+
+        # Security context
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          capabilities:
+            drop:
+            - ALL
+
+        # Volume mounts
+        volumeMounts:
+        - name: config
+          mountPath: /opt/otel-mcp-server/config
+          readOnly: true
+        - name: tls-certs
+          mountPath: /etc/otel-certs
+          readOnly: true
+        - name: logs
+          mountPath: /opt/otel-mcp-server/logs
+        - name: tmp
+          mountPath: /tmp
+
+      volumes:
+      - name: config
+        configMap:
+          name: otel-mcp-server-config
+      - name: tls-certs
+        secret:
+          secretName: otel-mcp-server-tls
+      - name: logs
+        emptyDir: {}
+      - name: tmp
+        emptyDir: {}
+
+      # Pod disruption budget
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - otel-mcp-server
+              topologyKey: kubernetes.io/hostname
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: otel-mcp-server
+  namespace: observability
+  labels:
+    app: otel-mcp-server
+spec:
+  type: ClusterIP
+  ports:
+  - name: rpc
+    port: 9090
+    targetPort: rpc
+    protocol: TCP
+  selector:
+    app: otel-mcp-server
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: otel-mcp-server
+  namespace: observability
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: otel-mcp-server
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: otel-mcp-server
+  namespace: observability
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: otel-mcp-server
+  namespace: observability
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: otel-mcp-server
+  namespace: observability
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: otel-mcp-server
+subjects:
+- kind: ServiceAccount
+  name: otel-mcp-server
+  namespace: observability

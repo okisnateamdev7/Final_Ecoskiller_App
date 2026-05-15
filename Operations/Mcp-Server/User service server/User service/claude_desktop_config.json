@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "user-service-mcp": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/user-service-mcp/target/user-service-mcp.jar"
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "unleash-mcp-server": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/unleash-mcp-server/target/unleash-mcp-server.jar"
+      ],
+      "env": {
+        "UNLEASH_MCP_API_KEY": "your-secret-key-here"
+      }
+    }
+  }
+}

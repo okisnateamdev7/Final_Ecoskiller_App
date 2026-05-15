@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcp-waf-modsecurity": {
+      "command": "java",
+      "args": [
+        "-cp",
+        "/absolute/path/to/mcp-waf-modsecurity/out",
+        "com.ecoskiller.waf.McpWafServer"
+      ]
+    }
+  }
+}

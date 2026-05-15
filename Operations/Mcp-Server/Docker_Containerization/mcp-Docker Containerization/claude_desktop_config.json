@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-05-docker": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-05-docker-1.0.0.jar"]
+    }
+  }
+}

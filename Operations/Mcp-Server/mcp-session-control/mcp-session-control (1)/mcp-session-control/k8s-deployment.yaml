@@ -1,0 +1,159 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# Ecoskiller — Session Control MCP Server
+# Kubernetes Deployment | Namespace: realtime
+# ─────────────────────────────────────────────────────────────────────────────
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: realtime
+  labels:
+    ecoskiller.com/component: mcp-session-control
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mcp-session-control-secrets
+  namespace: realtime
+type: Opaque
+stringData:
+  MCP_API_KEY:               ""   # openssl rand -hex 32
+  MCP_API_KEY_2:             ""   # rotation key (optional)
+  SESSION_SERVICE_TOKEN:     ""   # Keycloak service-account JWT
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-session-control
+  namespace: realtime
+  labels:
+    app: mcp-session-control
+    ecoskiller.com/component: mcp-server
+    ecoskiller.com/category: realtime-06
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mcp-session-control
+  template:
+    metadata:
+      labels:
+        app: mcp-session-control
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+
+      containers:
+        - name: mcp-session-control
+          image: eclipse-temurin:21-jre-alpine
+          command: ["java", "-jar", "/app/mcp-session-control-server.jar"]
+
+          env:
+            - name: SESSION_SERVICE_BASE_URL
+              value: "http://session-control.realtime.svc.cluster.local:3000"
+            - name: SESSION_SERVICE_AUTH_TYPE
+              value: "bearer"
+            - name: SESSION_SERVICE_TLS_VERIFY
+              value: "true"
+            - name: SESSION_SERVICE_TIMEOUT_MS
+              value: "10000"
+            - name: SESSION_MAX_DURATION_SECS
+              value: "14400"
+            - name: SESSION_HEARTBEAT_TIMEOUT
+              value: "120"
+            - name: LOG_LEVEL
+              value: "INFO"
+            - name: MCP_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-session-control-secrets
+                  key: MCP_API_KEY
+            - name: MCP_API_KEY_2
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-session-control-secrets
+                  key: MCP_API_KEY_2
+                  optional: true
+            - name: SESSION_SERVICE_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-session-control-secrets
+                  key: SESSION_SERVICE_TOKEN
+                  optional: true
+
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "50m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+
+      serviceAccountName: mcp-session-control-sa
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mcp-session-control-sa
+  namespace: realtime
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: mcp-session-control-role
+  namespace: realtime
+rules: []   # No Kubernetes API access needed
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: mcp-session-control-rb
+  namespace: realtime
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: mcp-session-control-role
+subjects:
+  - kind: ServiceAccount
+    name: mcp-session-control-sa
+    namespace: realtime
+
+---
+# NetworkPolicy: restrict outbound to session-control-service only
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mcp-session-control-netpol
+  namespace: realtime
+spec:
+  podSelector:
+    matchLabels:
+      app: mcp-session-control
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector: {}
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: realtime
+      ports:
+        - protocol: TCP
+          port: 3000

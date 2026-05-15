@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcp-wazuh": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-wazuh/target/mcp-wazuh-1.0.0.jar"],
+      "env": {
+        "WAZUH_API_URL":   "https://wazuh-manager.ops.svc.cluster.local:55000",
+        "WAZUH_API_TOKEN": "<your-wazuh-jwt-token>"
+      }
+    }
+  }
+}

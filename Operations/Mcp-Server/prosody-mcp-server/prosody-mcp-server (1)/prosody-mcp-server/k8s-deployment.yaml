@@ -1,0 +1,91 @@
+---
+# Kubernetes Secret — mount PROSODY_JWT_SECRET from k8s secret (never hardcoded)
+apiVersion: v1
+kind: Secret
+metadata:
+  name: prosody-mcp-secrets
+  namespace: ecoskiller
+type: Opaque
+stringData:
+  jwt-secret: "REPLACE_WITH_REAL_SECRET_IN_PRODUCTION"  # change before deploy
+  db-password: "REPLACE_WITH_REAL_DB_PASSWORD"
+
+---
+# ConfigMap for non-sensitive config
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prosody-mcp-config
+  namespace: ecoskiller
+data:
+  PROSODY_XMPP_DOMAIN: "ecoskiller.io"
+  PROSODY_DB_HOST: "postgres.ecoskiller.svc.cluster.local"
+  PROSODY_REDIS_ENABLED: "true"
+  PROSODY_AUDIT_ENABLED: "true"
+  PROSODY_LOG_LEVEL: "INFO"
+  PROSODY_RATE_LIMIT_PER_SEC: "100"
+  PROSODY_RATE_LIMIT_PER_MIN: "1000"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prosody-mcp-server
+  namespace: ecoskiller
+  labels:
+    app: prosody-mcp-server
+    component: signaling
+    version: "1.0.0"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prosody-mcp-server
+  template:
+    metadata:
+      labels:
+        app: prosody-mcp-server
+        component: signaling
+    spec:
+      # Security: run as non-root
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+
+      containers:
+        - name: prosody-mcp
+          image: harbor.ecoskiller.io/ecoskiller/prosody-mcp-server:1.0.0
+          imagePullPolicy: Always
+
+          env:
+            - name: PROSODY_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: prosody-mcp-secrets
+                  key: jwt-secret
+          envFrom:
+            - configMapRef:
+                name: prosody-mcp-config
+
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+          # Security: read-only root filesystem
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+
+          # MCP server uses stdio — no HTTP port needed for the MCP server itself
+          # (Prosody XMPP server has its own ports managed separately)
+
+      # Restart policy
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30

@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "mcp-assessment-orchestrator": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-assessment-orchestrator/target/mcp-assessment-orchestrator.jar"],
+      "env": {
+        "APP_JWT_SECRET": "your-keycloak-realm-secret-here",
+        "APP_STRICT_MODE": "false",
+        "JITSI_JWT_SECRET": "your-jitsi-shared-secret-here",
+        "JITSI_APP_ID": "ecoskiller",
+        "JITSI_DOMAIN": "meet.ecoskiller.internal",
+        "APP_MAX_PAYLOAD_SIZE": "65535",
+        "GD_INTRO_DURATION_SECONDS": "60",
+        "GD_SPEAKING_DURATION_SECONDS": "90",
+        "GD_OPEN_DISCUSSION_DURATION_SECONDS": "300",
+        "GD_CLOSING_DURATION_SECONDS": "120",
+        "QUORUM_CANCEL_LEAD_TIME_MINUTES": "2"
+      }
+    }
+  }
+}

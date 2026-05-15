@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-gd-orchestrator": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-gd-orchestrator-1.0.0.jar"]
+    }
+  }
+}

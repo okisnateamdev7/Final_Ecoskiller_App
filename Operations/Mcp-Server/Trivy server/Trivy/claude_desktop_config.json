@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "trivy-mcp-server": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/trivy-mcp-server/target/trivy-mcp-server-1.0.0.jar"],
+      "env": {
+        "TRIVY_JWT_BYPASS": "true",
+        "TRIVY_AUDIT_LOG_FILE": "/tmp/trivy-audit.jsonl",
+        "TRIVY_RATE_LIMIT_MAX": "100",
+        "TRIVY_RATE_LIMIT_MS": "60000"
+      }
+    }
+  }
+}

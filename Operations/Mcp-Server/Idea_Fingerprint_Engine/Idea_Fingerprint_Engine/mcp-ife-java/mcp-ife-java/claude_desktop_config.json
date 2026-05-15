@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-ife": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-ife/target/mcp-ife-1.0.0.jar"]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "mcp-schema-registry": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-schema-registry-server.jar"],
+      "env": {
+        "APICURIO_BASE_URL":       "http://localhost:8080/apis/registry/v2",
+        "APICURIO_AUTH_TYPE":      "none",
+        "APICURIO_USERNAME":       "",
+        "APICURIO_PASSWORD":       "",
+        "APICURIO_TOKEN":          "",
+        "APICURIO_TLS_VERIFY":     "true",
+        "APICURIO_TIMEOUT_MS":     "10000",
+        "APICURIO_DEFAULT_GROUP":  "ecoskiller",
+        "DEFAULT_COMPATIBILITY":   "BACKWARD",
+        "MAX_VERSIONS_WARN":       "100",
+        "MCP_API_KEY":             "your-secret-api-key-here",
+        "LOG_LEVEL":               "INFO"
+      }
+    }
+  }
+}

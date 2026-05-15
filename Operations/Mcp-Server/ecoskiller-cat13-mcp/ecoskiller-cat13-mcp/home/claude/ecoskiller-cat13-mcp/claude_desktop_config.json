@@ -1,0 +1,37 @@
+{
+  "mcpServers": {
+    "ecoskiller-cat13-enterprise-optimization-trust": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/path/to/cat13-enterprise-optimization-trust-mcp-1.0.0-ANTIGRAVITY.jar"
+      ],
+      "metadata": {
+        "name": "CAT-13: Enterprise Optimization + Trust Infrastructure",
+        "platform": "ECOSKILLER ANTIGRAVITY",
+        "version": "1.0.0-ANTIGRAVITY-SEALED",
+        "transport": "stdio",
+        "agents": [
+          "WORK_RELIABILITY_MODEL_87_ANTIGRAVITY_v1.0_SEALED",
+          "SYNC_CONFLICT_RESOLVER_ANTIGRAVITY",
+          "STRUCTURED_SKILL_EXTRACTION_MODEL_ANTIGRAVITY_v1.0_SEALED",
+          "SECTION_83_CORPORATE_BENCHMARK_MODEL_LOCKED",
+          "SECTION_82_HIRING_ROI_MODEL_LOCKED",
+          "SECTION_80_PRODUCTIVITY_INDEX_MODEL_LOCKED",
+          "REPUTATION_SCORE_ENGINE_v1.0_LOCKED",
+          "MIGRATION_VALIDATION_ENGINE_ANTIGRAVITY",
+          "FRAUD_PATTERN_DETECTION_MODEL_v1.0_LOCKED",
+          "FAKE_PROFILE_DETECTION_MODEL_ANTIGRAVITY",
+          "EXCEL_PATTERN_DETECTION_MODEL_ANTIGRAVITY",
+          "DATA_NORMALIZATION_ENGINE_ANTIGRAVITY_v1.0_SEALED",
+          "CERTIFICATE_AUTHENTICITY_CLASSIFIER_ANTIGRAVITY",
+          "AUTOMATED_SHORTLISTING_ENGINE_LOCKED",
+          "ATTRITION_RISK_MODEL_LOCKED",
+          "ANTIGRAVITY_Performance_Metric_Mapper",
+          "ANTIGRAVITY_90_Data_Cleaning_Classifier",
+          "ANTIGRAVITY_89_AI_Field_Mapping_Model"
+        ]
+      }
+    }
+  }
+}

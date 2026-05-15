@@ -1,0 +1,188 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# Ecoskiller — Redis MCP Server
+# Kubernetes Deployment (k3s / GKE / EKS)
+# Namespace: cache
+# ─────────────────────────────────────────────────────────────────────────────
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cache
+  labels:
+    ecoskiller.com/component: mcp-redis
+
+---
+# Secret — store real values in GCP Secret Manager or AWS Secrets Manager
+# then inject via External Secrets Operator
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mcp-redis-secrets
+  namespace: cache
+type: Opaque
+stringData:
+  REDIS_PASSWORD: ""          # Set via CI/CD or External Secrets
+  MCP_API_KEY: ""             # openssl rand -hex 32
+  MCP_API_KEY_2: ""           # Optional rotation key
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-redis-caching-session
+  namespace: cache
+  labels:
+    app: mcp-redis-caching-session
+    ecoskiller.com/component: mcp-server
+    ecoskiller.com/category: infra-02
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mcp-redis-caching-session
+  template:
+    metadata:
+      labels:
+        app: mcp-redis-caching-session
+    spec:
+      # Security: run as non-root
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+
+      containers:
+        - name: mcp-redis
+          # Use distroless Java to reduce attack surface
+          image: eclipse-temurin:21-jre-alpine
+          command: ["java", "-jar", "/app/mcp-redis-server.jar"]
+
+          env:
+            # Redis connection
+            - name: REDIS_HOST
+              value: "redis-cluster.cache.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_TLS_ENABLED
+              value: "true"
+            - name: REDIS_DB
+              value: "0"
+            - name: REDIS_MAX_POOL
+              value: "20"
+            - name: REDIS_TIMEOUT_MS
+              value: "3000"
+            - name: REDIS_KEY_PREFIX
+              value: "ecoskiller"
+            - name: LOG_LEVEL
+              value: "INFO"
+            # Secrets from Kubernetes Secret
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-redis-secrets
+                  key: REDIS_PASSWORD
+            - name: MCP_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-redis-secrets
+                  key: MCP_API_KEY
+            - name: MCP_API_KEY_2
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-redis-secrets
+                  key: MCP_API_KEY_2
+                  optional: true
+
+          # MCP uses stdin/stdout — no HTTP port needed
+          # If wrapping in HTTP for k8s health probes, expose 8080
+
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+
+          volumeMounts:
+            - name: app-jar
+              mountPath: /app
+
+          # Security context per container
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+
+      volumes:
+        - name: app-jar
+          configMap:
+            name: mcp-redis-jar    # Mount the fat JAR via ConfigMap or initContainer
+
+      # Service account with minimal RBAC
+      serviceAccountName: mcp-redis-sa
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mcp-redis-sa
+  namespace: cache
+  labels:
+    app: mcp-redis-caching-session
+
+---
+# RBAC: no Kubernetes API access needed for this MCP server
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: mcp-redis-role
+  namespace: cache
+rules: []  # No permissions needed
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: mcp-redis-rolebinding
+  namespace: cache
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: mcp-redis-role
+subjects:
+  - kind: ServiceAccount
+    name: mcp-redis-sa
+    namespace: cache
+
+---
+# Network policy: allow only internal cluster traffic
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mcp-redis-netpol
+  namespace: cache
+spec:
+  podSelector:
+    matchLabels:
+      app: mcp-redis-caching-session
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Allow traffic only from within the cluster (MCP clients)
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: default
+  egress:
+    # Allow only outbound to Redis
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: cache
+      ports:
+        - protocol: TCP
+          port: 6379

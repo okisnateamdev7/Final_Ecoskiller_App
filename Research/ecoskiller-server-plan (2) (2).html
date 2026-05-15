@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecoskiller — Server Architecture Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c14;
+    --surface: #0e1420;
+    --surface2: #141c2e;
+    --border: #1e2d47;
+    --gpu-accent: #00e5ff;
+    --gpu-glow: rgba(0,229,255,0.12);
+    --svc-accent: #7c3aed;
+    --svc-glow: rgba(124,58,237,0.12);
+    --green: #00ff88;
+    --yellow: #ffd60a;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --tag-bg: #0f1e35;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    padding: 48px 24px;
+    background-image:
+      radial-gradient(ellipse 80% 40% at 20% 0%, rgba(0,229,255,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(124,58,237,0.05) 0%, transparent 60%);
+  }
+
+  .wrapper { max-width: 1100px; margin: 0 auto; }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 52px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .brand-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gpu-accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .brand-title {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+    color: #fff;
+  }
+  .brand-sub {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 4px;
+  }
+  .header-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .badge {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .badge-cost {
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.3);
+    color: var(--green);
+  }
+  .badge-savings {
+    background: rgba(255,214,10,0.08);
+    border: 1px solid rgba(255,214,10,0.25);
+    color: var(--yellow);
+    font-size: 11px;
+  }
+
+  /* DIVIDER LINE */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--gpu-accent) 0%, var(--svc-accent) 50%, transparent 100%);
+    margin-bottom: 48px;
+    opacity: 0.4;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  /* SERVERS GRID */
+  .servers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  @media(max-width: 700px) {
+    .servers-grid { grid-template-columns: 1fr; }
+    .brand-title { font-size: 26px; }
+  }
+
+  /* SERVER CARD */
+  .server-card {
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+  .server-card.gpu {
+    border-color: rgba(0,229,255,0.25);
+    background: linear-gradient(160deg, rgba(0,229,255,0.06) 0%, var(--surface) 40%);
+    box-shadow: 0 0 40px rgba(0,229,255,0.06), inset 0 1px 0 rgba(0,229,255,0.1);
+  }
+  .server-card.svc {
+    border-color: rgba(124,58,237,0.25);
+    background: linear-gradient(160deg, rgba(124,58,237,0.06) 0%, var(--surface) 40%);
+    box-shadow: 0 0 40px rgba(124,58,237,0.06), inset 0 1px 0 rgba(124,58,237,0.1);
+  }
+
+  .card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-server-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .gpu .card-server-tag { color: var(--gpu-accent); }
+  .svc .card-server-tag { color: #a78bfa; }
+
+  .card-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .card-spec {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* SPEC CHIPS */
+  .spec-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .chip {
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .gpu .chip { background: rgba(0,229,255,0.1); color: var(--gpu-accent); border: 1px solid rgba(0,229,255,0.2); }
+  .svc .chip { background: rgba(124,58,237,0.12); color: #c4b5fd; border: 1px solid rgba(124,58,237,0.25); }
+
+  /* SERVICE LIST */
+  .service-list { padding: 20px 24px; }
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .service-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .service-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .gpu .service-icon { background: rgba(0,229,255,0.1); }
+  .svc .service-icon { background: rgba(124,58,237,0.12); }
+
+  .service-info { flex: 1; }
+  .service-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .port-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-weight: 400;
+  }
+  .gpu .port-tag { background: rgba(0,229,255,0.08); color: var(--gpu-accent); border: 1px solid rgba(0,229,255,0.15); }
+  .svc .port-tag { background: rgba(124,58,237,0.1); color: #c4b5fd; border: 1px solid rgba(124,58,237,0.2); }
+
+  .service-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .card-cost {
+    padding: 14px 24px;
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cost-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .cost-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .gpu .cost-value { color: var(--gpu-accent); }
+  .svc .cost-value { color: #a78bfa; }
+
+  /* FLOW */
+  .flow-section { margin-bottom: 48px; }
+  .flow-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .flow-node {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .flow-node.ext { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text); }
+  .flow-node.svc-node { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); color: #c4b5fd; }
+  .flow-node.gpu-node { background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.25); color: var(--gpu-accent); }
+  .flow-arrow {
+    padding: 0 12px;
+    color: var(--muted);
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  /* MODELS TABLE */
+  .models-section { margin-bottom: 48px; }
+  .model-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media(max-width: 600px) { .model-cards { grid-template-columns: 1fr; } }
+
+  .model-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .model-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gpu-accent), var(--svc-accent));
+  }
+  .model-emoji { font-size: 24px; margin-bottom: 12px; }
+  .model-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .model-size {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gpu-accent);
+    margin-bottom: 8px;
+  }
+  .model-purpose { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .model-free {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 3px 8px;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    letter-spacing: 1px;
+  }
+
+  /* SUMMARY BAR */
+  .summary-bar {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .summary-item { text-align: center; }
+  .summary-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+  }
+  .summary-val.green { color: var(--green); }
+  .summary-val.cyan { color: var(--gpu-accent); }
+  .summary-val.purple { color: #a78bfa; }
+  .summary-key {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    display: block;
+    letter-spacing: 0.5px;
+  }
+  .summary-divider { width: 1px; height: 40px; background: var(--border); }
+  @media(max-width: 600px) { .summary-divider { display: none; } .summary-bar { justify-content: flex-start; } }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .server-card, .flow-box, .model-card, .summary-bar {
+    animation: fadeUp 0.5s ease both;
+  }
+  .server-card.svc { animation-delay: 0.1s; }
+  .model-card:nth-child(2) { animation-delay: 0.1s; }
+  .model-card:nth-child(3) { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">
+      <span class="brand-label">Ecoskiller · Server Architecture</span>
+      <div class="brand-title">AI Model<br>Server</div>
+      <div class="brand-sub">// Option B — GPU + Reduced CPU</div>
+    </div>
+    <div class="header-badge">
+      <span class="badge badge-cost">TOTAL: ₹27,500/month</span>
+      <span class="badge badge-savings">⬇ Save ₹19,500 vs Old Plan</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SERVERS -->
+  <div class="section-label">// 01 — Server Split</div>
+  <div class="servers-grid">
+
+    <!-- GPU SERVER -->
+    <div class="server-card gpu">
+      <div class="card-header">
+        <div class="card-server-tag">⚡ Server 1 — LLM / GPU</div>
+        <div class="card-name">GPU Inference Server</div>
+        <div class="card-spec">GCP n2-standard-8 + NVIDIA T4</div>
+      </div>
+      <div class="spec-chips">
+        <span class="chip">8 vCPU</span>
+        <span class="chip">32 GB RAM</span>
+        <span class="chip">T4 16GB VRAM</span>
+        <span class="chip">asia-south1</span>
+      </div>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="service-icon">🧠</div>
+          <div class="service-info">
+            <div class="service-name">Ollama <span class="port-tag">:11434</span></div>
+            <div class="service-desc">Mistral model server — GPU pe run hoga, 14GB VRAM use karega</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">🔍</div>
+          <div class="service-info">
+            <div class="service-name">GD LLM Analyzer <span class="port-tag">Kafka</span></div>
+            <div class="service-desc">Core analysis engine — 2 replicas, Ollama se connected</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">📐</div>
+          <div class="service-info">
+            <div class="service-name">Embedding Service <span class="port-tag">:5000</span></div>
+            <div class="service-desc">MiniLM vector generation — CPU pe chalta hai (sirf 22 MB model)</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">📊</div>
+          <div class="service-info">
+            <div class="service-name">Prometheus Monitoring</div>
+            <div class="service-desc">GPU + inference metrics tracking — lightweight, free</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-cost">
+        <span class="cost-label">Monthly Cost</span>
+        <span class="cost-value">₹27,500</span>
+      </div>
+    </div>
+
+    <!-- SERVICES SERVER -->
+    <div class="server-card svc">
+      <div class="card-header">
+        <div class="card-server-tag">🔧 Server 2 — Backend Services</div>
+        <div class="card-name">Application Services Server</div>
+        <div class="card-spec">GCP n2-standard-4 ya existing server</div>
+      </div>
+      <div class="spec-chips">
+        <span class="chip">4–8 vCPU</span>
+        <span class="chip">16–32 GB RAM</span>
+        <span class="chip">500 GB SSD</span>
+        <span class="chip">No GPU</span>
+      </div>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="service-icon">🗄️</div>
+          <div class="service-info">
+            <div class="service-name">PostgreSQL <span class="port-tag">:5432</span></div>
+            <div class="service-desc">Self-hosted database — candidates, GD records, user data</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">🧲</div>
+          <div class="service-info">
+            <div class="service-name">Qdrant Vector DB <span class="port-tag">:6333</span></div>
+            <div class="service-desc">50 GB vector storage — semantic similarity search ke liye</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">🔎</div>
+          <div class="service-info">
+            <div class="service-name">RAG Context Service <span class="port-tag">:8000</span></div>
+            <div class="service-desc">Qdrant se relevant context retrieve karta hai before analysis</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">📝</div>
+          <div class="service-info">
+            <div class="service-name">Prompt Manager <span class="port-tag">:4000</span></div>
+            <div class="service-desc">Prompt templates version control aur A/B testing</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">📈</div>
+          <div class="service-info">
+            <div class="service-name">Evaluation Metrics <span class="port-tag">:7000</span></div>
+            <div class="service-desc">LLM output quality tracking — accuracy, consistency scores</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">⚙️</div>
+          <div class="service-info">
+            <div class="service-name">Fine-tuning Service <span class="port-tag">Airflow</span></div>
+            <div class="service-desc">Scheduled model customization — optional, runs periodically</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">📉</div>
+          <div class="service-info">
+            <div class="service-name">Grafana Dashboards <span class="port-tag">:3000</span></div>
+            <div class="service-desc">Visual monitoring UI — metrics visualize karta hai Prometheus se</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-cost">
+        <span class="cost-label">Software Cost</span>
+        <span class="cost-value" style="color: var(--green);">₹0 — 100% Open Source</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COST COMPARISON -->
+  <div style="margin-bottom:48px;">
+    <div class="section-label">// 02 — GPU vs Without GPU — LLM Server Cost Compare</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:20px;">
+
+      <!-- GPU Options -->
+      <div style="background:var(--surface);border:1px solid rgba(0,229,255,0.2);border-radius:16px;overflow:hidden;">
+        <div style="padding:18px 22px 14px;border-bottom:1px solid var(--border);background:rgba(0,229,255,0.04);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gpu-accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚡ With GPU — Options</div>
+          <div style="font-size:15px;font-weight:700;color:#fff;">NVIDIA T4 + GCP</div>
+        </div>
+        <div style="padding:18px 22px;">
+
+          <div style="padding:14px;border-radius:10px;background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.15);margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-size:13px;font-weight:700;color:#fff;">n2-standard-8 + T4</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--gpu-accent);">₹27,500</span>
+            </div>
+            <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">8 vCPU, 32 GB RAM — Current Recommended Plan</div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.2);color:var(--green);">RECOMMENDED</span>
+          </div>
+
+          <div style="padding:14px;border-radius:10px;background:rgba(0,0,0,0.2);border:1px solid var(--border);margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-size:13px;font-weight:700;color:#fff;">n2-standard-4 + T4</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--gpu-accent);">₹17,500</span>
+            </div>
+            <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">4 vCPU, 16 GB RAM — Minimal CPU, GPU does all work</div>
+            <div style="font-size:11px;color:#ffd60a;">&#9888; Risk: less CPU headroom for spikes</div>
+          </div>
+
+          <div style="padding:14px;border-radius:10px;background:rgba(0,0,0,0.2);border:1px solid var(--border);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-size:13px;font-weight:700;color:#fff;">n2-standard-4 + T4 <span style="font-size:11px;color:#ffd60a;">Spot VM</span></span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--gpu-accent);">₹10,000</span>
+            </div>
+            <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">Spot pricing — 60-70% cheaper, same performance</div>
+            <div style="font-size:11px;color:#ffd60a;">&#9888; Risk: GCP can restart anytime (rare but possible)</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Without GPU Options -->
+      <div style="background:var(--surface);border:1px solid rgba(124,58,237,0.2);border-radius:16px;overflow:hidden;">
+        <div style="padding:18px 22px 14px;border-bottom:1px solid var(--border);background:rgba(124,58,237,0.04);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">&#128187; Without GPU — Options</div>
+          <div style="font-size:15px;font-weight:700;color:#fff;">CPU Only — No T4</div>
+        </div>
+        <div style="padding:18px 22px;">
+
+          <div style="padding:14px;border-radius:10px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-size:13px;font-weight:700;color:#fff;">n2-standard-16</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#a78bfa;">₹39,000</span>
+            </div>
+            <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">16 vCPU, 64 GB RAM — Original document plan</div>
+            <div style="font-size:11px;color:var(--muted);">35 sec/analysis · 1,600 GD/month · 3-4 concurrent</div>
+          </div>
+
+          <div style="padding:14px;border-radius:10px;background:rgba(0,0,0,0.2);border:1px solid var(--border);margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-size:13px;font-weight:700;color:#fff;">n2-standard-8</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#a78bfa;">₹19,000</span>
+            </div>
+            <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">8 vCPU, 32 GB RAM — Reduced CPU setup</div>
+            <div style="font-size:11px;color:#ffd60a;">&#9888; Slower: 40-50 sec/analysis, 2-3 concurrent only</div>
+          </div>
+
+          <div style="padding:14px;border-radius:10px;background:rgba(0,0,0,0.2);border:1px solid var(--border);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-size:13px;font-weight:700;color:#fff;">n2-standard-8 <span style="font-size:11px;color:#ffd60a;">Spot VM</span></span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#a78bfa;">₹7,000</span>
+            </div>
+            <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">Spot pricing — absolute lowest cost possible</div>
+            <div style="font-size:11px;color:#ffd60a;">&#9888; Slow + Spot risk — only for dev/testing</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Verdict Banner -->
+    <div style="background:linear-gradient(135deg,rgba(0,229,255,0.08),rgba(124,58,237,0.08));border:1px solid rgba(0,229,255,0.15);border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="font-size:24px;">&#9889;</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">Verdict — Best Bang for Money</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;">
+          <span style="color:var(--gpu-accent);font-weight:600;">n2-standard-8 + T4 at ₹27,500</span> is the sweet spot — GPU handles all inference, CPU is just orchestration.
+          If budget is very tight, try <span style="color:#ffd60a;font-weight:600;">Spot VM at ₹10,000</span> for dev/staging first.
+          Without GPU is only worth it if volume is below <span style="color:#fff;font-weight:600;">500 GD/month</span> — beyond that, GPU pays for itself in speed &amp; capacity.
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:4px;">Max Saving Possible</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:var(--green);">₹17,500</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);">vs current plan</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REQUEST FLOW -->
+  <div class="flow-section">
+    <div class="section-label">// 02 — Integration Flow</div>
+    <div class="flow-box" style="padding: 32px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
+
+        <div style="display: flex; align-items: center; gap: 16px; width: 100%; max-width: 640px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);flex-shrink:0;">01</div>
+            <div style="width:1px;height:36px;background:linear-gradient(180deg,var(--border),transparent);"></div>
+          </div>
+          <div class="flow-node ext" style="flex:1;">👤 User Request</div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 16px; width: 100%; max-width: 640px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:#c4b5fd;flex-shrink:0;">02</div>
+            <div style="width:1px;height:36px;background:linear-gradient(180deg,rgba(124,58,237,0.4),transparent);"></div>
+          </div>
+          <div style="flex:1;">
+            <div class="flow-node svc-node" style="width:100%;margin-bottom:4px;">🔀 API Gateway <span style="font-size:11px;font-weight:400;opacity:0.7;">— App Server</span></div>
+            <div style="font-size:11px;color:var(--muted);padding-left:4px;">Receives request, routes it to the GPU inference server</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 16px; width: 100%; max-width: 640px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.25);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gpu-accent);flex-shrink:0;">03</div>
+            <div style="width:1px;height:36px;background:linear-gradient(180deg,rgba(0,229,255,0.4),transparent);"></div>
+          </div>
+          <div style="flex:1;">
+            <div class="flow-node gpu-node" style="width:100%;margin-bottom:4px;">🔍 GD LLM Analyzer <span style="font-size:11px;font-weight:400;opacity:0.7;">— GPU Server</span></div>
+            <div style="font-size:11px;color:var(--muted);padding-left:4px;">Core analysis engine picks up the request via Kafka consumer</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 16px; width: 100%; max-width: 640px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.25);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gpu-accent);flex-shrink:0;">04</div>
+            <div style="width:1px;height:36px;background:linear-gradient(180deg,rgba(0,229,255,0.4),transparent);"></div>
+          </div>
+          <div style="flex:1;">
+            <div class="flow-node gpu-node" style="width:100%;margin-bottom:4px;">⚡ Ollama → Mistral:7b / Mistral:Instruct <span style="font-size:11px;font-weight:400;opacity:0.7;">— GPU VRAM</span></div>
+            <div style="font-size:11px;color:var(--muted);padding-left:4px;">Both models loaded into 14 GB GPU VRAM — instant inference, no disk reads</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 16px; width: 100%; max-width: 640px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.25);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gpu-accent);flex-shrink:0;">05</div>
+            <div style="width:1px;height:36px;background:linear-gradient(180deg,rgba(0,229,255,0.3),transparent);"></div>
+          </div>
+          <div style="flex:1;">
+            <div class="flow-node gpu-node" style="width:100%;margin-bottom:4px;">📐 Embedding Service → MiniLM <span style="font-size:11px;font-weight:400;opacity:0.7;">— CPU (22 MB)</span></div>
+            <div style="font-size:11px;color:var(--muted);padding-left:4px;">Tiny model runs on CPU — generates vector embeddings for semantic similarity</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 16px; width: 100%; max-width: 640px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.25);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);flex-shrink:0;">06</div>
+          </div>
+          <div style="flex:1;">
+            <div class="flow-node ext" style="width:100%;border-color:rgba(0,255,136,0.25);background:rgba(0,255,136,0.06);color:var(--green);margin-bottom:4px;">✅ Response Back to API</div>
+            <div style="font-size:11px;color:var(--muted);padding-left:4px;">Structured JSON result sent back to API Gateway → delivered to the user</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODELS -->
+  <div class="models-section">
+    <div class="section-label">// 03 — LLM Models (GPU Server Pe)</div>
+    <div class="model-cards">
+      <div class="model-card">
+        <div class="model-emoji">🧠</div>
+        <div class="model-name">Mistral 7B</div>
+        <div class="model-size">4.1 GB · GPU VRAM</div>
+        <div class="model-purpose">Main GD analysis engine — candidate scoring, strengths, weaknesses</div>
+        <span class="model-free">MIT LICENSE · FREE</span>
+      </div>
+      <div class="model-card">
+        <div class="model-emoji">📋</div>
+        <div class="model-name">Mistral Instruct</div>
+        <div class="model-size">4.1 GB · GPU VRAM</div>
+        <div class="model-purpose">Structured JSON output — clean, parseable API responses generate karta hai</div>
+        <span class="model-free">MIT LICENSE · FREE</span>
+      </div>
+      <div class="model-card">
+        <div class="model-emoji">🔢</div>
+        <div class="model-name">MiniLM Embeddings</div>
+        <div class="model-size">22 MB · CPU</div>
+        <div class="model-purpose">Vector similarity search — Qdrant ke saath kaam karta hai RAG ke liye</div>
+        <span class="model-free">MIT LICENSE · FREE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOMIZATION -->
+  <div class="models-section">
+    <div class="section-label">// 04 — Can You Make AI Work Your Way?</div>
+    <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;">
+
+      <div class="model-card" style="border-color: rgba(0,255,136,0.2);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+          <div style="font-size:22px;">&#127919;</div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.2);color:var(--green);">START TODAY</span>
+        </div>
+        <div class="model-name">Prompt Engineering</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);margin-bottom:8px;">Easiest · Zero Cost · Instant</div>
+        <div class="model-purpose" style="margin-bottom:12px;">No training needed. Just change the instruction given to Mistral — define scoring parameters, output format, grading style, and language. Works immediately.</div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic;">"Score on Communication 30%, Leadership 25%, Logic 25%, Body Language 20% — return JSON only."</div>
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="model-free">&#9201; Instant</span>
+          <span class="model-free">₹0 Cost</span>
+          <span class="model-free">Good Accuracy</span>
+        </div>
+      </div>
+
+      <div class="model-card" style="border-color: rgba(0,229,255,0.2);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+          <div style="font-size:22px;">&#129504;</div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--gpu-accent);">ALREADY PLANNED</span>
+        </div>
+        <div class="model-name">RAG — Live Knowledge</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gpu-accent);margin-bottom:8px;">Medium · Zero Cost · No Retraining</div>
+        <div class="model-purpose" style="margin-bottom:12px;">Your Qdrant + RAG Service is built for this. Feed industry-specific knowledge, company criteria, and job role benchmarks. Model uses your database alongside its own knowledge — no retraining ever needed.</div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic;">Just push new data into Qdrant → model picks it up automatically.</div>
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="model-free">&#9201; Days</span>
+          <span class="model-free">₹0 Cost</span>
+          <span class="model-free">Better Accuracy</span>
+        </div>
+      </div>
+
+      <div class="model-card" style="border-color: rgba(124,58,237,0.25);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+          <div style="font-size:22px;">&#127947;</div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.25);color:#c4b5fd;">MOST POWERFUL</span>
+        </div>
+        <div class="model-name">Fine-Tuning</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#a78bfa;margin-bottom:8px;">Advanced · Zero Cost · 4–6 Weeks</div>
+        <div class="model-purpose" style="margin-bottom:12px;">Train Mistral on your own past GD evaluations and expert assessments. Model starts thinking exactly like an Ecoskiller evaluator. Accuracy jumps from 80% to 90%+. Train once — use free forever.</div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic;">Requires: 500–1000 GD transcripts with expert scores (more = better).</div>
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="model-free">&#9201; 4–6 Weeks</span>
+          <span class="model-free">₹0 Cost</span>
+          <span class="model-free">Best Accuracy</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:20px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <div style="font-size:20px;">&#128506;</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">Recommended Path</div>
+        <div style="font-size:12px;color:var(--muted);">
+          Start with <span style="color:var(--green);font-weight:600;">Prompt Engineering</span> right away →
+          Add <span style="color:var(--gpu-accent);font-weight:600;">RAG</span> once Qdrant is live →
+          Fine-tune with <span style="color:#a78bfa;font-weight:600;">your own data</span> when you have 500+ GD records.
+          All three methods stack on top of each other — no extra infrastructure needed.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section-label">// 05 — Final Summary</div>
+  <div class="summary-bar">
+    <div class="summary-item">
+      <span class="summary-val cyan">₹27,500</span>
+      <span class="summary-key">GPU Server / Month</span>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-item">
+      <span class="summary-val purple">4 Services</span>
+      <span class="summary-key">On GPU Server</span>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-item">
+      <span class="summary-val purple">7 Services</span>
+      <span class="summary-key">On App Server</span>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-item">
+      <span class="summary-val">10 sec</span>
+      <span class="summary-key">Avg Analysis Time</span>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-item">
+      <span class="summary-val">4,800</span>
+      <span class="summary-key">GD/Month Capacity</span>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-item">
+      <span class="summary-val green">₹19,500</span>
+      <span class="summary-key">Monthly Savings vs Old Plan</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

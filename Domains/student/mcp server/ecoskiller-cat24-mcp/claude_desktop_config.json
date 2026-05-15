@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-24-scoring-billing": {
+      "command": "java",
+      "args": ["-cp", "/absolute/path/to/mcp-24-java/out", "com.ecoskiller.mcp.server.McpServer"]
+    }
+  }
+}

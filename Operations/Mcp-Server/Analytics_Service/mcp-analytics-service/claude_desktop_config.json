@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcp-analytics-service": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-analytics-service/target/mcp-analytics-service-1.0.0.jar"],
+      "env": {
+        "JWT_STRICT_SIGNATURE": "false",
+        "AUDIT_LOG_FILE": "/tmp/ecoskiller-analytics-audit.log"
+      }
+    }
+  }
+}

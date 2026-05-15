@@ -1,0 +1,910 @@
+╔══════════════════════════════════════════════════════════════════════════════════╗
+║         🔒 SEALED & LOCKED MODULE PROMPT — ESIGN_CONNECT                       ║
+║         EXECUTION ENGINE : ANTIGRAVITY                                         ║
+║         PARENT PLATFORM  : ECOSKILLER ENTERPRISE SAAS                         ║
+║         MODULE CLASS     : TRUST · LEGAL · LIFECYCLE BINDING                  ║
+╚══════════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔐 EXECUTION LOCK HEADER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EXECUTION_MODE             = LOCKED
+MUTATION_POLICY            = ADD_ONLY
+CREATIVE_INTERPRETATION    = FORBIDDEN
+ASSUMPTION_FILLING         = FORBIDDEN
+DEFAULT_BEHAVIOR           = DENY
+FAILURE_MODE               = STOP_EXECUTION
+MODULE_CODENAME            = ESIGN_CONNECT
+ENGINE_TARGET              = ANTIGRAVITY
+PARENT_PROMPT_INHERIT      = ECOSKILLER_MASTER_SEALED_PROMPT
+STAGE_BINDING              = STAGE_1_FOUNDATION + STAGE_4_COMPLIANCE
+COMPLIANCE_LAYER           = MANDATORY_INHERIT
+DUPLICATION_OF_BASE_RULES  = FORBIDDEN
+
+⚠️  ANTIGRAVITY MUST NOT reinterpret, simplify, or extend this module
+    beyond what is explicitly stated here.
+⚠️  Any output that conflicts with the Master Sealed Prompt = HARD REJECTION.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣  MODULE IDENTITY (NON-NEGOTIABLE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MODULE_NAME           = ESIGN_CONNECT
+MODULE_TYPE           = ELECTRONIC SIGNATURE + DOCUMENT BINDING LAYER
+MODULE_CATEGORY       =
+  - Digital Offer Signing
+  - Contract & NDA Execution
+  - Mentor / Trainer Agreement Binding
+  - Institute Enrollment Consent
+  - Corporate–SME Hiring Agreements
+  - Compliance Consent Records
+  - Parent Trust-Layer Authorization
+
+MODULE_POSITION_IN_PLATFORM =
+  Cross-cutting module — horizontally injected into:
+    → Job Portal Engine (Offer Letters)
+    → Skill Development Engine (Training Agreements)
+    → Project Execution Engine (Mentor Contracts)
+    → Group Discussion / Dojo (Evaluation Consent)
+    → ERP Layer (Institute, Corporate, SME Contracts)
+    → Compliance & Audit Layer (Immutable Record)
+
+MODULE_PURPOSE =
+  ESIGN_CONNECT replaces all paper-based, email-based, or unverified
+  document signing with a cryptographically sealed, legally valid,
+  multi-party electronic signature workflow — native to the
+  Ecoskiller platform — requiring zero external signature tools.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2️⃣  LEGAL COMPLIANCE FRAMEWORK (LOCKED — JURISDICTION AWARE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PRIMARY_LEGAL_STANDARDS =
+  - IT Act 2000 (India) — Section 5 Legal Recognition of E-Signatures
+  - Aadhaar eSign API (India) — Aadhaar-linked signature support
+  - eIDAS Regulation (EU) — Advanced + Qualified Electronic Signatures
+  - ESIGN Act (USA) — Electronic Signatures in Global & National Commerce
+  - UETA (USA) — Uniform Electronic Transactions Act
+  - GDPR (EU) — Consent data management & right-to-erasure
+  - PDPB (India) — Personal Data Protection Bill data handling
+  - ISO 27001 — Document security controls
+  - ISO 32000-1 — PDF/A archival standard
+
+SIGNATURE_TYPES_SUPPORTED =
+  SIMPLE_ELECTRONIC_SIGNATURE (SES)   → Email OTP + platform auth
+  ADVANCED_ELECTRONIC_SIGNATURE (AES) → Public key cryptography + MFA
+  AADHAAR_ESIGN               → Aadhaar OTP-linked, UIDAI API
+  QUALIFIED_ELECTRONIC_SIGNATURE (QES)→ eIDAS-compliant, CA-issued cert
+
+SIGNATURE_TYPE_ASSIGNMENT =
+  | Document Type              | Required Sig Level |
+  |-----------------------------|--------------------|
+  | Offer Letter (Student)      | SES + AES          |
+  | NDA (Enterprise)            | AES                |
+  | Internship Agreement        | SES                |
+  | Mentor Contract             | SES                |
+  | Institute Partnership MOU   | AES                |
+  | SME Hiring Contract         | AES                |
+  | Parent Authorization        | SES + OTP          |
+  | Regulatory / Compliance Doc | QES (where required)|
+
+COMPLIANCE_RULES =
+  - Jurisdiction auto-detected from tenant profile
+  - Signature level auto-upgraded if jurisdiction demands it
+  - Downgrade of signature level = FORBIDDEN
+  - Undated or unsigned document storage = FORBIDDEN
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3️⃣  USER ECOSYSTEM INTEGRATION (STRICTLY ENFORCED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SIGNER_ROLES (INHERITED FROM MASTER PROMPT — READ-ONLY):
+  STUDENT            → Signs: Offer letters, internship agreements, consent forms
+  TRAINER / MENTOR   → Signs: Training contracts, mentorship agreements, NDAs
+  EVALUATOR          → Signs: Evaluation declarations, anti-cheat certifications
+  INSTITUTE          → Signs: MOUs, enrollment consents, data agreements
+  ENTERPRISE         → Signs: Hiring contracts, NDAs, service agreements
+  RECRUITER / HR     → Signs: Offer letters, agency agreements
+  ADMIN              → Signs: Compliance declarations, audit acknowledgments
+  PARENT             → Signs / Authorizes: Minor consent, read-only trust docs
+  AI / AUTOMATION    → CANNOT SIGN — AI may draft, never execute binding signature
+
+ROLE_BASED_SIGNING_RULES =
+  - Each signer must be identity-verified before signing (RBAC + MFA)
+  - Signing permissions derived from role + tenant + domain (NO overrides)
+  - Cross-tenant signing = FORBIDDEN without explicit cross-tenant agreement record
+  - Parent can only authorize — never act as primary contract party
+  - AI agents flagged as PROPOSED_SIGNER is a SYSTEM_ERROR → STOP
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4️⃣  DOCUMENT LIFECYCLE STATES (HARD LOCK — STATE MACHINE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ESIGN_DOCUMENT_STATES =
+
+  DRAFT
+    → Created by initiating party
+    → Not visible to signers
+    → Editable by initiator only
+    → No signing permitted
+
+  SENT_FOR_REVIEW
+    → Visible to all signers (read-only preview)
+    → Comment / objection window active
+    → No signatures collected yet
+    → Initiator can recall (→ DRAFT) or proceed (→ PENDING_SIGNATURES)
+
+  PENDING_SIGNATURES
+    → Signing order enforced if sequential signing enabled
+    → Signing deadline timer active
+    → Reminders auto-fired at: 48hr, 24hr, 6hr before deadline
+    → Partial signatures accepted (state persists until all signed)
+    → Cannot be edited — edit → VOID + new DRAFT
+
+  PARTIALLY_SIGNED
+    → ≥1 signer completed, not all parties signed
+    → Sub-state of PENDING_SIGNATURES
+    → Visible audit trail of who has/hasn't signed
+
+  COMPLETED
+    → All parties signed
+    → Document cryptographically sealed (SHA-256 + RSA/ECDSA)
+    → PDF/A archive generated
+    → Immutable — no edits, no recalls
+    → Stored in distributed immutable record
+
+  EXPIRED
+    → Signing deadline passed, not all signatures collected
+    → Automatically voided on expiry
+    → Initiator notified → must issue new DRAFT
+
+  VOIDED
+    → Manually cancelled by authorized initiator before COMPLETED
+    → Reason for void = MANDATORY field
+    → Audit log entry created
+    → Cannot transition back to any active state
+
+  DISPUTED
+    → A party has raised a legal challenge post-COMPLETED
+    → Document locked: no further mutations
+    → Escalated to Compliance Admin + Audit Trail
+    → Resolution → DISPUTE_RESOLVED or LEGALLY_CHALLENGED
+
+STATE_TRANSITION_RULES =
+  DRAFT → SENT_FOR_REVIEW (initiator action)
+  SENT_FOR_REVIEW → PENDING_SIGNATURES (initiator confirms)
+  SENT_FOR_REVIEW → DRAFT (recall)
+  PENDING_SIGNATURES → PARTIALLY_SIGNED (first signature collected)
+  PENDING_SIGNATURES → EXPIRED (deadline elapsed)
+  PARTIALLY_SIGNED → COMPLETED (final signature collected)
+  PARTIALLY_SIGNED → EXPIRED (deadline elapsed)
+  PENDING_SIGNATURES → VOIDED (initiator cancels)
+  COMPLETED → DISPUTED (party raises challenge)
+  DISPUTED → DISPUTE_RESOLVED | LEGALLY_CHALLENGED
+
+ILLEGAL_TRANSITIONS = ANY NOT LISTED ABOVE → STOP_EXECUTION
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5️⃣  DOCUMENT TYPES & TEMPLATES (LOCKED REGISTRY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+REGISTERED_DOCUMENT_TEMPLATES =
+
+  DOC_TYPE_001 = OFFER_LETTER
+    Initiator     : Recruiter / HR
+    Signers       : Recruiter → Student (sequential)
+    Expiry Window : 7 days
+    Signature Lvl : SES + AES
+    Integration   : Job Portal → Offer Locking & Audit Trail
+
+  DOC_TYPE_002 = INTERNSHIP_AGREEMENT
+    Initiator     : Enterprise / Institute
+    Signers       : Enterprise → Institute → Student → Parent (if minor)
+    Expiry Window : 5 days
+    Signature Lvl : SES
+    Integration   : Job Portal + ERP Layer
+
+  DOC_TYPE_003 = NDA_CORPORATE
+    Initiator     : Enterprise / Recruiter
+    Signers       : Enterprise → Student / Trainer (parallel or sequential)
+    Expiry Window : 3 days
+    Signature Lvl : AES
+    Integration   : Job Portal + Compliance ERP
+
+  DOC_TYPE_004 = MENTOR_AGREEMENT
+    Initiator     : Platform Admin / Institute
+    Signers       : Mentor → Student (sequential)
+    Expiry Window : 10 days
+    Signature Lvl : SES
+    Integration   : Project Execution Engine
+
+  DOC_TYPE_005 = TRAINING_CONTRACT
+    Initiator     : Trainer / Institute
+    Signers       : Trainer → Student → Institute Admin
+    Expiry Window : 7 days
+    Signature Lvl : SES
+    Integration   : Skill Development Engine
+
+  DOC_TYPE_006 = INSTITUTE_MOU
+    Initiator     : Platform Admin
+    Signers       : Platform → Institute Admin (sequential)
+    Expiry Window : 14 days
+    Signature Lvl : AES
+    Integration   : Institute ERP
+
+  DOC_TYPE_007 = PARENT_AUTHORIZATION
+    Initiator     : Student / Institute
+    Signers       : Parent (OTP-verified)
+    Expiry Window : 5 days
+    Signature Lvl : SES + OTP
+    Integration   : Parent Trust Layer
+
+  DOC_TYPE_008 = EVALUATION_CONSENT
+    Initiator     : Evaluator
+    Signers       : Student → Evaluator
+    Expiry Window : 24 hours
+    Signature Lvl : SES
+    Integration   : Group Discussion / Dojo Engine
+
+  DOC_TYPE_009 = SME_HIRING_CONTRACT
+    Initiator     : SME / Recruiter
+    Signers       : SME → Candidate
+    Expiry Window : 5 days
+    Signature Lvl : AES
+    Integration   : SME Hiring Workflow ERP
+
+  DOC_TYPE_010 = COMPLIANCE_DECLARATION
+    Initiator     : Compliance Admin
+    Signers       : Admin (internal only)
+    Expiry Window : 30 days
+    Signature Lvl : QES
+    Integration   : Compliance & Audit ERP
+
+CUSTOM_TEMPLATE_POLICY =
+  Tenants (Enterprise / Institute) may create custom templates ONLY via:
+    → Template Builder (admin-only tool)
+    → Approval by Platform Compliance Admin
+    → Version-controlled, audit-logged
+  Custom templates that bypass required fields = REJECTED
+  Platform Admin reserves right to suspend non-compliant templates
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6️⃣  SIGNING WORKFLOW ENGINE (FUNCTIONAL SPEC — LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SIGNING_MODES =
+  SEQUENTIAL   → Signers notified and sign in defined order
+  PARALLEL     → All signers notified simultaneously
+  HYBRID       → Group A sequential within group, groups in parallel
+
+SIGNING_MODES_PER_DOC_TYPE =
+  Defined in REGISTERED_DOCUMENT_TEMPLATES (Section 5)
+  Tenant cannot override signing mode for system-level document types
+  Custom templates may define own mode (subject to compliance approval)
+
+IDENTITY_VERIFICATION_BEFORE_SIGN (MANDATORY) =
+  Step 1 : Platform session auth (RBAC enforced)
+  Step 2 : MFA challenge (TOTP / SMS OTP / Aadhaar OTP)
+  Step 3 : Biometric acknowledgment (mobile — device fingerprint / FaceID)
+  Step 4 : Signature intent declaration ("I agree to sign this document")
+  Step 5 : Cryptographic key binding (server-side HSM for AES / QES)
+
+  ALL 5 STEPS MANDATORY for AES and QES
+  STEPS 1–3 MANDATORY for SES
+  Skipping any step → SIGNING_BLOCKED
+
+SIGNING_CAPTURE_METHODS =
+  TYPED_NAME      → Signer types full legal name (converts to styled e-sig)
+  DRAWN_SIGNATURE → Canvas draw (mobile / desktop) → SVG stored
+  UPLOADED_IMAGE  → Signature image upload (PNG/SVG max 512KB)
+  AADHAAR_ESIGN   → Redirect to UIDAI Aadhaar eSign API
+  DIGITAL_CERT    → Upload .p12 / .pfx certificate for QES
+
+  DEFAULT for students  : TYPED_NAME + DRAWN_SIGNATURE
+  DEFAULT for enterprise: TYPED_NAME + DIGITAL_CERT (AES)
+  Aadhaar eSign         : India jurisdiction only
+
+SIGNATURE_PLACEMENT =
+  Initiator defines signature fields on document (drag-and-drop in editor)
+  Each field tagged: signer_role + field_type + required/optional
+  Untagged signature placement = DOCUMENT_VALIDATION_FAILURE
+
+WITNESS_SUPPORT =
+  Optional witness can be added per document
+  Witness signs after all primary signers
+  Witness identity verified same as standard signer
+  Witness has no contractual obligation — attestation role only
+
+COUNTER-SIGNING =
+  Supported: Enterprise HR counter-signs after student
+  Counter-signer defined at document initiation
+  Cannot be added post PENDING_SIGNATURES state
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7️⃣  CRYPTOGRAPHIC INTEGRITY LAYER (SECURITY — HARD LOCK)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DOCUMENT_HASHING =
+  Algorithm         : SHA-256 (per-signature block) + SHA-512 (final sealed doc)
+  Hash Timing       : Computed at each signature event + final seal
+  Hash Storage      : Immutable append-only ledger (PostgreSQL + Kafka event log)
+
+SIGNATURE_ENCRYPTION =
+  SES Level         : HMAC-SHA256 (platform-managed key)
+  AES Level         : RSA-2048 or ECDSA P-256 (HSM-managed key)
+  QES Level         : CA-issued certificate (external PKI chain)
+  Key Management    : AWS KMS or Azure Key Vault (tenant-isolated key spaces)
+
+DOCUMENT_SEALING (POST-COMPLETION) =
+  Format            : PDF/A-3 with embedded signature metadata
+  Seal Method       : LTV (Long-Term Validation) signature embedding
+  Timestamp         : RFC 3161 Trusted Timestamp Authority (TSA)
+  Fingerprint       : Document fingerprint stored in immutable audit log
+  Certificate Chain : Embedded within PDF for offline verification
+
+TAMPER DETECTION =
+  Any modification post-COMPLETED → hash mismatch → TAMPER_ALERT
+  Tamper alert → Immediate notification to Compliance Admin
+  Tampered document → Quarantined, flagged DISPUTED
+  Audit log entry created with delta report
+
+PRIVATE KEY SECURITY =
+  No private key ever stored on client device
+  All cryptographic operations via server-side HSM
+  Key rotation policy: 90-day rotation for SES, 365-day for AES
+  Compromised key → All documents re-validated, signers notified
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8️⃣  AUDIT TRAIL & IMMUTABILITY (COMPLIANCE — MANDATORY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AUDIT_LOG_EVENTS (ALL MANDATORY — CANNOT BE DISABLED) =
+  DOC_CREATED           → {doc_id, initiator_id, doc_type, tenant_id, timestamp}
+  DOC_SENT              → {doc_id, sent_to[], send_timestamp}
+  SIGNER_VIEWED         → {doc_id, signer_id, ip, device, geo, timestamp}
+  SIGNER_DECLINED       → {doc_id, signer_id, reason, timestamp}
+  SIGNATURE_CAPTURED    → {doc_id, signer_id, sig_method, hash, timestamp}
+  SIGNATURE_VERIFIED    → {doc_id, signer_id, verification_method, result}
+  DOC_COMPLETED         → {doc_id, final_hash, all_signer_ids, timestamp}
+  DOC_VOIDED            → {doc_id, voided_by, reason, timestamp}
+  DOC_EXPIRED           → {doc_id, expiry_time, partial_signers[]}
+  TAMPER_DETECTED       → {doc_id, detected_at, delta_report}
+  DOC_DISPUTED          → {doc_id, raised_by, reason, timestamp}
+  DOC_DOWNLOADED        → {doc_id, downloaded_by, timestamp}
+  REMINDER_SENT         → {doc_id, signer_id, reminder_number, timestamp}
+
+AUDIT_STORAGE =
+  Primary    : PostgreSQL (structured, tenant-isolated)
+  Event Bus  : Kafka (real-time, immutable event stream)
+  Archive    : S3-compatible cold storage (7-year retention minimum)
+  Backup     : Geo-replicated, encrypted at rest (AES-256)
+
+AUDIT_IMMUTABILITY_RULES =
+  Audit records are APPEND-ONLY
+  No update or delete on audit log = ABSOLUTE
+  Any attempt to modify → SECURITY INCIDENT, Admin alerted
+  Audit export = Compliance Admin only + logged access
+
+AUDIT_REPORT_GENERATION =
+  Per-document audit certificate: Auto-generated on COMPLETED
+  Batch audit reports: Compliance Admin tool
+  Regulatory export: CSV / JSON / PDF per jurisdiction requirement
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9️⃣  DATA ARCHITECTURE (POSTGRESQL SCHEMA — LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TABLES REQUIRED:
+
+-- Core Document Registry
+esign_documents (
+  id                UUID PRIMARY KEY,
+  tenant_id         UUID NOT NULL,            -- hard tenant isolation
+  doc_type          VARCHAR(50) NOT NULL,     -- references REGISTERED_DOCUMENT_TEMPLATES
+  title             VARCHAR(255) NOT NULL,
+  template_version  VARCHAR(20) NOT NULL,
+  state             VARCHAR(50) NOT NULL,     -- DRAFT | PENDING_SIGNATURES | etc.
+  initiator_id      UUID NOT NULL,
+  created_at        TIMESTAMPTZ NOT NULL,
+  updated_at        TIMESTAMPTZ NOT NULL,
+  expiry_at         TIMESTAMPTZ NOT NULL,
+  signing_mode      VARCHAR(20) NOT NULL,     -- SEQUENTIAL | PARALLEL | HYBRID
+  domain            VARCHAR(50) NOT NULL,     -- inherited domain isolation
+  jurisdiction      VARCHAR(10) NOT NULL,     -- IN | EU | US | etc.
+  doc_hash_draft    VARCHAR(128),             -- SHA-512 on latest draft
+  doc_hash_final    VARCHAR(128),             -- SHA-512 post-COMPLETED seal
+  storage_ref       TEXT                      -- S3 path encrypted
+)
+
+-- Signer Registry per Document
+esign_signers (
+  id                UUID PRIMARY KEY,
+  doc_id            UUID REFERENCES esign_documents(id),
+  signer_id         UUID NOT NULL,            -- user_id from User Service
+  signer_role       VARCHAR(50) NOT NULL,
+  sign_order        INTEGER,                  -- NULL = parallel
+  status            VARCHAR(30) NOT NULL,     -- PENDING | VIEWED | SIGNED | DECLINED
+  signature_method  VARCHAR(30),             -- TYPED | DRAWN | AADHAAR | CERT
+  signature_hash    VARCHAR(128),
+  signed_at         TIMESTAMPTZ,
+  ip_at_sign        INET,
+  device_at_sign    TEXT,
+  geo_at_sign       TEXT,
+  mfa_verified      BOOLEAN NOT NULL DEFAULT FALSE,
+  declined_reason   TEXT
+)
+
+-- Immutable Audit Log
+esign_audit_log (
+  id                BIGSERIAL PRIMARY KEY,   -- never UUID, never deletable
+  doc_id            UUID NOT NULL,
+  event_type        VARCHAR(50) NOT NULL,
+  actor_id          UUID,
+  actor_ip          INET,
+  actor_device      TEXT,
+  actor_geo         TEXT,
+  event_payload     JSONB NOT NULL,
+  event_timestamp   TIMESTAMPTZ NOT NULL,
+  is_system_event   BOOLEAN NOT NULL DEFAULT FALSE
+)
+
+-- Document Templates (Tenant-Scoped)
+esign_templates (
+  id                UUID PRIMARY KEY,
+  tenant_id         UUID,                     -- NULL = platform default
+  doc_type          VARCHAR(50) NOT NULL,
+  version           VARCHAR(20) NOT NULL,
+  schema_json       JSONB NOT NULL,           -- field definitions
+  approved_by       UUID,                     -- Compliance Admin ID
+  approved_at       TIMESTAMPTZ,
+  is_active         BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at        TIMESTAMPTZ NOT NULL
+)
+
+-- Signature Field Definitions per Document
+esign_signature_fields (
+  id                UUID PRIMARY KEY,
+  doc_id            UUID REFERENCES esign_documents(id),
+  signer_id         UUID REFERENCES esign_signers(id),
+  field_type        VARCHAR(30) NOT NULL,     -- SIGNATURE | INITIALS | DATE | CHECKBOX
+  page_number       INTEGER NOT NULL,
+  x_position        DECIMAL NOT NULL,
+  y_position        DECIMAL NOT NULL,
+  is_required       BOOLEAN NOT NULL DEFAULT TRUE,
+  completed         BOOLEAN NOT NULL DEFAULT FALSE
+)
+
+-- Reminder Tracking
+esign_reminders (
+  id                UUID PRIMARY KEY,
+  doc_id            UUID NOT NULL,
+  signer_id         UUID NOT NULL,
+  reminder_number   INTEGER NOT NULL,         -- 1st / 2nd / 3rd
+  sent_at           TIMESTAMPTZ NOT NULL,
+  delivery_status   VARCHAR(20) NOT NULL      -- SENT | DELIVERED | FAILED
+)
+
+-- Dispute Records
+esign_disputes (
+  id                UUID PRIMARY KEY,
+  doc_id            UUID NOT NULL,
+  raised_by         UUID NOT NULL,
+  reason            TEXT NOT NULL,
+  raised_at         TIMESTAMPTZ NOT NULL,
+  resolved_at       TIMESTAMPTZ,
+  resolution_status VARCHAR(30),             -- DISPUTE_RESOLVED | LEGALLY_CHALLENGED
+  resolved_by       UUID,
+  resolution_notes  TEXT
+)
+
+INDEXING_STRATEGY =
+  esign_documents  → idx on (tenant_id, state, expiry_at)
+  esign_signers    → idx on (doc_id, signer_id, status)
+  esign_audit_log  → idx on (doc_id, event_timestamp) — PARTIAL (immutable)
+  esign_reminders  → idx on (doc_id, signer_id, sent_at)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔟  MICROSERVICE ARCHITECTURE (BACKEND — LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SERVICE_NAME      = ESIGN_CONNECT_SERVICE
+LANGUAGE          = GO (primary microservice)
+FRAMEWORK         = Fiber / gRPC
+TRANSPORT         = REST (internal) + gRPC (cross-service)
+MESSAGE_BROKER    = Kafka (async event pipeline)
+STORAGE           = PostgreSQL (primary) + Redis (session, rate limit) + S3 (docs)
+CRYPTO_PROVIDER   = AWS KMS / Azure Key Vault (tenant-isolated)
+PDF_ENGINE        = PDFium (rendering) + iTextSharp/libpdf (LTV signing)
+
+INTERNAL_APIS (consumed by this service) =
+  → User Service           : Identity, role, MFA verification
+  → Auth Service           : Session validation, RBAC check
+  → Notification Service   : Email, SMS, In-app reminder dispatch
+  → Job Portal Service     : Offer locking trigger (post COMPLETED)
+  → ERP Service            : Contract binding trigger
+  → Analytics Service      : Signing funnel metrics
+  → Compliance Service     : Audit log sink
+  → Storage Service        : Document upload / retrieval (S3 abstraction)
+
+EXTERNAL_INTEGRATIONS =
+  → UIDAI Aadhaar eSign API    (India — Aadhaar-linked signature)
+  → RFC 3161 TSA               (Timestamp Authority — multiple providers)
+  → CA / PKI Provider          (QES certificate issuance)
+  → Email Gateway              (Reminder + delivery receipts)
+  → SMS Gateway                (OTP delivery for SES)
+
+KAFKA_TOPICS_PRODUCED =
+  esign.document.created
+  esign.document.sent
+  esign.document.signed
+  esign.document.completed
+  esign.document.voided
+  esign.document.expired
+  esign.document.disputed
+  esign.tamper.detected
+
+KAFKA_TOPICS_CONSUMED =
+  user.identity.verified       (triggers sign-gate unlock)
+  job.offer.extended           (triggers OFFER_LETTER document creation)
+  project.mentor.assigned      (triggers MENTOR_AGREEMENT creation)
+  compliance.audit.requested   (triggers audit export)
+
+RATE_LIMITING =
+  Signing attempts    : 5/hour per signer per document
+  OTP requests        : 3/10 minutes per user
+  Document creation   : 100/day per tenant (configurable per plan)
+  API calls           : Per-tenant token bucket (Redis)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣1️⃣  UI SPECIFICATION — FLUTTER FIRST (ANTIGRAVITY ENGINE RULES)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+UI_FRAMEWORK       = FLUTTER (primary)
+UI_WEB_CLONE       = React (Next.js) — SEO read-only clone
+DESIGN_LANGUAGE    = CLEAN | SOLID | FUNCTION-FIRST (inherited from Master)
+DECORATIVE_UI      = FORBIDDEN
+SCREENSHOT_BLOCK   = ENABLED on all signing screens
+
+SCREENS_REQUIRED =
+
+  SC-01 : DOCUMENT INBOX
+    Role     : All signers
+    Purpose  : List of documents awaiting signature / sent / completed
+    Layout   : Tabbed: Pending | Completed | Voided | Expired
+    Fixed    : Identity block, compliance badge, pending count
+    Custom   : Sort / filter by doc_type, date, sender
+
+  SC-02 : DOCUMENT PREVIEW
+    Role     : All signers (pre-sign)
+    Purpose  : Full document read + field highlight
+    Layout   : Full-screen scroll PDF viewer, field indicator ribbon
+    Fixed    : Signing deadline, signer list status
+    Rules    : Screenshot blocked, clipboard blocked
+
+  SC-03 : SIGNATURE CAPTURE
+    Role     : Active signer
+    Purpose  : Capture signature using method (typed/drawn/cert/Aadhaar)
+    Layout   : Method selector → Capture area → MFA confirmation
+    Fixed    : Identity verification status, legal consent declaration
+    Rules    : Screen recording blocked, no back-navigation during MFA
+
+  SC-04 : MULTI-PARTY SIGNING STATUS
+    Role     : Initiator + All signers
+    Purpose  : View who has signed, who is pending, timestamps
+    Layout   : Signer progress timeline with status indicators
+    Fixed    : Document state badge, deadline timer
+
+  SC-05 : DOCUMENT COMPOSER (Initiator)
+    Role     : Recruiter / HR / Enterprise Admin / Platform Admin
+    Purpose  : Create document from template, assign signers, set fields
+    Layout   : Template selector → Field placer → Signer sequencer → Send
+    Fixed    : Required fields indicator, compliance checklist
+
+  SC-06 : COMPLETED DOCUMENT VIEWER
+    Role     : All parties post-COMPLETED
+    Purpose  : View sealed, signed document with signature stamps
+    Layout   : PDF viewer with embedded signature panels
+    Fixed    : Audit certificate link, download button, hash fingerprint display
+
+  SC-07 : AUDIT TRAIL VIEWER
+    Role     : Compliance Admin / Platform Admin
+    Purpose  : Full event log for any document
+    Layout   : Chronological event list with IP, device, geo, timestamps
+    Fixed    : Export to PDF / CSV, tamper indicator
+
+  SC-08 : DISPUTE MANAGEMENT
+    Role     : Compliance Admin
+    Purpose  : View, investigate, resolve disputes
+    Layout   : Dispute list → Detail → Resolution form
+    Fixed    : Document hash verification status, escalation path
+
+  SC-09 : TEMPLATE BUILDER (Admin)
+    Role     : Platform Admin / Compliance Admin
+    Purpose  : Create / edit / approve document templates
+    Layout   : Schema editor + field configurator + approval workflow
+    Fixed    : Version number, approval status, active/inactive toggle
+
+  SC-10 : SIGNING ANALYTICS DASHBOARD
+    Role     : ERP Admin / Analytics Admin
+    Purpose  : Funnel metrics — sent → viewed → signed → completed rates
+    Layout   : Charts: completion rate, avg time-to-sign, expiry rate
+    Fixed    : Tenant scope selector, date range filter
+
+SCREEN_RULES (INHERITED FROM MASTER UI LOCK) =
+  - All screens respect RBAC — no admin screen for student role
+  - State-driven visibility: buttons appear ONLY when action is legal
+  - Forbidden actions = HIDDEN (never disabled-visible)
+  - Loading, empty, error states MANDATORY on all screens
+  - Accessibility: WCAG 2.1 AA (inherited from Master)
+  - RTL support: ENABLED
+  - Offline: signing screens = BLOCKED offline (security requirement)
+  - Screenshot/recording: BLOCKED on SC-02, SC-03, SC-06
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣2️⃣  NOTIFICATION MATRIX (AUTOMATED — LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTIFICATION_EVENTS =
+
+  DOC_SENT         → Signer: In-App + Email + SMS (if critical doc)
+  REMINDER_1       → Signer: In-App + Email (48hr before expiry)
+  REMINDER_2       → Signer: In-App + Email + SMS (24hr before expiry)
+  REMINDER_3       → Signer: In-App + Email + SMS (6hr before expiry)
+  SIGNATURE_DONE   → Initiator: In-App + Email (per signer who completes)
+  DOC_COMPLETED    → All parties: In-App + Email (with sealed PDF link)
+  DOC_EXPIRED      → Initiator + All pending signers: In-App + Email
+  DOC_VOIDED       → All parties: In-App + Email
+  TAMPER_DETECTED  → Compliance Admin: In-App + Email + CRITICAL_ALERT
+  DISPUTE_RAISED   → Compliance Admin + All parties: In-App + Email
+
+NOTIFICATION_RULES =
+  All notifications tenant-isolated — no cross-tenant leakage
+  Sensitive document titles → REDACTED in SMS / push notifications
+  Notification content localized per user locale
+  Delivery receipt logged in esign_reminders table
+  Failed delivery → retry 3x (exponential backoff) → ALERT if persistent
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣3️⃣  INTEGRATION MAP (MODULE ↔ ESIGN_CONNECT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+JOB PORTAL ENGINE
+  Trigger  : Offer status = OFFER_EXTENDED
+  Action   : ESIGN_CONNECT auto-creates DOC_TYPE_001 (OFFER_LETTER)
+  Complete : ESIGN_CONNECT fires esign.document.completed → Job Portal locks offer
+  Reversal : Voided offer letter → Job Portal returns to OFFER_REVOKED state
+
+SKILL DEVELOPMENT ENGINE
+  Trigger  : Trainer enrolled, course assigned
+  Action   : ESIGN_CONNECT creates DOC_TYPE_005 (TRAINING_CONTRACT)
+  Complete : Signed contract → Skill Engine marks enrollment binding
+
+PROJECT EXECUTION ENGINE
+  Trigger  : Mentor assigned to student project
+  Action   : ESIGN_CONNECT creates DOC_TYPE_004 (MENTOR_AGREEMENT)
+  Complete : Signed → Project Engine unlocks mentor access to project workspace
+
+GROUP DISCUSSION / DOJO ENGINE
+  Trigger  : Evaluation session scheduled
+  Action   : ESIGN_CONNECT creates DOC_TYPE_008 (EVALUATION_CONSENT)
+  Complete : Signed → Dojo session unlocked for evaluated student
+
+INSTITUTE ERP
+  Trigger  : New institute onboarding initiated
+  Action   : ESIGN_CONNECT creates DOC_TYPE_006 (INSTITUTE_MOU)
+  Complete : Signed MOU → ERP activates institute tenant
+
+CORPORATE / SME ERP
+  Trigger  : SME hiring contract stage reached
+  Action   : ESIGN_CONNECT creates DOC_TYPE_009 (SME_HIRING_CONTRACT)
+  Complete : Signed → ERP marks hire as legally bound
+
+COMPLIANCE & AUDIT ERP
+  Sink     : All esign_audit_log entries replicated to Compliance Audit DB
+  Report   : Compliance Admin can pull complete signing audit per tenant
+  Export   : Regulatory-format export (jurisdiction-specific)
+
+PARENT TRUST LAYER
+  Trigger  : Minor student action requiring parental consent
+  Action   : ESIGN_CONNECT creates DOC_TYPE_007 (PARENT_AUTHORIZATION)
+  Complete : Parent OTP-signed → Action unlocked for student
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣4️⃣  SECURITY & COMPLIANCE RULES (ABSOLUTE — NON-NEGOTIABLE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ABSOLUTE_RULES =
+  1. No document can be signed without identity verification + MFA
+  2. No document can be altered after COMPLETED state
+  3. No audit log entry can be modified or deleted
+  4. No cross-tenant document access under any condition
+  5. No AI agent may execute a signature
+  6. No signature bypasses allowed — even for Platform Admin
+  7. All cryptographic operations via server-side HSM only
+  8. Private keys never transmitted to client
+  9. Signing screens block screenshots / screen recording
+  10. Expired documents cannot be re-activated — new DRAFT required
+
+PENETRATION_HARDENING =
+  → Input injection testing on all form fields
+  → Document template schema validation (anti-injection)
+  → Clickjacking prevention (X-Frame-Options DENY on signing pages)
+  → CSRF tokens on all mutation endpoints
+  → Rate limiting on signing + OTP endpoints (Redis token bucket)
+  → Geo-anomaly detection on signing events (flag unusual geography)
+
+DATA_RETENTION =
+  COMPLETED documents  : 7-year minimum retention (regulatory)
+  VOIDED documents     : 3-year retention
+  EXPIRED documents    : 1-year retention
+  Audit logs           : 10-year minimum (compliance)
+  User deletion request: PII anonymized, document structure preserved
+
+RIGHT_TO_ERASURE (GDPR / PDPB) =
+  User PII anonymized in documents on deletion request
+  Document legal structure preserved (audit integrity)
+  Anonymization event logged in audit trail
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣5️⃣  FOUR-STAGE DEVELOPMENT BINDING (LOCKED — SEQUENTIAL)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STAGE 1 — FOUNDATION (ESIGN_CONNECT CORE)
+  ✔ DB schema setup (all 7 tables)
+  ✔ Document lifecycle state machine
+  ✔ SES signing (Typed name + OTP MFA)
+  ✔ Offer Letter (DOC_TYPE_001) workflow
+  ✔ Audit log (append-only)
+  ✔ Flutter UI: SC-01, SC-02, SC-03, SC-04
+  ✔ Notification: Email + In-App
+  ✔ Job Portal integration (Offer lock)
+
+STAGE 2 — INTELLIGENCE
+  ✔ AES signing (RSA/ECDSA + HSM)
+  ✔ Signing analytics dashboard (SC-10)
+  ✔ AI-assisted template suggestions (advisory only — AI never signs)
+  ✔ Signing funnel Kafka analytics
+  ✔ Completion rate predictors
+
+STAGE 3 — ECOSYSTEM
+  ✔ All 10 DOC_TYPEs deployed
+  ✔ All module integrations (ERP, Dojo, Project, Skill)
+  ✔ Aadhaar eSign integration (India)
+  ✔ Custom tenant template builder (SC-09)
+  ✔ Parent trust layer integration
+
+STAGE 4 — COMPLIANCE & SCALE
+  ✔ QES (CA-issued certificate) support
+  ✔ RFC 3161 Trusted Timestamp (TSA)
+  ✔ PDF/A-3 LTV sealing
+  ✔ Multi-jurisdiction compliance (IN / EU / US)
+  ✔ Dispute management (SC-08)
+  ✔ Full audit export + regulatory reporting
+  ✔ 10-year archive cold storage tier
+  ✔ Data retention + right-to-erasure automation
+
+STAGE_SKIPPING = FORBIDDEN
+STAGE_MIXING   = FORBIDDEN
+PARTIAL_STAGE  = INVALID BUILD
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣6️⃣  ANTI-FRAUD & ANTI-CHEAT (ESIGN-SPECIFIC ENFORCEMENT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FRAUD_VECTORS_BLOCKED =
+  1. PROXY SIGNING         → Biometric + MFA link ensures only verified user signs
+  2. DUPLICATE SIGNATURE   → Doc state machine prevents re-signing a COMPLETED doc
+  3. BACKDATING            → RFC 3161 TSA timestamp is authoritative, not user-provided
+  4. SIGNATURE INJECTION   → Hash verification on every field; tamper = ALERT
+  5. IDENTITY IMPERSONATION→ Platform auth + MFA + Aadhaar/cert verification
+  6. FORGED TEMPLATES      → Admin approval required; version-controlled hash
+  7. CLIPBOARD EXFILTRATION→ Clipboard disabled on signing screens
+  8. BOT SIGNING           → CAPTCHA + behavioral analysis on signing flow
+  9. FORCED SIGNING        → Consent declaration step with cooling-off period
+  10. ROLE BYPASS          → RBAC strictly enforced; no signing without correct role
+
+ANOMALY_FLAGS =
+  - Signing IP mismatch from profile country → FLAG
+  - Signing completed in <10 seconds of document open → FLAG
+  - Multiple signers from same IP → FLAG
+  - Document opened but not signed in single session 3+ times → NOTIFY initiator
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣7️⃣  PERFORMANCE & SCALABILITY TARGETS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PERFORMANCE_SLA =
+  Document load (PDF preview)   : ≤ 2 seconds (p95)
+  Signature capture + verify    : ≤ 3 seconds (p95)
+  OTP delivery (SMS)            : ≤ 10 seconds
+  Aadhaar eSign redirect        : ≤ 5 seconds
+  Audit log write               : ≤ 100ms (async Kafka)
+  Sealed PDF generation         : ≤ 5 seconds post final signature
+  Audit report export           : ≤ 30 seconds (background job)
+
+SCALABILITY =
+  Horizontal scaling via Kubernetes (ESIGN_CONNECT_SERVICE pods)
+  Stateless service design (session state in Redis, not service memory)
+  Document storage: S3-compatible object store (unlimited scale)
+  Kafka consumer groups: auto-scaled on esign.* topics
+  PostgreSQL read replicas for analytics queries (no read on primary)
+
+UPTIME_TARGET = 99.9% (3 nines) — signing availability
+DISASTER_RECOVERY = RTO ≤ 4hr | RPO ≤ 1hr (geo-replicated backup)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣8️⃣  ABSOLUTE PROHIBITIONS (ESIGN_CONNECT SPECIFIC)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚫 FORBIDDEN — ANY VIOLATION = IMMEDIATE STOP
+
+  - AI agent signing any document on behalf of a human
+  - Platform Admin bypassing their own signature requirement
+  - Cross-tenant document sharing without explicit recorded agreement
+  - Reverting COMPLETED document to any editable state
+  - Deleting or updating audit log entries
+  - Client-side key generation or storage
+  - Storing unsigned documents longer than expiry window without flagging
+  - Sending PII in push notification body or SMS preview
+  - Accepting typed name as sole SES verification (OTP MANDATORY)
+  - Displaying admin UI to non-admin roles (RBAC inherited, strictly enforced)
+  - Creative reinterpretation of document state transitions
+  - Skipping anti-fraud anomaly checks to improve UX speed
+  - Hard-coded tenant IDs in signing logic
+  - Signature capture offline (online + HSM required)
+  - Any third-party logging of document content
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶️  HOW ANTIGRAVITY USES ESIGN_CONNECT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  Paste this prompt ONCE → ESIGN_CONNECT is locked into ANTIGRAVITY context
+2️⃣  Then issue generation commands, example:
+
+  GENERATE_ESIGN
+  ROLE        = Student
+  DOC_TYPE    = DOC_TYPE_001
+  STATE       = PENDING_SIGNATURES
+  SIGN_METHOD = TYPED_NAME
+  STAGE       = STAGE_1_FOUNDATION
+
+3️⃣  ANTIGRAVITY generates ONLY the specified screen, role, and state
+4️⃣  Never regenerate this master module prompt again
+5️⃣  Append additions to this prompt — never overwrite or restructure
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅  FINAL SEAL — ESIGN_CONNECT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THIS MODULE PROMPT IS:
+
+  ✔  LOCKED
+  ✔  SEALED
+  ✔  DETERMINISTIC
+  ✔  ENTERPRISE SAFE
+  ✔  ANTIGRAVITY COMPATIBLE
+  ✔  ECOSKILLER MASTER INHERITING
+  ✔  LEGALLY FRAMEWORK COMPLIANT (IT Act / ESIGN Act / eIDAS)
+  ✔  MULTI-JURISDICTION READY
+  ✔  MULTI-TENANT ISOLATED
+  ✔  CRYPTOGRAPHICALLY SECURED
+  ✔  AUDIT IMMUTABLE
+  ✔  STAGE-SEQUENCED
+
+MODULE_LOCK_VERSION   = 1.0.0
+LOCKED_BY             = ECOSKILLER PLATFORM ARCHITECT
+LOCK_TIMESTAMP        = 2026-02-24T00:00:00Z
+FURTHER_CHANGES       = APPEND_ONLY (ADD_ONLY POLICY)
+BREAKING_CHANGES      = REQUIRE MAJOR VERSION BUMP + ARCHITECT APPROVAL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ANY DEVIATION FROM THIS MODULE SPEC = STOP EXECUTION
+ANY CREATIVE REINTERPRETATION        = STOP EXECUTION
+ANY ASSUMPTION FILL                  = STOP EXECUTION
+ANY CROSS-TENANT LEAK                = STOP EXECUTION + SECURITY INCIDENT
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔒  ESIGN_CONNECT — SEALED & LOCKED — ANTIGRAVITY ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

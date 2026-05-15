@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mcp-rbac-k8s": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-rbac-k8s-1.0.0-shaded.jar"],
+      "env": {}
+    }
+  }
+}

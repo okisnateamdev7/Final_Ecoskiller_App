@@ -1,0 +1,130 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: scoring-engine-secrets
+  namespace: analytics
+type: Opaque
+stringData:
+  jwt-secret: "REPLACE_WITH_KEYCLOAK_JWT_SECRET"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: scoring-engine-config
+  namespace: analytics
+data:
+  SCORING_DB_HOST:                "postgres.analytics.svc.cluster.local"
+  SCORING_REDIS_ENABLED:          "true"
+  SCORING_AUDIT_ENABLED:          "true"
+  SCORING_RATE_PER_SEC:           "100"
+  SCORING_RATE_PER_MIN:           "1000"
+  SCORING_SLA_MINUTES:            "15"
+  SCORING_CACHE_TTL_SECONDS:      "3600"
+  SCORING_CONFIDENCE_THRESHOLD:   "0.6"
+  SCORING_WEIGHT_COMMUNICATION:   "35"
+  SCORING_WEIGHT_TECHNICAL:       "40"
+  SCORING_WEIGHT_CULTURAL_FIT:    "25"
+  SCORING_FAIRNESS_THRESHOLD:     "0.8"
+  SCORING_BIAS_VARIANCE_MAX:      "5"
+  SCORING_MODEL_PRODUCTION_VER:   "v1"
+  SCORING_MODEL_CANDIDATE_VER:    "v2"
+  SCORING_CANDIDATE_TRAFFIC_PCT:  "10"
+  SCORING_MAX_RETRIES:            "3"
+  SCORING_NAMESPACE:              "analytics"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scoring-engine-mcp
+  namespace: analytics
+  labels:
+    app: scoring-engine-mcp
+    component: scoring
+    version: "1.0.0"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: scoring-engine-mcp
+  template:
+    metadata:
+      labels:
+        app: scoring-engine-mcp
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: scoring-engine-mcp
+          image: harbor.ecoskiller.io/ecoskiller/scoring-engine-mcp-server:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: SCORING_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: scoring-engine-secrets
+                  key: jwt-secret
+          envFrom:
+            - configMapRef:
+                name: scoring-engine-config
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: scoring-engine-mcp-hpa
+  namespace: analytics
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: scoring-engine-mcp
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: scoring-engine-mcp-netpol
+  namespace: analytics
+spec:
+  podSelector:
+    matchLabels:
+      app: scoring-engine-mcp
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: analytics
+      ports:
+        - port: 5432   # PostgreSQL
+        - port: 6379   # Redis
+        - port: 9092   # Kafka
+        - port: 9000   # MinIO / ClickHouse HTTP

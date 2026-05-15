@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "ecoskiller-notification-mcp": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/NotificationMCPServer.jar"
+      ],
+      "env": {
+        "JAVA_OPTS": "-Xmx512m -Xms64m"
+      }
+    }
+  }
+}

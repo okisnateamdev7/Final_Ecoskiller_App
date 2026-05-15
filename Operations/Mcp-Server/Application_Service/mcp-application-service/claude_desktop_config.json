@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "mcp-application-service": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-application-service/target/mcp-application-service.jar"],
+      "env": {
+        "APP_JWT_SECRET": "your-keycloak-realm-secret-here",
+        "APP_STRICT_MODE": "false",
+        "APP_MAX_PAYLOAD_SIZE": "65535"
+      }
+    }
+  }
+}

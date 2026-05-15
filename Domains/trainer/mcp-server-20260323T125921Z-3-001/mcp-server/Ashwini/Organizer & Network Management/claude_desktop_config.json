@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "mcp-26-organizer": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-26-organizer/target/mcp-26-organizer-all.jar"
+      ]
+    }
+  }
+}

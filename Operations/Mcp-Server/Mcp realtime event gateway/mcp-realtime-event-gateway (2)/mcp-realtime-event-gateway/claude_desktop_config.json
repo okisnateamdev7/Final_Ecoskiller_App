@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "mcp-realtime-event-gateway": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-realtime-event-gateway-1.0.0.jar"],
+      "env": {
+        "MCP_ENV": "prod",
+        "MCP_JWT_VALIDATION_ENABLED": "true",
+        "MCP_KEYCLOAK_ISSUER": "https://auth.ecoskiller.com/realms/",
+        "MCP_RATE_LIMIT_PER_MINUTE": "120",
+        "MCP_MAX_CONNECTIONS": "10000",
+        "MCP_MAX_EVENTS_SEC_GLOBAL": "50000",
+        "MCP_MAX_EVENTS_SEC_CLIENT": "100",
+        "MCP_RING_BUFFER_CAPACITY": "100",
+        "MCP_BUFFER_REPLAY_WINDOW_MIN": "5",
+        "MCP_CIRCUIT_BREAKER_THRESHOLD": "50000",
+        "MCP_LOG_LEVEL": "WARNING"
+      }
+    }
+  }
+}

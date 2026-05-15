@@ -1,0 +1,81 @@
+---
+# Kubernetes Secret (store values in k8s secret/{env}/kafka — not in plain YAML)
+# kubectl create secret generic ecoskiller-kafka-mcp-secret \
+#   --from-literal=MCP_API_TOKEN='<your-token>' \
+#   --from-literal=KAFKA_SASL_PASSWORD='<password>' \
+#   -n messaging
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ecoskiller-kafka-mcp-secret
+  namespace: messaging
+type: Opaque
+# Values are base64-encoded — replace with real values
+stringData:
+  MCP_API_TOKEN: "REPLACE_WITH_REAL_TOKEN_MIN_32_CHARS"
+  KAFKA_SASL_PASSWORD: "REPLACE_WITH_REAL_KAFKA_PASSWORD"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecoskiller-kafka-mcp
+  namespace: messaging
+  labels:
+    app: ecoskiller-kafka-mcp
+    component: mcp-server
+    ecoskiller/category: CAT-KAFKA
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecoskiller-kafka-mcp
+  template:
+    metadata:
+      labels:
+        app: ecoskiller-kafka-mcp
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        fsGroup: 1001
+      containers:
+        - name: kafka-mcp
+          image: harbor.ecoskiller.internal/ecoskiller/mcp-kafka-service:1.0.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          env:
+            - name: ECOSKILLER_ENV
+              value: "prod"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-0.kafka-headless.messaging.svc.cluster.local:9092"
+            - name: KAFKA_SASL_USERNAME
+              value: "ecoskiller-mcp"
+            - name: KAFKA_SECURITY_PROTOCOL
+              value: "SASL_SSL"
+            - name: KAFKA_SASL_MECHANISM
+              value: "SCRAM-SHA-512"
+            # Secrets injected from Kubernetes Secret
+            - name: MCP_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ecoskiller-kafka-mcp-secret
+                  key: MCP_API_TOKEN
+            - name: KAFKA_SASL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ecoskiller-kafka-mcp-secret
+                  key: KAFKA_SASL_PASSWORD
+          stdin: true
+          tty: false
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]

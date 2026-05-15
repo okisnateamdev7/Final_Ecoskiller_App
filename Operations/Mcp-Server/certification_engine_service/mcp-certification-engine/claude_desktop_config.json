@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "certification-engine": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/certification-engine-mcp/target/certification-engine-mcp-1.0.0.jar"
+      ],
+      "env": {
+        "JAVA_OPTS": "-Xms64m -Xmx256m"
+      }
+    }
+  }
+}

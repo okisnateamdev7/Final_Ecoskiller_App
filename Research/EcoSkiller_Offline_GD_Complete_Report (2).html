@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoSkiller — Offline GD via Phone Call: Complete Capabilities Report v2</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #04060d;
+    --s1:      #080c18;
+    --s2:      #0c1220;
+    --s3:      #111828;
+    --border:  #182240;
+    --border2: #243366;
+    --green:   #00ffaa;
+    --gd:      #00ffaa0c;
+    --gm:      #00ffaa35;
+    --cyan:    #00d4ff;
+    --cd:      #00d4ff0c;
+    --cm:      #00d4ff35;
+    --orange:  #ff8c00;
+    --od:      #ff8c000c;
+    --om:      #ff8c0035;
+    --red:     #ff3355;
+    --rd:      #ff33550c;
+    --rm:      #ff335535;
+    --yellow:  #ffdc00;
+    --yd:      #ffdc000c;
+    --ym:      #ffdc0035;
+    --purple:  #b060ff;
+    --pd:      #b060ff0c;
+    --pm:      #b060ff35;
+    --pink:    #ff4da6;
+    --pkd:     #ff4da60c;
+    --pkm:     #ff4da635;
+    --text:    #8aaccb;
+    --muted:   #354d6a;
+    --muted2:  #5070a0;
+    --white:   #e8f3ff;
+    --mono:    'IBM Plex Mono', monospace;
+    --sans:    'Satoshi', 'Segoe UI', sans-serif;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 9998;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  }
+
+  /* ── STICKY NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(4,6,13,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex; align-items: center; gap: 6px;
+    height: 52px; overflow-x: auto;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  .nav-tag {
+    font-family: var(--mono); font-size: 10px; font-weight: 600;
+    color: var(--muted2); padding: 5px 12px; border-radius: 2px;
+    white-space: nowrap; cursor: pointer; transition: all 0.2s;
+    border: 1px solid transparent;
+    text-decoration: none;
+  }
+  .nav-tag:hover { color: var(--green); border-color: var(--gm); background: var(--gd); }
+  .nav-sep { color: var(--muted); font-size: 10px; }
+  .nav-logo { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--green); margin-right: 12px; white-space: nowrap; }
+  .nav-new { background: var(--rd); color: var(--red); border: 1px solid var(--rm); font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 2px 6px; border-radius: 2px; letter-spacing: 1px; margin-left: 4px; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; overflow: hidden;
+    padding: 90px 40px 70px; text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-glow1 {
+    position: absolute; top: -150px; left: 50%;
+    transform: translateX(-50%);
+    width: 900px; height: 600px;
+    background: radial-gradient(ellipse, #00ffaa10 0%, #00d4ff06 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+    background-image:
+      linear-gradient(var(--green) 1px, transparent 1px),
+      linear-gradient(90deg, var(--green) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  }
+  .hero-version {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--green);
+    border: 1px solid var(--gm); background: var(--gd);
+    padding: 5px 16px; border-radius: 2px; margin-bottom: 28px;
+  }
+  .blink { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 1.6s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.15} }
+
+  h1 {
+    font-family: var(--sans); font-size: clamp(2.4em, 5.5vw, 4.4em);
+    font-weight: 900; color: var(--white); line-height: 1.05;
+    margin-bottom: 16px; letter-spacing: -1.5px;
+  }
+  h1 .g { color: var(--green); }
+  .hero-sub {
+    font-size: 1.05em; color: var(--muted2); max-width: 640px;
+    margin: 0 auto 44px; line-height: 1.6;
+  }
+
+  .stats-bar { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .stat-chip {
+    background: var(--s2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 12px 20px; text-align: center;
+    font-family: var(--mono); min-width: 110px;
+    position: relative; overflow: hidden;
+  }
+  .stat-chip::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--green);
+  }
+  .stat-chip .sn { font-size: 1.5em; font-weight: 700; color: var(--green); display: block; }
+  .stat-chip .sl { font-size: 9px; color: var(--muted2); letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-top: 3px; }
+  .stat-chip.new-stat::before { background: var(--red); }
+  .stat-chip.new-stat .sn { color: var(--red); }
+
+  /* ── LAYOUT ── */
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .sec  { padding: 68px 0; border-bottom: 1px solid var(--border); }
+
+  .sec-hd {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 38px;
+  }
+  .sec-num {
+    font-family: var(--mono); font-size: 10px; color: var(--green);
+    letter-spacing: 3px; text-transform: uppercase; white-space: nowrap;
+    background: var(--gd); border: 1px solid var(--gm);
+    padding: 4px 10px; border-radius: 2px;
+  }
+  .sec-num.red   { background: var(--rd); border-color: var(--rm); color: var(--red); }
+  .sec-num.cyan  { background: var(--cd); border-color: var(--cm); color: var(--cyan); }
+  .sec-num.orange{ background: var(--od); border-color: var(--om); color: var(--orange); }
+  .sec-num.yellow{ background: var(--yd); border-color: var(--ym); color: var(--yellow); }
+  .sec-num.purple{ background: var(--pd); border-color: var(--pm); color: var(--purple); }
+  .sec-num.pink  { background: var(--pkd); border-color: var(--pkm); color: var(--pink); }
+  .sec-title { font-size: 1.55em; font-weight: 800; color: var(--white); }
+  .sec-title .new-badge {
+    font-family: var(--mono); font-size: 10px; font-weight: 700;
+    background: var(--rd); color: var(--red); border: 1px solid var(--rm);
+    padding: 2px 8px; border-radius: 2px; letter-spacing: 1px;
+    vertical-align: middle; margin-left: 10px;
+  }
+  .sec-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--s1); border: 1px solid var(--border);
+    border-radius: 8px; padding: 26px 28px; margin-bottom: 18px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .card:hover { border-color: var(--border2); transform: translateY(-1px); }
+  .card h3 {
+    font-size: 1.05em; font-weight: 700; color: var(--white);
+    margin-bottom: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .card p { font-size: 0.93em; color: var(--text); margin-bottom: 9px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card.g  { border-left: 3px solid var(--green);  }
+  .card.c  { border-left: 3px solid var(--cyan);   }
+  .card.o  { border-left: 3px solid var(--orange); }
+  .card.r  { border-left: 3px solid var(--red);    }
+  .card.y  { border-left: 3px solid var(--yellow); }
+  .card.p  { border-left: 3px solid var(--purple); }
+  .card.pk { border-left: 3px solid var(--pink);   }
+  .card.g2 { border-color: var(--gm); background: #00ffaa06; }
+
+  /* ── BADGES ── */
+  .badge {
+    font-family: var(--mono); font-size: 9px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 2px; white-space: nowrap;
+  }
+  .bg  { background: var(--gd);  color: var(--green);  border: 1px solid var(--gm);  }
+  .bc  { background: var(--cd);  color: var(--cyan);   border: 1px solid var(--cm);  }
+  .bo  { background: var(--od);  color: var(--orange); border: 1px solid var(--om);  }
+  .br  { background: var(--rd);  color: var(--red);    border: 1px solid var(--rm);  }
+  .by  { background: var(--yd);  color: var(--yellow); border: 1px solid var(--ym);  }
+  .bp  { background: var(--pd);  color: var(--purple); border: 1px solid var(--pm);  }
+  .bpk { background: var(--pkd); color: var(--pink);   border: 1px solid var(--pkm); }
+  .bnew { background: var(--rd); color: var(--red); border: 1px solid var(--rm); animation: newpulse 2s infinite; }
+  @keyframes newpulse { 0%,100%{opacity:1} 50%{opacity:.6} }
+
+  /* ── ALERT BOXES ── */
+  .alert {
+    border-radius: 6px; padding: 16px 20px; margin-bottom: 18px;
+    display: flex; gap: 13px; align-items: flex-start;
+  }
+  .alert-i { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .alert p  { font-size: 0.92em; }
+  .alert.info  { background: var(--cd); border: 1px solid var(--cm); }
+  .alert.info p  { color: #9ae8ff; }
+  .alert.good  { background: var(--gd); border: 1px solid var(--gm); }
+  .alert.good p  { color: #9affd4; }
+  .alert.warn  { background: var(--rd); border: 1px solid var(--rm); }
+  .alert.warn p  { color: #ffaab8; }
+  .alert.tip   { background: var(--yd); border: 1px solid var(--ym); }
+  .alert.tip p   { color: #fff3aa; }
+  .alert.purple{ background: var(--pd); border: 1px solid var(--pm); }
+  .alert.purple p{ color: #d4aaff; }
+
+  /* ── GRIDS ── */
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  @media(max-width:720px){ .g2,.g3 { grid-template-columns:1fr; } }
+
+  /* ── CHECKLIST ── */
+  .chk { list-style: none; }
+  .chk li {
+    padding: 7px 0 7px 24px; position: relative;
+    font-size: 0.91em; border-bottom: 1px solid var(--border); color: var(--text);
+  }
+  .chk li:last-child { border-bottom: none; }
+  .chk li::before { content: '▸'; position: absolute; left: 0; color: var(--green); }
+  .chk.red li::before  { color: var(--red); }
+  .chk.cyan li::before { color: var(--cyan); }
+  .chk.orange li::before { color: var(--orange); }
+
+  /* ── FLOW ── */
+  .flow-wrap {
+    background: var(--s1); border: 1px solid var(--border);
+    border-radius: 8px; padding: 28px 24px; margin-bottom: 20px;
+  }
+  .flow-label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 2px;
+    color: var(--green); text-align: center; margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .flow-row {
+    display: flex; align-items: center;
+    justify-content: center; min-width: 680px;
+  }
+  .fn {
+    background: var(--s2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 10px; text-align: center;
+    min-width: 88px; flex-shrink: 0;
+  }
+  .fn.hl { border-color: var(--gm); background: #00ffaa07; }
+  .fn.sv { border-color: var(--cm); background: var(--cd); }
+  .fn.os { border-color: var(--ym); background: var(--yd); }
+  .fn-i  { font-size: 18px; margin-bottom: 4px; }
+  .fn-t  { font-size: 10px; font-weight: 700; color: var(--white); line-height: 1.3; }
+  .fn-s  { font-family: var(--mono); font-size: 8px; color: var(--muted2); margin-top: 3px; }
+  .fa    { color: var(--green); font-size: 14px; padding: 0 3px; flex-shrink: 0; }
+  .flow-note {
+    text-align: center; font-family: var(--mono); font-size: 8px;
+    color: var(--muted); margin-top: 18px; letter-spacing: 1px;
+  }
+
+  /* ── TABLE ── */
+  .tbl-wrap {
+    background: var(--s1); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden; margin-bottom: 20px;
+  }
+  .tbl { width: 100%; border-collapse: collapse; font-size: 0.88em; }
+  .tbl th {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--green); padding: 12px 14px;
+    text-align: left; border-bottom: 1px solid var(--border); background: var(--s2);
+  }
+  .tbl td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+  .tbl tr:hover td { background: var(--s2); }
+  .tbl td:first-child { color: var(--white); font-weight: 600; }
+  .tbl tr:last-child td { border-bottom: none; }
+
+  /* ── CAP GRID ── */
+  .cap-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  @media(max-width:840px){ .cap-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:540px){ .cap-grid { grid-template-columns: 1fr; } }
+
+  .cap {
+    background: var(--s1); border: 1px solid var(--border);
+    border-radius: 10px; padding: 22px; position: relative;
+    overflow: hidden; transition: all 0.2s; cursor: default;
+  }
+  .cap:hover { border-color: var(--border2); transform: translateY(-2px); }
+  .cap-glow {
+    position: absolute; top: -50px; right: -50px;
+    width: 130px; height: 130px; border-radius: 50%;
+    filter: blur(50px); opacity: 0.1; pointer-events: none;
+  }
+  .cap-icon { font-size: 1.8em; margin-bottom: 12px; display: block; }
+  .cap h4   { font-size: 0.95em; font-weight: 700; color: var(--white); margin-bottom: 7px; }
+  .cap p    { font-size: 0.84em; color: var(--muted2); line-height: 1.55; margin-bottom: 10px; }
+  .cap-foot { display: flex; align-items: center; justify-content: space-between; }
+
+  /* ── MINI CARDS ── */
+  .mc { background: var(--s2); border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+  .mc .mi { font-size: 1.5em; margin-bottom: 8px; }
+  .mc h4  { font-weight: 700; color: var(--white); font-size: 0.93em; margin-bottom: 6px; }
+  .mc p   { font-size: 0.83em; color: var(--muted2); line-height: 1.5; }
+  .mc .mv { font-family: var(--mono); font-size: 1.1em; font-weight: 700; color: var(--green); margin: 4px 0; }
+
+  /* ── PHASE / PRIORITY ── */
+  .phases { display: flex; flex-direction: column; }
+  .phase  { display: flex; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .phase:last-child { border-bottom: none; }
+  .phase-tag {
+    font-family: var(--mono); font-size: 9px; color: var(--green);
+    background: var(--gd); border: 1px solid var(--gm); border-radius: 4px;
+    padding: 6px 10px; white-space: nowrap; text-align: center;
+    line-height: 1.6; flex-shrink: 0; min-width: 80px;
+  }
+  .phase-tag.red    { background: var(--rd); border-color: var(--rm); color: var(--red); }
+  .phase-tag.orange { background: var(--od); border-color: var(--om); color: var(--orange); }
+  .phase-tag.yellow { background: var(--yd); border-color: var(--ym); color: var(--yellow); }
+  .phase-body h4 { color: var(--white); font-weight: 700; margin-bottom: 5px; font-size: 0.98em; }
+  .phase-body p  { font-size: 0.88em; color: var(--muted2); }
+
+  /* ── COST TABLE ── */
+  .cost-wrap { display: flex; gap: 16px; flex-wrap: wrap; }
+  .cost-col  { flex: 1; min-width: 260px; background: var(--s2); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .cost-col h4 { font-size: 0.93em; font-weight: 700; color: var(--white); margin-bottom: 14px; }
+  .cost-row-i  { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 0.86em; }
+  .cost-row-i:last-of-type { border-bottom: none; }
+  .cost-name { color: var(--muted2); }
+  .cost-amt  { font-family: var(--mono); font-weight: 700; }
+  .cheap { color: var(--green); }
+  .mid   { color: var(--yellow); }
+  .exp   { color: var(--red); }
+  .cost-total { display: flex; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border2); font-family: var(--mono); }
+  .cost-total .cl { color: var(--muted2); font-size: 10px; }
+  .cost-total .cv { font-size: 1.2em; font-weight: 700; }
+
+  /* ── IVR FLOW ── */
+  .ivr-flow { display: flex; flex-direction: column; gap: 0; }
+  .ivr-step {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .ivr-step:last-child { border-bottom: none; }
+  .ivr-step::before {
+    content: ''; position: absolute; left: 16px; top: 36px;
+    width: 1px; height: calc(100% - 10px);
+    background: var(--border); 
+  }
+  .ivr-step:last-child::before { display: none; }
+  .ivr-dot {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--s2); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0; position: relative; z-index: 1;
+  }
+  .ivr-dot.active { border-color: var(--green); background: var(--gd); }
+  .ivr-dot.error  { border-color: var(--red); background: var(--rd); }
+  .ivr-dot.end    { border-color: var(--cyan); background: var(--cd); }
+  .ivr-body h5 { color: var(--white); font-weight: 700; font-size: 0.92em; margin-bottom: 3px; }
+  .ivr-body p  { font-size: 0.84em; color: var(--muted2); }
+  .ivr-says {
+    background: var(--s3); border: 1px solid var(--border); border-radius: 4px;
+    padding: 8px 12px; margin-top: 6px;
+    font-family: var(--mono); font-size: 0.8em; color: var(--green);
+    font-style: italic;
+  }
+
+  /* ── SECURITY THREAT TABLE ── */
+  .threat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  @media(max-width:700px){ .threat-row { grid-template-columns: 1fr; } }
+
+  /* ── SCALE DIAGRAM ── */
+  .scale-tier {
+    display: flex; gap: 14px; padding: 16px;
+    background: var(--s2); border: 1px solid var(--border); border-radius: 6px;
+    margin-bottom: 10px; align-items: center;
+  }
+  .scale-num {
+    font-family: var(--mono); font-size: 1.3em; font-weight: 700;
+    color: var(--green); min-width: 80px; text-align: center;
+  }
+  .scale-body h5 { color: var(--white); font-weight: 700; font-size: 0.93em; margin-bottom: 4px; }
+  .scale-body p  { font-size: 0.84em; color: var(--muted2); }
+  .scale-spec {
+    margin-left: auto; text-align: right;
+    font-family: var(--mono); font-size: 0.8em;
+    color: var(--muted2); flex-shrink: 0;
+  }
+  .scale-spec span { display: block; }
+  .scale-spec .cost { color: var(--green); font-weight: 700; }
+
+  /* ── LATENCY VISUAL ── */
+  .latency-bar {
+    height: 8px; border-radius: 4px; margin-bottom: 4px;
+    background: var(--border); position: relative; overflow: hidden;
+  }
+  .latency-bar .fill {
+    height: 100%; border-radius: 4px;
+    position: absolute; left: 0; top: 0;
+  }
+
+  /* ── PRIVACY GRID ── */
+  .privacy-item {
+    background: var(--s2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 16px; margin-bottom: 10px;
+  }
+  .privacy-item h5 { color: var(--white); font-weight: 700; margin-bottom: 6px; font-size: 0.93em; display: flex; gap: 8px; align-items: center; }
+  .privacy-item p  { font-size: 0.85em; color: var(--muted2); }
+
+  /* ── UI MOCKUP ── */
+  .mockup-phone {
+    background: #04060e; border: 1px solid var(--border); border-radius: 12px;
+    padding: 22px; max-width: 340px; margin: 0 auto;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center; padding: 48px; color: var(--muted);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 1px;
+    border-top: 1px solid var(--border);
+  }
+  .footer .logo { color: var(--green); font-size: 13px; margin-bottom: 10px; }
+
+  /* ── NEW SECTION HIGHLIGHT ── */
+  .new-section-banner {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--rd); border: 1px solid var(--rm);
+    border-radius: 4px; padding: 6px 14px;
+    font-family: var(--mono); font-size: 10px; color: var(--red);
+    font-weight: 700; letter-spacing: 2px; margin-bottom: 20px;
+  }
+
+  /* ── SCROLL ANIMATION ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .sec { animation: fadeUp 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <span class="nav-logo">⬡ ECOSKILLER</span>
+  <a class="nav-tag" href="#s1">Core Idea</a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s2">Capabilities</a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s3">OSS Tools</a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s4">STT Comparison</a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s5">Cost</a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s6">UX</a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s7">India Notes</a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s8">Priority</a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s9">Security <span class="nav-new">NEW</span></a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s10">Auth Flow <span class="nav-new">NEW</span></a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s11">Latency <span class="nav-new">NEW</span></a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s12">Scaling <span class="nav-new">NEW</span></a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s13">Score Fairness <span class="nav-new">NEW</span></a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s14">Privacy <span class="nav-new">NEW</span></a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s15">Failover <span class="nav-new">NEW</span></a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s16">IVR Design <span class="nav-new">NEW</span></a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s17">Real Cost <span class="nav-new">NEW</span></a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s18">Bridge Integration <span class="nav-new">NEW</span></a>
+  <span class="nav-sep">·</span>
+  <a class="nav-tag" href="#s19">Summary</a>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-glow1"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-version"><div class="blink"></div>EcoSkiller · Complete Capabilities Report v2.0</div>
+  <h1>Offline <span class="g">Group Discussion</span><br>via Phone Call</h1>
+  <p class="hero-sub">Original report + 10 missing sections added. Security, Authentication, Latency, Scaling, Score Fairness, Privacy, Failover, IVR Design, Real Cost, Bridge Integration — all covered.</p>
+  <div class="stats-bar">
+    <div class="stat-chip"><span class="sn">9</span><span class="sl">Original Sections</span></div>
+    <div class="stat-chip new-stat"><span class="sn">10</span><span class="sl">New Sections Added</span></div>
+    <div class="stat-chip"><span class="sn">12</span><span class="sl">Capabilities</span></div>
+    <div class="stat-chip"><span class="sn">₹0.28</span><span class="sl">Per Session (OSS)</span></div>
+    <div class="stat-chip"><span class="sn">2G</span><span class="sl">Min Network</span></div>
+    <div class="stat-chip"><span class="sn">0</span><span class="sl">App Install Needed</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ORIGINAL SECTIONS (1–8)
+═══════════════════════════════════════════ -->
+
+<!-- ── SECTION 1 ── -->
+<div class="sec" id="s1">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num">01</span><h2 class="sec-title">The Core Idea — What This Is</h2><div class="sec-line"></div></div>
+
+    <div class="alert info">
+      <div class="alert-i">💡</div>
+      <p>This is called a <strong>PSTN-to-WebRTC Bridge</strong>. It's the same technology behind Zoom and Google Meet dial-in numbers. A phone call from a 2G phone gets converted into a WebRTC audio stream and injected into your live GD room — the caller hears everyone, everyone hears the caller. <strong>No AI fake participants. The exact same live session.</strong></p>
+    </div>
+
+    <div class="flow-wrap">
+      <div class="flow-label">// How a Phone User Joins the Live GD Session</div>
+      <div style="overflow-x:auto">
+        <div class="flow-row">
+          <div class="fn hl"><div class="fn-i">📱</div><div class="fn-t">Rural User</div><div class="fn-s">No internet<br>2G voice only</div></div>
+          <div class="fa">→</div>
+          <div class="fn"><div class="fn-i">📞</div><div class="fn-t">Dials Number</div><div class="fn-s">Any phone<br>no app needed</div></div>
+          <div class="fa">→</div>
+          <div class="fn sv"><div class="fn-i">🌐</div><div class="fn-t">PSTN / GSM</div><div class="fn-s">Normal call<br>2G works fine</div></div>
+          <div class="fa">→</div>
+          <div class="fn os"><div class="fn-i">⚙️</div><div class="fn-t">FreeSWITCH</div><div class="fn-s">Open source<br>FREE bridge</div></div>
+          <div class="fa">→</div>
+          <div class="fn sv"><div class="fn-i">🎙️</div><div class="fn-t">Live GD Room</div><div class="fn-s">Same room as<br>app users</div></div>
+          <div class="fa">→</div>
+          <div class="fn hl"><div class="fn-i">👥</div><div class="fn-t">App Users</div><div class="fn-s">Hear phone user<br>real-time</div></div>
+        </div>
+      </div>
+      <div class="flow-note">NO FAKE AI — THE PHONE USER IS A REAL PARTICIPANT IN THE ACTUAL LIVE SESSION</div>
+    </div>
+
+    <div class="g2">
+      <div class="card r">
+        <h3>❌ What We Are NOT Building</h3>
+        <ul class="chk red">
+          <li>A separate "offline GD" where user talks alone</li>
+          <li>AI-simulated fake discussion partners</li>
+          <li>Post-session analysis only (after call ends)</li>
+          <li>A new app the user must install</li>
+          <li>Something that needs internet on the user's phone</li>
+        </ul>
+      </div>
+      <div class="card g">
+        <h3>✅ What We ARE Building</h3>
+        <ul class="chk">
+          <li>User dials a number — instantly joins live GD</li>
+          <li>Hears all app users in real-time</li>
+          <li>App users hear the phone user in real-time</li>
+          <li>AI scores the phone user's participation live</li>
+          <li>Report delivered via SMS/WhatsApp after session</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 2: CAPABILITIES ── -->
+<div class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num">02</span><h2 class="sec-title">All Capabilities We Can Build</h2><div class="sec-line"></div></div>
+    <div class="alert good">
+      <div class="alert-i">🟢</div>
+      <p>Every feature below is technically possible with the open-source stack. <strong>Core features</strong> are must-haves for MVP. <strong>Advanced features</strong> are production enhancements.</p>
+    </div>
+    <p style="font-weight:700; color:var(--white); margin-bottom:14px;">Core Capabilities — Must Have</p>
+    <div class="cap-grid">
+      <div class="cap"><div class="cap-glow" style="background:var(--green)"></div><span class="cap-icon">📞</span><h4>Phone Dial-In to Live Session</h4><p>User calls a number, enters a PIN, and is instantly bridged into the exact live GD room. They hear and speak in real-time — just like Zoom dial-in.</p><div class="cap-foot"><span class="badge bg">Core Feature</span></div></div>
+      <div class="cap"><div class="cap-glow" style="background:var(--cyan)"></div><span class="cap-icon">🎤</span><h4>IVR in Hindi & English</h4><p>Automated voice greets the caller in Hindi or English, asks for session PIN, confirms joining. Fully customizable prompts.</p><div class="cap-foot"><span class="badge bg">Core Feature</span></div></div>
+      <div class="cap"><div class="cap-glow" style="background:var(--orange)"></div><span class="cap-icon">🗣️</span><h4>Real-Time Speech Transcription</h4><p>Phone user's speech transcribed live using Whisper or Vosk (self-hosted, free). Feeds into existing EcoSkiller analysis pipeline.</p><div class="cap-foot"><span class="badge bg">Core Feature</span></div></div>
+      <div class="cap"><div class="cap-glow" style="background:var(--yellow)"></div><span class="cap-icon">📊</span><h4>Full GD Analysis — Same as App Users</h4><p>Phone user gets same AI analysis: participation score, speaking time, topic relevance, language quality, interruption count, confidence.</p><div class="cap-foot"><span class="badge bg">Core Feature</span></div></div>
+      <div class="cap"><div class="cap-glow" style="background:var(--purple)"></div><span class="cap-icon">📲</span><h4>Report via SMS / WhatsApp</h4><p>After GD ends, phone user receives their score via SMS (₹0.08) or WhatsApp (free first 1000/month via META). Works on any phone.</p><div class="cap-foot"><span class="badge bg">Core Feature</span></div></div>
+      <div class="cap"><div class="cap-glow" style="background:var(--green)"></div><span class="cap-icon">👁️</span><h4>App Users See Phone User Live</h4><p>"📞 Phone User joined" notification. Speaking indicator when phone user talks. Live transcript in sidebar. Full visibility both ways.</p><div class="cap-foot"><span class="badge bg">Core Feature</span></div></div>
+    </div>
+    <p style="font-weight:700; color:var(--white); margin:20px 0 14px;">Advanced Capabilities — Production Polish</p>
+    <div class="cap-grid">
+      <div class="cap"><div class="cap-glow" style="background:var(--cyan)"></div><span class="cap-icon">🔊</span><h4>Speaker Diarization</h4><p>Identify "who said what" even if multiple people speak from one phone. Uses Pyannote Audio (open source). Each speaker analyzed separately.</p><div class="cap-foot"><span class="badge bc">Advanced</span></div></div>
+      <div class="cap"><div class="cap-glow" style="background:var(--orange)"></div><span class="cap-icon">🔇</span><h4>Moderator Controls</h4><p>Mute/unmute phone participants from the app. Remove disruptive callers. FreeSWITCH conference controls exposed via API.</p><div class="cap-foot"><span class="badge bo">Advanced</span></div></div>
+      <div class="cap"><div class="cap-glow" style="background:var(--yellow)"></div><span class="cap-icon">🎙️</span><h4>Push-to-Talk Mode</h4><p>Phone user presses * key to request speaking turn. Prevents chaotic overlapping in structured GD formats.</p><div class="cap-foot"><span class="badge by">Advanced</span></div></div>
+      <div class="cap"><div class="cap-glow" style="background:var(--purple)"></div><span class="cap-icon">⏱️</span><h4>Speaking Time Enforcer</h4><p>Audio cue plays when phone user speaks too long ("30 seconds remaining"). Equal time for all — even phone users.</p><div class="cap-foot"><span class="badge bp">Advanced</span></div></div>
+      <div class="cap"><div class="cap-glow" style="background:var(--red)"></div><span class="cap-icon">🔁</span><h4>Auto-Reconnect on Call Drop</h4><p>If rural user's call drops (common on 2G), system auto-calls them back. No need to re-dial and re-enter PIN.</p><div class="cap-foot"><span class="badge br">Advanced</span></div></div>
+      <div class="cap"><div class="cap-glow" style="background:var(--green)"></div><span class="cap-icon">📼</span><h4>Session Recording</h4><p>Entire GD including phone users recorded on server. App users replay later. Phone users request audio link via SMS.</p><div class="cap-foot"><span class="badge bg">Advanced</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 3: OSS TOOLS ── -->
+<div class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num">03</span><h2 class="sec-title">Open Source Tools — What Powers Each Capability</h2><div class="sec-line"></div></div>
+    <div class="alert tip">
+      <div class="alert-i">⚡</div>
+      <p>Every tool listed is <strong>free and open-source</strong>. Self-host on your VPS. The only unavoidable cost is actual phone call minutes (₹0.01–0.03/min via Indian SIP trunk) and your server (₹440/month).</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Capability</th><th>Open Source Tool</th><th>License</th><th>Hindi Support</th><th>Cost</th></tr>
+        <tr><td>📞 PSTN-to-WebRTC Bridge</td><td><strong>FreeSWITCH</strong></td><td><span class="badge bg">MPL 2.0</span></td><td>✅ IVR any language</td><td class="cheap" style="font-family:var(--mono)">₹0/min</td></tr>
+        <tr><td>🗣️ Real-Time STT (Option A)</td><td><strong>Whisper.cpp (small)</strong></td><td><span class="badge bg">MIT</span></td><td>✅ 99 languages</td><td class="cheap" style="font-family:var(--mono)">₹0/min</td></tr>
+        <tr><td>🗣️ Real-Time STT (Option B)</td><td><strong>Vosk (vosk-model-hi)</strong></td><td><span class="badge bg">Apache 2.0</span></td><td>✅ Dedicated Hindi</td><td class="cheap" style="font-family:var(--mono)">₹0/min</td></tr>
+        <tr><td>🗣️ STT Best Accuracy 2025</td><td><strong>Mistral Voxtral Mini (3B)</strong></td><td><span class="badge bg">Apache 2.0</span></td><td>✅ Beats Whisper V3</td><td class="cheap" style="font-family:var(--mono)">₹0/min</td></tr>
+        <tr><td>🔊 Speaker Diarization</td><td><strong>Pyannote Audio</strong></td><td><span class="badge bg">MIT</span></td><td>✅ Language-agnostic</td><td class="cheap" style="font-family:var(--mono)">₹0/min</td></tr>
+        <tr><td>📲 SMS Reports</td><td><strong>Fast2SMS / TextLocal</strong></td><td>Indian providers</td><td>✅ Hindi SMS</td><td class="mid" style="font-family:var(--mono)">₹0.08/SMS*</td></tr>
+        <tr><td>💬 WhatsApp Reports</td><td><strong>META WhatsApp Business API</strong></td><td>Free (1000/mo)</td><td>✅ Hindi templates</td><td class="cheap" style="font-family:var(--mono)">₹0 (first 1000)</td></tr>
+        <tr><td>🖥️ Server Infrastructure</td><td><strong>Hetzner VPS (CPX21)</strong></td><td>Pay-as-you-go</td><td>N/A</td><td class="mid" style="font-family:var(--mono)">₹440/month</td></tr>
+        <tr><td>📞 Indian Phone Number</td><td><strong>MCUBE / Knowlarity SIP Trunk</strong></td><td>Indian telecom</td><td>✅ TRAI compliant</td><td class="mid" style="font-family:var(--mono)">₹0.01–0.03/min</td></tr>
+      </table>
+    </div>
+    <div class="alert warn">
+      <div class="alert-i">⚠️</div>
+      <p><strong>*SMS Cost Correction (see Section 17):</strong> Hindi text in SMS uses Unicode encoding — each SMS can only hold 70 characters instead of 160. A typical GD report message will consume 2–3 SMS credits = ₹0.16–₹0.24, not ₹0.08. This is fully explained in the Real Cost section.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 4: STT ── -->
+<div class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num">04</span><h2 class="sec-title">Which STT Engine to Use — Full Comparison</h2><div class="sec-line"></div></div>
+    <div class="g2">
+      <div class="card y">
+        <h3>⚡ Vosk — vosk-model-hi <span class="badge by">MVP</span></h3>
+        <p>Streaming-first, 50MB Hindi model, runs on any CPU. Fastest real-time response (~50ms). Designed for telephony.</p>
+        <ul class="chk" style="margin-top:8px">
+          <li>Streaming API — no chunking needed</li>
+          <li>Runs on cheapest VPS (1 vCPU, 1GB RAM)</li>
+          <li>Dedicated Hindi model available</li>
+          <li>Used in call centers worldwide</li>
+        </ul>
+        <p style="margin-top:10px; font-size:.84em;"><span style="color:var(--red)">Downside:</span> Less accurate on Hinglish, heavy accents, noisy PSTN audio.</p>
+      </div>
+      <div class="card g">
+        <h3>🎯 Whisper.cpp — small model <span class="badge bg">Quality</span></h3>
+        <p>OpenAI's Whisper in C++. Best accuracy for Hindi + Hinglish. Runs on CPU. MIT license.</p>
+        <ul class="chk" style="margin-top:8px">
+          <li>Handles noisy 8kHz PSTN audio well</li>
+          <li>Robust on UP, Bihar, MP, Rajasthan accents</li>
+          <li>99 languages — handles Hinglish perfectly</li>
+          <li>Small model: 244MB, 2-3s latency</li>
+        </ul>
+        <p style="margin-top:10px; font-size:.84em;"><span style="color:var(--red)">Downside:</span> Not truly streaming — processes in 2-3s chunks.</p>
+      </div>
+      <div class="card p">
+        <h3>🚀 Mistral Voxtral Mini (3B) <span class="badge bp">Best 2025</span></h3>
+        <p>New in 2025. Apache 2.0. Outperforms Whisper Large V3 AND GPT-4o mini Transcribe on Hindi benchmarks.</p>
+        <ul class="chk" style="margin-top:8px">
+          <li>Built-in language understanding, not just STT</li>
+          <li>Can answer: "what was speaker's main argument?"</li>
+          <li>Apache 2.0 — completely free, commercial OK</li>
+          <li>3B model runs on CPU (needs 4-8GB RAM)</li>
+        </ul>
+        <p style="margin-top:10px; font-size:.84em;"><span style="color:var(--red)">Downside:</span> Higher RAM requirements, higher server cost.</p>
+      </div>
+      <div class="card c">
+        <h3>🌐 Faster-Whisper <span class="badge bc">Balanced</span></h3>
+        <p>Community-optimized Whisper via CTranslate2. 4x faster than original with same accuracy.</p>
+        <ul class="chk" style="margin-top:8px">
+          <li>4x faster, 2-3x lower memory than Whisper</li>
+          <li>Real-time friendly with chunked streaming</li>
+          <li>Same accuracy as Whisper large</li>
+          <li>Most used in production 2025</li>
+        </ul>
+        <p style="margin-top:10px; font-size:.84em;"><span style="color:var(--red)">Downside:</span> Still 2s window, not true streaming.</p>
+      </div>
+    </div>
+    <div class="card g2" style="margin-top:4px">
+      <h3>🏆 Recommendation by Stage</h3>
+      <div class="g3" style="margin-top:12px">
+        <div class="mc"><div class="mi">🚀</div><h4>MVP</h4><p><strong style="color:var(--yellow)">Vosk</strong> — fast, lightweight, 1 week to integrate.</p></div>
+        <div class="mc"><div class="mi">📈</div><h4>Growth</h4><p><strong style="color:var(--green)">Faster-Whisper medium</strong> — better quality, ₹800/mo VPS.</p></div>
+        <div class="mc"><div class="mi">🎯</div><h4>Scale</h4><p><strong style="color:var(--purple)">Mistral Voxtral Mini</strong> — best accuracy + semantic understanding.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 5: COST ── -->
+<div class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num">05</span><h2 class="sec-title">Cost Breakdown — Paid vs Open Source</h2><div class="sec-line"></div></div>
+    <div class="cost-wrap">
+      <div class="cost-col">
+        <h4>💸 Paid Stack (Twilio + Deepgram + Twilio SMS)</h4>
+        <div class="cost-row-i"><span class="cost-name">Twilio PSTN bridge (10 min)</span><span class="cost-amt exp">₹1.50</span></div>
+        <div class="cost-row-i"><span class="cost-name">Deepgram Nova-3 STT (10 min)</span><span class="cost-amt exp">₹3.50</span></div>
+        <div class="cost-row-i"><span class="cost-name">Twilio SMS (1 report)</span><span class="cost-amt exp">₹0.45</span></div>
+        <div class="cost-row-i"><span class="cost-name">Server (managed, amortized)</span><span class="cost-amt mid">₹0.05</span></div>
+        <div class="cost-total"><span class="cl">10-MIN SESSION TOTAL</span><span class="cv exp">≈ ₹5.50</span></div>
+      </div>
+      <div class="cost-col">
+        <h4>🟢 Open Source Stack (FreeSWITCH + Whisper + Fast2SMS)</h4>
+        <div class="cost-row-i"><span class="cost-name">Indian SIP Trunk PSTN (10 min)</span><span class="cost-amt mid">₹0.10</span></div>
+        <div class="cost-row-i"><span class="cost-name">Whisper STT (self-hosted)</span><span class="cost-amt cheap">₹0.00</span></div>
+        <div class="cost-row-i"><span class="cost-name">Fast2SMS (1 SMS report)</span><span class="cost-amt cheap">₹0.08</span></div>
+        <div class="cost-row-i"><span class="cost-name">Hetzner VPS amortized</span><span class="cost-amt cheap">₹0.10</span></div>
+        <div class="cost-total"><span class="cl">10-MIN SESSION TOTAL</span><span class="cv cheap">≈ ₹0.28</span></div>
+      </div>
+    </div>
+    <div class="alert good" style="margin-top:6px">
+      <div class="alert-i">🔥</div>
+      <p><strong>95% cost reduction per session.</strong> At 1,000 sessions/month: ₹5,500 → ₹280. At 10,000 sessions/month: ₹55,000 → ₹2,800. The only unavoidable cost is actual phone call minutes — that's real telecom infrastructure. See Section 17 for the complete real-world cost with all edge cases.</p>
+    </div>
+    <div class="g3">
+      <div class="mc"><div class="mi">🖥️</div><h4>Hetzner CPX21</h4><div class="mv">₹440/mo</div><p>3 vCPU, 4GB RAM. Upgrade to CPX31 (₹880) for Whisper-medium or Voxtral.</p></div>
+      <div class="mc"><div class="mi">📞</div><h4>Indian SIP Trunk</h4><div class="mv">₹0.01–0.03/min</div><p>MCUBE, Knowlarity, Tata Comm. 5-10x cheaper than Twilio India.</p></div>
+      <div class="mc"><div class="mi">💬</div><h4>WhatsApp (META)</h4><div class="mv">₹0 (first 1000/mo)</div><p>Better than SMS for rural India. Works on Jio ₹10 recharge.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 6: UX ── -->
+<div class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num">06</span><h2 class="sec-title">User Experience — What Each Person Sees & Does</h2><div class="sec-line"></div></div>
+    <div class="g2">
+      <div class="card c">
+        <h3>📱 App Users (Online / Normal)</h3>
+        <ul class="chk cyan">
+          <li>Session page shows "Join via Call" card with number + PIN</li>
+          <li>"Share with offline friends" WhatsApp button</li>
+          <li>"📞 Phone User has joined" notification in real-time</li>
+          <li>Phone user in participant list with 📞 icon</li>
+          <li>Speaking indicator when phone user is talking</li>
+          <li>Live transcript in sidebar</li>
+          <li>Phone user contribution in real-time analysis bar</li>
+        </ul>
+      </div>
+      <div class="card o">
+        <h3>☎️ Phone User (Offline / Rural)</h3>
+        <ul class="chk orange">
+          <li>Gets number + PIN via WhatsApp or SMS before session</li>
+          <li>Dials from any phone — no app, no internet</li>
+          <li>Hears Hindi IVR: "Enter your 6-digit session PIN"</li>
+          <li>Enters PIN → immediately joins live room</li>
+          <li>Hears all participants in real-time</li>
+          <li>Can speak — others hear instantly</li>
+          <li>Receives SMS/WhatsApp report with score after session</li>
+        </ul>
+      </div>
+    </div>
+    <div style="background:var(--s1); border:1px solid var(--border); border-radius:10px; padding:28px; margin-top:4px;">
+      <p style="font-family:var(--mono); font-size:9px; color:var(--green); letter-spacing:2px; margin-bottom:18px; text-transform:uppercase;">// App UI — Dial-In Card in Session</p>
+      <div class="mockup-phone">
+        <div style="font-family:var(--mono); font-size:10px; color:var(--muted2); letter-spacing:1.5px; margin-bottom:10px; text-transform:uppercase;">No Internet? Join via Call</div>
+        <div style="background:var(--gd); border:1px solid var(--gm); border-radius:6px; padding:14px; margin-bottom:12px;">
+          <div style="font-family:var(--mono); font-size:1.25em; color:var(--green); font-weight:700;">+91-80691-XXXXX</div>
+          <div style="font-size:11px; color:var(--muted2); margin-top:4px;">Works on 2G · Any phone · No app</div>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center; margin-bottom:12px;">
+          <div style="flex:1; background:var(--s2); border:1px solid var(--border); border-radius:6px; padding:10px; text-align:center;">
+            <div style="font-family:var(--mono); font-size:9px; color:var(--muted2); text-transform:uppercase;">Session PIN</div>
+            <div style="font-family:var(--mono); font-size:1.6em; color:var(--white); font-weight:700; letter-spacing:5px;">823941</div>
+          </div>
+          <div style="font-size:20px; cursor:pointer;">📋</div>
+        </div>
+        <div style="background:var(--od); border:1px solid var(--om); border-radius:4px; padding:9px; font-family:var(--mono); font-size:10px; color:var(--orange);">👥 2 joined via phone call</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 7: INDIA ── -->
+<div class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num">07</span><h2 class="sec-title">India-Specific Considerations</h2><div class="sec-line"></div></div>
+    <div class="g3">
+      <div class="mc"><div class="mi">🇮🇳</div><h4>TRAI Compliance</h4><p>Use Indian SIP trunk providers — they handle TRAI for you. Do NOT use Twilio at scale for Indian numbers — licensing gets complex.</p></div>
+      <div class="mc"><div class="mi">📶</div><h4>2G Coverage Works</h4><p>Voice on 2G. BSNL/MTNL covers 90%+ rural India. Jio ₹10 recharge includes voice. Zero data needed from phone user.</p></div>
+      <div class="mc"><div class="mi">📱</div><h4>Feature Phone Support</h4><p>Jio KaiOS, basic Nokia keypad — all work. No smartphone, no app. Truly accessible.</p></div>
+      <div class="mc"><div class="mi">🗣️</div><h4>Hindi + Hinglish STT</h4><p>Whisper and Voxtral handle Hinglish. Vosk's Hindi model for pure Hindi. Use Faster-Whisper medium for mixed speech.</p></div>
+      <div class="mc"><div class="mi">🔊</div><h4>Call Audio Quality</h4><p>PSTN is 8kHz (narrowband). Enable FreeSWITCH <code>mod_noise</code> to clean background noise before sending to STT.</p></div>
+      <div class="mc"><div class="mi">💬</div><h4>WhatsApp > SMS</h4><p>WhatsApp on Jio ₹10. Free 1000/month via META. Hindi templates. PDF report link works on basic Android.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 8: PRIORITY ── -->
+<div class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num">08</span><h2 class="sec-title">What to Build First — Priority Order</h2><div class="sec-line"></div></div>
+    <div class="card" style="padding:8px 26px;">
+      <div class="phases">
+        <div class="phase"><div class="phase-tag">P1<br>Must Have</div><div class="phase-body"><h4>📞 Phone Dial-In → Live Session Join</h4><p>FreeSWITCH + Indian SIP trunk. User calls, enters PIN, joins live GD. This alone solves the rural access problem. Everything else is enhancement.</p></div></div>
+        <div class="phase"><div class="phase-tag">P2<br>Must Have</div><div class="phase-body"><h4>🗣️ Real-Time Transcription + AI Analysis</h4><p>Vosk (fast) or Whisper (accurate). Feed transcript into existing EcoSkiller pipeline. Phone user gets same analysis as app users.</p></div></div>
+        <div class="phase"><div class="phase-tag">P3<br>Important</div><div class="phase-body"><h4>📲 SMS / WhatsApp Report After Session</h4><p>Fast2SMS or META API. Closes the loop — rural user gets result without internet.</p></div></div>
+        <div class="phase"><div class="phase-tag">P4<br>Important</div><div class="phase-body"><h4>👁️ App UI — Show Phone User Presence</h4><p>Speaking indicator, live transcript sidebar, participant count. Makes experience seamless for both sides.</p></div></div>
+        <div class="phase"><div class="phase-tag">P5<br>Nice-to-have</div><div class="phase-body"><h4>🔁 Auto-Reconnect + Moderator Controls + Push-to-Talk</h4><p>Production polish. Build after core is validated. Auto-callback on drop. Mute controls. Structured GD push-to-talk.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     NEW SECTIONS (9–18) — MISSING CONTENT ADDED
+═══════════════════════════════════════════ -->
+
+<!-- ── SECTION 9: SECURITY ── NEW ── -->
+<div class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num red">09</span><h2 class="sec-title">Security & PIN Protection <span class="new-badge">NEW</span></h2><div class="sec-line"></div></div>
+
+    <div class="new-section-banner">⚠ MISSING FROM PREVIOUS REPORT — CRITICAL FOR PRODUCTION</div>
+
+    <div class="alert warn">
+      <div class="alert-i">🚨</div>
+      <p>A 6-digit PIN has only 1,000,000 combinations. Without protection, a bad actor can brute-force your way into any live GD session in minutes. This section covers every security layer needed before going live.</p>
+    </div>
+
+    <div class="g2">
+      <div class="card r">
+        <h3>🔒 Threat 1: PIN Brute-Force Attack</h3>
+        <p><strong>Risk:</strong> Attacker writes a script that calls your number and tries 000000, 000001, 000002... until they find a valid session PIN and join someone else's GD.</p>
+        <p><strong>Solution — 3 layers of protection:</strong></p>
+        <ul class="chk" style="margin-top:8px">
+          <li><strong>Rate limit:</strong> Max 3 wrong PIN attempts per phone number per 10 minutes — then block the number for 30 minutes</li>
+          <li><strong>Lockout:</strong> After 5 total wrong attempts on a session PIN, disable that PIN entirely and notify the session host</li>
+          <li><strong>PIN expiry:</strong> Session PIN expires automatically 5 minutes after session ends — reduces attack window</li>
+        </ul>
+      </div>
+      <div class="card r">
+        <h3>🔒 Threat 2: Session Hijacking via Caller ID Spoofing</h3>
+        <p><strong>Risk:</strong> Attacker spoofs a legitimate participant's phone number to bypass caller-ID based filters.</p>
+        <p><strong>Solution:</strong></p>
+        <ul class="chk" style="margin-top:8px">
+          <li>Never rely on Caller ID as the only auth — always require PIN</li>
+          <li>Use PIN + phone number whitelist (optional) for high-security sessions</li>
+          <li>Log all joining attempts with timestamp + Caller ID + IP of FreeSWITCH gateway</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="card y">
+        <h3>⏰ Threat 3: Stale PINs Being Reused</h3>
+        <p><strong>Risk:</strong> A PIN from a GD session 2 days ago still works and someone joins a new session that happened to reuse the same PIN.</p>
+        <p><strong>Solution:</strong></p>
+        <ul class="chk" style="margin-top:8px">
+          <li>Generate PINs with a UUID-based seed, not sequential numbers</li>
+          <li>Hard expiry: PIN becomes invalid when session status = "ended"</li>
+          <li>Add session creation timestamp to PIN uniqueness check — same 6 digits cannot repeat within 24 hours</li>
+        </ul>
+      </div>
+      <div class="card o">
+        <h3>🔇 Threat 4: Spam/Abuse Calls</h3>
+        <p><strong>Risk:</strong> Someone repeatedly dials your conference number with garbage to waste your SIP trunk minutes (costs you money) or disrupt a live session.</p>
+        <p><strong>Solution:</strong></p>
+        <ul class="chk" style="margin-top:8px">
+          <li>Global rate limit: max 10 calls per hour from same number to your service</li>
+          <li>Session max capacity: define max phone participants per session (e.g., 3)</li>
+          <li>Moderator can hard-ban a phone number from the app UI</li>
+          <li>Auto-hangup after 3 wrong PINs from same call</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card g2">
+      <h3>✅ Security Implementation Checklist</h3>
+      <div class="g2" style="margin-top:12px">
+        <ul class="chk">
+          <li>Rate limit: 3 wrong PINs per number per 10min</li>
+          <li>Session lockout after 5 total wrong attempts</li>
+          <li>PIN auto-expires when session ends</li>
+          <li>No sequential PINs — use cryptographically random</li>
+        </ul>
+        <ul class="chk">
+          <li>Log all join attempts (number, time, success/fail)</li>
+          <li>Max phone participants cap per session</li>
+          <li>Moderator can ban phone numbers in real-time</li>
+          <li>Auto-hangup on repeated wrong PIN from same call</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 10: AUTH FLOW ── NEW ── -->
+<div class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num cyan">10</span><h2 class="sec-title">Authentication Flow — How Phone User Gets a PIN <span class="new-badge">NEW</span></h2><div class="sec-line"></div></div>
+
+    <div class="new-section-banner">⚠ MISSING FROM PREVIOUS REPORT — CRITICAL GAP</div>
+
+    <div class="alert info">
+      <div class="alert-i">💡</div>
+      <p>The previous report assumed the user "already has the PIN" but never explained how. This section covers the complete user registration and PIN distribution flow — including guest users, verified users, and how their identity maps to GD analysis scores.</p>
+    </div>
+
+    <div class="g2" style="margin-bottom:20px">
+      <div class="card c">
+        <h3>👤 Type A: Registered EcoSkiller User</h3>
+        <p>User has an EcoSkiller account but their phone is offline during the session.</p>
+        <ol style="margin-top:8px; padding-left:20px; font-size:.9em; color:var(--text); line-height:2">
+          <li>Host creates GD session — app generates PIN + links it to session</li>
+          <li>App sends PIN to user's registered phone number via WhatsApp/SMS automatically</li>
+          <li>User calls, enters PIN → joined and <strong>identified by name</strong> in session</li>
+          <li>Analysis report linked to their account profile</li>
+          <li>Full report visible in their app dashboard later</li>
+        </ol>
+      </div>
+      <div class="card o">
+        <h3>👥 Type B: Guest / Unregistered User</h3>
+        <p>User doesn't have EcoSkiller app — someone shared the PIN with them.</p>
+        <ol style="margin-top:8px; padding-left:20px; font-size:.9em; color:var(--text); line-height:2">
+          <li>Host shares PIN + number via WhatsApp message</li>
+          <li>Guest calls, enters PIN → joined as "📞 Phone Guest"</li>
+          <li>IVR asks: "Press 1 to enter your name via keypad spell-out OR press 2 to stay as Guest"</li>
+          <li>Report sent to their calling number via SMS after session</li>
+          <li>Host can optionally assign name later from moderator panel</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- IVR Error States Flow -->
+    <p style="font-weight:700; color:var(--white); margin-bottom:14px;">Complete IVR State Machine — All Scenarios</p>
+    <div class="card" style="padding:8px 26px;">
+      <div class="ivr-flow">
+        <div class="ivr-step">
+          <div class="ivr-dot active">📞</div>
+          <div class="ivr-body">
+            <h5>Call Connected</h5>
+            <div class="ivr-says">"Namaste! EcoSkiller mein aapka swagat hai. Apna 6-digit session PIN enter karein."</div>
+          </div>
+        </div>
+        <div class="ivr-step">
+          <div class="ivr-dot active">🔢</div>
+          <div class="ivr-body">
+            <h5>User Enters PIN (correct)</h5>
+            <div class="ivr-says">"PIN sahi hai. Aap ab live session mein join ho rahe hain."</div>
+            <p style="margin-top:6px; font-size:.83em">→ Joins conference immediately</p>
+          </div>
+        </div>
+        <div class="ivr-step">
+          <div class="ivr-dot error">❌</div>
+          <div class="ivr-body">
+            <h5>Wrong PIN (Attempt 1 or 2)</h5>
+            <div class="ivr-says">"Galat PIN. Dobara try karein. Aapke paas 1 aur mauka hai."</div>
+          </div>
+        </div>
+        <div class="ivr-step">
+          <div class="ivr-dot error">🚫</div>
+          <div class="ivr-body">
+            <h5>Wrong PIN (3rd attempt — blocked)</h5>
+            <div class="ivr-says">"Bohot zyada galat attempts. Kripya 10 minute baad try karein."</div>
+            <p style="margin-top:6px; font-size:.83em">→ Call disconnected, number rate-limited</p>
+          </div>
+        </div>
+        <div class="ivr-step">
+          <div class="ivr-dot error">⏳</div>
+          <div class="ivr-body">
+            <h5>Session Not Started Yet</h5>
+            <div class="ivr-says">"Session abhi shuru nahi hua. Kripya 5 minute mein dobara call karein."</div>
+            <p style="margin-top:6px; font-size:.83em">→ Call ends gracefully, user not left waiting in silence</p>
+          </div>
+        </div>
+        <div class="ivr-step">
+          <div class="ivr-dot error">🔒</div>
+          <div class="ivr-body">
+            <h5>Session Full (max participants reached)</h5>
+            <div class="ivr-says">"Is session mein maximum participants aa gaye hain. Host se contact karein."</div>
+          </div>
+        </div>
+        <div class="ivr-step">
+          <div class="ivr-dot end">✅</div>
+          <div class="ivr-body">
+            <h5>Session Already Ended</h5>
+            <div class="ivr-says">"Yeh session khatam ho chuka hai. Aapki report SMS mein bhej di jayegi."</div>
+            <p style="margin-top:6px; font-size:.83em">→ If they participated earlier — auto-send their partial report</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 11: LATENCY ── NEW ── -->
+<div class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num orange">11</span><h2 class="sec-title">Latency & Audio Sync Problem <span class="new-badge">NEW</span></h2><div class="sec-line"></div></div>
+
+    <div class="new-section-banner">⚠ MISSING FROM PREVIOUS REPORT — REAL PRODUCTION ISSUE</div>
+
+    <div class="alert warn">
+      <div class="alert-i">⚠️</div>
+      <p>PSTN calls introduce a natural <strong>200–400ms delay</strong> compared to WebRTC's ~50ms. This means the phone user hears app users slightly delayed, and vice versa. Without managing this, users will experience echo, double-talk, and awkward overlaps. Here's how to handle it properly.</p>
+    </div>
+
+    <p style="font-weight:700; color:var(--white); margin-bottom:14px;">Latency Comparison</p>
+    <div class="g3" style="margin-bottom:22px">
+      <div class="mc">
+        <div class="mi">📱</div>
+        <h4>WebRTC Users</h4>
+        <div class="mv">~50ms</div>
+        <div class="latency-bar" style="margin-top:8px"><div class="fill" style="width:5%; background:var(--green)"></div></div>
+        <p>Near-instantaneous. Best case. All app users at this latency.</p>
+      </div>
+      <div class="mc">
+        <div class="mi">☎️</div>
+        <h4>PSTN Phone User</h4>
+        <div class="mv" style="color:var(--yellow)">200–400ms</div>
+        <div class="latency-bar" style="margin-top:8px"><div class="fill" style="width:40%; background:var(--yellow)"></div></div>
+        <p>Caused by PSTN encoding, SIP processing, FreeSWITCH mixing. Noticeable but manageable.</p>
+      </div>
+      <div class="mc">
+        <div class="mi">🗣️</div>
+        <h4>STT Processing</h4>
+        <div class="mv" style="color:var(--orange)">+50ms – 2s</div>
+        <div class="latency-bar" style="margin-top:8px"><div class="fill" style="width:20%; background:var(--orange)"></div></div>
+        <p>Vosk: +50ms. Whisper: +2-3s chunks. Parallel to audio — doesn't block the call.</p>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="card y">
+        <h3>🔧 Fix 1: Echo Cancellation (Critical)</h3>
+        <p>Without echo cancellation, the phone user will hear their own voice echoed back ~400ms later. This is highly disruptive.</p>
+        <ul class="chk" style="margin-top:8px">
+          <li>Enable <strong>FreeSWITCH mod_echo_cancellation</strong> — built-in, free, one config line</li>
+          <li>For calls from BSNL (known echo issues), add aggressive echo suppression level 3</li>
+          <li>FreeSWITCH conference already does acoustic echo cancellation (AEC) by default when configured correctly</li>
+        </ul>
+      </div>
+      <div class="card g">
+        <h3>🔧 Fix 2: Jitter Buffer Management</h3>
+        <p>Rural 2G calls have inconsistent packet timing (jitter). Without a buffer, audio sounds choppy and broken to all participants.</p>
+        <ul class="chk" style="margin-top:8px">
+          <li>Configure FreeSWITCH jitter buffer: <code>jitter-buffer-msec=60</code> in conference profile</li>
+          <li>Set adaptive buffer that increases automatically if packet loss detected</li>
+          <li>Adds ~60ms latency but gives smooth audio even on unstable 2G signals</li>
+        </ul>
+      </div>
+      <div class="card c">
+        <h3>🔧 Fix 3: Audio Quality Upsampling</h3>
+        <p>Phone user audio comes in at 8kHz. App users are at 48kHz. When mixed, the phone user sounds "muffled" compared to everyone else.</p>
+        <ul class="chk" style="margin-top:8px">
+          <li>FreeSWITCH automatically resamples 8kHz → 48kHz during conference mixing</li>
+          <li>Enable <strong>mod_samplerate</strong> with Speex resample algorithm (better quality than default)</li>
+          <li>Result: phone user's voice sounds cleaner to app users</li>
+        </ul>
+      </div>
+      <div class="card o">
+        <h3>🔧 Fix 4: Double-Talk Prevention</h3>
+        <p>Because of the 200-400ms delay gap, phone users often accidentally interrupt because they can't hear that someone already started speaking.</p>
+        <ul class="chk" style="margin-top:8px">
+          <li>In structured GDs: use push-to-talk for phone users — they press * to speak</li>
+          <li>In free-form GDs: add a 200ms "hold-off" before phone user's audio is unmuted</li>
+          <li>Show app users a "⚠️ Phone user may hear you delayed" notice in UI</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="alert good">
+      <div class="alert-i">✅</div>
+      <p><strong>Realistic expectation:</strong> With all fixes applied, phone user experience will be similar to a speakerphone on a Group Call. Perfectly usable for GD. The 200–400ms delay is perceptible but not conversation-breaking. Most rural users are already accustomed to this delay from normal conference calls on BSNL/MTNL.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 12: SCALING ── NEW ── -->
+<div class="sec" id="s12">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num yellow">12</span><h2 class="sec-title">Scaling Strategy — Concurrent Sessions <span class="new-badge">NEW</span></h2><div class="sec-line"></div></div>
+
+    <div class="new-section-banner">⚠ MISSING FROM PREVIOUS REPORT — NEEDED FOR GROWTH PLANNING</div>
+
+    <div class="alert tip">
+      <div class="alert-i">📈</div>
+      <p>One VPS handles MVP fine. But as EcoSkiller grows to hundreds of simultaneous GD sessions, you need a clear scaling plan. FreeSWITCH can handle thousands of concurrent calls on a single server, but STT (Whisper) is the bottleneck. Here's how to scale each layer.</p>
+    </div>
+
+    <div class="scale-tier">
+      <div class="scale-num">0–50<br><span style="font-size:.6em; color:var(--muted2)">sessions/day</span></div>
+      <div class="scale-body">
+        <h5>Tier 1 — Single VPS (MVP)</h5>
+        <p>1 Hetzner CPX21 (₹440/mo). FreeSWITCH + Vosk STT on same machine. No load balancer needed. Handles up to 50 concurrent phone calls easily.</p>
+      </div>
+      <div class="scale-spec"><span>1 VPS</span><span>3 vCPU / 4GB</span><span class="cost">₹440/mo</span></div>
+    </div>
+    <div class="scale-tier">
+      <div class="scale-num" style="color:var(--cyan)">50–500<br><span style="font-size:.6em; color:var(--muted2)">sessions/day</span></div>
+      <div class="scale-body">
+        <h5>Tier 2 — Split Architecture</h5>
+        <p>Separate FreeSWITCH (telephony) from STT (compute). FreeSWITCH on CPX21, Whisper STT on dedicated CPX31. FreeSWITCH streams audio to STT via internal network. Queue-based so spikes don't crash analysis.</p>
+      </div>
+      <div class="scale-spec"><span>2 VPS</span><span>Split: calls + STT</span><span class="cost">₹1,320/mo</span></div>
+    </div>
+    <div class="scale-tier">
+      <div class="scale-num" style="color:var(--yellow)">500–5000<br><span style="font-size:.6em; color:var(--muted2)">sessions/day</span></div>
+      <div class="scale-body">
+        <h5>Tier 3 — Horizontal Scale</h5>
+        <p>Multiple FreeSWITCH instances behind a SIP load balancer (Kamailio, also free). STT cluster with multiple Faster-Whisper workers. Redis queue between FreeSWITCH and STT workers.</p>
+      </div>
+      <div class="scale-spec"><span>4–6 VPS</span><span>Kamailio LB</span><span class="cost">₹3,500–₹5,000/mo</span></div>
+    </div>
+    <div class="scale-tier">
+      <div class="scale-num" style="color:var(--purple)">5000+<br><span style="font-size:.6em; color:var(--muted2)">sessions/day</span></div>
+      <div class="scale-body">
+        <h5>Tier 4 — Cloud Native</h5>
+        <p>FreeSWITCH on Kubernetes. STT as auto-scaling worker pods. Consider managed SIP trunk from Tata/Airtel for better uptime SLA. At this scale, evaluate Voxtral API ($0.001/min) vs self-hosted to reduce ops burden.</p>
+      </div>
+      <div class="scale-spec"><span>K8s cluster</span><span>Auto-scale</span><span class="cost">₹15,000+/mo</span></div>
+    </div>
+
+    <div class="card y" style="margin-top:18px">
+      <h3>📊 FreeSWITCH Capacity — Single Server</h3>
+      <div class="g3" style="margin-top:12px">
+        <div class="mc"><div class="mi">📞</div><h4>Concurrent Calls</h4><div class="mv">300–500</div><p>On CPX21 (3 vCPU). Telephony only — without STT on same machine.</p></div>
+        <div class="mc"><div class="mi">🗣️</div><h4>STT Bottleneck</h4><div class="mv">10–15</div><p>Whisper-small on CPX21 can handle ~10-15 concurrent STT streams real-time.</p></div>
+        <div class="mc"><div class="mi">⚡</div><h4>Vosk Concurrent</h4><div class="mv">50–80</div><p>Vosk is much lighter — 50-80 concurrent STT streams on same CPX21. Best for high scale MVP.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 13: SCORE FAIRNESS ── NEW ── -->
+<div class="sec" id="s13">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num purple">13</span><h2 class="sec-title">Score Fairness — 8kHz vs 48kHz Problem <span class="new-badge">NEW</span></h2><div class="sec-line"></div></div>
+
+    <div class="new-section-banner">⚠ MISSING FROM PREVIOUS REPORT — AFFECTS CORE PRODUCT FAIRNESS</div>
+
+    <div class="alert warn">
+      <div class="alert-i">⚠️</div>
+      <p>Phone users call in at <strong>8kHz audio (PSTN narrowband)</strong>. App users stream at <strong>48kHz (WebRTC wideband)</strong>. This quality difference directly causes STT to produce lower-quality transcripts for phone users — fewer words recognized, more errors — which means the AI will unfairly score phone users lower. This is a product integrity issue.</p>
+    </div>
+
+    <div class="g2">
+      <div class="card r">
+        <h3>❌ Without Fairness Correction</h3>
+        <ul class="chk red">
+          <li>Phone user says "climate change mitigation" — STT hears "climate hang mitigation" (8kHz garble)</li>
+          <li>STT Word Error Rate: ~15-20% for phone users vs ~3-5% for app users</li>
+          <li>AI penalizes phone user for "lower quality speech" when it's actually audio quality</li>
+          <li>Phone user gets 58/100 score; same performance app user gets 75/100 — unfair</li>
+          <li>Rural students disadvantaged purely because of infrastructure</li>
+        </ul>
+      </div>
+      <div class="card g">
+        <h3>✅ With Fairness Correction Applied</h3>
+        <ul class="chk">
+          <li>System detects participant type: phone vs app at join time</li>
+          <li>Apply "phone participant" flag to all their transcription data</li>
+          <li>STT confidence threshold lowered for phone users (accept lower-confidence words)</li>
+          <li>Apply +10–15% score normalization for known audio quality disadvantage</li>
+          <li>Show "📞 Joined via phone call" note in their report so evaluators are aware</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card c" style="margin-top:4px">
+      <h3>🔧 Technical Fixes for Score Fairness</h3>
+      <div class="g3" style="margin-top:12px">
+        <div class="mc">
+          <div class="mi">🎚️</div>
+          <h4>FreeSWITCH Preprocessing</h4>
+          <p>Apply <strong>wideband simulation</strong> (bandwidth extension) before sending 8kHz audio to STT. mod_opus can upsample PSTN audio. Adds ~20ms latency but significantly improves STT accuracy.</p>
+        </div>
+        <div class="mc">
+          <div class="mi">📊</div>
+          <h4>Score Normalization Algorithm</h4>
+          <p>Track historical STT accuracy per connection type. If phone users consistently get 15% lower STT word confidence, apply 15% upward normalization to their linguistic quality score. Recalibrate monthly.</p>
+        </div>
+        <div class="mc">
+          <div class="mi">🏷️</div>
+          <h4>Transparent Disclosure</h4>
+          <p>Show in report: "Score calculated with phone-call audio adjustment applied." Both the student and evaluator know the context. This builds trust rather than hiding the normalization.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert purple">
+      <div class="alert-i">🎯</div>
+      <p><strong>Important:</strong> Score normalization must be based on measured data, not a hardcoded offset. Measure actual STT error rates on 100+ real phone calls from Indian telecom networks, then derive the correction factor empirically. This makes the scoring defensible to users.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 14: PRIVACY ── NEW ── -->
+<div class="sec" id="s14">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num pink">14</span><h2 class="sec-title">Data Privacy & Legal Compliance <span class="new-badge">NEW</span></h2><div class="sec-line"></div></div>
+
+    <div class="new-section-banner">⚠ MISSING FROM PREVIOUS REPORT — LEGAL REQUIREMENT IN INDIA</div>
+
+    <div class="alert warn">
+      <div class="alert-i">⚖️</div>
+      <p>India's <strong>Digital Personal Data Protection Act 2023 (DPDP Act)</strong> came into force in 2023. Recording phone calls, storing transcripts, and retaining phone numbers without consent is a legal violation with potential fines. This must be addressed before production launch.</p>
+    </div>
+
+    <div class="privacy-item">
+      <h5>📞 Call Recording Consent</h5>
+      <p>You MUST inform callers they are being recorded. The IVR must say: <em>"This call may be recorded for analysis purposes. Press 1 to consent and continue. Press 2 to join without recording (analysis will be limited)."</em> Consent must be logged with timestamp.</p>
+    </div>
+    <div class="privacy-item">
+      <h5>📝 Transcript Data Retention</h5>
+      <p>Under DPDP Act, personal data cannot be retained longer than necessary. Policy: Transcripts retained for 30 days after session, then auto-deleted. Raw audio deleted within 24 hours of session end. User can request earlier deletion via SMS reply "DELETE".</p>
+    </div>
+    <div class="privacy-item">
+      <h5>📱 Phone Number Storage</h5>
+      <p>Phone numbers are personal data under DPDP. You cannot store them without explicit purpose declaration. In your privacy policy: phone numbers stored only for report delivery and session management, not shared with third parties, deleted after 90 days of inactivity.</p>
+    </div>
+    <div class="privacy-item">
+      <h5>🔐 Audio Data Security</h5>
+      <p>Call recordings must be encrypted at rest (AES-256). Access to call recordings restricted to authorized personnel only, with audit log. FreeSWITCH can be configured to write recordings directly to encrypted storage.</p>
+    </div>
+    <div class="privacy-item">
+      <h5>👶 Minor Protection</h5>
+      <p>EcoSkiller likely serves students including minors under 18. Under DPDP, processing personal data of minors requires parental consent. Add age verification in user registration and treat all unverified phone users as potential minors — apply stricter data handling.</p>
+    </div>
+    <div class="privacy-item">
+      <h5>📋 What Your Privacy Policy Must Say</h5>
+      <p>Explicitly state: (1) What data is collected from phone users, (2) How long it's retained, (3) Who has access, (4) How to request deletion, (5) That calls may be recorded and transcribed, (6) Right to withdraw consent. Display this at <code>ecoskiller.com/privacy</code> and link from the SMS that sends the PIN.</p>
+    </div>
+
+    <div class="alert good" style="margin-top:6px">
+      <div class="alert-i">✅</div>
+      <p><strong>Quick compliance checklist:</strong> IVR consent prompt ✓ | 30-day auto-delete transcripts ✓ | 24h audio delete ✓ | Encrypted storage ✓ | Privacy policy page ✓ | Deletion request via SMS ✓</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 15: FAILOVER ── NEW ── -->
+<div class="sec" id="s15">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num red">15</span><h2 class="sec-title">Failover & Reliability — What Happens When Server Crashes <span class="new-badge">NEW</span></h2><div class="sec-line"></div></div>
+
+    <div class="new-section-banner">⚠ INCOMPLETE IN PREVIOUS REPORT</div>
+
+    <div class="alert warn">
+      <div class="alert-i">🔥</div>
+      <p>A rural user walked away from internet connectivity, joined via phone, is mid-GD — and your FreeSWITCH server crashes. The call drops. They cannot re-join from the app. They have no idea what happened. Without a failover plan, this destroys trust with exactly the users you're trying to help.</p>
+    </div>
+
+    <div class="g2">
+      <div class="card r">
+        <h3>🚨 Failure Scenarios to Plan For</h3>
+        <ul class="chk red">
+          <li>FreeSWITCH process crashes mid-session</li>
+          <li>VPS goes down (host maintenance, OOM kill)</li>
+          <li>SIP trunk provider outage (MCUBE downtime)</li>
+          <li>Network connectivity lost between VPS and SIP trunk</li>
+          <li>STT service crashes — analysis stops but call continues</li>
+          <li>Database unavailable — PIN validation fails for new joiners</li>
+        </ul>
+      </div>
+      <div class="card g">
+        <h3>✅ Mitigation Strategies</h3>
+        <ul class="chk">
+          <li><strong>Watchdog process</strong>: Supervisor/systemd auto-restarts FreeSWITCH within 10 seconds of crash</li>
+          <li><strong>Session state in Redis</strong>: If FS crashes, Redis still has PIN→session mapping. Restart re-reads state</li>
+          <li><strong>Auto-reconnect</strong>: After restart, system auto-calls back known phone participants (already in advanced features)</li>
+          <li><strong>STT is non-blocking</strong>: If STT crashes, call continues — analysis is paused, not the GD</li>
+          <li><strong>Backup SIP trunk</strong>: Configure 2 SIP providers. If MCUBE is down, failover to Tata/Knowlarity automatically</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card y">
+      <h3>📊 Uptime Target & Monitoring</h3>
+      <div class="g3" style="margin-top:12px">
+        <div class="mc"><div class="mi">🎯</div><h4>Target Uptime</h4><div class="mv">99.5%</div><p>~3.6 hours downtime/month acceptable for MVP. 99.9% for production (43min/month).</p></div>
+        <div class="mc"><div class="mi">📡</div><h4>Monitoring Stack</h4><div class="mv">Free</div><p>UptimeRobot (free tier, 5min checks) + Grafana on same VPS for FreeSWITCH metrics.</p></div>
+        <div class="mc"><div class="mi">🚨</div><h4>Alert Channels</h4><div class="mv">Instant</div><p>Telegram bot alert when FreeSWITCH is down. Faster to respond than email. Free to set up.</p></div>
+      </div>
+    </div>
+
+    <div class="card c">
+      <h3>🔧 Recovery User Communication</h3>
+      <p>When server recovers and auto-reconnect fires, send a message to the phone user:</p>
+      <div style="background:var(--s3); border:1px solid var(--border); border-radius:4px; padding:12px 16px; margin-top:10px; font-family:var(--mono); font-size:11px; color:var(--green);">
+        SMS: "EcoSkiller: Technical issue resolved. We are reconnecting you to your session. Please answer the incoming call."
+      </div>
+      <p style="margin-top:10px; font-size:.87em; color:var(--muted2)">This proactive communication prevents rural users from thinking they did something wrong or that the service is unreliable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 16: IVR DESIGN ── NEW ── -->
+<div class="sec" id="s16">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num cyan">16</span><h2 class="sec-title">Complete IVR Design — All Edge Cases Covered <span class="new-badge">NEW</span></h2><div class="sec-line"></div></div>
+
+    <div class="new-section-banner">⚠ INCOMPLETE IN PREVIOUS REPORT — ORIGINAL HAD ONLY HAPPY PATH</div>
+
+    <div class="alert info">
+      <div class="alert-i">🎤</div>
+      <p>The original report only showed the happy path (correct PIN → join). Real IVR design must handle every possible state. A poorly designed IVR leaves rural users confused and stuck on hold, which is worse than not having the feature at all.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>State</th><th>Trigger</th><th>IVR Response (Hindi)</th><th>Action</th></tr>
+        <tr><td>Welcome</td><td>Call connects</td><td>"Namaste! EcoSkiller. PIN enter karein."</td><td>Wait for 6 digits, 15s timeout</td></tr>
+        <tr><td>No Input</td><td>15s timeout, no digits</td><td>"Koi response nahi mila. Dobara try karein."</td><td>Repeat prompt once, then hang up</td></tr>
+        <tr><td>Incomplete PIN</td><td>Less than 6 digits + silence</td><td>"Aapne sirf X digit daale. 6 digit chahiye."</td><td>Re-prompt</td></tr>
+        <tr><td>Wrong PIN (1st/2nd)</td><td>PIN not found in DB</td><td>"Galat PIN. Aapke paas X aur mauka hai."</td><td>Re-prompt</td></tr>
+        <tr><td>Wrong PIN (3rd)</td><td>3 failed attempts</td><td>"Bohot zyada galat attempts. 10 min baad try karein."</td><td>Block + hang up</td></tr>
+        <tr><td>Session Pending</td><td>PIN valid, session not started</td><td>"Session abhi shuru nahi hua. X minute mein call karein."</td><td>Hang up gracefully</td></tr>
+        <tr><td>Session Full</td><td>Max phone participants reached</td><td>"Session mein jagah nahi hai. Host se baat karein."</td><td>Hang up</td></tr>
+        <tr><td>Session Ended</td><td>PIN valid, session status = ended</td><td>"Session khatam ho gaya. Report SMS mein aayegi."</td><td>Trigger report SMS, hang up</td></tr>
+        <tr><td>Consent Prompt</td><td>Before joining, recording = enabled</td><td>"Call record hogi. Join ke liye 1 dabayein."</td><td>1 = join with recording, 2 = join without</td></tr>
+        <tr><td>Joined Successfully</td><td>All checks passed</td><td>"Aa gaye! Aap ab live session mein hain."</td><td>Bridge to conference</td></tr>
+        <tr><td>Muted by Moderator</td><td>Mod mutes phone user</td><td>"Aapko mute kar diya gaya hai."</td><td>Mute participant</td></tr>
+        <tr><td>Removed by Moderator</td><td>Mod removes phone user</td><td>"Aapko session se remove kar diya gaya hai."</td><td>Hang up, log event</td></tr>
+        <tr><td>Session Ended Mid-Call</td><td>Host ends session while phone user is in</td><td>"Session khatam ho gaya. Dhanyavad!"</td><td>Hang up, trigger report SMS</td></tr>
+      </table>
+    </div>
+
+    <div class="g2" style="margin-top:8px">
+      <div class="card g">
+        <h3>✅ IVR Design Best Practices</h3>
+        <ul class="chk">
+          <li>Always use <strong>human-recorded voice</strong> for Hindi, not TTS (TTS sounds robotic on PSTN)</li>
+          <li>Maximum 2 retry attempts before any action — don't frustrate users</li>
+          <li>State the number of remaining attempts clearly after each failure</li>
+          <li>Always give a recovery path — never dead-end the user</li>
+          <li>Confirm successful join with audio confirmation, not silence</li>
+        </ul>
+      </div>
+      <div class="card o">
+        <h3>📁 Pre-Recorded Audio Files Needed</h3>
+        <ul class="chk orange">
+          <li>welcome.wav — opening greeting</li>
+          <li>enter_pin.wav — "please enter PIN"</li>
+          <li>wrong_pin_1.wav / wrong_pin_2.wav — wrong attempt with count</li>
+          <li>blocked.wav — too many attempts</li>
+          <li>session_pending.wav / session_full.wav / session_ended.wav</li>
+          <li>consent.wav — recording consent prompt</li>
+          <li>joined.wav — confirmation of join</li>
+          <li>muted.wav / removed.wav / session_closing.wav</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 17: REAL COST ── NEW ── -->
+<div class="sec" id="s17">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num orange">17</span><h2 class="sec-title">Real Cost Calculation — All Edge Cases Included <span class="new-badge">NEW</span></h2><div class="sec-line"></div></div>
+
+    <div class="new-section-banner">⚠ INCOMPLETE IN PREVIOUS REPORT — ORIGINAL COST WAS OPTIMISTIC</div>
+
+    <div class="alert warn">
+      <div class="alert-i">💸</div>
+      <p>The original cost section showed ₹0.28 per session — but that assumed 1 phone user, English SMS, and no call drops. Real-world GD sessions will have multiple phone users, Hindi Unicode SMS, and occasional re-dials. Here is the corrected, realistic cost breakdown.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Cost Item</th><th>Original Estimate</th><th>Corrected Real Cost</th><th>Why Different</th></tr>
+        <tr><td>PSTN Bridge (10min, 1 phone user)</td><td class="mid">₹0.10</td><td class="mid">₹0.10</td><td>Same — accurate</td></tr>
+        <tr><td>PSTN Bridge (10min, 3 phone users)</td><td class="cheap">Not mentioned</td><td class="mid">₹0.30</td><td>Cost multiplies per phone user</td></tr>
+        <tr><td>SMS Report (Hindi Unicode)</td><td class="cheap">₹0.08</td><td class="mid">₹0.16–₹0.24</td><td>Hindi Unicode = 70 chars/SMS not 160. Typical GD report = 2-3 SMS</td></tr>
+        <tr><td>Auto-reconnect outbound call</td><td class="cheap">Not mentioned</td><td class="mid">₹0.05–₹0.10</td><td>Outbound calls cost extra on SIP trunk (₹0.05-0.10 flat)</td></tr>
+        <tr><td>STT for 3 phone users parallel</td><td class="cheap">₹0.00</td><td class="cheap">₹0.00</td><td>Still free — self-hosted Vosk/Whisper</td></tr>
+        <tr><td>VPS amortized (at 100 sessions/day)</td><td class="cheap">₹0.10</td><td class="cheap">₹0.04</td><td>Better: ₹440/mo ÷ 3000 sessions = ₹0.14 not ₹0.10. At 100/day = ₹0.04</td></tr>
+        <tr><td>WhatsApp report (instead of SMS)</td><td class="cheap">₹0.00</td><td class="cheap">₹0.00</td><td>Correct — free first 1000/month. Use WhatsApp to avoid Unicode SMS issue</td></tr>
+      </table>
+    </div>
+
+    <div class="cost-wrap" style="margin-top:20px">
+      <div class="cost-col">
+        <h4>💸 Realistic Scenario: 3 Phone Users, Hindi SMS, 1 Drop & Reconnect</h4>
+        <div class="cost-row-i"><span class="cost-name">SIP Trunk: 3 phone users × 10min</span><span class="cost-amt mid">₹0.30</span></div>
+        <div class="cost-row-i"><span class="cost-name">Outbound reconnect call (1 user drops)</span><span class="cost-amt mid">₹0.08</span></div>
+        <div class="cost-row-i"><span class="cost-name">Hindi SMS report × 3 users (2 SMS each)</span><span class="cost-amt mid">₹0.48</span></div>
+        <div class="cost-row-i"><span class="cost-name">Whisper STT (self-hosted)</span><span class="cost-amt cheap">₹0.00</span></div>
+        <div class="cost-row-i"><span class="cost-name">VPS amortized</span><span class="cost-amt cheap">₹0.10</span></div>
+        <div class="cost-total"><span class="cl">REALISTIC SESSION TOTAL</span><span class="cv mid">≈ ₹0.96</span></div>
+      </div>
+      <div class="cost-col">
+        <h4>🟢 Optimized Scenario: WhatsApp instead of SMS</h4>
+        <div class="cost-row-i"><span class="cost-name">SIP Trunk: 3 phone users × 10min</span><span class="cost-amt mid">₹0.30</span></div>
+        <div class="cost-row-i"><span class="cost-name">Outbound reconnect call</span><span class="cost-amt mid">₹0.08</span></div>
+        <div class="cost-row-i"><span class="cost-name">WhatsApp report × 3 (META API, free tier)</span><span class="cost-amt cheap">₹0.00</span></div>
+        <div class="cost-row-i"><span class="cost-name">Whisper STT (self-hosted)</span><span class="cost-amt cheap">₹0.00</span></div>
+        <div class="cost-row-i"><span class="cost-name">VPS amortized</span><span class="cost-amt cheap">₹0.10</span></div>
+        <div class="cost-total"><span class="cl">OPTIMIZED SESSION TOTAL</span><span class="cv cheap">≈ ₹0.48</span></div>
+      </div>
+    </div>
+
+    <div class="alert good" style="margin-top:6px">
+      <div class="alert-i">💡</div>
+      <p><strong>Key insight:</strong> Use <strong>WhatsApp instead of SMS</strong> for report delivery — completely eliminates the Hindi Unicode SMS cost multiplication problem. WhatsApp supports rich messages with no character limits, in any language. The first 1,000 conversations per month are free from META. This is the recommended path.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 18: BRIDGE INTEGRATION ── NEW ── -->
+<div class="sec" id="s18">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num yellow">18</span><h2 class="sec-title">WebRTC ↔ FreeSWITCH Bridge Integration <span class="new-badge">NEW</span></h2><div class="sec-line"></div></div>
+
+    <div class="new-section-banner">⚠ INCOMPLETE IN PREVIOUS REPORT — THE HARDEST TECHNICAL PART</div>
+
+    <div class="alert warn">
+      <div class="alert-i">🔗</div>
+      <p>The original report explained how phone users join via FreeSWITCH, and separately how app users use WebRTC — but never explained how these two systems are <strong>connected to each other</strong>. This is actually the hardest integration step. There are 3 architecture options, each with different complexity and trade-offs.</p>
+    </div>
+
+    <div class="card r">
+      <h3>❌ The Problem</h3>
+      <p>Your EcoSkiller app users are in a WebRTC room (e.g., Daily.co, Agora, or your own WebRTC server). Phone users join a FreeSWITCH conference room. <strong>These are two completely different audio systems.</strong> Without an explicit bridge, app users and phone users are in entirely separate audio sessions and cannot hear each other.</p>
+    </div>
+
+    <p style="font-weight:700; color:var(--white); margin:20px 0 14px;">3 Architecture Options — Choose One</p>
+
+    <div class="card g">
+      <h3>Option A: Full FreeSWITCH (Simplest) <span class="badge bg">Recommended</span></h3>
+      <p><strong>Idea:</strong> Migrate ALL participants (app users too) to FreeSWITCH conference. App users connect via WebRTC-SIP using their browser. Phone users connect via PSTN-SIP. Everyone is in the same FreeSWITCH conference room — no bridge needed.</p>
+      <div class="g2" style="margin-top:12px">
+        <div>
+          <p style="color:var(--green); font-weight:700; font-size:.9em; margin-bottom:8px">Advantages</p>
+          <ul class="chk">
+            <li>Simplest architecture — one system for everyone</li>
+            <li>No bridge to maintain or troubleshoot</li>
+            <li>FreeSWITCH natively supports WebRTC via WebSocket SIP</li>
+            <li>Works with standard SIP.js in browser (open source)</li>
+          </ul>
+        </div>
+        <div>
+          <p style="color:var(--red); font-weight:700; font-size:.9em; margin-bottom:8px">Disadvantages</p>
+          <ul class="chk red">
+            <li>You must migrate existing WebRTC infrastructure</li>
+            <li>Loss of features from Daily.co/Agora (video, recording, etc.)</li>
+            <li>FreeSWITCH WebRTC setup is complex — requires STUN/TURN config</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card c">
+      <h3>Option B: SIP Gateway Bridge (Balanced) <span class="badge bc">Good for Existing Apps</span></h3>
+      <p><strong>Idea:</strong> Keep your existing WebRTC (Daily.co / Agora / Jitsi) for app users. Run FreeSWITCH separately for phone users. Use a <strong>SIP-WebRTC gateway</strong> to bridge the two. Audio from FreeSWITCH conference is forwarded to WebRTC room and vice versa.</p>
+      <div class="flow-wrap" style="margin-top:14px">
+        <div class="flow-label">// Option B Architecture</div>
+        <div style="overflow-x:auto">
+          <div class="flow-row">
+            <div class="fn hl"><div class="fn-i">📱</div><div class="fn-t">App Users</div><div class="fn-s">WebRTC<br>(Daily/Agora)</div></div>
+            <div class="fa">⇄</div>
+            <div class="fn sv"><div class="fn-i">🔗</div><div class="fn-t">SIP Gateway</div><div class="fn-s">Bridgit / RTPengine<br>(open source)</div></div>
+            <div class="fa">⇄</div>
+            <div class="fn os"><div class="fn-i">⚙️</div><div class="fn-t">FreeSWITCH</div><div class="fn-s">Phone users<br>conference room</div></div>
+            <div class="fa">⇄</div>
+            <div class="fn hl"><div class="fn-i">☎️</div><div class="fn-t">Phone Users</div><div class="fn-s">PSTN calls<br>2G network</div></div>
+          </div>
+        </div>
+      </div>
+      <ul class="chk" style="margin-top:12px">
+        <li><strong>RTPengine</strong> (open source, Kamailio project) or <strong>Bridgit</strong> can bridge SIP↔WebRTC</li>
+        <li>App users stay on existing WebRTC — no migration needed</li>
+        <li>Higher latency (~100ms extra hop through gateway)</li>
+        <li>More moving parts to configure and maintain</li>
+      </ul>
+    </div>
+
+    <div class="card y">
+      <h3>Option C: Twilio as Bridge Only (Fastest to Build) <span class="badge by">Hybrid</span></h3>
+      <p><strong>Idea:</strong> Use Twilio Conference specifically as the audio bridge between PSTN (phone users) and WebRTC (app users). Your app users connect to Twilio Conference using Twilio SDK. Phone users dial in via Twilio PSTN. Self-hosted Whisper still handles STT (reducing cost). Only Twilio Conference bridging is paid.</p>
+      <div class="g2" style="margin-top:10px">
+        <div>
+          <p style="color:var(--green); font-weight:700; font-size:.9em; margin-bottom:8px">Advantages</p>
+          <ul class="chk">
+            <li>Easiest and fastest to implement (1-2 days)</li>
+            <li>Twilio handles all WebRTC↔PSTN complexity for you</li>
+            <li>Battle-tested, production-ready immediately</li>
+            <li>Use free self-hosted Whisper for STT to cut cost</li>
+          </ul>
+        </div>
+        <div>
+          <p style="color:var(--red); font-weight:700; font-size:.9em; margin-bottom:8px">Disadvantages</p>
+          <ul class="chk red">
+            <li>Twilio Conference: ₹0.15/min per participant (app + phone)</li>
+            <li>Dependency on Twilio vendor — not 100% open source</li>
+            <li>Higher cost than Options A/B at scale</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:12px; font-size:.88em; color:var(--muted2)"><strong style="color:var(--yellow)">Best for:</strong> MVP validation. Move to Option A or B after product-market fit is proven.</p>
+    </div>
+
+    <div class="card g2">
+      <h3>🏆 Decision Matrix — Which Option to Choose</h3>
+      <div class="tbl-wrap" style="margin-top:12px">
+        <table class="tbl">
+          <tr><th>Criteria</th><th>Option A (Full FreeSWITCH)</th><th>Option B (SIP Gateway)</th><th>Option C (Twilio Bridge)</th></tr>
+          <tr><td>Dev time</td><td class="mid">3-4 weeks</td><td class="mid">4-6 weeks</td><td class="cheap">3-5 days</td></div></tr>
+          <tr><td>Monthly cost (100 sessions)</td><td class="cheap">₹500 (VPS only)</td><td class="mid">₹800 (VPS × 2)</td><td class="exp">₹1,800 (Twilio)</td></tr>
+          <tr><td>Migration required</td><td class="exp">Yes — full WebRTC migration</td><td class="cheap">No</td><td class="cheap">No</td></tr>
+          <tr><td>Vendor dependency</td><td class="cheap">None — 100% OSS</td><td class="cheap">None — 100% OSS</td><td class="exp">Twilio</td></tr>
+          <tr><td>Recommended for</td><td>Long-term scale</td><td>Existing WebRTC app</td><td>MVP validation</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 19: SUMMARY ── -->
+<div class="sec" id="s19">
+  <div class="wrap">
+    <div class="sec-hd"><span class="sec-num">19</span><h2 class="sec-title">Complete Summary — v2.0 Full Picture</h2><div class="sec-line"></div></div>
+
+    <div class="g2">
+      <div class="card c">
+        <h3>📋 Original Report Covered (9 Sections)</h3>
+        <ul class="chk cyan">
+          <li>Core PSTN bridge concept and architecture</li>
+          <li>12 capabilities (6 core + 6 advanced)</li>
+          <li>Open source tool list with licenses</li>
+          <li>STT comparison: Vosk vs Whisper vs Voxtral vs Faster-Whisper</li>
+          <li>Cost comparison (Twilio vs OSS)</li>
+          <li>User experience and UI mockup</li>
+          <li>India-specific considerations (2G, TRAI, Hindi)</li>
+          <li>Priority order for implementation</li>
+          <li>Summary</li>
+        </ul>
+      </div>
+      <div class="card g">
+        <h3>✅ New Sections Added in v2.0 (10 Sections)</h3>
+        <ul class="chk">
+          <li>Security & PIN brute-force protection (Section 9)</li>
+          <li>Authentication flow + IVR state machine (Section 10)</li>
+          <li>Latency & audio sync with fixes (Section 11)</li>
+          <li>Scaling strategy: MVP → Enterprise (Section 12)</li>
+          <li>Score fairness: 8kHz vs 48kHz normalization (Section 13)</li>
+          <li>DPDP Act 2023 privacy & legal compliance (Section 14)</li>
+          <li>Failover & reliability plan (Section 15)</li>
+          <li>Complete IVR design with all edge cases (Section 16)</li>
+          <li>Real-world cost with Unicode SMS & multi-user (Section 17)</li>
+          <li>WebRTC ↔ FreeSWITCH bridge integration (Section 18)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card g2" style="margin-top:4px">
+      <h3>🎯 Before You Start Building — Critical Decisions</h3>
+      <div class="g3" style="margin-top:14px">
+        <div class="mc"><div class="mi">🔗</div><h4>Bridge Architecture?</h4><p><strong style="color:var(--yellow)">Option C (Twilio)</strong> for MVP. <strong style="color:var(--green)">Option A (Full FreeSWITCH)</strong> for scale. Decide before writing any code.</p></div>
+        <div class="mc"><div class="mi">🗣️</div><h4>STT Engine?</h4><p><strong style="color:var(--yellow)">Vosk</strong> for 1-week MVP. <strong style="color:var(--green)">Faster-Whisper</strong> for quality. Don't over-engineer at start.</p></div>
+        <div class="mc"><div class="mi">📲</div><h4>Report Delivery?</h4><p><strong style="color:var(--green)">WhatsApp only</strong> — avoids Hindi Unicode SMS doubling cost. Free 1000/month.</p></div>
+        <div class="mc"><div class="mi">🔒</div><h4>Security First?</h4><p>Build PIN rate-limiting on Day 1. Never launch without it — brute force takes minutes.</p></div>
+        <div class="mc"><div class="mi">⚖️</div><h4>Privacy Policy?</h4><p>Write DPDP-compliant privacy policy before first real user. IVR consent prompt mandatory.</p></div>
+        <div class="mc"><div class="mi">📊</div><h4>Score Fairness?</h4><p>Tag all phone participants at join time. Apply normalization from first session — don't retrofit later.</p></div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px; padding:22px; background:var(--gd); border:2px solid var(--gm); border-radius:8px; font-family:var(--mono); font-size:12px; line-height:2.4;">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px 30px;">
+        <div><span style="color:var(--green)">Total capabilities:</span> <span style="color:var(--white)">12 (6 Core + 6 Advanced)</span></div>
+        <div><span style="color:var(--green)">New sections added:</span> <span style="color:var(--white)">10 (Security, Auth, Latency, Scale, Fairness, Privacy, Failover, IVR, Real Cost, Bridge)</span></div>
+        <div><span style="color:var(--green)">OSS Tools:</span> <span style="color:var(--white)">FreeSWITCH · Whisper · Vosk · Voxtral · Pyannote · RTPengine</span></div>
+        <div><span style="color:var(--green)">Real cost per session:</span> <span style="color:var(--white)">~₹0.48 (OSS + WhatsApp) — not ₹0.28 as original</span></div>
+        <div><span style="color:var(--green)">Legal requirement:</span> <span style="color:var(--white)">DPDP Act 2023 compliance + IVR consent prompt</span></div>
+        <div><span style="color:var(--green)">Bridge recommendation:</span> <span style="color:var(--white)">Option C (Twilio) for MVP → Option A for scale</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="logo">[ ECOSKILLER · COMPLETE CAPABILITIES REPORT v2.0 ]</div>
+  19 Sections · 9 Original + 10 New · All Gaps Addressed<br>
+  FreeSWITCH · Whisper.cpp · Faster-Whisper · Mistral Voxtral · Vosk · Pyannote · RTPengine<br>
+  MCUBE SIP · Fast2SMS · META WhatsApp Business API · DPDP Act 2023 Compliant
+</div>
+
+</body>
+</html>

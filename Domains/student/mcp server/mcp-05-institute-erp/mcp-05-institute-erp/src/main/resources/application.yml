@@ -1,0 +1,64 @@
+server:
+  port: 8505                          # mcp-05 convention: 8500 + category number
+
+spring:
+  application:
+    name: mcp-05-institute-erp
+
+# ─── Antigravity MCP Identity ──────────────────────────────────────────────
+mcp:
+  server:
+    id: mcp-05-institute-erp
+    name: "Ecoskiller Institute ERP MCP Server"
+    version: "1.0.0"
+    namespace: erp
+    category: CAT-05
+    priority: HIGH
+    description: >
+      Antigravity MCP Server for the Institute ERP Suite.
+      Manages academic structures, attendance, exams, faculty,
+      fees, LMS migration, plagiarism checks, student records,
+      taxonomy migration, campus, and transport.
+
+  # Tool → Agent mapping (all 12 CAT-05 agents)
+  tools:
+    academic_structure:
+      agent: ACADEMIC_STRUCTURE_AGENT__ANTIGRAVITY_SEALED
+      sealed: true
+    attendance:
+      agent: ATTENDANCE_AGENT__ANTIGRAVITY_SEALED
+      sealed: true
+    campus:
+      agent: CAMPUS_AGENT
+      sealed: false
+    data_normalization:
+      agent: DATA_NORMALIZATION_AGENT__INSTITUTE_ERP__ANTIGRAVITY
+      sealed: true
+    exam_engine:
+      agent: EXAM_ENGINE_AGENT__ANTIGRAVITY_SEALED
+      sealed: true
+    faculty_management:
+      agent: FACULTY_MANAGEMENT_AGENT__ANTIGRAVITY_SEALED
+      sealed: true
+    fee_management:
+      agent: FEE_MANAGEMENT_AGENT
+      sealed: false
+    lms_migration:
+      agent: LMS_MIGRATION_AGENT
+      sealed: false
+    plagiarism_connect:
+      agent: PLAGIARISM_CONNECT_AGENT
+      sealed: false
+    student_record:
+      agent: STUDENT_RECORD_AGENT_COMPLETE
+      sealed: false
+    taxonomy_migration:
+      agent: TAXONOMY_MIGRATION_AGENT__INSTITUTE_ERP__ANTIGRAVITY
+      sealed: true
+    transport:
+      agent: TRANSPORT_AGENT
+      sealed: false
+
+logging:
+  level:
+    com.ecoskiller.mcp: DEBUG

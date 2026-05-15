@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "mcp-k3s-kubernetes": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-k3s-kubernetes/target/mcp-k3s-kubernetes-1.0.0.jar"],
+      "env": {
+        "MCP_LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}

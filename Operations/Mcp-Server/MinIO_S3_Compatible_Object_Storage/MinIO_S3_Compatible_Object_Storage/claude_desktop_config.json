@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "mcp-minio-ecoskiller": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-minio-java/target/mcp-minio-server.jar"],
+      "env": {
+        "MINIO_ENDPOINT":    "https://minio.ecoskiller.internal:9000",
+        "MINIO_ACCESS_KEY":  "ecoskiller-svc",
+        "MINIO_SECRET_KEY":  "REPLACE_WITH_ACTUAL_SECRET"
+      }
+    }
+  }
+}
