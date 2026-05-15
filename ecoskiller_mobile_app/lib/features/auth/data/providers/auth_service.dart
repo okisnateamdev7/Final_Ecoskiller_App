@@ -59,4 +59,10 @@ class AuthService {
       return {"status": "error", "message": e.toString()};
     }
   }
+
+  Future<void> logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('token');
+    await prefs.remove('user');
+  }
 }

@@ -4,6 +4,7 @@ import 'package:lucide_icons/lucide_icons.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:ecoskiller_mobile_app/core/theme/app_theme.dart';
 import 'package:ecoskiller_mobile_app/features/auth/data/providers/auth_service.dart';
+import 'package:ecoskiller_mobile_app/core/utils/dashboard_router.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -69,7 +70,9 @@ class _SignupPageState extends State<SignupPage> {
         ),
       );
       await Future.delayed(const Duration(seconds: 1));
-      if (mounted) Navigator.pop(context);
+      if (mounted) {
+        Navigator.pop(context);
+      }
     } else {
       // Improved error message display
       String errorMessage = result['detail'] ?? result['message'] ?? "Identity Conflict Detected.";

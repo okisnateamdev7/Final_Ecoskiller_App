@@ -2,8 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:ecoskiller_mobile_app/core/theme/app_theme.dart';
 import 'package:ecoskiller_mobile_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:ecoskiller_mobile_app/core/config/app_config.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:ecoskiller_mobile_app/core/services/notification_service.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize Firebase
+  await Firebase.initializeApp();
+  
+  // Initialize Notifications
+  await NotificationService().initialize();
+
   // Initialize Environment (Default to dev, can be changed via --dart-define)
   const String env = String.fromEnvironment('ENV', defaultValue: 'dev');
   

@@ -6,7 +6,7 @@ import 'package:ecoskiller_mobile_app/core/theme/app_theme.dart';
 import 'package:ecoskiller_mobile_app/features/auth/data/providers/auth_service.dart';
 import 'signup_page.dart';
 import 'forgot_password_page.dart';
-import '../../../student/presentation/pages/student_dashboard_page.dart';
+import 'package:ecoskiller_mobile_app/core/utils/dashboard_router.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -62,10 +62,12 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
       
+      String role = result['user']['role'] ?? _selectedRole;
+
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => StudentDashboardPage(user: result['user']),
+          builder: (context) => DashboardRouter.getDashboardForRole(role, result['user']),
         ),
         (route) => false,
       );
