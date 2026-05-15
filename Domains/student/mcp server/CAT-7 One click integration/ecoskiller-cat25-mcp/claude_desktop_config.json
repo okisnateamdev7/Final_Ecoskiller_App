@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-25-analytics-devops": {
+      "command": "java",
+      "args": ["-cp", "/absolute/path/to/mcp-25-java/out", "com.ecoskiller.mcp.server.McpServer"]
+    }
+  }
+}

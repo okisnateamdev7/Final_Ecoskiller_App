@@ -1,0 +1,403 @@
+Sheets: ['📊 Overview', '📋 All Features', '🚀 MVP Features', '💰 Revenue Model']
+
+=== 📊 Overview ===
+ECOSKILLER — COMPLETE FEATURE LIST					
+AI-Powered Rural EdTech Platform | Intelligence + Skills + Championship + Career					
+PLATFORM AT A GLANCE					
+16	310+	8	12	5	100+
+Core Modules	Total Features	User Types	Revenue Layers	Target Phases	Integrations
+MODULE SUMMARY					
+#	Module Name	Features	Priority	Phase	Status
+1	Identity & Universal Ecoskiller ID	25	Critical	Phase 1	🔴 MVP
+2	Intelligence Measurement System	30	Critical	Phase 1	🔴 MVP
+3	Dojo Skill System	25	Critical	Phase 1	🔴 MVP
+4	Championship System	40	High	Phase 2	🟡 Core
+5	Parent Dashboard System	20	Critical	Phase 1	🔴 MVP
+6	Institute Management System	20	High	Phase 2	🟡 Core
+7	Recruiter & Hiring System	25	High	Phase 2	🟡 Core
+8	AI Mentor System	15	Critical	Phase 1	🔴 MVP
+9	Integration Engine (100+ Tools)	20	Medium	Phase 3	🟢 Scale
+10	Migration Engine (1-Click)	15	Medium	Phase 3	🟢 Scale
+11	Content Creator System	15	Medium	Phase 3	🟢 Scale
+12	Educator Partner System	15	Medium	Phase 2	🟡 Core
+13	Financial & Wallet System	10	High	Phase 2	🟡 Core
+14	Social Network Layer	10	Medium	Phase 3	🟢 Scale
+15	Trust & Safety System	10	Critical	Phase 1	🔴 MVP
+16	Rural Subscription & Growth Engine	15	Critical	Phase 1	🔴 MVP
+17	Innovation & Royalty System	20	High	Phase 4	🔵 Future
+18	ERP System (Academic + Corporate)	25	High	Phase 3	🟢 Scale
+19	Parent Business Ecosystem	10	Medium	Phase 3	🟢 Scale
+20	Government & Compliance Layer	10	High	Phase 4	🔵 Future
+TOTAL FEATURES		=SUM(C13:C32)			
+
+=== 📋 All Features ===
+ECOSKILLER — COMPLETE FEATURE REGISTRY							
+All 310+ Features Across 20 Modules | Source: Research Documents + Architecture Analysis							
+M#	F#	Feature Name	Description	Priority	Phase	Status	User Type
+MODULE 1: IDENTITY & UNIVERSAL ID							
+1	1	Ecoskiller Universal ID	Permanent unique ID from age 5–60, like a digital passport	Critical	Phase 1	✅ MVP	All Users
+1	2	QR Identity Card	Scannable QR code for instant profile sharing and verification	Critical	Phase 1	✅ MVP	All Users
+1	3	Digital Student ID	Official student identity card recognized by partner institutes	Critical	Phase 1	✅ MVP	Students
+1	4	Digital Professional ID	Career-level identity for working professionals	High	Phase 2	🔧 Core	Professionals
+1	5	Parent-Linked ID	Parent accounts automatically linked to child IDs	Critical	Phase 1	✅ MVP	Parents
+1	6	Institute-Linked ID	ID connected to registered school/college for verification	High	Phase 2	🔧 Core	Students
+1	7	Verified Identity Badge	Blue tick system for verified users via Aadhaar/documents	High	Phase 2	🔧 Core	All Users
+1	8	Aadhaar-Compatible ID	Optional Aadhaar linkage for government scheme access	Medium	Phase 3	⏳ Scale	Students
+1	9	Passport Verification Option	International identity verification for global access	Low	Phase 4	🔮 Future	All Users
+1	10	Biometric Verification	Fingerprint/face ID for secure login and exam proctoring	Medium	Phase 3	⏳ Scale	Students
+1	11	Profile Timeline	Visual chronological life journey from education to career	High	Phase 2	🔧 Core	All Users
+1	12	Education History Vault	Complete academic record stored permanently	Critical	Phase 1	✅ MVP	Students
+1	13	Skill History Ledger	Immutable record of every skill learned and verified	Critical	Phase 1	✅ MVP	Students
+1	14	Job History Tracker	Employment history with verified company records	High	Phase 2	🔧 Core	Professionals
+1	15	Championship History	Permanent record of all competitions participated and won	High	Phase 2	🔧 Core	Students
+1	16	Intelligence History Timeline	Intelligence growth chart from age of joining	High	Phase 2	🔧 Core	Students
+1	17	Achievement History Wall	All awards, certificates, and milestones in one place	High	Phase 2	🔧 Core	Students
+1	18	Certificate Vault	Secure storage for all earned certificates	Critical	Phase 1	✅ MVP	All Users
+1	19	Portfolio Storage	Project, design, and work portfolio in cloud	High	Phase 2	🔧 Core	Students
+1	20	Video Portfolio	Video showcase of projects and skills	Medium	Phase 3	⏳ Scale	Students
+1	21	Blockchain Certificates	Tamper-proof blockchain-verified certificates	High	Phase 3	⏳ Scale	All Users
+1	22	Digital Signature Support	Legally valid digital signatures on documents	Medium	Phase 3	⏳ Scale	All Users
+1	23	Lifetime Data Storage	Data preserved for lifetime, never deleted	Critical	Phase 1	✅ MVP	All Users
+1	24	Data Export Tool	Export full profile as PDF, JSON for any platform	High	Phase 2	🔧 Core	All Users
+1	25	Privacy Control Center	Granular control over who sees what data	Critical	Phase 1	✅ MVP	All Users
+MODULE 2: INTELLIGENCE MEASUREMENT SYSTEM							
+2	26	Intelligence Radar Chart	Visual 8-axis radar showing all intelligence types at a glance	Critical	Phase 1	✅ MVP	Students/Parents
+2	27	Intelligence Score (EIS 0-1000)	Standardized score from 0–1000 per intelligence type	Critical	Phase 1	✅ MVP	Students
+2	28	Intelligence Percentile Ranking	Shows where student stands vs national population	Critical	Phase 1	✅ MVP	Students/Parents
+2	29	India Intelligence Ranking	Live national rank updated after each activity	High	Phase 2	🔧 Core	Students
+2	30	Intelligence Comparison Tool	Compare your intelligence with friends, school, district	High	Phase 2	🔧 Core	Students
+2	31	Adaptive Testing Engine	AI adjusts test difficulty in real-time based on responses	Critical	Phase 1	✅ MVP	Students
+2	32	AI-Generated Tests	Unlimited unique tests generated by AI — never repeats	High	Phase 1	✅ MVP	Students
+2	33	100 Intelligence Detection Tests	13 linguistic, 13 logical, 12 spatial, 12 bodily, etc.	Critical	Phase 1	✅ MVP	Students
+2	34	Test Reliability Scoring	Measures test-retest consistency for scientific validity	High	Phase 2	🔧 Core	System
+2	35	AI Confidence Score	Each intelligence score includes confidence % (e.g., 92%)	High	Phase 2	🔧 Core	Students
+2	36	Intelligence Growth Tracking	Month-by-month growth chart for each intelligence type	Critical	Phase 1	✅ MVP	Students/Parents
+2	37	Intelligence Evolution Timeline	Life map showing intelligence changes from age of joining	High	Phase 2	🔧 Core	Students
+2	38	Intelligence Prediction Engine	AI predicts future intelligence potential based on trends	High	Phase 3	⏳ Scale	Students
+2	39	Strength Analysis Report	Detailed breakdown of top 3 intelligence strengths	Critical	Phase 1	✅ MVP	Students/Parents
+2	40	Weakness Analysis Report	Areas needing improvement with specific training suggestions	Critical	Phase 1	✅ MVP	Students/Parents
+2	41	Passive Intelligence Detection	AI measures intelligence from real behavior without tests	High	Phase 2	🔧 Core	Students
+2	42	Behavior Intelligence Collector	Tracks writing quality, problem solving, social behavior	High	Phase 2	🔧 Core	System
+2	43	Hidden Genius Engine	Detects intelligence not shown in formal tests	High	Phase 3	⏳ Scale	Students
+2	44	Learning Speed Analysis	Measures how fast student learns new concepts	Medium	Phase 3	⏳ Scale	Students
+2	45	Focus & Attention Measurement	Tracks engagement depth during learning sessions	Medium	Phase 3	⏳ Scale	Students
+2	46	Parent Intelligence Report	Simple visual report for parents (no jargon)	Critical	Phase 1	✅ MVP	Parents
+2	47	Teacher Intelligence Report	Class-level intelligence distribution for educators	High	Phase 2	🔧 Core	Teachers
+2	48	Recruiter Intelligence Report	Candidate intelligence map for hiring decisions	High	Phase 2	🔧 Core	Recruiters
+2	49	Institute Intelligence Report	Institute-level intelligence analytics and trends	High	Phase 2	🔧 Core	Institutes
+2	50	Career Intelligence Mapping	Maps intelligence profile to best-fit career paths	Critical	Phase 1	✅ MVP	Students
+2	51	AI Bias Detection	Checks for gender, language, and regional bias in scoring	High	Phase 2	🔧 Core	System
+2	52	Government Curriculum Mapping	Maps CBSE/State board subjects to intelligence types	High	Phase 3	⏳ Scale	System
+2	53	Intelligence Certification	Official Ecoskiller Intelligence Certificate per type	High	Phase 2	🔧 Core	Students
+2	54	Intelligence Goal Setting	Students set target intelligence scores to work toward	Medium	Phase 2	🔧 Core	Students
+2	55	Digital Intelligence Twin	AI clone simulates career outcomes from intelligence data	Medium	Phase 4	🔮 Future	Students
+MODULE 3: DOJO SKILL SYSTEM							
+3	56	Skill Levels (Belt System)	Martial-arts-style belt levels: White → Black for each skill	Critical	Phase 1	✅ MVP	Students
+3	57	Skill XP Points	Experience points earned for every learning action	Critical	Phase 1	✅ MVP	Students
+3	58	Skill Badges	Achievement badges for skill milestones	High	Phase 1	✅ MVP	Students
+3	59	Skill National Ranking	Live rank per skill vs all platform users in India	High	Phase 2	🔧 Core	Students
+3	60	Daily Skill Missions	Gamified daily challenges to keep streak alive	Critical	Phase 1	✅ MVP	Students
+3	61	Skill Roadmap Generator	AI creates personalized learning path per career goal	Critical	Phase 1	✅ MVP	Students
+3	62	AI Skill Recommendations	Recommends next skills based on intelligence + career goal	Critical	Phase 1	✅ MVP	Students
+3	63	Skill Improvement AI Coach	AI identifies weak areas and prescribes targeted exercises	High	Phase 2	🔧 Core	Students
+3	64	Skill Exercises Library	1000+ exercises mapped to intelligence types	Critical	Phase 1	✅ MVP	Students
+3	65	Real-Life Skill Simulations	Simulated real-world tasks: manage a shop, code an app	High	Phase 2	🔧 Core	Students
+3	66	Skill Growth Graph	Visual chart showing skill improvement over time	Critical	Phase 1	✅ MVP	Students/Parents
+3	67	Skill Comparison Tool	Compare skill levels with peers, district, national average	High	Phase 2	🔧 Core	Students
+3	68	Skill Verification Tests	Proctored tests to officially verify a claimed skill level	High	Phase 2	🔧 Core	Students
+3	69	Skill Certifications	Industry-recognized Ecoskiller skill certificates	High	Phase 2	🔧 Core	Students
+3	70	Real Work Skill Tracking	Auto-detects skills from real project work done on platform	High	Phase 2	🔧 Core	Students
+3	71	Tool-Based Skill Tracking	Syncs with GitHub, Figma, etc. to detect real skill use	Medium	Phase 3	⏳ Scale	Students
+3	72	AI Skill Scoring Engine	AI scores quality of work, not just completion	High	Phase 2	🔧 Core	System
+3	73	Skill Reliability Score	How consistently a student performs at their claimed level	High	Phase 3	⏳ Scale	Students
+3	74	Skill Portfolio Builder	Auto-builds showcaseable portfolio from completed work	High	Phase 2	🔧 Core	Students
+3	75	Skill Marketplace	Students can offer verified skills as services	Medium	Phase 3	⏳ Scale	Students
+3	76	Skill Earning System	Earn credits by helping others learn a skill	Medium	Phase 3	⏳ Scale	Students
+3	77	Skill Challenges	Time-limited skill battles with leaderboards	High	Phase 2	🔧 Core	Students
+3	78	Skill Sponsorships	Companies sponsor specific skill training batches	Medium	Phase 3	⏳ Scale	Corporates
+3	79	Dojo Innovation Loop	Observe → Problem → Idea → Prototype → Test → Improve	High	Phase 2	🔧 Core	Students
+3	80	Offline Skill Mode	Download content for offline learning (2G/no-internet)	Critical	Phase 1	✅ MVP	Students
+MODULE 4: CHAMPIONSHIP SYSTEM							
+4	81	School-Level Championships	Weekly inter-school competitions by skill/intelligence	High	Phase 2	🔧 Core	Students
+4	82	District-Level Championships	Monthly district competitions with top school winners	High	Phase 2	🔧 Core	Students
+4	83	State Championships	Quarterly state-level competitions	High	Phase 2	🔧 Core	Students
+4	84	National Intelligence Championship	Annual national competition across all intelligence types	High	Phase 2	🔧 Core	Students
+4	85	Continental Championships	Asia-level competition for top national winners	Medium	Phase 4	🔮 Future	Students
+4	86	World Intelligence Championship	Annual global competition — India vs USA vs China vs Japan	Medium	Phase 4	🔮 Future	Students
+4	87	Skill World Cup	Global skill-specific competition per domain	Medium	Phase 4	🔮 Future	Students
+4	88	Career Championship	Competition in real career tasks: coding, design, sales, etc.	High	Phase 3	⏳ Scale	Students
+4	89	Corporate Championship	Companies challenge students with real business problems	High	Phase 3	⏳ Scale	Corporates
+4	90	Team Championships	3–5 student teams compete in group challenges	High	Phase 2	🔧 Core	Students
+4	91	Institute vs Institute	School A vs School B head-to-head championship	High	Phase 2	🔧 Core	Institutes
+4	92	Teacher Championships	Best teacher competition based on student outcomes	Medium	Phase 3	⏳ Scale	Teachers
+4	93	Live Leaderboard	Real-time national and global ranking during competition	Critical	Phase 2	🔧 Core	All Users
+4	94	Knockout Tournament Engine	Automated bracket: Round of 64 → Finals	High	Phase 2	🔧 Core	System
+4	95	Live Spectator Mode	Watch live competitions like a sports event	Medium	Phase 3	⏳ Scale	All Users
+4	96	Live Scoring System	Real-time score updates during competitions	High	Phase 2	🔧 Core	All Users
+4	97	AI Problem Generator	Unique AI-generated problems for every competition	Critical	Phase 2	🔧 Core	System
+4	98	AI Judging Engine	AI evaluates subjective answers for consistency	High	Phase 2	🔧 Core	System
+4	99	Anti-Cheat Detection	AI detects unusual patterns, tab switching, copy-paste	Critical	Phase 2	🔧 Core	System
+4	100	Adaptive Difficulty Engine	Competition difficulty adjusts to participant skill level	High	Phase 2	🔧 Core	System
+4	101	Prize Money Distribution	Automated UPI prize payouts to winners	High	Phase 3	⏳ Scale	Students
+4	102	Scholarship Awards	Top winners receive platform scholarships	High	Phase 2	🔧 Core	Students
+4	103	Job Offer via Championship	Companies can extend direct job offers to winners	High	Phase 3	⏳ Scale	Students
+4	104	Internship Awards	Championship winners get guaranteed internship access	High	Phase 3	⏳ Scale	Students
+4	105	Championship Hall of Fame	Permanent record of all national/global champions	Medium	Phase 2	🔧 Core	All Users
+4	106	Championship Certificates	Official verifiable championship participation/win cert	High	Phase 2	🔧 Core	Students
+4	107	Innovation Battle Mode	Kids compete globally on real-world problem solutions	High	Phase 3	⏳ Scale	Students
+4	108	Group Discussion (GD) Championship	Structured AI-evaluated group discussion competitions	High	Phase 2	🔧 Core	Students
+4	109	Innovation XP System	Points: Find problem 10XP, Generate idea 20XP, Solve 200XP	High	Phase 2	🔧 Core	Students
+4	110	50 Gamified Innovation Challenges	Beginner to Genius level challenges covering all domains	High	Phase 2	🔧 Core	Students
+4	111	Championship Analytics Dashboard	Institute/recruiter view of competition performance data	Medium	Phase 3	⏳ Scale	Institutes
+4	112	Custom Corporate Challenges	Companies create branded challenges for talent discovery	Medium	Phase 3	⏳ Scale	Corporates
+4	113	Championship Replay Engine	Watch and learn from recorded championship sessions	Medium	Phase 3	⏳ Scale	Students
+4	114	District Pride Competition	Leaderboard showing top districts — triggers community pride	High	Phase 2	🔧 Core	All Users
+4	115	Student vs AI Mode	Practice by competing against an AI opponent	Medium	Phase 3	⏳ Scale	Students
+4	116	Monthly Ranking Reset	Fresh competition every month to allow new winners	High	Phase 2	🔧 Core	System
+4	117	Championship Notification System	Push alerts for upcoming competitions in student category	Critical	Phase 2	🔧 Core	Students
+4	118	Sponsor-Branded Championships	Tata Championship, Infosys Challenge, etc.	Medium	Phase 3	⏳ Scale	Corporates
+4	119	Spectator Count Badge	Shows how many people are watching a live competition	Low	Phase 4	🔮 Future	All Users
+4	120	Auto-Registration for Eligible Students	AI auto-enrolls students in relevant championships	Medium	Phase 3	⏳ Scale	Students
+MODULE 5: PARENT DASHBOARD SYSTEM							
+5	121	Parent Home Dashboard	One-screen overview: rank, intelligence, activity, alerts	Critical	Phase 1	✅ MVP	Parents
+5	122	Child Intelligence Map	Visual radar chart of child's 8 intelligence types	Critical	Phase 1	✅ MVP	Parents
+5	123	Child National Rank	Live rank of child vs all students in India	Critical	Phase 1	✅ MVP	Parents
+5	124	Child Growth Graph	Month-by-month skill and intelligence progress	Critical	Phase 1	✅ MVP	Parents
+5	125	Career Probability Engine	Shows: "Engineer 78%, Designer 65%, Teacher 55%"	Critical	Phase 1	✅ MVP	Parents
+5	126	Child Strength Report	Top 3 strongest intelligence types with plain-language explanation	Critical	Phase 1	✅ MVP	Parents
+5	127	Child Weakness Alerts	Notifies parent when child falls behind in a skill area	High	Phase 1	✅ MVP	Parents
+5	128	Child vs National Comparison	"Better than 72% of students in Maharashtra"	High	Phase 2	🔧 Core	Parents
+5	129	Future Income Prediction	Shows projected income based on current skill trajectory	Critical	Phase 1	✅ MVP	Parents
+5	130	Activity Monitor	Daily/weekly learning hours, challenges completed	High	Phase 1	✅ MVP	Parents
+5	131	Safety Controls	Control content access, daily time limits, safe mode	Critical	Phase 1	✅ MVP	Parents
+5	132	Parent Notification Center	Smart alerts: competitions, achievements, inactivity	High	Phase 1	✅ MVP	Parents
+5	133	Monthly Child Report	Auto-generated PDF report sent to parent every month	High	Phase 2	🔧 Core	Parents
+5	134	Career Discovery Report	AI report on what career path fits child best	Critical	Phase 1	✅ MVP	Parents
+5	135	School Comparison Tool	Compare child's school vs top schools in district	Medium	Phase 3	⏳ Scale	Parents
+5	136	Parent Business Opportunities	Show parent how to earn through Ecoskiller partnership	Medium	Phase 3	⏳ Scale	Parents
+5	137	Parent Community Forum	Parents discuss education, career guidance peer-to-peer	Medium	Phase 3	⏳ Scale	Parents
+5	138	Scholarship Discovery	Show all available scholarships child is eligible for	High	Phase 2	🔧 Core	Parents
+5	139	Parent-Child Joint Business Tool	Platform to run parent+student businesses together	Medium	Phase 4	🔮 Future	Parents
+5	140	Family Future Dashboard	"Family income projection if child follows Ecoskiller path"	Medium	Phase 3	⏳ Scale	Parents
+MODULE 6: INSTITUTE MANAGEMENT SYSTEM							
+6	141	Institute Dashboard	Full analytics hub for school/college admin	High	Phase 2	🔧 Core	Institutes
+6	142	Student Intelligence Maps	See intelligence distribution of entire student body	High	Phase 2	🔧 Core	Institutes
+6	143	Student Rankings	Internal and national ranking of all students	High	Phase 2	🔧 Core	Institutes
+6	144	Institute National Ranking	Live rank of institute vs all registered institutes in India	High	Phase 2	🔧 Core	Institutes
+6	145	Class-Level Analytics	Class 8A intelligence avg vs Class 8B — teacher tool	High	Phase 2	🔧 Core	Institutes
+6	146	Student Tracking System	Track any student's progress, attendance, skill level	High	Phase 2	🔧 Core	Institutes
+6	147	Placement Tracking Tool	Track alumni placement rates, company names, salary data	High	Phase 3	⏳ Scale	Institutes
+6	148	Institute AI Improvement Coach	AI recommends actions to improve institute rank	Medium	Phase 3	⏳ Scale	Institutes
+6	149	Course Selling Module	Institute can sell its own courses through Ecoskiller	High	Phase 3	⏳ Scale	Institutes
+6	150	Student Lead Generation	Attract new students with Ecoskiller profile visibility	High	Phase 3	⏳ Scale	Institutes
+6	151	Placement Pipeline Tool	Manage hiring events, company visits, job drives	High	Phase 3	⏳ Scale	Institutes
+6	152	Academic Structure Management	Configure courses, departments, semesters, credits	High	Phase 3	⏳ Scale	Institutes
+6	153	Bulk Student Onboarding	Upload Excel file → 1000 student accounts created instantly	High	Phase 2	🔧 Core	Institutes
+6	154	Exam Engine (Academic)	Schedule exams, assign invigilators, auto-grade, publish results	High	Phase 3	⏳ Scale	Institutes
+6	155	Digital Report Cards	Ecoskiller-generated official report cards	High	Phase 3	⏳ Scale	Institutes
+6	156	Faculty Management Module	Manage teacher workload, courses, performance	Medium	Phase 3	⏳ Scale	Institutes
+6	157	Attendance System	AI-powered attendance with biometric integration option	Medium	Phase 3	⏳ Scale	Institutes
+6	158	Fee Management System	Student fee structures, installments, payment tracking	Medium	Phase 3	⏳ Scale	Institutes
+6	159	NAAC/NBA Compliance Export	Auto-generate reports required for accreditation bodies	Medium	Phase 4	🔮 Future	Institutes
+6	160	Institute Revenue Engine	20% course commission, placement fees, lead fees	High	Phase 3	⏳ Scale	Institutes
+MODULE 7: RECRUITER & HIRING SYSTEM							
+7	161	AI Candidate Search	Search by skill, intelligence type, rank, location, age	Critical	Phase 2	🔧 Core	Recruiters
+7	162	Intelligence-Based Search	Find "Top 5% Spatial Intelligence + Logical 700+" candidates	High	Phase 2	🔧 Core	Recruiters
+7	163	Championship-Based Search	Find students who won specific competitions	High	Phase 2	🔧 Core	Recruiters
+7	164	AI Hiring Recommendation	AI shortlists top candidates for a job description automatically	High	Phase 2	🔧 Core	Recruiters
+7	165	Candidate Ranking Engine	Rank all applicants by AI fit score	High	Phase 2	🔧 Core	Recruiters
+7	166	Digital Twin Simulation Testing	Test candidate AI clone before calling for interview	Medium	Phase 4	🔮 Future	Recruiters
+7	167	Hiring Pipeline Manager	Kanban-style hiring pipeline: Applied → Screened → Hired	High	Phase 2	🔧 Core	Recruiters
+7	168	Retention Probability Predictor	"This candidate has 87% 2-year retention probability"	High	Phase 3	⏳ Scale	Recruiters
+7	169	Hiring ROI Dashboard	Track cost-per-hire, time-to-hire, quality-of-hire metrics	High	Phase 3	⏳ Scale	Recruiters
+7	170	One-Click Job Posting	Post job → AI auto-matches candidates within seconds	Critical	Phase 2	🔧 Core	Recruiters
+7	171	Skill Verification Access	See verified (proctored) skill test results per candidate	High	Phase 2	🔧 Core	Recruiters
+7	172	Interview Scheduling Tool	In-platform interview booking with calendar sync	High	Phase 2	🔧 Core	Recruiters
+7	173	AI Interview Evaluation	AI evaluates recorded video interviews for key competencies	Medium	Phase 3	⏳ Scale	Recruiters
+7	174	Campus Recruitment Module	College-wide hiring drives managed on platform	High	Phase 3	⏳ Scale	Recruiters
+7	175	Bulk Candidate Comparison	Side-by-side comparison of 5–10 candidates	High	Phase 2	🔧 Core	Recruiters
+7	176	Real Work Data Access	See GitHub commits, Figma files, real project output	High	Phase 3	⏳ Scale	Recruiters
+7	177	Salary Prediction AI	AI suggests fair salary range based on skill + market data	Medium	Phase 3	⏳ Scale	Recruiters
+7	178	Employer Brand Page	Company profile to attract passive candidates	High	Phase 2	🔧 Core	Recruiters
+7	179	Talent Pool Subscription	Monthly access to curated candidate database	High	Phase 2	🔧 Core	Recruiters
+7	180	Hiring AI Agents	Autonomous AI agents that continuously source candidates	Medium	Phase 4	🔮 Future	Recruiters
+7	181	Diversity Hiring Filter	Filter for gender, region, socioeconomic diversity goals	Medium	Phase 3	⏳ Scale	Recruiters
+7	182	Pre-Placement Offer System	Extend offers to championship winners before graduation	High	Phase 3	⏳ Scale	Recruiters
+7	183	Hiring Analytics Reports	Monthly data on sourcing channels, drop-offs, conversions	High	Phase 3	⏳ Scale	Recruiters
+7	184	CSR Talent Pipeline	Companies hire from sponsored rural student batches	Medium	Phase 3	⏳ Scale	Corporates
+7	185	Anti-Resume Mode	Hire based on verified skills only, not self-declared resume	High	Phase 3	⏳ Scale	Recruiters
+MODULE 8: AI MENTOR SYSTEM							
+8	186	Lifetime AI Mentor	Personal AI mentor from age 5 to career, grows with user	Critical	Phase 1	✅ MVP	Students
+8	187	Daily Career Guidance	AI sends one career tip or action item every day	High	Phase 1	✅ MVP	Students
+8	188	Skill Improvement Coach	AI analyzes weak areas and assigns specific training tasks	Critical	Phase 1	✅ MVP	Students
+8	189	AI Study Plan Generator	Creates personalized study schedule based on goals	High	Phase 1	✅ MVP	Students
+8	190	Career Roadmap Builder	Step-by-step career path: "To become architect, do this..."	Critical	Phase 1	✅ MVP	Students
+8	191	Motivation Message Engine	Personalized motivational messages based on student mood/activity	High	Phase 1	✅ MVP	Students
+8	192	Intelligence Coaching Mode	"Your interpersonal intelligence rose — try leadership now"	High	Phase 2	🔧 Core	Students
+8	193	Q&A Assistant	Ask any career, skill, or learning question and get instant answer	High	Phase 1	✅ MVP	Students
+8	194	Goal Tracking System	Set goals → AI tracks progress → sends reminders	High	Phase 1	✅ MVP	Students
+8	195	Parent AI Advisor	AI answers parent questions about child's career path	High	Phase 2	🔧 Core	Parents
+8	196	AI Innovation Coach	"Your ideas are practical but not original — try this"	Medium	Phase 2	🔧 Core	Students
+8	197	Stress & Burnout Detection	AI detects inactivity patterns suggesting burnout and responds	Medium	Phase 3	⏳ Scale	Students
+8	198	Voice Mentor Mode	Talk to AI mentor via voice — perfect for rural users	High	Phase 3	⏳ Scale	Students
+8	199	Vernacular Language Support	AI mentor in Hindi, Marathi, Telugu, Tamil, Bengali, Kannada	Critical	Phase 2	🔧 Core	Students
+8	200	AI Mentor Memory	Remembers your history and context — grows smarter over time	High	Phase 2	🔧 Core	Students
+MODULE 9: RURAL SUBSCRIPTION & GROWTH ENGINE							
+9	201	Freemium Base Tier	Free access to core features — career discovery, 1 project	Critical	Phase 1	✅ MVP	All Users
+9	202	Geo-Based Differential Pricing	Metro ₹499 / Tier2 ₹299 / Rural ₹149 / Extreme ₹49	Critical	Phase 1	✅ MVP	All Users
+9	203	Auto PIN-Code Detection	Pricing tier automatically set by user PIN code on signup	Critical	Phase 1	✅ MVP	System
+9	204	Rural Talent Scholarship Test	Exam-based merit scholarship for free premium access	High	Phase 1	✅ MVP	Students
+9	205	Work-to-Earn Credits	Earn platform credits by referring users, completing tasks	High	Phase 2	🔧 Core	Students
+9	206	Micro-Payment Plans	₹19/day, ₹49/week — impulse-friendly rural payment	Critical	Phase 1	✅ MVP	Students
+9	207	UPI AutoPay Integration	Set and forget weekly/monthly payment via UPI AutoPay	Critical	Phase 1	✅ MVP	Students
+9	208	Panchayat Licensing	Panchayat pays → all village students get free access	High	Phase 2	🔧 Core	Panchayats
+9	209	School Institutional License	School buys 500 seats at ₹30/student/month	High	Phase 2	🔧 Core	Schools
+9	210	CSR Sponsorship Pipeline	Tata, Infosys, Wipro sponsor student batches for CSR	High	Phase 2	🔧 Core	Corporates
+9	211	ISA — Pay After Placement	Zero upfront. Pay 8–10% salary for 12 months after job	Critical	Phase 2	🔧 Core	Students
+9	212	NEAT Government Partnership	Govt routes subsidized students via NEAT portal to Ecoskiller	High	Phase 3	⏳ Scale	Government
+9	213	Gram Sathi Village Champion	Local village rep earns ₹600–1500/month by onboarding students	Critical	Phase 2	🔧 Core	Community
+9	214	Deferred Payment Plan	Free 3 months → ₹49/week from month 4 only if employed	High	Phase 2	🔧 Core	Students
+9	215	Offline Content Mode	Download all content for zero-internet access anywhere	Critical	Phase 1	✅ MVP	Students
+MODULE 10: ONE-CLICK INTEGRATION ENGINE							
+10	216	Integration Hub Dashboard	Single UI to see all connected tools and sync status	High	Phase 3	⏳ Scale	Recruiters/Institutes
+10	217	OAuth 2.0 Connector	One-click login connect to Google, Slack, GitHub, etc.	High	Phase 3	⏳ Scale	System
+10	218	HR Tool Integrations (15)	Workday, BambooHR, Darwinbox, Keka, Zoho People, etc.	High	Phase 3	⏳ Scale	Corporates
+10	219	CRM Integrations (10)	Salesforce, HubSpot, Zoho CRM, Pipedrive, Freshsales, etc.	Medium	Phase 3	⏳ Scale	Corporates
+10	220	Project Tool Integrations (10)	Jira, Asana, Trello, ClickUp, Monday, Notion, etc.	Medium	Phase 3	⏳ Scale	Corporates
+10	221	Developer Tool Integrations (10)	GitHub, GitLab, Bitbucket, Jenkins, DockerHub, etc.	High	Phase 3	⏳ Scale	Students
+10	222	Design Tool Integrations (5)	Figma, Adobe XD, Canva, Photoshop Cloud, Sketch	Medium	Phase 3	⏳ Scale	Students
+10	223	Accounting Tool Integrations (10)	QuickBooks, Zoho Books, Tally, Xero, Freshbooks, etc.	Medium	Phase 3	⏳ Scale	Institutes
+10	224	Communication Tool Integrations (10)	Slack, Teams, Zoom, Discord, WhatsApp Business, etc.	Medium	Phase 3	⏳ Scale	All Users
+10	225	AI Normalization Engine	Converts all tool data formats into Universal Work Data Format	High	Phase 3	⏳ Scale	System
+10	226	Auto Skill Extraction AI	Extracts verified skills from GitHub commits, Jira tickets, etc.	High	Phase 3	⏳ Scale	System
+10	227	Webhook Gateway	Real-time data push/pull from connected systems	High	Phase 3	⏳ Scale	System
+10	228	SSO Federation (SAML/LDAP)	Enterprise single sign-on with company directories	High	Phase 3	⏳ Scale	Corporates
+10	229	Calendar Sync	Google Calendar, Outlook sync for interviews and events	Medium	Phase 3	⏳ Scale	All Users
+10	230	Payment Gateway Connect	Razorpay, Stripe, PayPal one-click setup	Critical	Phase 2	🔧 Core	System
+10	231	WhatsApp Business API	Automated notifications, OTPs, reminders via WhatsApp	Critical	Phase 2	🔧 Core	System
+10	232	DigiLocker Integration	Fetch/push government documents via DigiLocker API	High	Phase 3	⏳ Scale	Students
+10	233	GST & Tax API	GSTIN validation, e-invoice generation, GSTR export	Medium	Phase 3	⏳ Scale	Finance
+10	234	LLM/AI Provider Connect	OpenAI, Claude API integration for AI features	High	Phase 2	🔧 Core	System
+10	235	Analytics Connector	Google Analytics, Mixpanel, Amplitude, Power BI export	Medium	Phase 3	⏳ Scale	System
+MODULE 11: INNOVATION & ROYALTY SYSTEM							
+11	236	Idea Submission Portal	Kids submit: title, problem, solution, sketch, explanation	High	Phase 3	⏳ Scale	Students
+11	237	Idea DNA Fingerprinting	Every idea gets unique AI fingerprint for ownership proof	High	Phase 3	⏳ Scale	System
+11	238	Legal Timestamping	SHA-256 hash + server timestamp + optional blockchain proof	High	Phase 3	⏳ Scale	System
+11	239	Parent Consent System	Digital parent sign-off required for idea royalty program	Critical	Phase 3	⏳ Scale	Parents
+11	240	AI Idea Evaluation Engine	Scores ideas on originality, feasibility, and market demand	High	Phase 3	⏳ Scale	System
+11	241	Innovation Idea Marketplace	Entrepreneurs browse and license kids' ideas	High	Phase 4	🔮 Future	Businesses
+11	242	Idea Royalty Engine (0.01–0.05%)	Kid earns 0.01–0.05% revenue for 10–15 years from idea	High	Phase 4	🔮 Future	Students
+11	243	Ecoskiller Innovation Trust (EIT)	Legal trust entity to protect minors' idea rights	High	Phase 4	🔮 Future	System
+11	244	AI Similarity Detection	Flags copies with 80%+ similarity score automatically	High	Phase 3	⏳ Scale	System
+11	245	Idea Improvement Credit	Kid B improves Kid A's idea — both get credited	Medium	Phase 4	🔮 Future	Students
+11	246	Innovation IQ Score	Creativity 82, Problem Solving 75, Originality 70 scores	High	Phase 3	⏳ Scale	Students
+11	247	50 Gamified Innovation Challenges	Beginner → Genius challenges for ages 5–18	High	Phase 2	🔧 Core	Students
+11	248	Innovation Rank System	Explorer → Builder → Inventor → Innovator → Founder → Genius	High	Phase 2	🔧 Core	Students
+11	249	Life Intelligence Passport	Permanent portfolio: ideas, skills, intelligence from age 5+	Critical	Phase 2	🔧 Core	Students
+11	250	Kid Royalty Wallet	UPI-linked wallet for automated royalty payouts	High	Phase 4	🔮 Future	Students
+11	251	Adult Transfer at 18	At age 18, full ownership transfers from Trust to student	High	Phase 4	🔮 Future	Students
+11	252	Project Execution Platform	Engineers, designers, marketers execute student ideas	Medium	Phase 4	🔮 Future	Businesses
+11	253	Age-Based Innovation Training	Age 5–7: Explorer | 8–10: Builder | 11–13: Inventor | 14+	High	Phase 2	🔧 Core	Students
+11	254	Zero Resource Innovation Training	"Solve with ₹0 budget" — brain-only innovation challenges	High	Phase 2	🔧 Core	Students
+11	255	Innovation Championship	Global kids compete: Best water-saving idea wins scholarship	High	Phase 3	⏳ Scale	Students
+MODULE 12: TRUST & SAFETY SYSTEM							
+12	256	Verified User Badge	Blue tick for Aadhaar/ID-verified students and professionals	Critical	Phase 1	✅ MVP	All Users
+12	257	Verified Institute Badge	Verified badge for registered schools and colleges	Critical	Phase 1	✅ MVP	Institutes
+12	258	Verified Recruiter Badge	Company-verified badge for genuine recruiters	Critical	Phase 2	🔧 Core	Recruiters
+12	259	Verified Certificate Engine	QR-code verifiable certificates — anyone can scan and confirm	Critical	Phase 2	🔧 Core	All Users
+12	260	Skill Verification (Proctored)	AI-proctored exam to officially verify claimed skill level	High	Phase 2	🔧 Core	Students
+12	261	Fraud Detection AI	Detects fake accounts, mass-registration bots, fraudulent data	Critical	Phase 1	✅ MVP	System
+12	262	Championship Anti-Cheat Engine	Tab-switch detection, copy-paste block, eye-tracking	Critical	Phase 2	🔧 Core	System
+12	263	Fake Profile Detection	AI flags profiles with suspicious patterns	High	Phase 2	🔧 Core	System
+12	264	Trust Score Per User	Composite trust score based on verification, behavior, history	High	Phase 2	🔧 Core	All Users
+12	265	Content Moderation Engine	AI filters inappropriate content in posts, comments, submissions	Critical	Phase 2	🔧 Core	System
+MODULE 13: FINANCIAL & WALLET SYSTEM							
+13	266	Ecoskiller Wallet	UPI-linked digital wallet for payments, earnings, scholarships	Critical	Phase 2	🔧 Core	All Users
+13	267	Student Fee Payments	Pay subscription fees via UPI, cards, net banking	Critical	Phase 1	✅ MVP	Students
+13	268	Teacher/Creator Earnings	Auto-payout to teacher/creator bank account monthly	High	Phase 2	🔧 Core	Teachers/Creators
+13	269	Scholarship Disbursement	Auto-transfer scholarship amounts to students via UPI	High	Phase 2	🔧 Core	Students
+13	270	Escrow Payment System	Secure escrow for project payments between students and clients	High	Phase 3	⏳ Scale	Students
+13	271	EMI / Installment Plans	Pay annual plan in 3–6 EMIs with zero interest	High	Phase 2	🔧 Core	Students
+13	272	CSR Fund Management	Dedicated CSR fund account with impact tracking	High	Phase 3	⏳ Scale	Corporates
+13	273	Gram Sathi Commission System	Auto-calculate and pay village champion commissions	High	Phase 2	🔧 Core	Gram Sathi
+13	274	Financial Reports	Institute/recruiter invoice history, transaction records	High	Phase 2	🔧 Core	All Users
+13	275	GST-Compliant Invoicing	Auto-generate GST invoices for all B2B transactions	High	Phase 2	🔧 Core	Finance
+MODULE 14: SOCIAL NETWORK LAYER							
+14	276	Skill Posts	Share projects, achievements, learnings on a LinkedIn-style feed	High	Phase 3	⏳ Scale	All Users
+14	277	Achievement Sharing	Auto-share championship wins, belt upgrades, certificates	High	Phase 2	🔧 Core	Students
+14	278	Follow/Connect System	Follow top students, mentors, companies	High	Phase 3	⏳ Scale	All Users
+14	279	Institute Community Pages	School/college community with discussions and events	Medium	Phase 3	⏳ Scale	Institutes
+14	280	District Leaderboard Wall	Public leaderboard visible to entire district community	High	Phase 2	🔧 Core	All Users
+14	281	Project Showcase Gallery	Visual gallery of student projects (design, code, writing)	High	Phase 3	⏳ Scale	Students
+14	282	Mentor-Student Chat	Private secure messaging between students and mentors	High	Phase 2	🔧 Core	Students
+14	283	Group Discussions	Moderated topic-based discussion rooms	Medium	Phase 3	⏳ Scale	All Users
+14	284	Parent Community Forum	Safe space for parents to discuss education + career	Medium	Phase 3	⏳ Scale	Parents
+14	285	Live Session Broadcasting	Teachers/creators can go live to all followers	Medium	Phase 3	⏳ Scale	Teachers/Creators
+MODULE 15: GROWTH & VIRAL ENGINE							
+15	286	Referral Reward System	Refer 5 friends → earn 1 month free	Critical	Phase 1	✅ MVP	All Users
+15	287	Student Ambassador Program	College ambassadors bring 100+ users, earn cash + certificate	High	Phase 2	🔧 Core	Students
+15	288	Teacher Champion Program	Teachers get free premium for bringing their school	High	Phase 2	🔧 Core	Teachers
+15	289	Daily Streak System	7-day streak → bonus XP + badge (Duolingo-style)	Critical	Phase 1	✅ MVP	Students
+15	290	XP Points Economy	Earn XP for every action, redeem for platform features	Critical	Phase 1	✅ MVP	Students
+15	291	Achievement Badge System	50+ badges for milestones (First Project, First Job, etc.)	High	Phase 1	✅ MVP	Students
+15	292	District Competition Pride Engine	Show district rank publicly — triggers community enrollment	High	Phase 2	🔧 Core	All Users
+15	293	Class FOMO System	"15 students from your class joined Ecoskiller"	High	Phase 2	🔧 Core	Students
+15	294	School Penetration Model	1 school → 800 students auto-onboarded via institute deal	Critical	Phase 2	🔧 Core	Schools
+15	295	Scarcity Trigger	"Only 5000 scholarship seats left in Maharashtra"	Medium	Phase 2	🔧 Core	System
+15	296	Social Proof Counter	Live: "145,000 students joined this month" on homepage	High	Phase 2	🔧 Core	System
+15	297	Parent Viral Hook	"Know your child's true career potential" — parent shares	Critical	Phase 2	🔧 Core	Parents
+15	298	WhatsApp Viral Engine	Auto-generate shareable achievement images for WhatsApp	Critical	Phase 2	🔧 Core	All Users
+15	299	Weekly Progress Notification	Smart push alert with personalized weekly highlights	High	Phase 1	✅ MVP	All Users
+15	300	Milestone Celebration Engine	Confetti animation + shareable card for every milestone	Medium	Phase 2	🔧 Core	Students
+
+=== 🚀 MVP Features ===
+ECOSKILLER MVP — PHASE 1 FEATURES (Launch Ready)				
+These 30 features are the minimum to dominate India. Build these first.				
+#	Feature	Module	Why Critical	User Impact
+1	Ecoskiller Universal ID	Identity	Lifetime identity — switching cost from day 1	Every single user
+2	Intelligence Radar Chart	Intelligence	Hook parents in 30 seconds with visual wow	Students + Parents
+3	Career Probability Engine	Parents	"Engineer 78%" makes parent immediately trust platform	Parents (key buyer)
+4	Freemium Base Tier	Rural Subscription	Zero barrier entry — maximum top-of-funnel	All Users
+5	Geo-Based Pricing (Auto)	Rural Subscription	Rural ₹149 vs Metro ₹499 — automatic, no fraud	Rural Students
+6	Offline Content Mode	Rural Subscription	Works without internet — critical for rural India	Rural Students
+7	100 Intelligence Tests	Intelligence	Core product — Dojo engine needs tests to function	Students
+8	Adaptive Testing Engine	Intelligence	Never boring, always challenging — key retention	Students
+9	Daily Skill Missions	Dojo Skills	Creates daily habit like Duolingo — key retention	Students
+10	Skill Belt/Level System	Dojo Skills	Gamification that keeps students coming back daily	Students
+11	Parent Home Dashboard	Parents	Parents are the real decision makers in India	Parents
+12	Child Growth Graph	Parents	Visual progress = trust = renewal = referral	Parents
+13	Child Strength Report	Parents	Tell parents what child is good at — powerful moment	Parents
+14	Future Income Prediction	Parents	"Child can earn ₹45k/month" — parents stay forever	Parents
+15	AI Mentor (Basic)	AI Mentor	Daily guidance creates addiction-level engagement	Students
+16	Vernacular Language Support	AI Mentor	Hindi, Marathi, Telugu — mandatory for rural reach	Rural Students
+17	Certificate Vault	Identity	Certificates in one place = students keep profile forever	Students
+18	Referral Reward System	Growth Engine	Zero-cost viral growth — 1 user brings 5 more	All Users
+19	Daily Streak System	Growth Engine	Streaks = retention = revenue	Students
+20	WhatsApp Viral Engine	Growth Engine	India runs on WhatsApp — shareable achievement cards	All Users
+21	Skill National Ranking	Dojo Skills	Ranking creates FOMO — students compete to improve	Students
+22	Verified User Badge	Trust System	Trust is #1 adoption barrier in India — solve early	All Users
+23	Fraud Detection AI	Trust System	Protect platform integrity from day 1	System
+24	Micro-Payment Plans (₹19/day)	Rural Subscription	Removes price barrier for 500M+ people	Rural Students
+25	Rural Talent Scholarship Test	Rural Subscription	Merit-based access = no stigma + 40% higher retention	Rural Students
+26	School Penetration Model	Growth Engine	1 school deal = 800 instant users — fastest scale	Schools
+27	Career Roadmap Builder	AI Mentor	"To become engineer, do this step by step" — parents love	Students/Parents
+28	Parent Notification Center	Parents	Keeps parents engaged = students keep using platform	Parents
+29	Skill Exercises Library	Dojo Skills	1000+ exercises — core content needed for launch	Students
+30	Data Export Tool	Identity	Users keep data forever — builds trust in permanence	All Users
+
+=== 💰 Revenue Model ===
+ECOSKILLER — 12-LAYER REVENUE MODEL						
+#	Revenue Stream	Who Pays	Model	Y1 Est (₹)	Y2 Est (₹)	Y3 Est (₹)
+1	Geo-Priced Subscriptions	Students / Parents	₹49–₹499/month by tier	45,00,000	1,80,00,000	6,00,00,000
+2	Institutional Licensing	Schools / Colleges	₹30/student/month bulk	12,00,000	60,00,000	2,50,00,000
+3	CSR Sponsorships	Corporates (Tata, Infosys)	Batch sponsorship packages	25,00,000	80,00,000	3,00,00,000
+4	ISA — Pay After Placement	Placed Students	8–10% salary × 12 months	8,00,000	50,00,000	2,00,00,000
+5	Micro-Payments (Daily/Weekly)	Rural Students	₹19/day or ₹49/week	18,00,000	90,00,000	3,50,00,000
+6	Recruiter Hiring Fees	Companies / HR Teams	Per hire or subscription	10,00,000	75,00,000	3,00,00,000
+7	Course Marketplace (20% cut)	Educators / Creators	20% of course price	5,00,000	40,00,000	2,00,00,000
+8	Championship Entry Fees	Students (higher rounds)	Free early rounds, paid finals	3,00,000	20,00,000	80,00,000
+9	Idea Licensing Fees	Businesses licensing ideas	₹50,000 per idea license	0	10,00,000	1,00,00,000
+10	Integration/API Access	Enterprises, developers	API subscription per seat	2,00,000	25,00,000	1,50,00,000
+11	Panchayat/NGO Licensing	Panchayats / NGOs	Annual bulk access deal	5,00,000	30,00,000	1,20,00,000
+12	Gram Sathi Franchise Fee	Gram Sathi registrations	₹3,000 registration (optional)	3,00,000	15,00,000	50,00,000
+ESTIMATED TOTAL (Indicative Only)				1,36,00,000	5,75,00,000	26,00,00,000

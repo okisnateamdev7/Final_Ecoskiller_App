@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "mcp-nginx-ingress": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-nginx-ingress/mcp-nginx-ingress.jar"
+      ],
+      "env": {
+        "KUBE_NAMESPACE":        "default",
+        "INGRESS_CLASS_NAME":    "nginx",
+        "RATE_LIMIT_RPS":        "100",
+        "RATE_LIMIT_BURST":      "200",
+        "MAX_CONN_PER_IP":       "20",
+        "TLS_PROTOCOLS":         "TLSv1.2 TLSv1.3",
+        "PRIMARY_CLOUD":         "gcp",
+        "PRIMARY_REGION":        "asia-south1",
+        "SECONDARY_CLOUD":       "aws",
+        "SECONDARY_REGION":      "ap-southeast-1",
+        "WAF_ENABLED":           "false",
+        "MTLS_ENABLED":          "false",
+        "LOG_LEVEL":             "INFO"
+      }
+    }
+  }
+}

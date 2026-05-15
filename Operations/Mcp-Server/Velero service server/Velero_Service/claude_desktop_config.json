@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcp-velero": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-velero/target/mcp-velero-1.0.0.jar"
+      ],
+      "env": {}
+    }
+  }
+}

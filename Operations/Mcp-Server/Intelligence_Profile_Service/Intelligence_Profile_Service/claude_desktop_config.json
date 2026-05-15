@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "mcp-ips-intelligence-profile": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-ips-java/target/mcp-ips-intelligence-profile-1.0.0.jar"
+      ],
+      "env": {
+        "LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+---
+# Kubernetes Secret — mount from CI/CD, never hardcoded
+apiVersion: v1
+kind: Secret
+metadata:
+  name: recruiter-mcp-secrets
+  namespace: core
+type: Opaque
+stringData:
+  jwt-secret: "REPLACE_WITH_KEYCLOAK_JWT_SECRET"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: recruiter-mcp-config
+  namespace: core
+data:
+  RECRUITER_TENANT_DOMAIN:        "ecoskiller.io"
+  RECRUITER_DB_HOST:              "postgres.core.svc.cluster.local"
+  RECRUITER_REDIS_ENABLED:        "true"
+  RECRUITER_AUDIT_ENABLED:        "true"
+  RECRUITER_LOG_LEVEL:            "INFO"
+  RECRUITER_RATE_PER_SEC:         "50"
+  RECRUITER_RATE_PER_MIN:         "500"
+  RECRUITER_MAX_JOBS_STARTER:     "5"
+  RECRUITER_MAX_JOBS_PROFESSIONAL: "25"
+  RECRUITER_MAX_JOBS_ENTERPRISE:  "999"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recruiter-mcp-server
+  namespace: core
+  labels:
+    app: recruiter-mcp-server
+    component: recruiter
+    version: "1.0.0"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: recruiter-mcp-server
+  template:
+    metadata:
+      labels:
+        app: recruiter-mcp-server
+        component: recruiter
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: recruiter-mcp
+          image: harbor.ecoskiller.io/ecoskiller/recruiter-mcp-server:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: RECRUITER_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: recruiter-mcp-secrets
+                  key: jwt-secret
+          envFrom:
+            - configMapRef:
+                name: recruiter-mcp-config
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+
+---
+# NetworkPolicy: recruiter-mcp can only reach PostgreSQL + Redis + Kafka
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: recruiter-mcp-netpol
+  namespace: core
+spec:
+  podSelector:
+    matchLabels:
+      app: recruiter-mcp-server
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: core
+      ports:
+        - port: 5432   # PostgreSQL
+        - port: 6379   # Redis
+        - port: 9092   # Kafka

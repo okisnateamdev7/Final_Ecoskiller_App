@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-17-royalty": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-17-royalty.jar"]
+    }
+  }
+}

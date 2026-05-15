@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "mcp-redis-caching-session": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-redis-server.jar"],
+      "env": {
+        "REDIS_HOST":         "localhost",
+        "REDIS_PORT":         "6379",
+        "REDIS_PASSWORD":     "your-redis-password-here",
+        "REDIS_TLS_ENABLED":  "false",
+        "REDIS_DB":           "0",
+        "REDIS_MAX_POOL":     "20",
+        "REDIS_TIMEOUT_MS":   "3000",
+        "REDIS_KEY_PREFIX":   "ecoskiller",
+        "MCP_API_KEY":        "your-secret-api-key-here",
+        "LOG_LEVEL":          "INFO"
+      }
+    }
+  }
+}

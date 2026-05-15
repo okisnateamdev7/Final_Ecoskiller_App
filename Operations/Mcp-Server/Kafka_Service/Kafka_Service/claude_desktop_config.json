@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "ecoskiller-kafka-mcp": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-kafka-service-1.0.0.jar"],
+      "env": {
+        "MCP_API_TOKEN": "your-secret-token-min-32-chars",
+        "KAFKA_BOOTSTRAP_SERVERS": "kafka-0.kafka-headless.messaging.svc.cluster.local:9092",
+        "KAFKA_SASL_USERNAME": "ecoskiller-mcp",
+        "KAFKA_SASL_PASSWORD": "your-kafka-password",
+        "KAFKA_SECURITY_PROTOCOL": "SASL_SSL",
+        "KAFKA_SASL_MECHANISM": "SCRAM-SHA-512",
+        "ECOSKILLER_ENV": "dev"
+      }
+    }
+  }
+}

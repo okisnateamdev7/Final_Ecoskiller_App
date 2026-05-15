@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-18-governance": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-18-governance/target/mcp-18-governance.jar"]
+    }
+  }
+}

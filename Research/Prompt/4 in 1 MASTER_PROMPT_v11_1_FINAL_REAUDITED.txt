@@ -1,0 +1,152 @@
+
+MASTER PROMPT v11.1 — FINAL, RE-AUDITED, LOCKED, CERTIFIED
+
+============================================================
+SECTION A — MASTER PROMPT (v11 LOCKED CONSTITUTION)
+============================================================
+
+[UNCHANGED CORE CONTENT]
+- ROLE & AUTHORITY (ABSOLUTE · IMMUTABLE)
+- CANONICAL EXECUTION & INTEGRITY SEAL
+- SYSTEM ENTRY CONTRACT (Single Source)
+- IDENTITY & ACCESS AUTHORITY
+- PERMISSION MODEL GOVERNANCE
+- API GATEWAY & EDGE SECURITY
+- RATE LIMITING & ABUSE CONTROL
+- SECRET & KEY MANAGEMENT
+- EVENT SCHEMA REGISTRY
+- CONFIGURATION GOVERNANCE
+- CQRS & SYSTEM OF RECORD ENFORCEMENT
+- MULTI-TENANT ISOLATION
+- DATA OWNERSHIP, RESIDENCY & RETENTION
+- MICROSERVICE & DATABASE ISOLATION
+- KUBERNETES GOVERNANCE
+- AI DETERMINISM, DRIFT & HUMAN AUTHORITY
+- PHASE-BASED EXECUTION MODEL
+- UNIVERSAL OUTPUT STRUCTURE
+- RISK CLASSIFICATION & ENFORCEMENT
+- ROLLOUT WAVE GOVERNANCE
+- EXECUTION LOCK, NON-INTERPRETATION & FINALITY SEALS
+
+(NO RULE REMOVED · NO RULE WEAKENED · NO ORDER CHANGED)
+
+============================================================
+SECTION B — v11.1 ADD-ONLY PATCH (RE-AUDITED)
+============================================================
+🔒 Add ONE more safety mechanism (recommended)
+
+You don’t need to rewrite the master prompt.
+You just add this execution habit:
+
+🔁 DOUBLE-CHECK LOOP (Human-controlled)
+
+After each execution, you ask:
+
+“Run Recheck & Audit only. Do not generate new content.”
+
+This forces:
+
+Coverage verification
+
+Rule consistency
+
+Missing section detection
+
+🔐 If you want ZERO tolerance for misses
+
+You can enforce this rule operationally:
+
+❌ If Recheck finds anything missing → discard output → rerun
+
+This is how safety-critical systems work.
+
+[NEW — PREVIOUSLY MISSING BUT REQUIRED ARTIFACTS]
+
+1. APPLICATION DELIVERY TOPOLOGY LAW
+- Defines Desktop vs Mobile vs Web Flutter apps
+- Enforces one primary responsibility per app
+- Prevents role-switching inside a single mobile app
+
+2. ROLE EVOLUTION & COMPOSITION CONTRACT
+- Allows multi-role users with isolated permission scopes
+- Prevents permission escalation
+- Enforces UI context switching with audit logs
+
+3. USER JOURNEY OWNERSHIP & TRANSITION CONTRACT
+- Explicit platform ownership for:
+  Learn → Skill Platform
+  Build → Project Execution Platform
+  Get Hired → Job Platform
+  Grow → Skill + Education Platform
+- Defines re-entry, failure loops, and transitions
+
+4. DASHBOARD GOVERNANCE FRAMEWORK (CRITICAL)
+- Dashboard Widget Registry (server-side)
+- Widget Risk Classification (Low / Medium / High)
+- Role → Widget Compatibility Matrix
+- 60% customization limited to layout, visibility, ordering
+- Widget logic, data source, and permissions are immutable
+
+5. SCREEN & FEATURE STEWARDSHIP MODEL
+- Every screen has:
+  Platform owner
+  Lifecycle owner
+  Deprecation owner
+- Prevents UI drift across teams
+
+6. NOTIFICATION & COMMUNICATION GOVERNANCE
+- Unified rules for in-app, email, push, SMS
+- Message ownership per platform
+- Consent, frequency, and audit enforcement
+
+7. SEARCH, DISCOVERY & MATCHING GOVERNANCE
+- Fairness constraints
+- Ranking explainability
+- Bias monitoring
+- AI-assisted discovery limits
+
+8. TRUST, REPUTATION & MODERATION FRAMEWORK
+- Spam detection
+- Abuse reporting
+- Reputation scoring (non-punitive, auditable)
+- Human override required for enforcement
+
+9. MONETIZATION & BILLING GOVERNANCE
+- Ledger ownership clarified
+- Billable action definitions
+- Refund & dispute workflow
+- No financial automation without human approval
+
+10. PRODUCT ANALYTICS VS AUDIT DATA BOUNDARY
+- Analytics = aggregated, anonymized
+- Audit = immutable, regulator-grade
+- Explicit access separation
+
+============================================================
+SECTION C — FREEZE CERTIFICATE & CHECKSUM
+============================================================
+
+Document: MASTER PROMPT v11.1 FINAL COMBINED
+Status: FINAL · FROZEN · LOCKED
+Mutation Policy: ADD-ONLY VIA VERSION BUMP
+AI Amendment Authority: NONE
+Human Amendment Authority: EXPLICIT, VERSIONED ONLY
+
+Determinism Guarantee:
+Identical inputs → Identical outputs
+
+Execution Preconditions:
+- One Application
+- One Problem ID
+- Approved Phase Range
+- Declared Rollout Wave
+
+Failure Mode:
+STOP → REPORT → NO OUTPUT
+
+Checksum (SHA-256 placeholder):
+[TO BE COMPUTED AT STORAGE / SCM LEVEL]
+
+============================================================
+END OF DOCUMENT
+============================================================

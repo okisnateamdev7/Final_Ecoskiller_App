@@ -1,0 +1,152 @@
+# Ecoskiller — Redis State Store MCP Server
+# Kubernetes Deployment (k3s, realtime namespace)
+# Deploy alongside the GD Orchestrator and interview-service pods.
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: redis-mcp-server
+  namespace: realtime
+
+---
+# Secret — Redis credentials (inject via GitLab CI / Helm values)
+# kubectl create secret generic redis-mcp-secret -n realtime \
+#   --from-literal=REDIS_PASSWORD=<password>
+apiVersion: v1
+kind: Secret
+metadata:
+  name: redis-mcp-secret
+  namespace: realtime
+type: Opaque
+# stringData:
+#   REDIS_PASSWORD: <injected-by-helm>
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-state-store-mcp
+  namespace: realtime
+  labels:
+    app: redis-state-store-mcp
+    component: mcp-server
+    tier: infrastructure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-state-store-mcp
+  template:
+    metadata:
+      labels:
+        app: redis-state-store-mcp
+    spec:
+      serviceAccountName: redis-mcp-server
+
+      # Security context — run as non-root
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+
+      containers:
+        - name: redis-mcp
+          image: harbor.ecoskiller.internal/platform/redis-state-store-mcp:1.0.0
+          imagePullPolicy: Always
+
+          # MCP server runs as stdio process — no ports needed
+          command: ["java", "-jar", "/app/redis-state-store-mcp-1.0.0.jar"]
+
+          env:
+            - name: REDIS_HOST
+              value: "redis.realtime.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-mcp-secret
+                  key: REDIS_PASSWORD
+            - name: REDIS_TLS_ENABLED
+              value: "true"
+            - name: REDIS_TLS_CA_PATH
+              value: "/etc/ssl/redis/ca.jks"
+            - name: REDIS_DB
+              value: "0"
+            - name: REDIS_TIMEOUT_MS
+              value: "2000"
+            - name: ENV
+              value: "prod"
+            - name: AUDIT_LOG_PATH
+              value: "/var/log/ecoskiller/redis-mcp-audit.log"
+
+          # TLS CA certificate from Kubernetes secret
+          volumeMounts:
+            - name: redis-tls
+              mountPath: /etc/ssl/redis
+              readOnly: true
+            - name: audit-log
+              mountPath: /var/log/ecoskiller
+
+          resources:
+            requests:
+              cpu:    "100m"
+              memory: "128Mi"
+            limits:
+              cpu:    "500m"
+              memory: "256Mi"
+
+          # Read-only root filesystem for extra security
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+
+      volumes:
+        - name: redis-tls
+          secret:
+            secretName: redis-tls-certs   # Contains ca.jks
+        - name: audit-log
+          emptyDir: {}
+
+      # Only schedule on nodes where Redis is reachable
+      affinity:
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: redis
+                topologyKey: kubernetes.io/hostname
+
+---
+# RBAC — minimal permissions (no cluster-wide access)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: redis-mcp-role
+  namespace: realtime
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    resourceNames: ["redis-mcp-secret", "redis-tls-certs"]
+    verbs: ["get"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: redis-mcp-rolebinding
+  namespace: realtime
+subjects:
+  - kind: ServiceAccount
+    name: redis-mcp-server
+    namespace: realtime
+roleRef:
+  kind: Role
+  name: redis-mcp-role
+  apiGroup: rbac.authorization.k8s.io

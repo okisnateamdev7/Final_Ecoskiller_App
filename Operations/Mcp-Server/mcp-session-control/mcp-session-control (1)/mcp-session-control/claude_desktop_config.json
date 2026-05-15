@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "mcp-session-control": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-session-control-server.jar"],
+      "env": {
+        "SESSION_SERVICE_BASE_URL":   "http://localhost:3000",
+        "SESSION_SERVICE_AUTH_TYPE":  "bearer",
+        "SESSION_SERVICE_TOKEN":      "your-service-account-jwt",
+        "SESSION_SERVICE_TLS_VERIFY": "true",
+        "SESSION_SERVICE_TIMEOUT_MS": "10000",
+        "SESSION_DEFAULT_TENANT_ID":  "",
+        "SESSION_MAX_DURATION_SECS":  "14400",
+        "SESSION_HEARTBEAT_TIMEOUT":  "120",
+        "MCP_API_KEY":                "your-secret-api-key-here",
+        "LOG_LEVEL":                  "INFO"
+      }
+    }
+  }
+}

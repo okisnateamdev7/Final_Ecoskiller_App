@@ -1,0 +1,12 @@
+Screen Name,Feature / Purpose of Screen,Widgets Used
+Landing Page (Pre-Login,Introduce JobHai and allow users to browse and search jobs before login,"Header, Logo, Text, Job Search Bar, Location Selector,  Job List Preview, CTA Button, App Download Prompt "
+Login / Get Started Screen,Capture mobile number to initiate job seeker onboarding,"Phone Number Input,  Country Code Selector, CTA Button, Text"
+OTP Verification Screen,Verify user identity via OTP and complete authentication,"OTP Input Fields, Timer, Resend button, CTA Button"
+Profile Creation Screen (Basic Details),Collect minimum user details required for job matching,"Input Fields,  Single-Select Options, Location Selector, CTA Button "
+Role Selection Screen,Capture preferred job roles for personalized job recommendations,"Role Cards, search input, multiselect options,CTA button"
+Role-Based Experience Screen,Capture experience level for selected job role,"Experience Chips, role context display, cta button, progress indicator,"
+Job Listing & Discovery Screen,Display location-based job listings with filters and search,"Job Cards, search bar, filter panel, pagination controls"
+Job Detail & Apply Screen,Show full job details and enable direct job application,"Content Sections, icons, skill chips, apply button, share button"
+Apply Success & Similar Jobs Screen,Confirm job application and encourage applying to similar jobs,"Confirmation Message, job cards, safety info banner"
+Responses Screen,Display employer responses such as interview calls and invites,"App Download Prompt, response illustration, cta buttons"
+"Profile Screen	",Allow users to manage profile details and hiring readiness,"Profile Summary, edit actions, detail section, notification toggles"

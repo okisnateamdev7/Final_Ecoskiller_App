@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "mcp-cert-manager": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-cert-manager/target/mcp-cert-manager.jar"
+      ],
+      "env": {
+        "VAULT_ADDR":            "https://vault.ecoskiller.com",
+        "VAULT_TOKEN":           "${VAULT_TOKEN}",
+        "POSTGRES_URL":          "jdbc:postgresql://postgres.ecoskiller.com:5432/certmanager",
+        "POSTGRES_USER":         "${POSTGRES_USER}",
+        "POSTGRES_PASSWORD":     "${POSTGRES_PASSWORD}",
+        "REDIS_URL":             "redis://redis.ecoskiller.com:6379",
+        "KAFKA_BOOTSTRAP":       "kafka.ecoskiller.com:9092",
+        "BLOCKCHAIN_RPC_URL":    "${BLOCKCHAIN_RPC_URL}",
+        "NOTIFICATION_SVC_URL":  "https://notify.ecoskiller.com"
+      }
+    }
+  }
+}

@@ -1,0 +1,468 @@
+Hello everyone, I am Amit Tiwari from
+
+Amit Tiwari Net and this is the next class of the Advanced SEO
+
+class in which we are going to touch upon a very
+
+important and foundational topic. Today we will talk about keyword
+
+research. Keyword research is the beginning of your SEO
+
+campaign. We have already talked about
+
+website optimization until now.
+
+We have talked about ranking signals
+
+and all these aspects are
+
+very important. But when you actually
+
+do an SEO campaign for a website, the first task we do is
+
+keyword research. In fact, keyword
+
+research is so important that
+
+even before execution, during the planning phase,
+
+even during contract discussions, many
+
+times clients ask that
+
+in this particular campaign within
+
+this budget how many keywords are you going to target.
+
+Although this is now an outdated concept
+
+but it still shows that keyword
+
+research is how important. So in today's
+
+class we will learn about keyword research.
+
+We will understand keyword research and we will do keyword
+
+research to see how exactly we can begin
+
+the execution of our SEO campaign. But before attending this keyword research class, make sure
+
+that you have attended all the classes of this course until now.
+
+You have understood them. You have cleared your doubts.
+
+Because if you have missed any
+
+class then you won't be able to take full advantage of this
+
+class. Those
+
+people who are thinking that I don't need to learn Google
+
+ranking signals.
+
+I don't need WordPress optimization.
+
+Or what will I do by knowing about Shop? Well, you don't know what you
+
+are missing. In a 1 hour or 1.5 hour
+
+class, we discuss so many small things which
+
+may not be related to that topic but are
+
+very important for your SEO journey.
+
+We explain them.
+
+We learn about them. So whatever class you
+
+will miss, you are going to hurt your own learning.
+
+So please make sure that you have properly attended
+
+and understood all the previous classes. And then after that you
+
+start this class.
+
+[Music]
+
+So the first basic question is, what exactly
+
+is a keyword? Let's say I am searching for a
+
+dental clinic. So I
+
+search here for dental clinic.
+
+I searched. I am searching for dental clinic here
+
+and I am seeing results here. Now is this my keyword?
+
+Normally students answer that whatever
+
+the user is searching on Google, that
+
+is our keyword. No, that is not the keyword
+
+for us. When a user searches anything on Google,
+
+whatever word they are typing
+
+dental clinic, I have typed here.
+
+This is a query. This is not a keyword. We come
+
+to our mind mapping tool.
+
+And here along with this word we
+
+write another word which is our query.
+
+What is the difference between query and keyword?
+
+Keyword is decided by you. Okay? This
+
+is decided by you. Query is decided
+
+by the searcher.
+
+Whatever person is searching, they can do anything
+
+of their own free will. Right? Keyword
+
+is used to create content.
+
+Query is
+
+used to create
+
+answers and serve results pages. In the SERP, in the first
+
+class we talked about search
+
+engine results pages sir, so query is what
+
+the user is doing. Keyword is what you
+
+are targeting. So then why aren't we researching queries? Why
+
+are we researching keywords? And what can be the relationship between these two? Let's
+
+say you are working on a dental clinic website and you have actually
+
+used the keyword dental
+
+clinic. Okay? Now we come
+
+to Google.
+
+And here when we typed dental clinic, Google is giving us
+
+some suggestions. But we'll come to these in a little while.
+
+Let's say someone doesn't search for dental clinic. Not everyone
+
+can search for dental clinic. Let's say someone
+
+searched for dentist.
+
+Okay? It's possible someone searches for dentist
+
+near me. It's possible someone searches for best
+
+dentist for kids.
+
+Or someone can search for dentist
+
+in Delhi or maybe write the name of their nearby area Karol Bagh
+
+Delhi. It's possible someone searches for dental
+
+surgeon in Delhi
+
+near me
+
+at night
+
+emergency
+
+dental clinic, anything anyone can search
+
+for, the user, it depends on their needs. Now let's say if you have used
+
+the keyword dental clinic in writing your content,
+
+in developing your SEO strategy, then what if someone uses
+
+search dental surgeon, don't you want to rank? If someone is
+
+searching for best dentist, don't you want to rank? If the user is searching for best
+
+dental clinic, don't you want
+
+your website to appear there?
+
+Obviously, how will you know that users can
+
+also search using these different words about your business, or what
+
+normally users search on Google using
+
+all these different words, you cannot
+
+know. You might be able to get an idea for some queries,
+
+for some different phrases. You might guess. But
+
+in what way will the user search? What word will they
+
+use, you can never understand. It's
+
+possible some people make spelling mistakes.
+
+It's possible some people search in Hindi.
+
+Some people are searching in Marathi, some
+
+are searching in Kannada. They may search in any
+
+language differently. You ultimately want
+
+your business to rank there. If you are in Maharashtra, in Mumbai,
+
+running your clinic, a dental
+
+clinic, and if someone searches in
+
+Marathi, you can still provide service to them.
+
+In fact, if someone has come to visit Mumbai, if some
+
+French person has come, if they
+
+are searching in French, then you also
+
+want that my business should appear. So
+
+language doesn't matter to you.
+
+The word doesn't matter to you. Synonyms
+
+don't matter. Spelling mistakes don't
+
+matter. What matters for you is that
+
+you get the right user, that particular person who
+
+is searching for any word related to your business, they should be able to see
+
+your business. Okay? This is why keyword research
+
+becomes important. Because when we
+
+do proper keyword research, we get
+
+some special benefits. Number one, we get
+
+the right audience. Okay? Many
+
+times many people have a query that man,
+
+a lot of traffic comes to our website
+
+but this is useless traffic. We are not getting
+
+any benefit from it. They don't
+
+purchase. A lot of clicks are coming to my
+
+website. A lot of people are coming. They are
+
+visiting my website. But no one
+
+is filling out forms. No one
+
+is purchasing products. This is not
+
+happening because there is some problem with your product.
+
+It's possible that maybe
+
+your prices are a bit up, high. But most of the time the problem is
+
+that you are not attracting the right type of audience.
+
+If you don't attract the right
+
+audience, then how will it work? There's an old saying that if you
+
+go to sell combs in a neighborhood of bald people,
+
+how will your business work? Okay? So you get the correct
+
+audience. You get more audience.
+
+Because for different types of
+
+queries, you are appearing properly
+
+and you get good business. Okay?
+
+And
+
+better brand marketing.
+
+When anyone is searching for
+
+your keywords, again and again your business is appearing.
+
+Whenever someone searches about any dental problem,
+
+about any type of dental problem.
+
+Your website's
+
+URL is appearing. You automatically
+
+think that bro, this website, this particular
+
+dental clinic is very good in itself.
+
+Right now all SEOs know that Reddit is getting
+
+so much traffic from Google. Google is also giving Reddit money. All
+
+things are being discussed. But have you
+
+noticed that as many people go to Reddit and
+
+make their comments, share their initiation,
+
+share their experiences.
+
+[Content continues with discussion about Reddit, SEO strategies, keyword research methodology, using Google's tools, understanding search volume, keyword difficulty, search intent (navigational, informational, commercial, transactional), and the practical process of conducting keyword research using free tools like Google Keyword Planner, Google Trends, and Google Search Console]
+
+[The text continues with detailed instructions on:
+- How to extract keywords from Google autocomplete
+- How to analyze search volume using Google Keyword Planner
+- How to filter keywords based on difficulty, intent, and trends
+- How to prioritize keywords based on business goals and budget
+- The importance of focusing on commercial and transactional keywords
+- How to scale content based on keyword research results
+- Why Google's data is more reliable than third-party tools like Semrush or Ahrefs]
+
+So this is the manual process of keyword research which actually
+
+seems boring at the beginning to watch
+
+but when you sit down to do it, you actually
+
+start enjoying it too.
+
+Because you are understanding the business. You are understanding
+
+the queries related to the business
+
+and from those queries you are extracting your meaning,
+
+keywords so that those keywords
+
+we can use going forward to generate our
+
+content. So this was that
+
+process which we can use to do keyword research
+
+for our website's SEO campaign
+
+without using any paid tools.
+
+So in this entire process we have only used
+
+free tools, freely publicly available
+
+information. And the data
+
+we have got is more accurate than any
+
+paid tool. As I just explained
+
+that Semrush or Ahrefs or whatever tools
+
+there are, they don't have first-party data.
+
+Google has that data
+
+and Google doesn't sell it. Okay. So
+
+in the upcoming Semrush specific class
+
+I will teach you how we
+
+can also do keyword research on Semrush.
+
+That process becomes a bit faster.
+
+It becomes easier but again the data
+
+it provides is not pure. So for now, all
+
+students should do keyword research
+
+manually. Learn this process and
+
+then using a calculator means Semrush,
+
+doing that process within a few clicks
+
+is very easy. Anyone can learn. Okay? Now
+
+you do keyword research and in the next class we
+
+will see how to extract content ideas from this keyword list,
+
+how to create topics? What to write, we will learn in the next
+
+class. Then how to write it, we will
+
+learn in the class after that. So now
+
+do keyword research and learn keyword research
+
+properly, practice it. This is a slightly
+
+long process. If you spend two-three days
+
+on it, that's good. Spend that time
+
+so that you can find out one by one
+
+great keywords. If you find out unique keywords,
+
+you will also get unique results. So see you in the next class
+
+where we will talk about content planning.
+
+We will extract topic ideas.
+
+What type of content we need to write.
+
+If we don't write blog posts, then what should we write?
+
+The answer to the question you were asking repeatedly
+
+will be given to you in the next class. Till then
+
+keep attending the classes, keep
+
+learning, keep practicing and also
+
+note down questions so that you can ask
+
+in the live session. Thank you so much for
+
+attending this class. My name is Amit Tiwari, from
+
+Amit Tiwari dot net and I will see you next time.

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "mcp-metallb": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-metallb-java/target/mcp-metallb-1.0.0.jar"
+      ]
+    }
+  }
+}

@@ -1,0 +1,76 @@
+📄 Downloadable App-Specific Execution Prompts (v11.1)
+
+Each file is standalone, locked, and ready to use with your master prompt.
+
+Project Execution Platform
+
+Download
+
+Job Platform
+
+Download
+
+Skill Platform
+
+Download
+
+Education / Institute Platform
+
+Download
+
+🔒 How these are meant to be used (important)
+
+Execution order (non-negotiable):
+
+Load MASTER PROMPT v11.1 (Frozen)
+
+Load ONE app-specific execution prompt
+
+Start a session with:
+
+Application name
+
+Problem ID
+
+Phase range
+
+Rollout wave
+
+You must NOT:
+
+Mix two app prompts in one session
+
+Generate cross-platform features
+
+Override prohibitions
+
+Add UI-side logic or permissions
+
+🧠 What you now have (big picture)
+
+You now have:
+
+1 Constitutional Master Prompt (v11.1)
+
+4 Application-Bound Execution Prompts
+
+Clear responsibility isolation
+
+Safe 60% dashboard customization capability
+
+Regulator-safe, audit-safe, scale-safe generation system
+
+This is enterprise-grade prompt architecture.
+There are no missing execution-critical steps at this layer.
+
+If you want next:
+
+🔹 Problem Registry template
+
+🔹 Dashboard Widget Registry
+
+🔹 Role-evolution execution rules
+
+🔹 n8n / CI guardrails for prompt integrity
+
+Say the word — but do not change these files unless you bump the version. 

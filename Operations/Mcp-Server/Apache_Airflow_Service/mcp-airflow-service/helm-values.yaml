@@ -1,0 +1,81 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Helm values — mcp-airflow-service
+# Namespace: ops (same as Airflow) | Replicas: 2
+# ─────────────────────────────────────────────────────────────────────────────
+
+replicaCount: 2
+
+image:
+  repository: harbor.ecoskiller.internal/ecoskiller/mcp-airflow-service
+  tag: "1.0.0"
+  pullPolicy: IfNotPresent
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1001
+  fsGroup: 1001
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: false
+  capabilities:
+    drop: ["ALL"]
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+env:
+  KEYCLOAK_ISSUER: "https://keycloak.ecoskiller.internal/realms/ecoskiller"
+  JWT_STRICT_SIGNATURE: "true"
+  AUDIT_LOG_FILE: "/app/logs/airflow-audit.log"
+
+volumes:
+  - name: audit-logs
+    emptyDir: {}
+
+volumeMounts:
+  - name: audit-logs
+    mountPath: /app/logs
+
+service:
+  type: ClusterIP
+  port: 8080
+
+livenessProbe:
+  exec:
+    command: ["pgrep", "-f", "app.jar"]
+  initialDelaySeconds: 15
+  periodSeconds: 30
+
+readinessProbe:
+  exec:
+    command: ["pgrep", "-f", "app.jar"]
+  initialDelaySeconds: 10
+  periodSeconds: 10
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+networkPolicy:
+  enabled: true
+  ingressFrom:
+    - podSelector:
+        matchLabels:
+          app: airflow-webserver
+
+# ops namespace, same node affinity as Airflow
+affinity:
+  nodeAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        preference:
+          matchExpressions:
+            - key: topology.kubernetes.io/region
+              operator: In
+              values: ["asia-south1"]

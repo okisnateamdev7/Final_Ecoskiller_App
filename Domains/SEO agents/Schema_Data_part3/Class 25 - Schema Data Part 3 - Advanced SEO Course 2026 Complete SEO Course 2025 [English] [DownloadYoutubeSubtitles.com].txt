@@ -1,0 +1,1823 @@
+Hello everyone, I am Amit Tiwari from amittiwari.net and this is the 25th class of the Advanced SEO course.
+
+In today's very special class, we will completely wrap up the topic of schema data.
+
+So, in schema data, we have not yet learned how to make video and product-type schema data.
+
+We will see that in today's class.
+
+Apart from this, we will see how you can implement schema data with a plugin and without a plugin on your website.
+
+And along with that, there is another topic, which is to implement schema data on your website with Google Tag Manager.
+
+But we will leave this for the section of Tag Manager.
+
+We will complete this in the same class.
+
+So, this class is very special.
+
+But before we move forward with the class, we have a small request from you all.
+
+Take 5 seconds and tell me in the comment section that how many classes of this course have you attended so far?
+
+Apart from that, if you have any question or doubt in this particular class or any other class, you can ask.
+
+And even if you don't have any doubt, tell me, everything is fine.
+
+See, you attend the class.
+
+After attending the class, you make notes, that's fine.
+
+But I don't get feedback.
+
+It's not a live class where I get your feedback.
+
+So, give me the feedback in the comment section.
+
+And if you are going to the comment section, then press the like button once.
+
+Let's go.
+
+So, now let's go to the computer screen and start the schema data class.
+
+But we have just launched another very smoky video on our English channel, Amit Tiwari Decoded.
+
+We have uploaded a video there, in which you can learn a new tool called Comfy UI.
+
+And this new tool gives you the freedom to do anything from text to image, image to video, video to animation.
+
+How to install a free diffusion model.
+
+How to make a node in Comfy UI by using a free diffusion model.
+
+How to increase your skill set in AI.
+
+How to interest the client.
+
+All these things are in that video.
+
+Go and subscribe to the channel.
+
+Watch the video.
+
+And tell me which new AI-related workflows we can make in the upcoming videos.
+
+So, go to the English channel and watch that video as well.
+
+But now let's start today's class.
+
+Let's go to the computer screen.
+
+So, we have reached the computer screen.
+
+And now it's time to see the product-type schema data.
+
+So, let's go to the drop-down and select the product-type schema data.
+
+Now, as I'm continuously seeing that this tool gives you a broad structure of schema data.
+
+And we have to customize it according to our needs every time.
+
+Improve it.
+
+Now, because we have to have a product-type schema data,
+
+We need product details as well.
+
+Carefully we don't keep any details.
+
+So, go on amazon.com.
+
+And let's take a product.
+
+This is the box of stanley
+
+Stanley box is also available in Arabic language.
+
+So, you can see the links to download the amazing docs in the web.
+
+Loads up.
+
+Obviously, you can see a lot ofinha elements here.
+
+To digest the whole skill set.
+
+So, go on amazon.com.
+
+And let's take a product.
+
+This is the box of stanley.
+
+Stanley box is also famous.
+
+We have a box of stanley in India.
+
+So, one by one we will enter the details of this product in the schema data.
+
+And let's see after this whether it is correct or not.
+
+So, first of all we need the name of the product.
+
+Let's copy the name of the product.
+
+It is a very long name.
+
+But no problem.
+
+There is no word limit here.
+
+We have put the name of the product here.
+
+After this image URL.
+
+Look at the image URL.
+
+In many places it becomes a logo.
+
+And in many places it becomes an image of the product.
+
+Now, there is no logo of the product.
+
+There is a logo of the company.
+
+There is no logo of the product.
+
+This is the logo of stanley company.
+
+You can see this.
+
+This is stanley.
+
+But this is not the logo of the product.
+
+This is the logo of the brand.
+
+So, we will need the image of the product.
+
+So, let's right click here once.
+
+We got this image.
+
+Let's right click.
+
+Let's add a copy image on the green image.
+
+And paste it here in the schema data.
+
+One image that shows that product well.
+
+After this, the brand.
+
+What is the brand?
+
+It is stanley brand.
+
+We have copied it from here.
+
+We have pasted the information of the brand.
+
+After this, the description of the product.
+
+The description of the product will be on your product page.
+
+Whatever it is, paste it here.
+
+This is the description.
+
+Let's use it for a while.
+
+Cool.
+
+We have come here.
+
+We have entered the description of the product here.
+
+Okay.
+
+After this, you have to put the properties of identification.
+
+What is the meaning of identification?
+
+SKU is normally used.
+
+SKU troubles the executives in the beginning.
+
+You are working on an e-com website.
+
+And it is necessary to give SKU information here.
+
+If you do not give SKU information, it will throw an error.
+
+But SKU information is not decided by SEO.
+
+SKU information is decided by the manufacturer.
+
+What is the SKU of the manufacturer? SKU is the identifier of a product.
+
+If you come here, you will get SKU information here.
+
+Even if you do not get SKU information,
+
+SKU information is mostly available in the product.
+
+Let me search once.
+
+SKU is not available.
+
+There must be some other identifier.
+
+There must be some other identifier here.
+
+SKU, GTI, NHA, 8, 13, 14, MPN.
+
+There must be some other identifier.
+
+If you select the SKU identifier here, then you will get the SKU value. Let's say 00086.
+
+Something like that.
+
+There will be some such number.
+
+SKU information is given by the product manufacturer.
+
+It is the unique identifier of the product.
+
+You have added this information here.
+
+After this, you have to select one of the three, offer, aggregate offer, or none.
+
+If you select none, then you will not get any offer information.
+
+But then you will get a warning when you check the schema data.
+
+If I check now,
+
+I will go to the Rich Result Testing Tool.
+
+Then I will test it once.
+
+Let's see what error occurs here.
+
+Invalid is showing now.
+
+What is the critical issue in Invalid? There is no offer, review, or aggregate rating.
+
+There is no aggregated rating or review because we have not added it yet.
+
+But there is no offer either.
+
+Let's add an offer here.
+
+Here it is.
+
+This is either an aggregate offer, which is a combination of many offers, or an offer. What is the URL of the offer? Let's add the URL of the product page here.
+
+Here is the URL of the product page.
+
+We have added it here.
+
+What is the price currency?
+
+This is the currency of this product.
+
+Right now, it is USD.
+
+It is $27.
+
+Here it is.
+
+United States.
+
+We have selected the dollar.
+
+What is the price? 27.
+
+How long is this price?
+
+You have to give the details of the offer.
+
+Details means how long will it be available at this price.
+
+You have provided it here.
+
+Is it in stock?
+
+What is the item condition?
+
+New.
+
+The product is in stock.
+
+Someone can purchase it.
+
+Why is this information important?
+
+Many times in e-commerce websites, and we cover this more in e-commerce SEO, but many times what happens is that in many e-commerce websites, there is a constant struggle that when our product is out of stock, what should we do on our page at that time?
+
+Should we make that page 404?
+
+What should we do with that page? People don't understand.
+
+People make mistakes.
+
+Because if a product is out of stock and you don't give the right signal, Google can make your page 404.
+
+Because no one can purchase that product at that time.
+
+So the product that cannot be purchased, there is no point in Google searching that page.
+
+So one way to fix this kind of issue is that here we make our out-of-stock product scheme out-of-stock only.
+
+So Google can find out in the header that this product is there, all its details are correct, but it is not available now. It cannot be purchased.
+
+Okay? But for now, we don't go towards bad things.
+
+We keep it in-stock.
+
+May God keep all your products in-stock.
+
+If your item is a used item, refurbished, damaged, whatever the condition, let's say you work for such a marketplace where used and refurbished items are sold, then you can use this kind of schemata.
+
+You can select used or refurbished.
+
+But otherwise, you keep it new.
+
+Okay? Keep it new.
+
+Again, don't do this information wrong.
+
+It shouldn't be that in your website, it is written that it is a refurbished, used item, open box item.
+
+Nothing like this should happen.
+
+Okay?
+
+After this, we come to the aggregated rating value. Aggregated rating means what is the average rating of a particular product.
+
+Suppose I come here and search.
+
+A sweet shop in Mumbai.
+
+No.
+
+I will not select nearby.
+
+Otherwise, I feel like eating.
+
+So? Okay.
+
+I selected one here.
+
+D the mother sweet shop.
+
+Okay? Now, I want to show you an example here.
+
+Okay? See, there is a little confusion here.
+
+What is the aggregated rating?
+
+What is the number of rating? What is the highest value?
+
+What is the lowest value?
+
+You will understand all these things here.
+
+Here, what is the average rating of this particular sweet shop?
+
+What will be the rating called? 4.3.
+
+Right? This 4.3 is its average rating.
+
+This is our aggregated rating.
+
+4.3.
+
+Okay? After this, number of rating.
+
+What is the rating given to this product here?
+
+This sweet shop.
+
+It is not a product.
+
+3.6 K.
+
+Okay? Let's come back here.
+
+We can't write 3.6 K.
+
+We will write 3600.
+
+3.6 K means 3.6 thousand.
+
+3.6 thousand means 3600.
+
+This is the number of rating given.
+
+What is the highest value allowed?
+
+Here, if you are on Google My Business, in Google Business, if you start rating a business, then how many ratings can you give?
+
+How many ratings you can give?
+
+At max.
+
+If I click on the write a review button here, then I will get here.
+
+How much can I give maximum? 5 star rating.
+
+Correct? So we will write 5 star rating here.
+
+Maximum number allowed? 5.
+
+What is the lowest number allowed?
+
+The lowest can't be 0.
+
+It can't be that I don't select even 1 star here.
+
+And here I write sweet good shop.
+
+After this, if I want to post, then I can't post.
+
+Because I have not selected any star rating.
+
+Minimum I have to do 1.
+
+So how much is the lowest possible?
+
+Let's come here and add.
+
+1.
+
+Okay? What is aggregated?
+
+What is the number of rating?
+
+What is the highest value?
+
+What is the lowest value?
+
+You can see here.
+
+We have added the star rating.
+
+Now let's click on the add review button.
+
+See what is the rating?
+
+Rating is the star value which you have given.
+
+This is the rating.
+
+This is the review.
+
+Okay? This is rating.
+
+Star rating.
+
+This is the review which you are writing the text.
+
+Which you are adding the image, which you are posting the video.
+
+So you can see the star rating.
+
+How many stars? 5.
+
+How much is the lowest? 5.
+
+After this, you can choose the lowest.
+
+At 10.
+
+How many stars? 5.
+
+How much is the highest? 5.
+
+How much is the lowest? 5.
+
+This is the highest.
+
+5.
+
+How much is the lowest? So, now we have given the rating and now we are giving the information of the review. Let's click on the add review button. Who is the reviewer? Let's say, let's come here. Let's use their reviews. Yes, let's discard it.
+
+Why should we give a fake review?
+
+Let's see here.
+
+Let's select one of their reviews.
+
+Here is Mr. Sameer Solanki.
+
+He has given the review.
+
+He has given it to some other business but let's use it.
+
+Sameer Solanki is the name of the reviewer.
+
+Okay.
+
+We have come to the schema data generator again.
+
+And then we have added the name of the reviewer, Sameer Solanki.
+
+What is the body of the review?
+
+That is, what is the text total?
+
+Here is the text total.
+
+Okay.
+
+We copied it from here and then pasted it here.
+
+I know what is going on in your mind.
+
+How much will you copy and paste?
+
+Wait a minute.
+
+Be patient.
+
+You will find out now.
+
+Okay.
+
+After this, let's come here and see how much rating has been given.
+
+Five star rating has been given.
+
+Okay.
+
+So, we have come here.
+
+And what is the rating given?
+
+Okay.
+
+What was the date?
+
+When was this review given?
+
+He gave the review two years ago.
+
+Okay.
+
+Let's assume two years ago.
+
+We have taken the date here.
+
+You have selected a two-year-old date.
+
+Okay.
+
+Now, who is going to write the author?
+
+This is a little confusing.
+
+Look, Sameer Solanki has given the review.
+
+If this is the case, think of a hypothetical scenario.
+
+Maybe someone else purchased this product.
+
+Okay.
+
+It means someone else was using it.
+
+But here he did not make a Google profile.
+
+Maybe Sameer Solanki came and posted it.
+
+Maybe his friend was Rajesh.
+
+Rajesh had used this product or service.
+
+So, what will happen now?
+
+The author's name is Sameer Solanki.
+
+It has come here.
+
+But the reviewer's name is Rajesh.
+
+But this rarely happens.
+
+Mostly, it happens that the person who has purchased the product, who is using it, is writing his name here.
+
+So, both these things can be used in the name of the same person.
+
+It is important to tell this so that there is no confusion that what is the name of the reviewer and what is the name of the author.
+
+Because many times people give the name of the website in the name of the author.
+
+That is wrong.
+
+So, the name of the reviewer is known.
+
+The name of the author is known.
+
+Both can be the same person.
+
+Or just in case.
+
+Let's say, an example.
+
+Let's say you purchased a product.
+
+You just went to a dentist.
+
+Sorry, I know many people find the dentist's example boring.
+
+But it fits here.
+
+It fits seriously.
+
+So, suppose you go to the dentist.
+
+And you go to the dentist with your father.
+
+Your father is old.
+
+You took him.
+
+You got his fake teeth fixed.
+
+Okay.
+
+Now you have to review the dentist.
+
+Okay.
+
+So, what do you do now?
+
+Who is the reviewer?
+
+Your father.
+
+Because he got his teeth fixed.
+
+But who is writing?
+
+Because your father has not made your Google profile.
+
+He does not want to give a review.
+
+The doctor was after you to give a review.
+
+Give a review.
+
+So, you said, let me give a review on behalf of my father.
+
+So, now when you are writing a review, you are the author.
+
+But who is reviewing?
+
+Your father is reviewing.
+
+Right? His teeth have changed.
+
+Yours have not changed.
+
+Everything is fine.
+
+I hope you understood the difference between a reviewer and an author.
+
+Okay.
+
+After this, comes the publisher.
+
+Who is the publisher here?
+
+The publisher is Google.
+
+Google Maps to be precise.
+
+Okay.
+
+It is being published here.
+
+Now, what is the importance of this publisher value?
+
+See, many times what happens is that people open their D2C business.
+
+They open e-commerce business.
+
+People have not yet given a review on their website.
+
+There are many such products.
+
+There are countless such products.
+
+There are thousands and millions.
+
+Which are sold only on other third-party websites.
+
+They are sold on Myntra.
+
+They are sold on Nykaa.
+
+They are sold on Flipkart.
+
+They are sold on Amazon.
+
+They are sold on Blinkit.
+
+But they are not being sold on their own website.
+
+Okay.
+
+It is totally fine.
+
+But that product is getting a review somewhere.
+
+Sometimes it is available on Amazon.
+
+Sometimes it is available on Blinkit.
+
+Sometimes it is available on Flipkart.
+
+And you can use those reviews.
+
+You can put them on your website.
+
+I remember recently I was talking to an SEO of my D2C brand.
+
+And he was very surprised.
+
+He was very surprised that he can put reviews on other websites.
+
+He can put reviews on other websites.
+
+He was afraid that if he does this, Google will punish him.
+
+First of all, Google doesn't have a staff or person who can sit and check.
+
+That the review you have put is actually of your customer.
+
+Google doesn't care about us that much.
+
+Google is the government.
+
+The government doesn't care about you that much.
+
+Okay.
+
+So you can use other website reviews.
+
+And you can give information here.
+
+That my review is coming from Google Maps.
+
+Or it is coming from Amazon.
+
+Or it is coming from Blinkit.
+
+Wherever your review has been posted, you can add that information here.
+
+Okay.
+
+It is not there.
+
+If you are making and publishing reviews from your side, you are not getting reviews.
+
+It is a new product.
+
+You are selling it.
+
+You are using this review type schema data on your website.
+
+Okay.
+
+So you have filled all the information here.
+
+Now after filling so much information, when you will test this schema data again,
+
+So now hopefully you will not get any error.
+
+See, now there is no error here.
+
+Product snippets type of schema data you have seen.
+
+Merchant listing type of schema data you have seen.
+
+Review type of schema data you have seen.
+
+You have got all three at once.
+
+Product type of schema data you have put.
+
+But you have got everything else.
+
+The first issue that is shown here is Invalid string length.
+
+That is, the length of the product name is too much.
+
+Reduce it a little.
+
+So this is a warning.
+
+You can change it yourself.
+
+Correct the name.
+
+After this, shipping details and merchant return policy.
+
+You have not added this information yet.
+
+That is, how will you ship the product?
+
+And merchant return policy.
+
+That is, what is the return policy on your website?
+
+You have not given this information in the schema data.
+
+Which you really did not give.
+
+If you look here, then in this whole place,
+
+There is no merchant return policy anywhere.
+
+TechnicalSEO.com has not updated the return policy yet.
+
+You can do it.
+
+The schema data sample that we are going to give you,
+
+All members will get it.
+
+In their portal, you will get the entire schema data type document.
+
+In the first class and the second class,
+
+In that also, the schema data template that we made,
+
+We used it.
+
+We provided you the entire template.
+
+You can go and download it.
+
+And those who are surprised that I am not a member,
+
+How do I download?
+
+Take membership.
+
+It is only Rs. 29.
+
+It is just a way to check who all are subscribed.
+
+That is why there is a small gate.
+
+Because still 60-70% people are subscribed to these classes.
+
+But 30-40% people are still not subscribed.
+
+So if you are watching,
+
+Until now you have attended the class.
+
+And you have not subscribed,
+
+Click the subscribe button.
+
+I also want to know who is watching and how many people are watching.
+
+If I do not get feedback, how will I run the class?
+
+Cool.
+
+So subscribe.
+
+And then let's move on to the class.
+
+So this product type schema data,
+
+You have made it this way.
+
+Okay.
+
+Now let's come to the video type schema data.
+
+Let's come to the video type schema data.
+
+And here we have to make video type schema data.
+
+Video type schema data is a very good thing in itself.
+
+Because when you put video type schema data on your website,
+
+Then you are giving Google the correct information about your video.
+
+With which it can use your video and index it.
+
+Okay.
+
+And your website can show your video.
+
+With Google's video type data.
+
+Because you can see a lot of video type data.
+
+If I search after coming here,
+
+How to tie a tie.
+
+First of all, you can see the shots of YouTube,
+
+You can see Facebook,
+
+You can see Instagram.
+
+You can also see videos below it.
+
+Okay.
+
+Still the video link is coming.
+
+Because this type of results are useful.
+
+They are useful for a lot of things.
+
+Now this is a little bit in itself.
+
+Many times people get confused.
+
+This is from YouTube.
+
+If I am putting schema data on my website,
+
+Will YouTube benefit from it?
+
+What will I benefit from it?
+
+No, nothing like that happens.
+
+When you put schema data on your website,
+
+You are basically putting a connection between your website and your YouTube video.
+
+If your website is doing well,
+
+Then your YouTube video will also do well.
+
+Both things are linked to each other.
+
+So here we have made schema data of video type.
+
+So let's pick up a YouTube video.
+
+We go to youtube.com
+
+Slash Amit Tiwari Decoded.
+
+This is our English channel.
+
+Let's come to this.
+
+We want to use this video.
+
+To generate this particular schema data.
+
+Okay.
+
+So here first of all,
+
+We have copied the name of the video.
+
+Oh, I didn't like it.
+
+Let's also like our video.
+
+Here first of all,
+
+You have to put the name of the video.
+
+We have added the name.
+
+After this,
+
+You have to add the description of the video.
+
+For the description,
+
+We have opened the description here.
+
+And copied it.
+
+Okay.
+
+After this,
+
+We have pasted the video description here.
+
+After this,
+
+What will be the upload date?
+
+Let's see the upload date from here.
+
+27th, 2025.
+
+So here,
+
+We select the date.
+
+27th, 2025.
+
+How many minutes and how many seconds is the video?
+
+We will get to know by coming here.
+
+The total length of the video is 19 minutes and 21 seconds.
+
+So we come here.
+
+Let's put 19 minutes.
+
+The length of the video.
+
+And the seconds are 21.
+
+Okay.
+
+After this,
+
+The URL of the thumbnail.
+
+See the URL of the thumbnail is not written here.
+
+It is compulsory.
+
+But it is compulsory.
+
+If you do not provide the URL of the thumbnail with the video,
+
+Google will throw the video type schema data.
+
+Okay.
+
+It will not be used at all.
+
+So we come back here.
+
+And after this,
+
+We pick the URL of the thumbnail of this video.
+
+The URL of the thumbnail.
+
+How will you add it on your website?
+
+This becomes a question in itself.
+
+Now, This is a simple way.
+
+So we come to Google.
+
+And run the search of YouTube Thumbnail Downloader.
+
+Whatever the first URL comes,
+
+We click here.
+
+And then after this,
+
+We have pasted the URL of our video here.
+
+After pasting,
+
+Click the Enter button.
+
+And immediately we see the URL of the thumbnail of our YouTube video.
+
+Right click on it.
+
+Click on this button called Copy Image Address.
+
+Come back to the schema data.
+
+And here,
+
+Click on Thumbnail URL 1.
+
+We can paste the URL of our thumbnail here.
+
+Okay.
+
+So here,
+
+The URL of the thumbnail hosted by YouTube.
+
+We get it here.
+
+Sometimes when you put video type schema data on your website.
+
+Especially, Use a plugin on the WordPress website.
+
+So those plugins,
+
+Download the file of your videos.
+
+Upload it on the website.
+
+And after uploading it on the website,
+
+Make some URL like this.
+
+In which,
+
+Yourwebsite.com Slash, Let's say,
+
+Image slash thumbnails.
+
+then yourthumbnail.jpg
+
+This is how you create a custom URL.
+
+You can see the invalid URL here.
+
+Notice that I didn't use HTTPS.
+
+So, this is how you can create a custom URL.
+
+You can also see the YouTube URL here.
+
+Both are fine.
+
+It doesn't matter which URL you choose.
+
+But, it is important to have a custom URL.
+
+And if someone visits that URL, then you should be able to see the thumbnail of that video.
+
+This is one thing.
+
+In some websites, a common hack is used.
+
+Let's say your website has thousands of videos.
+
+And the thumbnails of thousands of videos are continuously uploaded on the website.
+
+So, sometimes the website slows down.
+
+The media is increasing.
+
+Every image has a different size.
+
+In such cases, we can use this method.
+
+We can upload the images on a CDN and pull the URL from there.
+
+Another way is to create a common thumbnail.
+
+A branded common thumbnail.
+
+Let's say we have a website URL here.
+
+Let's add it here.
+
+The name of this image is Default Thumbnail.
+
+This is a common thumbnail for everyone.
+
+Let's add this URL to all the videos.
+
+This also works.
+
+But, it only works when you have thousands of thumbnails and you don't want to spend money on CDN or image hosting.
+
+This method can also work.
+
+It doesn't harm.
+
+But, if you have a small website, then it is better to use a custom thumbnail.
+
+After this, we have Content URL and Embed URL.
+
+What are Content URL and Embed URL?
+
+You already know the URL of a YouTube video.
+
+But, what is the URL of a Content URL?
+
+If this is a YouTube video, then what will be the Content URL?
+
+The Content URL will be the URL of your YouTube video.
+
+We will copy it here.
+
+And then we will paste it here instead of the Content URL.
+
+So, this is the URL of the video.
+
+After this, we also need an Embed URL.
+
+That is, which URL can we embed directly.
+
+There is a URL with a set pattern.
+
+I keep forgetting it.
+
+After coming here, you click on the Embed button.
+
+What did you do?
+
+You clicked on the Share button.
+
+After clicking on the Share button, you clicked on the Embed button.
+
+So, you get this URL.
+
+You get something like this.
+
+https://youtube.com Embed value is here.
+
+Embed is here.
+
+So, we copied this value from here.
+
+And then we pasted it here.
+
+So, if you see both the URLs, the Content URL and Embed URL, only Embed is written instead of Watch.
+
+This is the only difference.
+
+Otherwise, both the URLs are the same.
+
+So, instead of Content URL, you can put Content URL.
+
+Instead of Embed URL, you can put Embed and use this URL instead of Watch.
+
+There is another scenario.
+
+See, all the videos are not on YouTube.
+
+It is not necessary for every website to upload its video on YouTube.
+
+Only then you will get this Content URL and Embed URL.
+
+Every website has its own pattern.
+
+For example, on www.ajtak.com, your own videos are uploaded.
+
+So, in such scenarios, when you make a thumbnail, the URL of the thumbnail, your video hosting platform, will always give you the option to upload a thumbnail.
+
+Because no video can be uploaded without a thumbnail.
+
+Otherwise, what will be shown in the preview?
+
+So, here you will get the URL of the thumbnail.
+
+You can pick the URL from your hosting platform.
+
+How will you get the URL of the content?
+
+Let's come to this example.
+
+Here you can see the iFrame on the side.
+
+This is the Embedding URL.
+
+This is the Content URL.
+
+So, instead of Content URL, you will have to put the URL of this page.
+
+Let's come here.
+
+We have copied the URL of this page.
+
+Let's paste this instead of Content URL.
+
+After this, where will you get the Embed URL?
+
+Let's come back to the website.
+
+Here you can see the Embed URL.
+
+We just have to copy this.
+
+After coming here, we can paste the Embed URL that we have got so far, which is Embed.Aztec.in.
+
+So, for both of these things, you can talk to your developer.
+
+You just have to get the Content URL i.e.
+
+where the video is.
+
+And Embed URL, from where the video can be embedded in some other page.
+
+You have to put both the information here.
+
+And then after this, your schema data of video type is also created.
+
+So, in this class, you have seen all the major schema data that you have to create.
+
+In every type of schema data, if you see, the structure here is more or less the same.
+
+This is structure data.
+
+It is very easy to understand.
+
+If you make it for the first time, second time, and third time, you will get confused.
+
+But if you make it again and again, you will understand all this structure.
+
+Context, type, name, and description.
+
+Okay? So, what will happen in the description?
+
+What will happen in the description, name? Is the video named?
+
+If it was a product, then the product would be named.
+
+All this makes sense completely if you don't get scared of the code once.
+
+If you start looking at it.
+
+Okay? So, here, you have seen all the content.
+
+So, here, you have learned to create all the major schema data.
+
+Now, we will work on pasting this schema data on our website.
+
+So, now, let's come to the implementation part.
+
+And first of all, whenever we go to implement schema data, you have to see what kind of web page you are going to implement this schema data on.
+
+So, the normal question we get is, how to use schema data in a custom coded website?
+
+Okay? So, we will show you a custom coded website.
+
+This is our custom coded website.
+
+If you pay attention to the URL, this is just an HTML file which we are running.
+
+So, the custom coded website looks something like this.
+
+Basically, it looks like this in any way.
+
+But the code for this is made by some developer for you, which he can completely edit.
+
+So, the source code for this HTML page is here.
+
+I have it open in brackets.
+
+And there are two parts in this HTML source code.
+
+Head and body.
+
+I had explained this in the second class, in the first class.
+
+Head and body are only two parts.
+
+So, here we have expanded the body part before the head part.
+
+We have to put schema data in the head part.
+
+Okay? Let's come back here.
+
+We have made schema data for this landing page of local business type.
+
+Now, before this, you click on the copy button here and use schema data.
+
+You should test it.
+
+Whether you test it in bulk or you use some plugin whose output is already tested.
+
+But make sure that schema data is correct.
+
+If schema data is not correct and you still use it, then the responsibility will be yours.
+
+Here, we have clicked on this Google test button.
+
+We have reached the test.
+
+We click on this button called test code.
+
+It will run a test and tell us whether our schema data is correct or not.
+
+It is very, very important to be correct.
+
+So, let's run it here.
+
+And then we have these two types of schema data.
+
+Local business and organization.
+
+Both types of schema data are added here.
+
+Wow! Now, how do we implement this schema data?
+
+We have copied it here.
+
+Now, we come here in the heading section of our landing page.
+
+Now, here you can see the script section and the style section.
+
+This is an HTML made in a hurry.
+
+Script and style.
+
+That is, if you want, you can add schema data as soon as the heading section opens.
+
+But schema data is not required to be given before all other elements.
+
+The page rendering and the styles rendering are very important.
+
+So, we wait and add schema data right before the heading section finishes.
+
+Right before it finishes, we paste the schema data on top.
+
+That's all you have to do to use schema data in a custom coded website.
+
+You have to provide schema data to your developer and say, where the head is about to finish, this slash head where it is coming, forward slash head where it is coming, right before the head tag closes, paste our schema data.
+
+That's all you have to do.
+
+After that, save the file and schema data is done.
+
+That's all you have to do to use schema data in a custom coded websites.
+
+After that, there's a second step in the website that if the website is not custom coded but CMS, how can we implement schema data?
+
+You have many methods.
+
+Either make your website CMS that is, on Word Press or Shopify or anywhere you have the same schema data.
+
+You have to implement schema data on that website or you have to have schema data for a very specific code.
+
+How do you implement schema data on that website or how can you give schema data in your website however you and how you want to share it.
+
+You can share schema data in your website from one page to the next to the next page.
+
+The M.
+
+The way to implement schema data on your website is by doing this on the website.
+
+What I'm going to show you is something called schema data and schema data is a feature that will help you implement schema data on your website.
+
+I'm going to show you the feature.
+
+The way to implement schema data on your website, is by doing this on the website.
+
+I'm doing my part.
+
+Credit goes all to you.
+
+Not to me.
+
+All to you.
+
+So, let's come to the add plugin section.
+
+I thought someone reset the website.
+
+It hasn't happened yet. I have not harmed or hurt this website, even though its login details are publicly open.
+
+If you are watching this video for the first time, then this is the admin, and this is its password.
+
+This one, that two, them three.
+
+This is the password.
+
+So, use this website.
+
+If you can't create a website, then use this website and practice.
+
+This is all yours.
+
+So, again, I will log in.
+
+I liked it.
+
+Let's click on the Add Plugin button.
+
+Let's search for Schema Data.
+
+Okay.
+
+Let's search for Schema Data.
+
+And then you will get a lot of plugins here.
+
+There are a lot of plugins.
+
+It's not like that.
+
+There are a lot of useful plugins.
+
+And they provide Rank Math, etc.
+
+But there is one plugin.
+
+This is our Schema and Structure Data for WP and AMP.
+
+It gives you the option to add custom Schema Data.
+
+So, this is why I like it a lot.
+
+I forget its name every time.
+
+Magazine 3 reminds me of this name.
+
+So, here we have installed this plugin.
+
+Let's activate it.
+
+Look, consider SEO like a cycle.
+
+You have to practice so many times that your brain doesn't remember the words, but your hands and eyes start working on their own.
+
+When you keep working continuously, that day will come.
+
+So, here we have installed Schema and Structure Data for WP and AMP.
+
+There are some basic settings too.
+
+If we click on the settings button, you can establish some basic settings here, which will do a lot of your work.
+
+For example, here you can select your About Us page.
+
+Select the Contact page.
+
+And then you can add it.
+
+I want to add a Website type Schema Data to this page.
+
+Click on the Site Link Search box too.
+
+If you want an Author type Schema Data, and you want to use it, here is the Author type Schema Data.
+
+In this, you have to select the Person type Schema Data.
+
+So, wherever there is an Author page on your website,
+
+Person type Schema Data will be created automatically.
+
+You don't have to use any other plugin.
+
+You don't have to make it.
+
+If you want to learn Breadcrumb type Schema Data on your website, you can do it here.
+
+Now, what is the title of the homepage?
+
+What is the title of the homepage?
+
+You have to make it Home here.
+
+You don't have to put the brand name.
+
+You just have to put Home.
+
+So, the first Home element in the Schema Data, there will be Home in the title.
+
+Now, when I was making Breadcrumb type Schema Data,
+
+I said that Home is not used.
+
+The Home page is not used in Breadcrumb type Schema Data.
+
+But all the plugins ignore this by being combined.
+
+That's why in all the websites,
+
+in 95-98% websites, you will still get the URL of the homepage in Breadcrumb type Schema Data.
+
+So, if Google is not punishing for this, then it's okay.
+
+Let it be.
+
+There is no problem.
+
+After doing this much, save it.
+
+I am telling you some settings.
+
+I will not tell you all the settings.
+
+There are some more Schema Data for Knowledge Graph.
+
+For Reviews, there is a function to add Schema Data.
+
+Compatibility is with Rank Math.
+
+There are some other Schema Data plugins.
+
+But we will not see all of them.
+
+We are not doing this plugin tutorial.
+
+What is our target?
+
+Our target is to learn how to add Schema Data in our pages.
+
+So, we come to All Pages.
+
+And here, let's add one or two more pages.
+
+Let's add a custom page.
+
+Okay.
+
+And after adding the custom page, here, Title.
+
+Let's say, this is my page.
+
+Page 1.
+
+Okay.
+
+Anything can happen randomly.
+
+And here, if you want, you can build it with Elementor.
+
+Build it in any way you want.
+
+Here, what you have to show is this.
+
+The sidebar is also gone.
+
+Here, what you have to show is, below, Schema and Structure Data on this post.
+
+Okay.
+
+So, this Schema Data,
+
+Setup Schema button, either click this, or the other one,
+
+Custom Schema Data button.
+
+You have to click here.
+
+And now, you can paste your Schema Data.
+
+The one you made from here, copy it.
+
+It moved here.
+
+I think it moved.
+
+Rich Result Test.
+
+Let's copy it from here.
+
+We have copied it here.
+
+And then, after this, we come to our website and paste it here.
+
+Okay.
+
+I have pasted this.
+
+And after pasting, just click on the Publish button.
+
+Publish, Save, Update, whichever button comes.
+
+So, what will happen is, on your page, this Schema Data will be visible automatically.
+
+Let's also prove it.
+
+How? Here, I click on the Publish button.
+
+I have published it.
+
+Okay.
+
+Let's copy this URL.
+
+After this, let's come to the Rich Result Test.
+
+Let's go back to the Rich Result Test home page.
+
+Let's enter the URL here.
+
+And then, click on the Test URL button.
+
+Okay.
+
+Sometimes, it is possible that you are publishing
+
+Schema Data on your website.
+
+You are testing it on any page.
+
+Nothing is visible here.
+
+Why? Because it is possible that on the website, what is going on?
+
+Cache is running.
+
+Right? If you purge the cache, the problem will be sorted out.
+
+Here, there will be some cache plugin, performance plugin.
+
+Above that, its icon will be visible here.
+
+Click on it.
+
+Purge All,
+
+Purge CSS,
+
+Purge HTML, you will get a button like this.
+
+Purge Cache.
+
+If you click on it, it will be solved.
+
+Okay.
+
+Cycle.
+
+You have to test it until you remember everything.
+
+Right now,
+
+I have created cocothecat.online slash page 1 in front of you.
+
+I am testing it.
+
+Three valid items are visible.
+
+Three valid items.
+
+Breadcrumb, local business, organization.
+
+Okay. All Schema Data is visible.
+
+Now, when we created
+
+Schema Data here, which we have just copied, in that, we have created only local business and organization.
+
+Those who are watching the class carefully, they know that we have created only local business and organization.
+
+Why? Because, just now, when we have created a plugin in this website, we have set up a structure data.
+
+So, we have established breadcrumb there.
+
+Now, if I go back to settings again, see here, pay attention,
+
+I have come here and I have removed breadcrumb.
+
+I have removed this breadcrumb.
+
+I have clicked on save settings button.
+
+And I have run the test again.
+
+Now, breadcrumb should disappear from here.
+
+Why? Because, on that page, we have already set up schema data custom method.
+
+See, breadcrumb has disappeared from here.
+
+Okay? So, this plugin is also working very well.
+
+This plugin is schema and structure data.
+
+And by using this, you can set up custom schema data on any page.
+
+I have clicked edit button here and then, after this,
+
+I have set up custom button below.
+
+Okay? Again, click on custom schema button and then, after this, you can paste another schema data below.
+
+You can paste more than one schema data in one window.
+
+No problem.
+
+Now, here, you can see setup schema data button.
+
+If you click on this, you can set up different schema data on custom pages.
+
+But, that is out of scope of this class.
+
+So, this is completely ready.
+
+You can implement schema data in your website and get rid of all these
+
+GEO, AIO, LEO, and so on.
+
+You have to do pure
+
+SEO, technical SEO, and all these things automatically come in line.
+
+Whenever you want to do something new for
+
+AI mode,
+
+AI overview, or AI title, description, or alt, keep learning, keep practicing, and keep attending all of the classes.
+
+My name is
+
+Amit Tiwari for amittiwari.net, and thank you for attending this class.
+
+Take care.
+
+

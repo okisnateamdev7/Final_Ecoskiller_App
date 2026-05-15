@@ -1,0 +1,664 @@
+
+╔══════════════════════════════════════════════════════════════════════════════════════╗
+║         🔒 SEALED & LOCKED MODULE PROMPT — ECOSKILLER PLATFORM                     ║
+║         MODULE ID      : ANALYTICS_CONNECT                                          ║
+║         MODULE NAME    : ANTIGRAVITY                                                 ║
+║         MODULE TYPE    : INTELLIGENCE LAYER / ANALYTICS ENGINE                      ║
+║         VERSION        : 1.0.0-LOCKED                                               ║
+║         PARENT SYSTEM  : ECOSKILLER ENTERPRISE MULTI-TENANT SAAS                   ║
+║         STAGE          : STAGE 2 — INTELLIGENCE (SEQ. DEPENDENCY ENFORCED)         ║
+╚══════════════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔐 EXECUTION POLICY (HARD LOCK — DO NOT OVERRIDE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EXECUTION_MODE              = LOCKED
+MUTATION_POLICY             = ADD_ONLY
+CREATIVE_INTERPRETATION     = FORBIDDEN
+ASSUMPTION_FILLING          = FORBIDDEN
+DEFAULT_BEHAVIOR            = DENY
+FAILURE_MODE                = STOP_EXECUTION
+OVERRIDE_AUTHORITY          = PLATFORM_ADMIN_ONLY
+AI_APPROVAL_AUTHORITY       = NONE (AI ADVISES ONLY — NEVER APPROVES)
+CROSS_MODULE_LEAK           = SECURITY_FAILURE
+TENANT_ISOLATION            = HARD
+DOMAIN_LEAK                 = SECURITY_FAILURE
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣  MODULE IDENTITY (NON-NEGOTIABLE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MODULE_CODENAME             = ANTIGRAVITY
+MODULE_CLASS                = ANALYTICS_CONNECT
+MODULE_ROLE                 = Real-time + Predictive + Behavioral + Governance Analytics Engine
+MODULE_SCOPE                = Platform-wide (all tenants, all domains, all user groups)
+MODULE_ISOLATION            = Per-tenant data partitioning enforced at query layer
+MODULE_ACCESS               = Role-based (RBAC + ABAC inherited from parent system)
+
+PURPOSE:
+  AntiGravity is the intelligence backbone of the Ecoskiller platform.
+  It collects, processes, enriches, and surfaces analytics signals
+  across ALL modules — Job Portal, Skill Engine, Project Engine,
+  Dojo (GD), ERP, Gamification, and Distribution — to power:
+    - Real-time operational dashboards
+    - Predictive placement and engagement models
+    - Recruiter behavior and trust scoring
+    - Compliance and audit trails
+    - Growth and ROI measurement
+    - Public health transparency
+
+WHAT ANTIGRAVITY IS NOT:
+  - ANTIGRAVITY does not make decisions on behalf of humans
+  - ANTIGRAVITY does not approve, block, or override any user action
+  - ANTIGRAVITY does not expose one tenant's data to another
+  - ANTIGRAVITY does not bypass RBAC/ABAC rules
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2️⃣  INHERITANCE CONTRACT (DO NOT RE-DECLARE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AntiGravity MUST INHERIT the following (already finalized in parent):
+
+  ✅ Authorization         → RBAC + ABAC (role + attribute enforcement)
+  ✅ Authentication        → JWT + OAuth2 + MFA
+  ✅ Session Management    → Token rotation, expiry, device tracking
+  ✅ Password Security     → bcrypt, policy enforcement
+  ✅ Tenant Isolation      → Hard schema or row-level separation
+  ✅ Domain Track Locking  → Arts | Commerce | Science | Tech | Administration
+  ✅ User Hierarchy        → Students → Admins → Platform (strict)
+  ✅ AI Policy             → AI advises only, never approves/blocks
+  ✅ Audit Trail           → All mutations logged, immutable
+  ✅ Compliance            → SOC2, GDPR-aligned, Indian data law aware
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3️⃣  DATA COLLECTION LAYER (EVENT INGESTION)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EVENT_BUS                   = Apache Kafka (inherited from platform architecture)
+STREAM_PROCESSOR            = Apache Flink (real-time) + Spark (batch)
+EVENT_SCHEMA                = Avro (schema registry enforced)
+SCHEMA_EVOLUTION_POLICY     = BACKWARD_COMPATIBLE_ONLY
+EVENT_IDEMPOTENCY           = REQUIRED (dedup via event_id + timestamp)
+
+SOURCE SYSTEMS (ALL REQUIRED):
+  ┌─────────────────────────────────────────────────────────────┐
+  │  SOURCE MODULE          EVENT TYPES                         │
+  ├─────────────────────────────────────────────────────────────┤
+  │  Auth Service           login, logout, mfa_trigger,         │
+  │                         session_expire, failed_attempt      │
+  │  User Service           profile_update, verification,       │
+  │                         onboarding_step, role_change        │
+  │  Job Portal Engine      job_view, job_apply, offer_sent,    │
+  │                         offer_accepted, offer_rejected,     │
+  │                         application_stage_change           │
+  │  Skill Engine           gap_scan, path_enrolled,            │
+  │                         module_complete, skill_earned       │
+  │  Project Engine         project_start, milestone_hit,       │
+  │                         mentor_assign, evidence_submit,     │
+  │                         portfolio_generated               │
+  │  Dojo (GD Engine)       room_join, participation_score,     │
+  │                         evaluation_submitted,              │
+  │                         anti_cheat_flag, session_end       │
+  │  ERP Layer              recruiter_action, compliance_flag,  │
+  │                         tpo_report_view, audit_event       │
+  │  Gamification           points_earned, badge_unlocked,      │
+  │                         belt_progression, streak_update,   │
+  │                         referral_converted, clan_event     │
+  │  Billing Service        plan_upgrade, plan_downgrade,       │
+  │                         credit_purchase, boost_activated   │
+  │  Distribution           referral_click, qr_scan,           │
+  │                         share_card_generated,             │
+  │                         ambassador_conversion             │
+  └─────────────────────────────────────────────────────────────┘
+
+EVENT ENVELOPE SCHEMA (MANDATORY FOR ALL EVENTS):
+  {
+    "event_id"         : UUID (v4),
+    "event_type"       : STRING (enum-validated),
+    "event_version"    : SEMVER,
+    "tenant_id"        : UUID (NON-NULLABLE),
+    "user_id"          : UUID (nullable for public events),
+    "domain_track"     : ENUM [Arts|Commerce|Science|Technology|Administration|GLOBAL],
+    "timestamp_utc"    : ISO-8601,
+    "session_id"       : UUID,
+    "device_type"      : ENUM [flutter_android|flutter_ios|flutter_desktop|react_web],
+    "payload"          : JSON (event-specific),
+    "correlation_id"   : UUID (for tracing across services),
+    "schema_version"   : STRING
+  }
+
+RULES:
+  - Events without tenant_id = DROPPED + ALERTED
+  - Events without event_type = DROPPED + ALERTED
+  - Schema violations = DEAD_LETTER_QUEUE + ALERT
+  - No PII in event payloads (PII stays in User Service, referenced by user_id)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4️⃣  STORAGE ARCHITECTURE (FIXED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+HOT STORE (Real-time queries, <30 days):
+  ENGINE                    = Apache Druid
+  PURPOSE                   = Real-time OLAP, dashboard queries
+  PARTITION_KEY             = tenant_id + date
+  TTL                       = 30 days rolling
+
+WARM STORE (Historical, 30–365 days):
+  ENGINE                    = ClickHouse
+  PURPOSE                   = Aggregations, cohort analysis, trend reports
+  PARTITION_KEY             = tenant_id + month
+  TTL                       = 365 days
+
+COLD STORE (Compliance / Audit, 365d+):
+  ENGINE                    = AWS S3 / GCS (Parquet format)
+  PURPOSE                   = Regulatory retention, audit replay
+  ENCRYPTION                = AES-256 at rest
+  TTL                       = As per compliance mandate (min. 3 years)
+
+GRAPH STORE (Relationships):
+  ENGINE                    = Neo4j
+  PURPOSE                   = Skill-Job-User relationship graphs,
+                              recruiter-candidate trust networks,
+                              clan/social graph analytics
+
+CACHE LAYER (Dashboard performance):
+  ENGINE                    = Redis
+  PURPOSE                   = Precomputed KPI tiles, leaderboard snapshots
+  TTL                       = 60 seconds (real-time) to 1 hour (weekly)
+  INVALIDATION              = Event-driven (Kafka consumer)
+
+KEY DATABASE TABLES (PostgreSQL — transactional analytics metadata):
+  scenario_attempts         (user_id, scenario_id, score, attempt_no, ts)
+  match_results             (match_id, user_a, user_b, winner, score_delta)
+  performance_metrics       (user_id, domain, metric_key, value, ts)
+  placement_signals         (user_id, job_id, stage, probability, ts)
+  recruiter_behavior        (recruiter_id, action_type, candidate_id, ts)
+  skill_gap_snapshots       (user_id, skill_id, gap_score, ts)
+  engagement_events         (user_id, event_type, source, ts)
+  referral_analytics        (referrer_id, referee_id, channel, converted, ts)
+  tpo_cohort_metrics        (institute_id, cohort_id, metric_key, value, ts)
+  audit_analytics_log       (actor_id, action, affected_entity, ts, immutable=TRUE)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5️⃣  ANALYTICS DOMAINS (ALL REQUIRED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+─────────────────────────────────────────────────────────────────
+A. USER ANALYTICS (STUDENTS / TRAINERS / EVALUATORS)
+─────────────────────────────────────────────────────────────────
+  METRICS:
+    - Profile completion percentage (ring metric, real-time)
+    - Skill acquisition rate (skills/week)
+    - Learning path progress (% milestones completed)
+    - Dojo participation frequency and score trend
+    - Belt progression velocity (days per belt tier)
+    - Streak continuity score (active days / last 30 days)
+    - Goal setting and completion rate
+    - Peer rating received (avg, trend)
+    - Portfolio generation events
+    - Interview satisfaction (given + received)
+
+  VIEWS:
+    - Student self-dashboard (personal only, no cross-user)
+    - Trainer market dashboard (anonymized cohort insights)
+    - Evaluator scoring consistency report
+
+─────────────────────────────────────────────────────────────────
+B. JOB PORTAL ANALYTICS
+─────────────────────────────────────────────────────────────────
+  METRICS:
+    - Job match score distribution per posting
+    - Application funnel (view → apply → screen → interview → offer)
+    - Offer acceptance rate per recruiter / company
+    - SME reliability score (composite: offer retraction rate, response time, rating)
+    - Eligibility explanation click-through rate
+    - Time-to-fill per job posting
+    - Domain-wise job demand heatmap
+    - Candidate drop-off stage analysis
+
+  ALERTS:
+    - Offer retraction spike (recruiter accountability trigger)
+    - Suspicious application volume (anti-gaming)
+    - Low interview satisfaction rating (<3 stars) flagged for admin
+
+─────────────────────────────────────────────────────────────────
+C. SKILL ENGINE ANALYTICS
+─────────────────────────────────────────────────────────────────
+  METRICS:
+    - Skill gap score per user per domain (snapshot + trend)
+    - Industry demand vs. platform skill supply delta
+    - Most enrolled learning paths (popularity index)
+    - Trainer effectiveness score (student outcomes post-training)
+    - Performance-linked learning completion rate
+    - Skill certification velocity
+
+  OUTPUTS:
+    - Skill demand heatmap (fed back to job portal engine)
+    - Trainer market dashboard (anonymized, per domain)
+
+─────────────────────────────────────────────────────────────────
+D. PROJECT ENGINE ANALYTICS
+─────────────────────────────────────────────────────────────────
+  METRICS:
+    - Project completion rate per domain
+    - Milestone adherence rate
+    - Evidence submission quality score (AI-assisted, human-final)
+    - Mentor assignment efficiency (days to assign)
+    - Portfolio auto-generation trigger rate
+
+─────────────────────────────────────────────────────────────────
+E. DOJO (GROUP DISCUSSION) ANALYTICS
+─────────────────────────────────────────────────────────────────
+  METRICS:
+    - Participation rate per room type (domain-bound)
+    - Score distribution (peer + evaluator)
+    - Anti-cheat flag frequency per user (risk scoring)
+    - Session completion rate (live vs. recorded)
+    - Win streak and loss streak trends
+    - Domain-wise GD scenario popularity
+
+  RULES:
+    - Anti-cheat flags are IMMUTABLE events
+    - Cross-domain GD room access = FORBIDDEN unless granted
+
+─────────────────────────────────────────────────────────────────
+F. ERP ANALYTICS
+─────────────────────────────────────────────────────────────────
+  F1. INSTITUTE ERP:
+    - Cohort hiring readiness score (TPO dashboard)
+    - Student-to-placement conversion rate
+    - Domain-wise cohort performance breakdown
+    - Engagement frequency of students (per institute)
+
+  F2. CORPORATE / SME HIRING ERP:
+    - Recruiter activity metrics (posts, views, shortlists, hires)
+    - Hiring funnel efficiency (time per stage)
+    - Offer-to-join ratio
+    - Corporate ROI on platform spend
+
+  F3. COMPLIANCE & AUDIT ERP:
+    - SLA breach rate (recruiter response compliance)
+    - Audit event log completeness score
+    - Risk flag density (per tenant, per period)
+    - Regulatory report generation status
+
+─────────────────────────────────────────────────────────────────
+G. GAMIFICATION ANALYTICS
+─────────────────────────────────────────────────────────────────
+  METRICS:
+    - Daily active users (DAU) by belt tier
+    - Points economy flow (earned vs. spent vs. decayed)
+    - Badge unlock distribution (rarity curve)
+    - Referral conversion funnel (click → signup → active)
+    - Clan activity index
+    - Weekly challenge completion rate
+    - Win streak multiplier utilization
+
+  OUTPUTS:
+    - Social share card generation events → feeds Distribution Analytics
+    - Leaderboard snapshots (Redis-cached, 60s TTL)
+
+─────────────────────────────────────────────────────────────────
+H. DISTRIBUTION / GROWTH ANALYTICS
+─────────────────────────────────────────────────────────────────
+  METRICS:
+    - Referral channel attribution (UTM-tracked)
+    - QR scan → signup conversion rate
+    - Ambassador leaderboard performance
+    - Organic content reach (blog, YouTube, GitHub stars)
+    - Campus ambassador cohort activation rate
+    - Feature unlock referral completion rate
+    - Social platform share → new user discovery funnel
+
+  TOOLS:
+    - UTM parameter tracking (across all acquisition channels)
+    - Google Search Console integration (SEO channel)
+    - GitHub API integration (open-source metrics)
+
+─────────────────────────────────────────────────────────────────
+I. PLATFORM HEALTH ANALYTICS (PUBLIC + INTERNAL)
+─────────────────────────────────────────────────────────────────
+  METRICS (PUBLIC — status.ecoskiller.com):
+    - Platform uptime (%)
+    - Average API response time (ms)
+    - Active users (anonymized count)
+    - Incident status and resolution time
+
+  METRICS (INTERNAL — Grafana, admin-only):
+    - Kafka consumer lag per topic
+    - Druid / ClickHouse query latency P50/P95/P99
+    - Dead letter queue volume
+    - Error rate per microservice
+    - Data pipeline freshness (lag from event to dashboard)
+
+  STACK:
+    - Metrics Collection   = Prometheus
+    - Visualization        = Grafana
+    - Public Dashboard     = Grafana (read-only embed, status.ecoskiller.com)
+    - Alerting             = Grafana Alerts → PagerDuty / Slack
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6️⃣  AI / PREDICTIVE INTELLIGENCE LAYER (ADVISORY ONLY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MODELS (ALL ADVISORY — HUMAN APPROVAL REQUIRED FOR ACTIONS):
+
+  MODEL_01: PLACEMENT_PROBABILITY_PREDICTOR
+    Input       : Skill scores, project portfolio, GD scores, domain, location
+    Output      : Probability score (0–100) of placement within 90 days
+    Refresh     : Weekly batch + event-triggered update
+    Display     : Student dashboard, recruiter view (with consent)
+
+  MODEL_02: OFFER_ACCEPTANCE_PREDICTOR
+    Input       : Candidate profile, offer CTC, company rating, role match score
+    Output      : Probability of acceptance (for recruiter guidance)
+    Refresh     : Per offer event
+    Display     : Recruiter dashboard (advisory label: "Estimated Acceptance Probability")
+
+  MODEL_03: SKILL_GAP_DETECTOR
+    Input       : User skill inventory vs. market demand signals
+    Output      : Ranked skill gap list, recommended path IDs
+    Refresh     : Daily
+    Display     : Student personal dashboard, TPO dashboard (cohort-level)
+
+  MODEL_04: RECRUITER_BEHAVIOR_ANALYTICS
+    Input       : Recruiter actions, response times, offer retraction rate, ratings
+    Output      : Trust score (0–100), reliability tier (Platinum/Gold/Standard/Flagged)
+    Refresh     : Weekly + event-triggered (retraction/flag)
+    Display     : Admin Governance Dashboard, SME reliability badge on job listings
+
+  MODEL_05: ENGAGEMENT_CHURN_PREDICTOR
+    Input       : Login frequency, streak data, activity events, last session gap
+    Output      : Churn risk score (Low/Medium/High/Critical)
+    Refresh     : Daily batch
+    Display     : Internal admin dashboard, automated re-engagement trigger (email/push)
+
+  MODEL_06: RESUME_PARSER (DOCUMENT INTELLIGENCE)
+    Input       : Uploaded resume (PDF/DOCX)
+    Output      : Extracted skills, experience, education → structured profile fields
+    Refresh     : On upload
+    Display     : Autofill suggestion to user (user must confirm — AI does NOT autosave)
+
+  AI HARD RULES (INHERITED FROM PARENT, RE-ENFORCED HERE):
+    - AI output is ALWAYS labeled "AI-Suggested" or "Advisory"
+    - AI does NOT approve, reject, or block any application, job, or user action
+    - AI confidence score MUST be displayed alongside every prediction
+    - User can dismiss/ignore any AI recommendation without penalty
+    - AI models must be auditable (feature importance logged per prediction)
+    - Bias monitoring required (quarterly audit per domain + gender proxy metrics)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7️⃣  DASHBOARD ARCHITECTURE (PER USER GROUP)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DASHBOARD COMPOSITION RULES (INHERITED FROM PARENT — STRICTLY ENFORCED):
+  CUSTOMIZABLE  = 60% (widget position, visibility, priority, density, quick actions)
+  FIXED         = 40% (identity block, compliance indicators, notifications,
+                       critical alerts, trust & verification badges)
+
+─────────────────────────────────────────────────────────────────
+STUDENT ANALYTICS DASHBOARD
+─────────────────────────────────────────────────────────────────
+  FIXED WIDGETS:
+    - Profile completion ring
+    - Placement probability score (AI-advisory, labeled)
+    - Skill gap alert (if critical gaps detected)
+    - Compliance: verification badge status
+
+  CUSTOMIZABLE WIDGETS:
+    - Skill acquisition trend chart (7d / 30d / 90d)
+    - Belt progression timeline
+    - Active learning path progress bars
+    - Dojo performance trend
+    - Goal tracker (self-set goals vs. completion)
+    - Points and rewards ledger
+    - Upcoming challenges and deadlines
+
+─────────────────────────────────────────────────────────────────
+RECRUITER / HR ANALYTICS DASHBOARD
+─────────────────────────────────────────────────────────────────
+  FIXED WIDGETS:
+    - Recruiter trust score (compliance indicator)
+    - Active job posting health (fill rate alert)
+    - Pending actions / SLA timer
+
+  CUSTOMIZABLE WIDGETS:
+    - Application funnel per posting
+    - Candidate match score distribution
+    - Offer acceptance prediction per active offer
+    - Time-to-fill trend
+    - Interview satisfaction rating received
+
+─────────────────────────────────────────────────────────────────
+INSTITUTE (TPO) ANALYTICS DASHBOARD
+─────────────────────────────────────────────────────────────────
+  FIXED WIDGETS:
+    - Cohort hiring readiness score
+    - Compliance status (data completeness, verifications)
+
+  CUSTOMIZABLE WIDGETS:
+    - Domain-wise student performance breakdown
+    - Placement funnel (applying → interviewed → placed)
+    - Skill gap heatmap (cohort-level, anonymized individually)
+    - Engagement frequency distribution
+    - Top performing students (leaderboard, with consent)
+
+─────────────────────────────────────────────────────────────────
+PLATFORM ADMIN ANALYTICS DASHBOARD
+─────────────────────────────────────────────────────────────────
+  FIXED WIDGETS:
+    - Platform health vitals (uptime, latency, error rate)
+    - Compliance risk flag density
+    - Audit log completeness
+
+  CUSTOMIZABLE WIDGETS:
+    - Tenant activity heatmap
+    - Churn risk distribution (by user group, domain)
+    - Revenue & subscription analytics
+    - Distribution channel attribution
+    - Gamification economy health (points in / out / decay)
+    - Bug report and feature request board metrics
+
+─────────────────────────────────────────────────────────────────
+PARENT DASHBOARD (READ-ONLY, TRUST LAYER)
+─────────────────────────────────────────────────────────────────
+  ACCESS    = Read-only. Zero mutation capability.
+  SCOPE     = Own ward's data only (consent-gated)
+  WIDGETS:
+    - Ward's profile completion status
+    - Activity frequency summary
+    - Skill progress summary
+    - Placement probability (advisory, labeled)
+    - Upcoming scheduled events (GD sessions, interviews)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8️⃣  REPORTING ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+REPORT TYPES:
+  REAL-TIME     : Live KPI tiles (Druid + Redis cache, ≤60s lag)
+  SCHEDULED     : Daily / Weekly / Monthly digests (Spark batch)
+  ON-DEMAND     : User/Admin triggered exports
+  REGULATORY    : Compliance reports (immutable, signed, audit-grade)
+
+EXPORT FORMATS:
+  PDF           = Executive summaries, compliance reports
+  CSV / XLSX    = Raw data exports (admin only, RBAC-gated)
+  JSON API      : Programmatic access (Integration Hub, rate-limited)
+  Grafana Embed : Public health dashboard only
+
+REPORT DELIVERY:
+  In-app        = Dashboard widgets and report section
+  Email         = Scheduled digests (opt-in, GDPR-compliant)
+  Webhook       = Enterprise ERP integrations (via Integration Hub)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9️⃣  MICROSERVICE FLOWS (LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FLOW_01: REAL-TIME ANALYTICS PIPELINE
+  User Action
+    → Kafka Event (with tenant_id, domain_track, user_id)
+    → Flink Stream Processor
+      → Schema validation (Avro registry)
+      → Tenant isolation check
+      → Enrichment (user context, domain metadata)
+    → Druid (hot store, real-time OLAP)
+    → Redis (KPI tile cache update)
+    → Dashboard WebSocket push (live tile refresh)
+
+FLOW_02: BATCH ANALYTICS PIPELINE
+  Flink → Spark Batch Job (nightly / weekly)
+    → ClickHouse (warm aggregations)
+    → AI Model Input Pipeline (skill gap, churn, placement prediction)
+    → Report Generation (PDF / CSV)
+    → Scheduled Delivery (email / in-app)
+
+FLOW_03: AI PREDICTION FLOW
+  Trigger Event (profile update / skill completion / offer event)
+    → Analytics Service
+    → Feature Store (Redis + ClickHouse)
+    → AI Model Inference
+    → Prediction stored with confidence score + model version
+    → Notification Service → User ("AI Suggestion" — labeled)
+    → Human must act; AI does not act
+
+FLOW_04: GAMIFICATION → ANALYTICS → DISTRIBUTION FLOW
+  User Achievement Event
+    → Kafka → Analytics Service
+    → Achievement Check (points, belt, badge)
+    → Gamification DB update
+    → Notification Service → User
+    → Share Card Generation (if eligible)
+    → Integration Hub → Social Platform
+    → Referral tracking event logged back to Analytics
+
+FLOW_05: COMPLIANCE / AUDIT ANALYTICS FLOW
+  Any privileged action (recruiter offer retract, admin flag, etc.)
+    → Immutable audit_analytics_log entry (PostgreSQL, append-only)
+    → Compliance ERP dashboard update
+    → Risk score recalculation (if threshold breach: ALERT)
+    → Regulatory report queue (batch, signed PDF export)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔟  SECURITY & PRIVACY (STRICT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DATA CLASSIFICATION:
+  PUBLIC        : Platform health metrics (Grafana public dashboard)
+  INTERNAL      : Aggregate tenant metrics (admin only)
+  CONFIDENTIAL  : Individual user analytics (RBAC-gated, user-owned)
+  RESTRICTED    : Audit logs, compliance reports (Compliance Admin only)
+
+PII HANDLING:
+  - PII NEVER stored in event payloads (referenced by user_id only)
+  - PII decoupled at query time via User Service join (authorized callers only)
+  - Anonymization required for cohort-level reports (k-anonymity ≥ 5)
+  - Data deletion requests → cascade to all analytics stores (GDPR right-to-erasure)
+
+TENANT ISOLATION:
+  - All Druid/ClickHouse queries MUST include tenant_id filter (enforced at query layer)
+  - Cross-tenant data access = SECURITY_FAILURE → STOP_EXECUTION + ALERT
+  - Row-level security enforced in PostgreSQL analytics tables
+
+ENCRYPTION:
+  - In transit   = TLS 1.3 (all services)
+  - At rest      = AES-256 (all stores)
+  - S3/GCS cold  = Server-side encryption + customer-managed keys (enterprise tenants)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣1️⃣  PLATFORM OBSERVABILITY (SELF-ANALYTICS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AntiGravity monitors itself:
+
+  METRICS:
+    - Kafka consumer lag per topic (alert if > 10k messages)
+    - Flink job health (checkpoint success rate, restart frequency)
+    - Druid segment load status
+    - ClickHouse query latency P50/P95/P99
+    - Redis hit rate (cache efficiency)
+    - Dead letter queue volume (schema failures, alert threshold: >50/hour)
+    - AI model inference latency (alert if P95 > 2 seconds)
+    - Data pipeline freshness (event → dashboard lag, alert if > 5 minutes)
+    - Report generation success rate
+
+  ALERTING:
+    - PagerDuty: P1 (data loss, security breach, pipeline down)
+    - Slack/Email: P2 (lag spike, model degradation, high error rate)
+    - Auto-healing: Flink job restart policy (3 retries, exponential backoff)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣2️⃣  INTEGRATION SURFACE (ANTIGRAVITY CONNECT POINTS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+INBOUND (AntiGravity consumes):
+  - Kafka topics from ALL source systems (listed in §3)
+  - Elasticsearch (search behavior signals)
+  - Prometheus (infrastructure metrics)
+
+OUTBOUND (AntiGravity produces):
+  - Redis KPI tiles → Flutter App + React Web dashboards
+  - WebSocket push → real-time dashboard widget refresh
+  - REST API → Integration Hub (enterprise ERP, TPO systems)
+  - Kafka → Notification Service (AI suggestions, churn alerts)
+  - Grafana (public + internal dashboards)
+  - Report files → S3/GCS (delivered via signed URL or email)
+
+API RULES:
+  - All AntiGravity APIs are RBAC-gated
+  - Rate limits enforced per tenant per endpoint
+  - No raw analytics API exposed publicly (aggregates only, tenant-scoped)
+  - API versioning = SEMVER, backward compatibility maintained for 2 major versions
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣3️⃣  DEVELOPMENT STAGE LOCK (SEQUENTIAL ENFORCEMENT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AntiGravity is a STAGE 2 module. It CANNOT be built until Stage 1 is complete.
+
+STAGE 1 PREREQUISITES (MUST BE COMPLETED FIRST):
+  ✅ Identity system (user_id, tenant_id, domain_track)
+  ✅ Authentication + Authorization (RBAC + ABAC)
+  ✅ Core data models (users, jobs, skills, projects, dojo sessions)
+  ✅ Kafka event bus operational
+  ✅ PostgreSQL transactional DB live
+
+STAGE 2 BUILD ORDER (WITHIN ANTIGRAVITY):
+  STEP 1: Event schema registry + Kafka topic provisioning
+  STEP 2: Flink stream processor (raw ingestion + validation)
+  STEP 3: Druid hot store (real-time OLAP)
+  STEP 4: Redis cache layer + WebSocket push
+  STEP 5: ClickHouse warm store + Spark batch jobs
+  STEP 6: AI model feature store + initial model deployment
+  STEP 7: Dashboard API layer (per user group)
+  STEP 8: Reporting engine (scheduled + on-demand)
+  STEP 9: Compliance analytics + audit pipeline
+  STEP 10: Self-observability (Prometheus + Grafana)
+  STEP 11: Public health dashboard (status.ecoskiller.com)
+
+Skipping steps = INVALID BUILD. Execute sequentially.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔒 SEAL DECLARATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MODULE                      : ANALYTICS_CONNECT (ANTIGRAVITY)
+PARENT                      : ECOSKILLER ENTERPRISE MULTI-TENANT SAAS
+SEALED BY                   : PLATFORM ARCHITECTURE AUTHORITY
+MUTATION AUTHORITY          : PLATFORM_ADMIN + ADD_ONLY POLICY
+OVERRIDE AUTHORITY          : NONE (no creative interpretation permitted)
+COMPLIANCE INHERITANCE      : CONFIRMED (RBAC, ABAC, MFA, Audit, GDPR-aligned)
+AI POLICY                   : ADVISORY ONLY — AI NEVER APPROVES OR BLOCKS
+CROSS-TENANT ACCESS         : FORBIDDEN (HARD LOCK)
+CROSS-DOMAIN ACCESS         : FORBIDDEN UNLESS EXPLICITLY GRANTED
+STAGE DEPENDENCY            : STAGE 1 MUST PRECEDE STAGE 2
+
+🔐 THIS MODULE IS SEALED. ALL ADDITIONS MUST FOLLOW ADD_ONLY POLICY.
+   MODIFICATIONS REQUIRE PLATFORM ADMIN AUTHORITY AND FULL AUDIT LOG ENTRY.
+   ANY DEVIATION FROM THIS SPECIFICATION = INVALID BUILD → STOP EXECUTION.
+
+╔══════════════════════════════════════════════════════════════════════════════════════╗
+║  🔒 ANALYTICS_CONNECT — ANTIGRAVITY — SEALED & LOCKED ✅                           ║
+╚══════════════════════════════════════════════════════════════════════════════════════╝

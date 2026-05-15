@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "mcp-auth-service": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-auth-service/target/mcp-auth-service.jar"],
+      "env": {
+        "AUTH_JWT_SECRET": "your-keycloak-realm-secret-here",
+        "AUTH_STRICT_MODE": "false",
+        "AUTH_ACCESS_TOKEN_TTL": "900",
+        "AUTH_REFRESH_TOKEN_TTL": "604800",
+        "AUTH_BCRYPT_COST": "12",
+        "AUTH_MAX_LOGIN_ATTEMPTS": "5"
+      }
+    }
+  }
+}

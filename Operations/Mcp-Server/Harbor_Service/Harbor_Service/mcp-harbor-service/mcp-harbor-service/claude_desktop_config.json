@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "mcp-harbor-service": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-harbor-service/dist/mcp-harbor-service.jar"],
+      "env": {
+        "HARBOR_URL": "https://harbor.ecoskiller.internal",
+        "HARBOR_USER": "robot$gitlab-ci-push",
+        "HARBOR_PASSWORD": "<secret — retrieve from Kubernetes Secret in ops namespace>"
+      }
+    }
+  }
+}

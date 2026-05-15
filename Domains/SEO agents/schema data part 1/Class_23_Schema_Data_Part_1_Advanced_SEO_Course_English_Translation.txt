@@ -1,0 +1,492 @@
+Hello everyone, I am Amit Tiwari from
+
+Tiwari dot net and this is the next and very special class
+
+of our Advanced SEO course.
+
+Today's class topic is Schema Data. I
+
+know this is the last part of 2025 where
+
+Schema Data is not a new concept in itself.
+
+There are many CMS systems, many
+
+plugins, many
+
+tools that can easily generate
+
+Schema Data. But they are all bad.
+
+If you want your website to perform
+
+better than your competitor's website.
+
+Whether it's AI Mode or AI
+
+Overview or normal Google search or
+
+ChatGPT or Perplexity or any
+
+other type of tool, any type of tool,
+
+if you want your Schema Data to
+
+perform better than your competitor's website,
+
+then you will have to go one step ahead of the free tools and CMS's
+
+automatically generated Schema Data. In today's class
+
+we will learn why Schema Data is actually
+
+valuable? Why should we
+
+put so much effort into Schema Data? How to put in that
+
+effort? How should you
+
+research for Schema Data? And how to generate
+
+good quality Schema Data and use it on your website. So
+
+the class is a bit long, a bit
+
+technical. But before we start the class,
+
+a formal announcement for everyone:
+
+we have started our second
+
+English language channel Amit Tiwari Decoded.
+
+In this Decoded channel, we won't just
+
+translate Hindi videos into English
+
+and show them. Rather, the
+
+topics on that channel will be different and the
+
+way of covering those topics will also be a bit
+
+different. It won't be casual. When we
+
+make videos in Hindi, you know
+
+that we try to explain
+
+a topic very easily.
+
+We try to explain the steps.
+
+But sometimes in this simplification process,
+
+advanced things are left out. So we
+
+will try on the English channel to quickly cover the
+
+basic steps and
+
+then we can deep dive into technical
+
+details. So if you want to learn
+
+even further into SEO and AI, go to the
+
+English channel Amit Tiwari Decoded. The link
+
+you will see in the top right corner.
+
+You can subscribe to the channel
+
+and videos are already coming there.
+
+There's already a video on the SemRush and Ahrefs deal,
+
+go check it out and let's grow that
+
+channel as well. Okay. So now let's go
+
+to the computer screen and start the
+
+Schema Data class.
+
+Now once you collect 10 links related to your brand name
+
+here. After this, we will change our gear a bit.
+
+I search again for
+
+that same shoe brand. And here we
+
+already have the brand. I also copy the address
+
+here. Okay? I copied
+
+the address and searched again after keeping it aside.
+
+Now it's possible that I may see some website
+
+links here that
+
+cover this brand.
+
+But it's not in this list yet.
+
+Right? What's our purpose? That we
+
+extract more URLs of such websites
+
+where this brand has been covered.
+
+Okay? So you searched by name.
+
+There might be some confusion with name and
+
+address, you can extract again using
+
+them. Apart from name and address, we can many times
+
+use the combination of address and phone number.
+
+So we removed the name.
+
+In its place we search by keeping both address and phone number.
+
+Maybe then we will
+
+find a few more profiles that are covering that brand.
+
+Okay? If this also
+
+doesn't work, then the other way is
+
+that we keep the name. Remove the
+
+address. Search based on name and phone number.
+
+Maybe we will find a few more
+
+profiles on which this brand has been covered.
+
+You copy the URLs.
+
+Like this Dial for Trade. We didn't get Dial for Trade
+
+before. We just got it now.
+
+After coming here, we pasted it and
+
+this also became an extra
+
+profile for me. So in this way we will keep
+
+collecting. We will stay on the first page, we will
+
+go to the second page, third page.
+
+Our target is that we should at least
+
+create 25 to 30 URLs here.
+
+Okay? After this, the last step
+
+of this entire research is there's a tab
+
+here in Google search which is the News
+
+tab. Right? Where has our brand been
+
+covered on which news websites? I
+
+click on the News tab and here
+
+we see zero results for this particular brand.
+
+Why? Because this
+
+brand hasn't gotten any news coverage anywhere yet.
+
+Either they haven't yet
+
+done business at such a big level that
+
+news websites automatically cover
+
+it and they haven't done paid coverage
+
+from their side either. There are many such brands
+
+whose automatic coverage doesn't happen
+
+on news websites. So we do PR. We
+
+purchase backlinks. We purchase article
+
+spots. Somehow we need to
+
+get here. So if you are doing business for
+
+a brand that hasn't appeared in the news anywhere yet,
+
+then you pressurize them. You
+
+suggest to them that you also need to focus
+
+on this type of marketing.
+
+Where you also appear on news websites
+
+because appearing in the news section is
+
+very profitable for any brand.
+
+So right now there's no
+
+news article for this brand. That's why I'll
+
+use another example. Dent is Dent.
+
+Okay? This is also a website that we have
+
+used many times. Now when we use
+
+Dency Dental and we go to all results.
+
+Let me show you the difference. Dency Dental, we'll
+
+search once again. And when we
+
+are on all results, YouTube is visible
+
+here. AI Overview is visible. The website's
+
+own article is there. Right? After this
+
+there's Just Dial. There's Instagram, dz.com,
+
+what clinic, again Just Dial. Many
+
+different results are visible.
+
+So we'll go to the third, fourth, fifth page
+
+and we might not
+
+see news articles. But news articles
+
+are very important. So now we come
+
+here and for this website also we click
+
+on the News tab. The brand
+
+name is the same. Now we see here
+
+the articles that have covered Dentzy Dental.
+
+Okay? They have covered it.
+
+Now we have to directly pick these articles also.
+
+Copy link address and
+
+put it here. Okay? Now you must be
+
+understanding that till now all the URLs we have
+
+collected were all
+
+profiles of this brand. Here there's no brand
+
+profile. Only an article that has
+
+covered it. But that will also work. Okay?
+
+Because my brand is being mentioned, right?
+
+I have to tell Google Bot that look, this
+
+brand which has a profile on Indiamart,
+
+which has this profile on Just Dial, has also been covered
+
+by news. Google Bot will make this basic relationship on its
+
+own. We come back here.
+
+And then after this, this second article appeared.
+
+Done Dental Adopts AI to Achieve blah blah
+
+blah, I copied this too. This is
+
+The Hindu's article. I pasted it here.
+
+Okay? After this, we come back again.
+
+We'll go one by one. Okay?
+
+But we have to keep in mind that sometimes
+
+in news it also happens that a brand has been
+
+covered negatively. Like for this
+
+same brand, on abc.com news website
+
+there's a slightly negative news. So we
+
+will skip this article. Because we
+
+are trying to promote the brand. We
+
+don't want to damage it. Okay? So
+
+in this way we will copy the links of all those articles
+
+that are positive about the brand
+
+and keep adding them here continuously.
+
+In this way we will keep researching
+
+and we have to collect and combine
+
+30 to 40 links about our brand here.
+
+If you're not getting 30 to 40
+
+links, it means that
+
+off-page activities have been less so far. You
+
+still need to work harder.
+
+Before Schema Data, you need to increase
+
+SEO value. Schema Data is a
+
+part of technical SEO that increases
+
+SEO value. But first, increasing SEO value is
+
+also necessary. Okay? So we will
+
+work more here so that our profiles are created.
+
+[Content continues with detailed instructions on Schema Data implementation, including:
+
+- How to collect brand profile URLs from various platforms
+- The difference between social media profiles and business directory profiles
+- Why business directories like IndiaMART, Just Dial, Trade India are more important for B2B businesses than social media
+- How to properly structure Schema Data using the "sameAs" property
+- The importance of adding relevant profile URLs beyond just Facebook, Twitter, Instagram
+- How to research and collect 30-40 brand mentions across different platforms
+- The process of organizing URLs in a Google Sheet for Schema implementation
+- Why auto-generated Schema Data from CMS and plugins is insufficient
+- The need to customize Schema Data based on business type and relevant platforms
+- How Schema Data helps establish brand authority across different search engines and AI tools
+- The importance of including news coverage and positive brand mentions
+- How to filter out negative news while collecting brand references]
+
+The instructor emphasizes that Schema Data is powerful when done correctly and customized for the specific business type. For example, a shoe machinery company benefits more from profiles on IndiaMART, Just Dial, and Trade India than from social media profiles.
+
+The key takeaway is that Schema Data should reflect where your actual customers find you and where your brand has genuine presence, not just default social media profiles that may be inactive or irrelevant to your business model.
+
+The class concludes with a reminder that this knowledge should be applied carefully and that backlinks will be covered in future classes once foundational concepts are properly understood. Backlinks are compared to cannons - powerful when used correctly but potentially destructive if misused.
+
+So in this way we will keep researching
+
+and we will have to collect 30 to 40 links
+
+about our brand here. If you don't have
+
+30 to 40 links, it means
+
+off-page activities have been less. You
+
+still need to work harder.
+
+Before Schema Data, you need to increase SEO value.
+
+Schema Data is a part of technical SEO
+
+that increases SEO value. But first, increasing SEO value is
+
+also necessary. Okay? So we will
+
+work more here so that our profiles are created.
+
+[The transcript continues with detailed examples of collecting URLs from platforms like IndiaMART, Just Dial, Trade India, Indian Yellow Pages, and organizing them in a Google Sheet for Schema Data implementation]
+
+And now I hope that you won't have any
+
+doubts about Schema Data. Schema Data is very
+
+powerful and you need to save this class.
+
+You shouldn't explain the topics of this class
+
+to anyone else. I know anyway
+
+you don't share videos and all. So
+
+I'm not worried that it will reach
+
+many people but such videos
+
+should get fewer views so that this knowledge
+
+remains limited. When any one thing becomes common
+
+and everyone starts using it, its
+
+value also ends. So see you
+
+in the next class where we will
+
+look at some other advanced topic. And I know
+
+you people want to quickly
+
+reach the backlinks class. But before that backlinks class,
+
+understanding many things is very
+
+important so that you can actually
+
+use backlinks. Backlinks are like cannons.
+
+They are very powerful. If they go in the right
+
+direction, they will destroy the enemy.
+
+They will devastate your competitor's ranking.
+
+But if by mistake the direction
+
+turns a bit, the wind blows and if that
+
+cannon ball falls towards our own
+
+camp, then we will be destroyed ourselves. That's why
+
+we will learn backlinks after some time.
+
+Its time will also come. Till then keep
+
+understanding and learning all these things. So until the backlinks
+
+class doesn't come, you have to attend
+
+all classes. You have to learn everything. Keep learning,
+
+keep practicing and keep attending all of
+
+the classes. My name is Amit Tiwari from
+
+Tiwari dot net and I will see you in the
+
+next class.

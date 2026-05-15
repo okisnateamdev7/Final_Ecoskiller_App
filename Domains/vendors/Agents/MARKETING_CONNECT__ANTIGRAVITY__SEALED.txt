@@ -1,0 +1,550 @@
+
+╔══════════════════════════════════════════════════════════════════════════════════╗
+║         🔒 SEALED & LOCKED MASTER PROMPT — MARKETING_CONNECT MODULE            ║
+║              EXECUTION_ENGINE = ANTIGRAVITY · PLATFORM = ECOSKILLER            ║
+╚══════════════════════════════════════════════════════════════════════════════════╝
+
+PROMPT_CLASS          = MARKETING_CONNECT_LOCK
+EXECUTION_ENGINE      = ANTIGRAVITY
+PARENT_PROMPT         = ECOSKILLER_MASTER_SEALED
+SCOPE                 = MARKETING_INTELLIGENCE + GROWTH_CONNECT_LAYER
+MUTATION_POLICY       = ADD_ONLY
+CREATIVE_INTERPRETATION = FORBIDDEN
+ASSUMPTION_FILLING    = FORBIDDEN
+DEFAULT_BEHAVIOR      = DENY
+FAILURE_MODE          = STOP_EXECUTION
+INHERITANCE_MODE      = STRICT (inherits all parent prompt rules without duplication)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🧩 MODULE IDENTITY (NON-NEGOTIABLE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MODULE_NAME           = MARKETING_CONNECT
+MODULE_TYPE           = GROWTH_ENGINE_LAYER
+MODULE_CATEGORY       =
+  - Omnichannel Campaign Orchestration
+  - Referral & Viral Growth Engine
+  - Institutional Partnership Connect
+  - Lead Funnel Intelligence
+  - Content & SEO Distribution Engine
+  - Engagement Retention Layer
+  - Analytics & Attribution Engine
+  - Brand Trust & Social Proof Engine
+
+PURPOSE =
+  Connect all 200 gamification & distribution methods defined in the Ecoskiller
+  master prompt into a unified, intelligent, trackable MARKETING EXECUTION LAYER.
+  This module does NOT replace the distribution methods — it ORCHESTRATES them
+  through a single engine exposed to Antigravity.
+
+PARENT_DEPENDENCY     = ECOSKILLER_MASTER_PROMPT (SEALED)
+STAGE_LOCK            = FOLLOWS_FOUR_STAGE_MODEL (Stages 1–4)
+TENANT_ISOLATION      = HARD (Each institute / company = isolated marketing namespace)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  MODULE BOUNDARY DECLARATION (HARD LOCK)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MARKETING_CONNECT is a DEDICATED MODULE. It:
+
+✅ ALLOWED:
+  - Read user lifecycle events (job applied, skill completed, GD joined)
+  - Read gamification triggers (badge earned, belt upgraded, streak hit)
+  - Publish to notification service (push, email, in-app)
+  - Write to analytics (UTM, funnel, conversion, attribution)
+  - Trigger distribution workflows (referral, sharing, content)
+  - Interact with Integration Hub (social, email, SMS, webhook)
+  - Read public-facing SEO signals (React web layer ONLY)
+  - Generate share cards (OG images, story cards, certificates)
+  - Coordinate institutional partnership campaigns
+  - Power A/B test variants on landing pages (React layer only)
+
+🚫 FORBIDDEN:
+  - Writing to user profile data
+  - Modifying job, skill, or project records
+  - Accessing financial/billing records (delegated to Billing Service)
+  - Cross-tenant data exposure
+  - Overriding platform RBAC / ABAC rules
+  - Sending marketing comms to users who have opted out
+  - Implicit targeting of minors without parental consent flag
+  - Bypassing unsubscribe compliance (CAN-SPAM / GDPR)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2️⃣  MARKETING_CONNECT ARCHITECTURE (FIXED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MICROSERVICE_NAME     = marketing-connect-service
+LANGUAGE              = Go (primary) | Python (ML/analytics submodule)
+DB_PRIMARY            = PostgreSQL (marketing schema, tenant-isolated)
+DB_CACHE              = Redis (campaign state, rate limits, funnel cache)
+EVENT_BUS             = Kafka (subscribe to all platform activity events)
+SEARCH               = Elasticsearch (UTM + attribution query layer)
+QUEUE                 = BullMQ / Kafka (campaign job dispatch)
+INTEGRATION_HUB       = YES (shared Integration Hub — DO NOT reduplicate)
+
+COMMUNICATION_FLOW =
+  Platform Activity
+      ↓ (Kafka event)
+  MARKETING_CONNECT Service
+      ↓ (evaluate campaign rules)
+  Campaign Rule Engine
+      ↓ (dispatch)
+  ┌─────────────────────────────────────────────────────┐
+  │  Push Notification   Email    SMS    Social Share   │
+  │  Referral Trigger    SEO Tag  Share Card  Webhook   │
+  └─────────────────────────────────────────────────────┘
+      ↓
+  Analytics & Attribution Engine
+      ↓
+  Admin / Tenant Marketing Dashboard
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3️⃣  CORE SUB-ENGINES (ALL REQUIRED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A. CAMPAIGN ORCHESTRATION ENGINE
+─────────────────────────────────
+  - Campaign CRUD (title, type, audience, schedule, budget=$0 or paid)
+  - Trigger types:
+      EVENT_TRIGGER    → Kafka event (e.g. "user.badge.earned")
+      SCHEDULE_TRIGGER → Cron job (e.g. weekly digest every Monday 9AM)
+      BEHAVIORAL_TRIGGER → User inactivity, drop-off, milestone
+      MANUAL_TRIGGER   → Admin-initiated batch
+  - Audience segmentation rules:
+      Role-based (Students / Trainers / Recruiters / Institutes)
+      Domain-based (Tech / Arts / Commerce / Science / Admin)
+      Lifecycle-based (New / Active / Dormant / Churned)
+      Gamification-based (Belt level / Streak / Points tier)
+  - Campaign states: DRAFT → REVIEW → APPROVED → RUNNING → PAUSED → COMPLETED
+  - Campaign isolation: tenant_id HARD enforced on all records
+
+DB Tables:
+  campaigns(id, tenant_id, type, trigger_type, audience_rule, status, created_at)
+  campaign_audience(campaign_id, user_id, segment_label)
+  campaign_logs(campaign_id, user_id, channel, sent_at, opened_at, clicked_at)
+
+─────────────────────────────────────────────────────────────────────────────────
+
+B. REFERRAL & VIRAL GROWTH ENGINE
+───────────────────────────────────
+  - Referral code generation (unique per user, tenant-namespaced)
+  - Referral tracking: click → signup → activation → reward
+  - Reward dispatch → delegates to Gamification Service (points/badge)
+  - Anti-spam: referred user must complete 1 activity before reward triggers
+  - Viral mechanics supported:
+      Invite-to-Unlock gating
+      Group signup bonuses
+      Campus leaderboard challenges
+      "Peer Challenge" viral loops
+  - Social proof notifications:
+      "Rahul from IIT Delhi just joined via your link!"
+  - Referral states: PENDING → ACTIVATED → REWARDED | EXPIRED | FRAUD_FLAGGED
+
+DB Tables:
+  referral_codes(code, user_id, tenant_id, created_at, expiry)
+  referrals(id, referrer_id, referee_id, code, status, rewarded_at)
+  referral_fraud_log(referral_id, reason, flagged_at)
+
+─────────────────────────────────────────────────────────────────────────────────
+
+C. SHARE CARD & SOCIAL PROOF ENGINE
+─────────────────────────────────────
+  - Triggers: badge earned, belt upgraded, project completed, GD won, job placed
+  - Auto-generates OG-compliant share cards:
+      LinkedIn card (1200×627px)
+      Instagram Story card (1080×1920px)
+      Twitter/X card (1200×675px)
+      WhatsApp preview card
+  - Card contents:
+      User display name (no PII beyond what user consented to share)
+      Achievement label
+      Platform branding (tenant-customizable logo zone)
+      UTM-tagged deep link
+  - Share destination options:
+      LinkedIn, Twitter/X, Instagram, WhatsApp, Email, Copy Link
+  - PRIVACY RULE: User must explicitly tap "Share" — auto-posting is FORBIDDEN
+  - Image generation: Canvas API (Flutter) / Sharp (Node.js for React OG)
+
+DB Tables:
+  share_cards(id, user_id, trigger_event, card_url, shared_to, shared_at)
+  share_clicks(card_id, clicked_by, clicked_at, utm_source)
+
+─────────────────────────────────────────────────────────────────────────────────
+
+D. CONTENT & SEO DISTRIBUTION ENGINE
+──────────────────────────────────────
+  SEO scope = React Web Layer ONLY (Flutter apps DO NOT index — HARD RULE)
+
+  - Dynamic meta tag generation per entity:
+      Job postings → SEO-optimized title + description
+      User public profiles → schema.org/Person structured data
+      Skill courses → schema.org/Course
+      Project case studies → schema.org/CreativeWork
+  - Sitemap auto-generation (submitted to Google Search Console)
+  - Blog/content pipeline:
+      CMS integration (headless, e.g. Strapi or Contentful)
+      Keyword mapping per domain track (Tech / Commerce / Arts etc.)
+      Publish schedule management
+      Internal linking graph
+  - Open Graph + Twitter Card metadata on all public-facing pages
+  - Canonical URL enforcement (no duplicate content across tenants)
+  - Content performance dashboard: impressions, CTR, ranking positions
+
+DB Tables:
+  seo_entities(entity_type, entity_id, meta_title, meta_desc, og_image, updated_at)
+  content_posts(id, slug, title, meta, published_at, views, conversions)
+  sitemap_index(entity_type, entity_id, last_modified, priority)
+
+─────────────────────────────────────────────────────────────────────────────────
+
+E. INSTITUTIONAL PARTNERSHIP CONNECT
+──────────────────────────────────────
+  - Dedicated partnership objects:
+      PARTNER_TYPE = College | Corporate | Bootcamp | Government | Association
+  - Partnership lifecycle: PROSPECT → OUTREACH → PILOT → ACTIVE → STRATEGIC
+  - TPO (Training & Placement Officer) Dashboard:
+      Cohort performance metrics
+      Hiring readiness scores
+      Placement conversion tracking
+  - Campus Ambassador Program:
+      Application + approval workflow
+      Referral code + incentive tracking
+      Leaderboard (per campus)
+      Monthly prize dispatch trigger
+  - Bulk enrollment links (partner-specific UTM + tenant subdomain)
+  - Co-branded landing page support (React layer, tenant-controlled)
+  - Partnership health score (auto-calculated from activity volume)
+
+DB Tables:
+  partners(id, name, type, tier, status, created_at)
+  partner_campaigns(partner_id, campaign_id, co_brand_assets, tracking_code)
+  campus_ambassadors(user_id, partner_id, referral_code, status, points_earned)
+  tpo_dashboard_config(partner_id, enabled_widgets, report_frequency)
+
+─────────────────────────────────────────────────────────────────────────────────
+
+F. LEAD FUNNEL INTELLIGENCE ENGINE
+────────────────────────────────────
+  FUNNEL_STAGES =
+    DISCOVERY → SIGNUP → ONBOARDING → ACTIVATION → HABIT → REFERRAL → ADVOCATE
+
+  - Stage detection: event-driven, real-time via Kafka
+  - Drop-off detection per stage (configurable thresholds)
+  - Automated re-engagement triggers on drop-off:
+      24h → in-app nudge
+      48h → push notification
+      72h → email
+      7d  → SMS (if opted-in)
+      14d → "We miss you" campaign
+  - Conversion attribution:
+      UTM source / medium / campaign / term / content
+      First-touch + Last-touch + Linear models supported
+      Channel-level ROI calculation
+  - Funnel visualization dashboard (Admin + Tenant)
+  - A/B test support on onboarding flows (React web layer ONLY)
+
+DB Tables:
+  funnel_events(user_id, stage, event_name, utm_data, occurred_at)
+  attribution_log(user_id, channel, model, attributed_conversion, value)
+  ab_tests(id, name, variant_a, variant_b, traffic_split, winner, concluded_at)
+  reengagement_log(user_id, trigger_stage, channel, sent_at, result)
+
+─────────────────────────────────────────────────────────────────────────────────
+
+G. NOTIFICATION ORCHESTRATION LAYER
+─────────────────────────────────────
+  CHANNELS = IN_APP | PUSH | EMAIL | SMS | WEBHOOK
+
+  Priority cascade:
+    CRITICAL → All channels simultaneously (e.g. compliance alert)
+    HIGH     → Push + Email
+    MEDIUM   → Push OR Email (user preference)
+    LOW      → In-app only
+
+  - Template engine: Handlebars / Jinja2 (locale-aware, RTL-safe)
+  - Per-user notification preferences (respected ALWAYS)
+  - Opt-out enforced at send-time (not just preference-save time)
+  - Frequency capping:
+      Max 3 marketing notifications/day/user
+      Max 1 email/day (marketing category)
+      No SMS unless user explicitly opted in
+  - Notification categories:
+      TRANSACTIONAL (always sent, cannot opt out)
+      MARKETING (opt-in required)
+      GAMIFICATION (opt-in default, can opt out)
+      INSTITUTIONAL (from partner, opt-in required separately)
+  - Compliance: CAN-SPAM, GDPR, DPDP Act (India) — ALL enforced
+
+DB Tables:
+  notification_preferences(user_id, category, channel, opted_in, updated_at)
+  notification_log(id, user_id, category, channel, template_id, sent_at, status)
+  frequency_caps(user_id, category, count_today, reset_at)
+  unsubscribe_log(user_id, category, unsubscribed_at, reason)
+
+─────────────────────────────────────────────────────────────────────────────────
+
+H. ANALYTICS & ATTRIBUTION DASHBOARD
+──────────────────────────────────────
+  DASHBOARDS =
+    Platform Admin   → Full cross-tenant marketing overview
+    Tenant Admin     → Own tenant marketing performance
+    Partner (TPO)    → Campus-specific funnel + placement metrics
+    Recruiter        → Reach, JD performance, application funnel
+
+  METRICS =
+    - User acquisition by channel (UTM attribution)
+    - Referral conversion rate by tier (Student / Institute / Corporate)
+    - Campaign open rate, CTR, conversion rate
+    - Share card click-through rate by platform
+    - SEO: impressions, rank, CTR, organic signups
+    - Funnel drop-off rates by stage
+    - Re-engagement recovery rate
+    - Institutional partner ROI (students placed / students enrolled)
+    - A/B test statistical significance reporting
+    - NPS score trend (monthly, per role segment)
+
+  TOOLING =
+    PROMETHEUS   → metrics collection
+    GRAFANA      → internal dashboards
+    CUSTOM_DASH  → tenant-facing React dashboard (read-only)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4️⃣  DISTRIBUTION METHOD CONNECTIVITY MAP (LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+All 200 distribution methods from the master prompt are orchestrated by
+MARKETING_CONNECT as follows:
+
+ORGANIC CONTENT & SEO (#101–#120)
+  Handled by: Content & SEO Distribution Engine (Sub-engine D)
+  Trigger: CMS publish event → auto-SEO tag → sitemap push
+
+INSTITUTIONAL PARTNERSHIPS (#121–#140)
+  Handled by: Institutional Partnership Connect (Sub-engine E)
+  Trigger: Partner status change → campaign auto-activate
+
+REFERRAL & VIRAL (#141–#160)
+  Handled by: Referral & Viral Growth Engine (Sub-engine B)
+             + Share Card Engine (Sub-engine C)
+  Trigger: Gamification event → referral reward → share card
+
+DEVELOPER CHANNELS (#161–#170)
+  Handled by: Content & SEO Engine (Sub-engine D) + Integration Hub
+  Trigger: Open-source repo activity → UTM-tracked → funnel entry
+
+OFFLINE & COMMUNITY (#171–#180)
+  Handled by: Campaign Orchestration Engine (Sub-engine A)
+  QR Code generation: UUID-linked, tenant-namespaced, scannable offline
+
+STRATEGIC / LONG-TAIL (#181–#200)
+  Handled by: Lead Funnel Intelligence Engine (Sub-engine F)
+             + Notification Orchestration Layer (Sub-engine G)
+  Trigger: Behavioral stage detection → targeted campaign dispatch
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5️⃣  STAGE ROLLOUT (SEQUENTIAL — SKIPPING = INVALID)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STAGE 1 — FOUNDATION MARKETING CONNECT
+  ✅ Referral code system (basic)
+  ✅ UTM tracking + attribution schema
+  ✅ Notification preferences + opt-out compliance
+  ✅ Share card generator (static templates)
+  ✅ Campaign CRUD (manual trigger only)
+  ✅ Basic funnel event capture
+
+STAGE 2 — INTELLIGENCE MARKETING CONNECT
+  ✅ AI-powered audience segmentation
+  ✅ Drop-off prediction + automated re-engagement
+  ✅ A/B test framework (React web layer)
+  ✅ Attribution model engine (first-touch / last-touch / linear)
+  ✅ Referral fraud detection ML model
+  ✅ Campaign performance scoring
+
+STAGE 3 — ECOSYSTEM MARKETING CONNECT
+  ✅ Institutional Partnership Dashboard (TPO, Corporate, Bootcamp)
+  ✅ Campus Ambassador program full workflow
+  ✅ Co-branded landing page engine
+  ✅ Partner-specific campaign templates
+  ✅ Community event marketing (webinars, GD battles, hackathons)
+  ✅ Viral share loop integrations (WhatsApp, LinkedIn, Instagram)
+
+STAGE 4 — COMPLIANCE & SCALE MARKETING CONNECT
+  ✅ Full GDPR / CAN-SPAM / DPDP audit log
+  ✅ Consent versioning (per campaign, per user)
+  ✅ Multi-tenant marketing isolation audit
+  ✅ Penetration test of notification delivery paths
+  ✅ Marketing governance dashboard (platform admin)
+  ✅ Public platform health marketing metrics (status.ecoskiller.com)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+6️⃣  MARKETING_CONNECT UI (ANTIGRAVITY GENERATION RULES)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+UI_TARGET            = Flutter (primary) | React Next.js (admin web panel)
+UI_DESIGN_LANGUAGE   = INHERITS MASTER PROMPT (CLEAN | SOLID | FUNCTION-FIRST)
+DECORATIVE_UI        = FORBIDDEN
+
+MARKETING_CONNECT exposes the following UI surfaces:
+
+ROLE: Platform Admin
+  → Full marketing analytics dashboard
+  → Campaign management (all tenants, read mode)
+  → Compliance & consent audit UI
+  → Partner directory
+
+ROLE: Tenant Admin
+  → Own tenant campaign builder
+  → Referral performance board
+  → Share card preview & dispatch
+  → Partner onboarding flow
+  → Notification template editor
+
+ROLE: Student
+  → Referral link + code screen
+  → "Share my achievement" card trigger
+  → Notification preference center
+  → "My referrals" tracker
+
+ROLE: Recruiter
+  → Job posting performance (applications, views, funnel)
+  → Employer branding assets (co-branded cards)
+
+ROLE: Campus Ambassador
+  → Personal referral dashboard
+  → Leaderboard rank (campus-scoped)
+  → Reward status
+
+ROLE: Partner (TPO / Corporate HR)
+  → Cohort funnel metrics
+  → Campaign performance for their institution
+  → Bulk enrollment link generator
+
+UI GENERATION COMMAND FORMAT:
+  GENERATE_UI
+  ROLE     = [see above roles]
+  MODULE   = MARKETING_CONNECT
+  SCREEN   = [Campaign_Builder | Referral_Dashboard | Share_Card | 
+               Analytics | Partner_Dashboard | Notification_Prefs | 
+               Funnel_View | AB_Test_Manager | Compliance_Audit]
+  STAGE    = [FOUNDATION | INTELLIGENCE | ECOSYSTEM | COMPLIANCE]
+
+  Exceeding 15 screens per run = STOP EXECUTION
+  Mixing roles per run = FORBIDDEN
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+7️⃣  COMPLIANCE RULES (INHERITED + MARKETING-SPECIFIC)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+INHERITED (DO NOT DUPLICATE FROM PARENT PROMPT):
+  RBAC + ABAC, MFA, Session Management, Audit Immutability,
+  Tenant Isolation, Encryption at Rest, Domain Isolation
+
+MARKETING-SPECIFIC (THIS MODULE ONLY):
+  GDPR_COMPLIANCE          = ENABLED (EU users)
+  CAN_SPAM_COMPLIANCE      = ENABLED (all email)
+  DPDP_ACT_COMPLIANCE      = ENABLED (India users — Digital Personal Data Protection Act)
+  CONSENT_VERSIONING       = REQUIRED (store version ID at consent time)
+  CONSENT_WITHDRAWAL       = IMMEDIATE (no queued sends after opt-out)
+  MINOR_PROTECTION         = STRICT (no marketing to users flagged as minor)
+  DATA_MINIMIZATION        = ENFORCE (marketing only sees what it needs)
+  RIGHT_TO_FORGET_HOOK     = CONNECTED (purge marketing data on user deletion)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+8️⃣  ABSOLUTE PROHIBITIONS (MARKETING_CONNECT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚫 No dark patterns in notification or referral UI
+🚫 No pre-checked opt-in boxes
+🚫 No marketing to opted-out users under any campaign type
+🚫 No cross-tenant audience mixing
+🚫 No auto-posting to social on user's behalf without explicit action
+🚫 No collecting engagement metrics on minors without guardian consent
+🚫 No use of AI to generate persuasive content targeting individual psychology
+🚫 No campaign that mimics transactional messages to bypass opt-out
+🚫 No affiliate / paid placement without disclosure label in UI
+🚫 No lead data sale to third parties — EVER
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+9️⃣  INTEGRATION DEPENDENCY MAP (READ-ONLY — DO NOT REBUILD)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MARKETING_CONNECT consumes (does NOT own) the following services:
+
+  User Service           → profile, role, lifecycle state, opt-out flags
+  Auth Service           → session validity (before any campaign action)
+  Gamification Service   → badge/belt/point events (Kafka subscriptions)
+  Notification Service   → shared delivery channel (push/email/SMS/in-app)
+  Integration Hub        → social platform adapters (LinkedIn, WhatsApp, etc.)
+  Analytics Service      → read placement probability, skill gap scores
+  Billing Service        → premium tier check (before unlocking paid features)
+  Admin Governance Svc   → campaign approval workflow, compliance audit
+  LiveKit                → webinar event triggers for marketing campaigns
+
+  Each integration = READ or EVENT_SUBSCRIBE only.
+  MARKETING_CONNECT does NOT write into any of the above service DBs.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔟  MARKETING_CONNECT PERFORMANCE REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Campaign rule evaluation          < 200ms (P95)
+Share card generation             < 1.5s
+Push notification dispatch        < 500ms from trigger event
+Email batch dispatch              < 5min per 100k recipients
+Referral attribution resolution   < 100ms
+Analytics dashboard load          < 2s (cached, 5min TTL)
+Funnel stage detection latency    < 1s from event receipt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+▶️  HOW ANTIGRAVITY USES THIS MODULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣  Paste the ECOSKILLER MASTER SEALED PROMPT once (already done)
+2️⃣  Paste this MARKETING_CONNECT SEALED PROMPT once — this locks the module
+3️⃣  Issue targeted generation commands, example:
+
+    GENERATE_BACKEND
+    MODULE        = MARKETING_CONNECT
+    SUB_ENGINE    = REFERRAL_VIRAL_ENGINE
+    STAGE         = FOUNDATION
+    ENTITY_STATE  = REFERRAL.PENDING
+
+    GENERATE_UI
+    ROLE          = Student
+    MODULE        = MARKETING_CONNECT
+    SCREEN        = Referral_Dashboard
+    STAGE         = FOUNDATION
+
+4️⃣  Never regenerate this sealed prompt — APPEND ONLY if gaps found
+5️⃣  Each run = 1 sub-engine OR 1 screen set. Mixed runs = INVALID
+
+⚠️  Antigravity must NOT reinterpret marketing campaign logic,
+    audience rules, or compliance obligations from this prompt.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+╔══════════════════════════════════════════════════════════════════════════════════╗
+║                           🔐 FINAL SEAL                                        ║
+║                                                                                ║
+║   THIS PROMPT IS:                                                              ║
+║   ✔  LOCKED                                                                    ║
+║   ✔  SEALED                                                                    ║
+║   ✔  DETERMINISTIC                                                             ║
+║   ✔  ENTERPRISE SAFE                                                           ║
+║   ✔  COMPLIANCE ENFORCED (GDPR · CAN-SPAM · DPDP)                             ║
+║   ✔  ANTIGRAVITY COMPATIBLE                                                    ║
+║   ✔  TENANT ISOLATED                                                           ║
+║   ✔  PARENT PROMPT INHERITED (NO DUPLICATION)                                 ║
+║                                                                                ║
+║   MODULE        = MARKETING_CONNECT                                            ║
+║   ENGINE        = ANTIGRAVITY                                                  ║
+║   PLATFORM      = ECOSKILLER                                                   ║
+║   VERSION       = 1.0.0                                                        ║
+║   CHANGE_POLICY = APPEND_ONLY · ARCHITECT_APPROVAL_REQUIRED                   ║
+║                                                                                ║
+║              ANY DEVIATION = STOP EXECUTION                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════╝

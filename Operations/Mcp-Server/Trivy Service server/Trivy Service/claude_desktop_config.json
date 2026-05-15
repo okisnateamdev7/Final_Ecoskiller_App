@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "trivy-mcp-server": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/trivy-mcp-server/target/trivy-mcp-server.jar"
+      ],
+      "env": {
+        "TRIVY_BINARY": "/usr/local/bin/trivy",
+        "TRIVY_MCP_API_KEY": "your-secret-key-here"
+      }
+    }
+  }
+}

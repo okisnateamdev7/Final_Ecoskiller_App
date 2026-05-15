@@ -1,0 +1,616 @@
+ECOSKILLER – 300 USER TYPES (MASTER LIST)
+🧑‍🎓 A. Students & Learners (1–40)
+
+School student (Grade 6–8)
+
+School student (Grade 9–10)
+
+School student (Grade 11–12 – Science)
+
+School student (Commerce)
+
+School student (Arts)
+
+Diploma student
+
+ITI student
+
+Polytechnic student
+
+Undergraduate student
+
+Postgraduate student
+
+PhD scholar
+
+Distance learning student
+
+Open university student
+
+Dropout learner
+
+Career switcher
+
+Working professional learner
+
+Fresher job seeker
+
+Internship seeker
+
+Apprenticeship learner
+
+Bootcamp student
+
+Coding student
+
+AI/ML learner
+
+Robotics learner
+
+Cybersecurity learner
+
+Cloud computing learner
+
+Data science learner
+
+Digital marketing learner
+
+SEO learner
+
+UI/UX learner
+
+Game development learner
+
+Blockchain learner
+
+Web3 learner
+
+IoT learner
+
+Embedded systems learner
+
+Finance & accounting learner
+
+Business management learner
+
+HR management learner
+
+Sales & marketing learner
+
+Soft skills learner
+
+Lifelong learner (hobbyist)
+
+👨‍🏫 B. Trainers, Mentors & Educators (41–75)
+
+Subject trainer
+
+Technical trainer
+
+Corporate trainer
+
+Soft skills trainer
+
+Career mentor
+
+Startup mentor
+
+Coding instructor
+
+AI instructor
+
+Data science instructor
+
+Cloud instructor
+
+Cybersecurity instructor
+
+DevOps instructor
+
+Robotics instructor
+
+IoT instructor
+
+Blockchain instructor
+
+UI/UX instructor
+
+Digital marketing instructor
+
+SEO instructor
+
+Sales trainer
+
+HR trainer
+
+Finance trainer
+
+Faculty professor
+
+Visiting faculty
+
+Guest lecturer
+
+Industry expert mentor
+
+Freelance trainer
+
+Remote instructor
+
+Workshop facilitator
+
+Bootcamp lead instructor
+
+Assessment evaluator
+
+Interview coach
+
+Resume reviewer
+
+Portfolio reviewer
+
+Hackathon judge
+
+Certification examiner
+
+🏫 C. Institutes & Education Organizations (76–110)
+
+School administrator
+
+College administrator
+
+University administrator
+
+ITI administrator
+
+Polytechnic administrator
+
+Coaching institute owner
+
+Training center owner
+
+Online academy owner
+
+EdTech startup founder
+
+Institute HR
+
+Institute placement officer
+
+Institute counselor
+
+Institute marketing head
+
+Institute admissions manager
+
+Institute finance officer
+
+Institute operations manager
+
+Institute LMS admin
+
+Institute ATS admin
+
+Institute ERP admin
+
+Institute compliance officer
+
+Accreditation manager
+
+Examination controller
+
+Curriculum designer
+
+Academic dean
+
+Research coordinator
+
+Internship coordinator
+
+Industry liaison officer
+
+Student success manager
+
+Alumni manager
+
+Hostel administrator
+
+Library administrator
+
+Institute IT admin
+
+Virtual campus manager
+
+International admissions officer
+
+Franchise institute manager
+
+🏢 D. Companies & Employers (111–160)
+
+Startup founder
+
+Co-founder
+
+CEO
+
+CTO
+
+COO
+
+CIO
+
+CISO
+
+HR manager
+
+HR recruiter
+
+Technical recruiter
+
+Campus hiring manager
+
+Lateral hiring manager
+
+Internship program manager
+
+Talent acquisition lead
+
+Employer branding manager
+
+Hiring consultant
+
+Project manager
+
+Engineering manager
+
+Product manager
+
+QA manager
+
+Dev team lead
+
+AI team lead
+
+Data team lead
+
+Cloud architect
+
+DevOps manager
+
+Cybersecurity manager
+
+IT operations manager
+
+Business analyst
+
+Sales manager
+
+Marketing manager
+
+Digital marketing manager
+
+SEO manager
+
+Growth manager
+
+Customer success manager
+
+Support manager
+
+Finance manager
+
+Compliance officer
+
+Legal officer
+
+Corporate trainer
+
+Corporate mentor
+
+R&D head
+
+Innovation head
+
+Startup accelerator manager
+
+Corporate CSR head
+
+Corporate L&D head
+
+Corporate assessment manager
+
+Corporate certification manager
+
+Vendor onboarding manager
+
+Outsourcing partner manager
+
+Employer admin (platform)
+
+🧑‍💻 E. Freelancers, Creators & Professionals (161–200)
+
+Freelance developer
+
+Freelance designer
+
+Freelance marketer
+
+Freelance SEO expert
+
+Freelance content writer
+
+Freelance technical writer
+
+Freelance AI engineer
+
+Freelance data analyst
+
+Freelance DevOps engineer
+
+Freelance cloud architect
+
+Freelance cybersecurity consultant
+
+Freelance automation expert
+
+Freelance no-code builder
+
+Freelance low-code builder
+
+Freelance mobile app developer
+
+Freelance game developer
+
+Freelance video editor
+
+Freelance animator
+
+Freelance UI/UX consultant
+
+Freelance product consultant
+
+Freelance business consultant
+
+Freelance HR consultant
+
+Freelance finance consultant
+
+Freelance legal consultant
+
+Course creator
+
+Micro-course creator
+
+Certification creator
+
+Assessment creator
+
+Prompt engineer
+
+AI workflow designer
+
+Tool builder
+
+Plugin developer
+
+API provider
+
+SaaS creator
+
+Open-source contributor
+
+Research author
+
+Technical blogger
+
+YouTube educator
+
+Community educator
+
+Knowledge partner
+
+🏛️ F. Government, NGOs & Policy Bodies (201–230)
+
+Government skill department officer
+
+Ministry of education officer
+
+Ministry of labor officer
+
+NSDC official
+
+SSC official
+
+AICTE official
+
+UGC official
+
+Skill mission officer
+
+Employment exchange officer
+
+Apprenticeship officer
+
+MSME officer
+
+Startup India officer
+
+Digital India officer
+
+Smart city officer
+
+Rural skill officer
+
+NGO founder
+
+NGO program manager
+
+NGO trainer
+
+NGO placement officer
+
+CSR program officer
+
+Public policy researcher
+
+Workforce planner
+
+Economic development officer
+
+International aid program manager
+
+Education auditor
+
+Compliance inspector
+
+Accreditation authority
+
+Government data analyst
+
+Policy advisor
+
+Public sector hiring manager
+
+⚙️ G. Platform Operations, Tech & AI Roles (231–270)
+
+Platform super admin
+
+Platform admin
+
+Tenant admin
+
+Organization admin
+
+Role manager
+
+Permission manager
+
+Audit admin
+
+Security admin
+
+Compliance admin
+
+Data protection officer
+
+Privacy officer
+
+AI safety officer
+
+AI ethics reviewer
+
+Model governance manager
+
+Dataset curator
+
+Prompt governance manager
+
+Evaluation engineer
+
+QA engineer
+
+Platform DevOps engineer
+
+Cloud infrastructure admin
+
+Kubernetes admin
+
+Database admin
+
+API gateway admin
+
+Integration manager
+
+Automation manager
+
+Workflow architect
+
+Notification manager
+
+Analytics admin
+
+BI analyst
+
+Reporting admin
+
+Search & SEO admin
+
+AEO/GEO strategist
+
+Recommendation engine admin
+
+Fraud detection analyst
+
+Trust & safety officer
+
+Abuse moderation lead
+
+Content moderation admin
+
+Platform support lead
+
+Platform support agent
+
+Incident response manager
+
+🧠 H. Advanced / Future Roles (271–300)
+
+Digital twin learner
+
+Metaverse instructor
+
+XR training designer
+
+Virtual campus architect
+
+Skill ontology designer
+
+Competency framework designer
+
+Credential architect
+
+Digital badge issuer
+
+Verifiable credential auditor
+
+Talent graph analyst
+
+Workforce AI planner
+
+Skill gap analyst
+
+Career path designer
+
+Job taxonomy designer
+
+AI career advisor
+
+AI interview bot supervisor
+
+AI proctoring manager
+
+AI content reviewer
+
+Autonomous agent trainer
+
+Agent orchestration manager
+
+AI marketplace curator
+
+AI plugin reviewer
+
+AI compliance auditor
+
+Human-in-the-loop reviewer
+
+Simulation designer
+
+Scenario-based assessment designer
+
+Global talent mobility manager
+
+Cross-border hiring officer
+
+Future skills researcher
+
+Ecosystem strategist

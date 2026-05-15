@@ -1,0 +1,164 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# Ecoskiller — Apicurio Schema Registry MCP Server
+# Kubernetes Deployment (k3s / GKE / EKS)
+# Namespace: schema-registry
+# ─────────────────────────────────────────────────────────────────────────────
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: schema-registry
+  labels:
+    ecoskiller.com/component: mcp-schema-registry
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mcp-schema-registry-secrets
+  namespace: schema-registry
+type: Opaque
+stringData:
+  MCP_API_KEY:       ""   # openssl rand -hex 32
+  MCP_API_KEY_2:     ""   # rotation key (optional)
+  APICURIO_PASSWORD: ""   # basic auth password
+  APICURIO_TOKEN:    ""   # Keycloak bearer token
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-schema-registry
+  namespace: schema-registry
+  labels:
+    app: mcp-schema-registry
+    ecoskiller.com/component: mcp-server
+    ecoskiller.com/category: infra-13
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mcp-schema-registry
+  template:
+    metadata:
+      labels:
+        app: mcp-schema-registry
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+
+      containers:
+        - name: mcp-schema-registry
+          image: eclipse-temurin:21-jre-alpine
+          command: ["java", "-jar", "/app/mcp-schema-registry-server.jar"]
+
+          env:
+            - name: APICURIO_BASE_URL
+              value: "http://apicurio-registry.schema-registry.svc.cluster.local:8080/apis/registry/v2"
+            - name: APICURIO_AUTH_TYPE
+              value: "bearer"
+            - name: APICURIO_TLS_VERIFY
+              value: "true"
+            - name: APICURIO_TIMEOUT_MS
+              value: "10000"
+            - name: APICURIO_DEFAULT_GROUP
+              value: "ecoskiller"
+            - name: DEFAULT_COMPATIBILITY
+              value: "BACKWARD"
+            - name: MAX_VERSIONS_WARN
+              value: "100"
+            - name: LOG_LEVEL
+              value: "INFO"
+            - name: MCP_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-schema-registry-secrets
+                  key: MCP_API_KEY
+            - name: MCP_API_KEY_2
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-schema-registry-secrets
+                  key: MCP_API_KEY_2
+                  optional: true
+            - name: APICURIO_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-schema-registry-secrets
+                  key: APICURIO_TOKEN
+                  optional: true
+
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "50m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+
+      serviceAccountName: mcp-schema-registry-sa
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mcp-schema-registry-sa
+  namespace: schema-registry
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: mcp-schema-registry-role
+  namespace: schema-registry
+rules: []  # No Kubernetes API access needed
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: mcp-schema-registry-rb
+  namespace: schema-registry
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: mcp-schema-registry-role
+subjects:
+  - kind: ServiceAccount
+    name: mcp-schema-registry-sa
+    namespace: schema-registry
+
+---
+# NetworkPolicy: only allow traffic from within the cluster
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mcp-schema-registry-netpol
+  namespace: schema-registry
+spec:
+  podSelector:
+    matchLabels:
+      app: mcp-schema-registry
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector: {}
+  egress:
+    # Allow outbound to Apicurio Registry only
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: schema-registry
+      ports:
+        - protocol: TCP
+          port: 8080

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "mcp-behavior-signal-collector": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-behavior-signal-collector/target/mcp-behavior-signal-collector.jar"],
+      "env": {
+        "BSC_JWT_SECRET": "your-keycloak-realm-secret-here",
+        "BSC_STRICT_MODE": "false",
+        "BSC_MAX_BATCH_SIZE": "1000",
+        "BSC_ANOMALY_IQR_MULT": "1.5",
+        "BSC_QUALITY_THRESHOLD": "0.85"
+      }
+    }
+  }
+}

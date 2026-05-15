@@ -1,0 +1,655 @@
+Hello everyone, I am Amit Tiwari from Amit
+
+Tiwari.net. And this is the next class of the Advanced SEO course
+
+in which we are continuing the Schema Data
+
+topic. In the previous class we talked about the
+
+purpose of Schema Data and its use.
+
+How Schema Data helps in your content.
+
+We also created two types of Schema Data which are Article
+
+and Organization type. And what special
+
+things should you pay attention to while creating this Schema
+
+Data? We discussed all these things in the previous class. So
+
+if you haven't started the previous class yet,
+
+finish it completely first. Then
+
+come to this class. Otherwise you won't
+
+understand anything from this class. But if
+
+you have attended the first Schema Data class
+
+before this and all the other classes
+
+before that, then you should
+
+continue today's class. In today's class we
+
+are going to talk about exactly how many types of
+
+Schema Data should we add on one page, on one web page. How many
+
+types of Schema Data can we add?
+
+How to identify? How to
+
+generate that Schema Data? And then after that, how to
+
+implement Schema Data on your website?
+
+There can be three ways to implement Schema Data.
+
+Number one is to implement
+
+using any plugin or theme. Number two is to implement manually and
+
+number three is to add Schema Data using
+
+Google Tag Manager. We will cover all three
+
+processes in this course.
+
+But we will skip the Google Tag Manager part
+
+until we actually study
+
+Google Tag Manager.
+
+Otherwise you won't
+
+understand that path at all right now. So we will learn how to
+
+generate Schema using both manual and
+
+plugin methods.
+
+We will see some popular plugins. We will
+
+see some manual popular methods.
+
+All methods are not possible because
+
+there are many different plugins and you don't
+
+need to know or learn all
+
+plugins either. But if you
+
+understand the basic method, then wherever you
+
+generate Schema Data, all those things will be
+
+helpful for you. You won't have any
+
+problem. So let's go to the computer screen and
+
+start this second class of Schema Data.
+
+I will try my best to
+
+finish everything in this class itself. But our first primary
+
+objective is to completely
+
+explain Schema Data. So if everything can't be explained
+
+within 1 to 1.5 hours, then we will also do a third class. Now
+
+let's start today's class. But before that,
+
+one information: our English channel has launched
+
+with the name Amit Tiwari Decoded. You should
+
+go and subscribe to that channel so that
+
+you can learn about SEO and beyond SEO, AI-related
+
+specific expert-level
+
+pipelines, concepts, tools
+
+that you can use and by using them
+
+not just SEO or marketing but
+
+social media and other tasks also you can
+
+handle. You can do content creation.
+
+We are exploring all these things
+
+on that channel. Go and
+
+subscribe to the channel and tell us how we can
+
+make that channel even better for you.
+
+You will see the channel link
+
+in the top right corner. Now let's go
+
+to the computer screen and start
+
+today's class.
+
+So in today's class we have to cover many
+
+things. But first let's clear the biggest doubt
+
+you all have which is: in any one article, in any
+
+one web page, how many types of Schema
+
+can we put? Can we put more than one type of
+
+Schema Data? If we
+
+can, then how to find out which
+
+article should have how many types of which
+
+Schema Data? So I won't
+
+explain this thing to you through a lecture.
+
+I'll show you by doing it. How do I find
+
+out how many types of Schema Data we can use
+
+in one particular article? For this, we go to a web
+
+page. Okay? So we pick this one article from
+
+Hindustan Times. Okay?
+
+Okay? This is the article for which
+
+we have to put Schema Data, we have to find out
+
+how many types can there be. So I
+
+will just copy this particular URL. Okay?
+
+So we have to put it for this. So now
+
+first of all, what is that this is a news
+
+article. Okay? This is a news article.
+
+Why? It's an article on a web page.
+
+It's an article. So we can
+
+put Article type Schema. But why is it a news article?
+
+Because whenever we go to put Article type
+
+Schema Data. Inside Article
+
+type Schema Data there are three
+
+differences. Number one, the first
+
+type that comes for article is
+
+Article itself. Second is News
+
+Article and third is Blog Post. Okay?
+
+Now this is not a blog post because
+
+it's an article on a news website. So it will be either
+
+Article or News Article. Now
+
+we are saying this is a news article
+
+repeatedly here. Why are we saying it?
+
+Because this just happened. This
+
+incident happened on 25th November and this is currently in the news.
+
+Okay? Let's say instead of this volcano
+
+there was some other news here. For
+
+example Hindustan Times and this jaggery chickpea
+
+benefit, this is a different article. Okay? This
+
+article was published when? On 21st November.
+
+Now this was published on 21st November. So
+
+it's not like if any news or article
+
+was written four days ago, then it
+
+can't be a news article. But it's written about jaggery chickpea
+
+benefits. The benefits of jaggery chickpeas that
+
+existed 10 years, 20 years, 50
+
+years ago are the same even today. They will be the same
+
+50 years later too. So what kind of article is this?
+
+It doesn't have any expiry. Right? This
+
+didn't just happen now. It's not like someone
+
+just discovered the benefit of jaggery
+
+and chickpeas. Okay? So because this has been going on
+
+for a very long time. It's evergreen content. If
+
+we say in technical language, this is
+
+evergreen content. And because this is
+
+evergreen content. That's why it doesn't have any
+
+expiry. And we will put it in Article.
+
+We won't put it in News Article.
+
+So we come back to our main article.
+
+And here this thing is decided
+
+that the first Schema Data type that will be put on
+
+this news will be News
+
+Article type Schema Data. Okay?
+
+Okay? And this News Article type
+
+Schema Data is a subtype of Article itself.
+
+There is Article type Schema Data. I'm
+
+not able to write the spelling of Article
+
+today. There is Article type Schema Data
+
+whose subtype is News Article. Okay?
+
+So News Article is done. Now what's the second
+
+Schema Data that can be put? Brother, who is publishing this
+
+news? On which website's
+
+page is it? On Hindustan Times.
+
+Hindustan Times is itself a known
+
+organization. So here I can put the second
+
+Schema Data which is
+
+Organization.
+
+Okay? Now why am I putting
+
+Organization type? Because Hindustan Times
+
+is itself a known entity. Okay? It's a very
+
+big newspaper. If I put
+
+Hindustan Times's Organization type
+
+Schema Data on my page. The
+
+chances increase that Google will clearly
+
+understand what the association is,
+
+that Hindustan Times, that Hindustan Times
+
+which is a very big newspaper, has written the article.
+
+This is more authoritative. It will get
+
+more chances to perform well in search.
+
+So that's why I also
+
+put Organization type Schema Data here.
+
+After this, an image has also been used here.
+
+So I can also put Image type
+
+Schema Data. Okay? I'll write Image
+
+here. Okay? Now if there
+
+was a video here, I would also put Video type
+
+Schema Data. But there is
+
+a video here. Yes there is a video. Okay? So because
+
+there is a video here, I also put Video
+
+type Schema Data here. Okay?
+
+After this, what else can we do brother? This
+
+article will be within a structure.
+
+Hindustan times.com word new
+
+bomb. Okay? The rest is complete too. They don't just
+
+create bomb and leave it. But it's complete,
+
+meaning a URL structure has been created.
+
+So here I also put Breadcrumb type Schema
+
+Data.
+
+Okay? Now after this, let's see what else can be here,
+
+what else is there? Is there any local
+
+[Content continues with detailed technical instructions on implementing multiple Schema types on a single page, including:
+
+- News Article Schema
+- Organization Schema  
+- Image Schema
+- Video Schema
+- Breadcrumb Schema
+- Person Schema for authors
+- Local Business Schema
+- FAQ Schema
+- How-To Schema
+- Product Schema (to be covered in next class)
+
+The instructor demonstrates how to:
+- Identify appropriate Schema types for content
+- Nest Schema elements within each other
+- Add properties like "sameAs" for social profiles
+- Include founder information in Organization Schema
+- Add service area data for local businesses
+- Connect multiple entities through "worksFor" relationships
+- Expand Schema with as much relevant data as possible
+
+Key concepts emphasized:
+- More detailed Schema Data = better understanding by Google
+- No limit on Schema Data size - add as much relevant information as possible
+- Use proper nesting and structure
+- Connect related entities (person, organization, place)
+- Include social media profiles and other brand mentions
+- Schema Data should be comprehensive, not minimal
+
+The class demonstrates creating complex, nested Schema structures manually to go beyond what automated plugins provide. The goal is to help search engines better understand the content, business, and relationships between entities.]
+
+Now after this, if there were more founders, how would you manage them? We bring them here again. We added this. And after this
+
+we added a comma here and
+
+copy-pasted this again. Okay? So one
+
+person was already Kirtilal Mehta. Second,
+
+let's say I don't know if there are other
+
+founders or not. Let's say there was someone xyz.
+
+So I wrote xyz here. After this,
+
+you will write xyz sir's description here.
+
+After this, you will add their Wikipedia
+
+URL or the URL created on your own company
+
+here. Then after this xyz's image will be put here.
+
+Let's say this became xyz.jpg. Okay? After
+
+this, for which organization are they working?
+
+This is the same organization. Is the gender
+
+male or female? You can put this.
+
+There are social media profiles. Again you
+
+change here. So you will have to
+
+create the structure. You can manage by
+
+copy-pasting again. Okay? So in this way
+
+you also added founder information here.
+
+Okay? After this, we don't put
+
+Review type information in Schema Data
+
+for local business. But if this
+
+is a product or something else, then you can
+
+also add this here. Apart from this, if we
+
+want, we can still add even more information.
+
+So in this way you can supercharge your Schema
+
+Data by adding even more information to your Schema
+
+Data. And Google uses all this semantic information
+
+to better understand whatever
+
+content is on your website.
+
+It gives better rank to your business and also
+
+gives even more correct
+
+audience. So you can create such supercharged
+
+Local Business type Schema Data.
+
+Now let's come back to the Schema Data
+
+generator. And here apart from Local Business,
+
+the next Schema Data type we have
+
+is Person. You have already
+
+created Organization. Let's come to Person.
+
+Here you can add the person's name.
+
+Let's say Amit Tiwari, URL meaning
+
+their website's URL https amit
+
+tiwari dot net, then their picture's image
+
+https amit tiwari dot net image.jpg.
+
+I don't know why so many mistakes happen while recording.
+
+After this, the social
+
+media profile link is the sameAs
+
+property. I won't explain
+
+again. You can do it the same way. Job title,
+
+let's say Founder, Company name Click Local
+
+Digital Advertising
+
+And then after this we give the URL
+
+here. So a Person's Schema Data is very
+
+simple. Right? But now Person type
+
+Schema Data is very
+
+simple. Here you just put the name,
+
+put the URL, etc. and all things are
+
+done. But if you look at this Schema Data carefully,
+
+worksFor got automatically added here. Works for type name
+
+Organization. Just a while ago when
+
+we put founder information here, in this
+
+founder information, the same Schema Data
+
+has been used. Okay? Where is it?
+
+Founder works for, this is the same structure.
+
+It's just that we took it from that Person
+
+element and put it here.
+
+So this Schema Data is structured,
+
+right? If you properly copy the complete code
+
+of an element from one place and
+
+take it to another place, all of them
+
+work together. So what we
+
+used here is not a secret element in itself.
+
+It's just that the tools that use it always
+
+create Schema Data in a very
+
+limited way. You are expanding it further. So
+
+whenever we create Schema Data, we should learn these
+
+properties this way. Remember them.
+
+Gradually you will remember that there is
+
+also an element called Address. There is
+
+also an element called Price
+
+Range. Before today,
+
+you wouldn't have seen Service Area type.
+
+Now you know
+
+that we can also add a Service Area type element.
+
+We can also add founder information.
+
+We can also add works for.
+
+So when you attend all three classes
+
+of Schema Data in this entire class,
+
+you will start remembering all these elements.
+
+You will practice, practice repeatedly,
+
+then all these things will be set in your mind.
+
+Schema Data will automatically
+
+fit in your mind, how to create it. Now you have
+
+seen Person type Schema Data. Now
+
+after this, a very good necessary
+
+important type of Schema Data that is remaining
+
+is Product, but we will do that in the next
+
+class. So this was today's Schema Data
+
+class. Now I know some things are still
+
+left. Some topics, questions are
+
+still remaining for you. We will wrap up
+
+all of them in the next and last
+
+class of Schema Data. Sir, for Schema Data
+
+till now we have created content for more than 2 hours.
+
+You have taken classes for more than two hours.
+
+But still this topic is not ending.
+
+Why? Because
+
+this is very advanced. Because this is very
+
+useful. And because you deserve to
+
+know everything about Schema Data right in
+
+this course. Why should you go
+
+anywhere else? So see you in the next class where
+
+we will wrap up the Schema Data
+
+topic. Whatever questions you have, if
+
+there's still any such topic that you feel
+
+I haven't been able to cover in this class,
+
+quickly tell in the comment section so that before
+
+recording the next class I get
+
+your questions and I can
+
+address them in the class. Till then,
+
+until the next class, keep learning,
+
+keep practicing and keep attending all of the
+
+classes. My name is Amit Tiwari. From
+
+Amit Tiwari dot net and I will see you in
+
+the next class. Take care.

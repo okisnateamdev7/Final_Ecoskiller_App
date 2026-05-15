@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "mcp-keycloak-identity": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-keycloak-identity/target/mcp-keycloak-identity.jar"
+      ],
+      "env": {
+        "KEYCLOAK_URL": "https://keycloak.ecoskiller.com",
+        "KEYCLOAK_REALM": "ecoskiller",
+        "KEYCLOAK_CLIENT_ID": "mcp-iam-client",
+        "KEYCLOAK_CLIENT_SECRET": "replace-with-your-confidential-client-secret",
+        "KEYCLOAK_TIMEOUT_SECS": "10"
+      }
+    }
+  }
+}

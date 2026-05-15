@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "tie-mcp-server": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/tie-mcp-server/target/tie-mcp-server-1.0.0.jar"],
+      "env": {
+        "TIE_JWT_BYPASS": "true",
+        "TIE_AUDIT_LOG_FILE": "/tmp/tie-audit.jsonl",
+        "TIE_RATE_LIMIT_MAX": "100",
+        "TIE_RATE_LIMIT_MS": "60000"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "mcp-webrtc-ecoskiller": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/mcp-webrtc-java/target/mcp-webrtc-ecoskiller.jar"
+      ]
+    }
+  }
+}

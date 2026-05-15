@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "jicofo-mcp": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/absolute/path/to/jicofo-mcp-server/target/jicofo-mcp-server-1.0.0-fat.jar"
+      ],
+      "env": {
+        "JICOFO_MCP_JWT_SECRET": "replace-with-your-hmac-sha256-secret-minimum-32-chars",
+        "JICOFO_MCP_CALLER_JWT": "optional-server-level-jwt-for-trusted-callers"
+      }
+    }
+  }
+}

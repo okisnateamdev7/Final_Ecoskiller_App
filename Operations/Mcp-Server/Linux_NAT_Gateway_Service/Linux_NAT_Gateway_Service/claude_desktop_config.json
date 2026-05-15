@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcp-nat-gateway": {
+      "command": "java",
+      "args": [
+        "--enable-preview",
+        "-jar",
+        "/absolute/path/to/mcp-nat-gateway/target/mcp-nat-gateway.jar"
+      ]
+    }
+  }
+}

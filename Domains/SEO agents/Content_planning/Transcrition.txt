@@ -1,0 +1,247 @@
+(Transcribed by TurboScribe. Go Unlimited to remove this message.)
+
+Hello everyone, I am Amit Tiwari for amittiwari.net and this is the next class of our advanced SEO course in which we are going to talk about content planning. In the last class, we learned keyword research. How you can find good keywords for your topic, for your website without using any paid tool.
+
+Such keywords will take your business forward which will help you in your website's SEO campaign. But what to do with these keywords? Keywords are not mantras that if you repeat them again and again then your website's SEO will go up. No, these keywords are weapons and weapons have to be used.
+
+So in today's class, with the help of those keywords we will plan the content. Normally what do you do? You have a keyword, you write a blog post. Keyword, blog post.
+
+But at the beginning of this course, I had said that blog posts do not write business websites. When do you write a blog post? You write a blog post when you are going to do some activity, you are going to do some adventure, you want to inform your users, your readers informally. If you want to do business, if you want to grow your business through website SEO, then you don't have to write a blog post.
+
+But what to write, we will know in today's class. But before starting this content planning class, make sure that you have attended all the classes of this course. Especially the last class, keyword research, you must have seen it.
+
+If you have not learned keyword research, then you will not be able to understand today's class. Maybe you are a very old SEO, you have done keyword research many times, but still listen to me, watch that video once for 1.5 hours, you will learn only 4 new things. Once you finish the class, after that start today's class.
+
+Also, those who have already seen those classes, watch today's class, attend it, and then whatever query or doubt comes in your mind, note it down, so that you can ask me live in the doubt session on Sunday. How to access the doubt session, how you can participate in it, I have already explained all these things in the previous videos. Join the button on the YouTube channel, and then you can easily watch the live doubt session.
+
+Now, let's come to the computer screen and do content planning. Why do you have to do it on the computer screen? Because, come on, this is professional work, while doing it on the computer screen, while doing it live, it will feel good. I will do it live and show you how we can do content planning.
+
+So this screen must be reminding you of the last class. We had made a list of keywords. The first keyword that is visible here, the biggest keyword is Dental Clinic Near Me.
+
+And I will pick this keyword and use it to continue today's class. So Dental Clinic Near Me is our keyword. Let's come and write our keyword here.
+
+Keyword is Dental Clinic Near Me. Now, I am not going to use this Near Me exactly. Instead, I will write Dental Clinic in Delhi.
+
+Why? Because Near Me does not have a location in itself. Near Me means the location near the user who is searching. Now, I have made this Near Me Delhi.
+
+This may make local SEOs a little curious. But when we have a local SEO class, then I will explain its logic later. For now, let's take the keyword Dental Clinic in Delhi.
+
+Let's take this keyword. This keyword will work for all those people who search for Dental Clinic in Delhi. So if someone is searching for Dental Clinic Near Me in Delhi, Google will consider Dental Clinic in Delhi and rank the pages accordingly.
+
+So our keyword is Dental Clinic in Delhi. Now, there is a concept in the last live class. Yesterday, a student asked a very good question.
+
+The keyword we have made is our primary keyword. Now, how do we think of a secondary keyword? So, what is a secondary keyword? I did not cover this in the last class because I did not want to confuse you. Here, we see what a secondary keyword is.
+
+So, once I make this keyword a primary keyword. Now, what can be a secondary keyword after a primary keyword? Let's see what a secondary keyword is. Primary means the keyword you are going to target.
+
+Secondary means a keyword that can help your primary keyword. So, how can help a keyword be done? Imagine that your primary keyword is Dental Clinic in Delhi. What is Dental Clinic? It is a place.
+
+So, when we say Dental Clinic in Delhi, we expect that someone is searching for the best place to go. Right? Best place to go for any service, to purchase a product, for any service, to go to any place. Best place to go.
+
+Now, after going to the Dental Clinic, the place will not treat. Who will treat? The doctor will treat. Right? So, what can be the secondary keyword of this particular query, Dental Clinic in Delhi? Best dentist in Delhi.
+
+It can support, right? If any person has reached a Dental Clinic, I have not put Best here. I will put Best Dental Clinic. Best Dental Clinic in Delhi.
+
+So, our secondary keyword is Best Dentist in Delhi. Because someone will reach the Best Dental Clinic, but who will treat there? There should be a Best Dentist in the Best Dental Clinic, who will treat. Right? So, here my secondary query, which becomes my secondary keyword, is Best Dentist in Delhi.
+
+Both will complement each other. But both are different. Because Best Dental Clinic in Delhi is a place and Best Dentist in Delhi is a person.
+
+Right? Now, along with this, we can also use some supporting keywords. Supporting keywords. Right? What can be my supporting keywords? Now, both of these complement each other.
+
+For example, Top Dental Clinic in Delhi. This can also be a variation of the query. And similarly, Top Dentist in Delhi can also be a supporting keyword.
+
+Along with this, Experience Dentist in Delhi can also be a supporting keyword. And, Most Trusted Dental Clinic in Delhi can also be a supporting keyword. So, my primary keyword will be Best Dental Clinic in Delhi.
+
+Whenever I plan a content, whenever I write a content, whenever I make a meta title, meta description, header, I will focus on the primary keyword everywhere. But, I don't want to show that I am writing Best Dental Clinic in Delhi everywhere. So, we will use Best Dentist in Delhi word in our content in many places.
+
+Dentist and Dental Clinic are close. Both will be very similar in vector score. So, it will work.
+
+Cosine similarity will remain. Along with this, there is a supporting keyword. So, we sprinkle supporting keyword in many places.
+
+So that, we don't feel that we are repeating the primary keyword. See, Google's algorithm is made to catch this kind of trickery. If you repeat the same keyword five times on a page, Google will know that this is their primary keyword.
+
+People are targeting for this keyword. It will stop ranking for that keyword. So, instead of that, if we take a variation through our supporting keywords, our work becomes easier.
+
+Okay? It is clear till here. So, my primary keyword is Best Dental Clinic in Delhi. My secondary keyword is Best Dentist in Delhi.
+
+And, I have some supporting keywords as well. And, you can see their list here. Let's format it a little bit down.
+
+Later, I will provide this document so that everyone can use it. Although, I like to keep things in camel case, we will not format it here. Till you get the document, we will format it.
+
+Okay? Now, let's see what type of content we can have. Normally, I am repeating again and again, people write blog posts. Now, if you go to write a blog post, instead of this word, Best Dental Clinic in Delhi, what will you do? When you go to write a blog post of this keyword, your topic will be Best Dental Clinic in Delhi.
+
+And, the post will be something like There are multiple dental clinics in Delhi. But, our dental clinic is the best. This service is available here.
+
+Such customers come here. This is our price range. We provide such services.
+
+Normally, what type of benefits people get? How much time does it take? And then, below this, there will be a testimonial as well. This is the overall structure of a blog post. Information starts from the top and ends at the bottom.
+
+Then, this causes a loss because you are limiting the potential of your website. So, in today's class, we will scratch the blog post. Okay? We do not have to write a blog post.
+
+Instead of blog posts, we will write some different types of content. This content type is 15. And, we will now plan all these 15 content types so that you can easily use all these in your website.
+
+Now, once the keyword comes, what do we do first? We normally start writing a blog post. And, what is the structure of a blog post? My keyword is Best Dental Clinic in Delhi. And, for Best Dental Clinic in Delhi, I start writing a blog post.
+
+There are multiple dental clinics in Delhi. But, our Smile & Care, let's take the name of Smile & Care as an example. This is the best.
+
+These services are provided in our dental clinic. This dental clinic has a history of so many years. The dentists here are so experienced.
+
+There are many dentists. There are many new machines. Our price range is like this.
+
+And, at the same time, you put some fake or real testimonials below. And, you put some links of your internal pages. And, your work gets over.
+
+Now, even Google doesn't know what to do with this type of blog post. Right? There is no structure. So, we scratch the blog post.
+
+We will not see the blog post today. We will never see it. If your business is your site, then you will not write a blog post.
+
+When will you write a blog post? When your dentist takes his entire staff to a party, to a park, to an outing. So, you collect the photos of all of them. Collect the photos of the entire group.
+
+And, then make a blog post that this dental clinic went with its staff for a retreat, for a corporate retreat, or was doing a group activity or was doing anything. That will be the blog post. It will not be a blog post for business use.
+
+You can do it to prove that our organization is so cool. But, it has no actual purpose. It has no purpose from the SEO point of view.
+
+What will we do from the SEO point of view? We will write 15 types of content from the SEO point of view. In today's class, we are going to learn 15 types of content. And, we will write these 15 types of content for our primary keyword.
+
+Okay? What is our primary keyword? Best dental clinic in Delhi. I had written this idea to explain something. I will remove this so that there is no confusion.
+
+So, first of all, the content types, let's see the list of these content types. Content types. Who all are excited? To see the content types.
+
+Okay? Let's start making the list. First of all, the guide will come. Okay? We will prepare the guide for our keyword.
+
+After this, the tutorial will come. After this, case study, success, story, video, pillar page, FAQs, report, checklist, news article, interview, expert, opinion. I did not change the line after a while.
+
+Expert, opinion, vocabulary, comparison, and testimonial. These are the 15 types of content that we can easily write for any keyword. Apart from this, there are some other types of content that we can make.
+
+For example, you can write a white paper. You can do technical documentation. Apart from this, you can write help articles.
+
+Troubleshooting guides can be written. Etc. Many different types of profile pages can be written.
+
+If we want, we can expand this list further. But for the sake of simplicity, and in this class, we are going to explain the first 15 types of content. These 20 types of content are not a complete list.
+
+Many different types of content can be written in different websites. You can understand all these types while working in the industry. But the first 15 types that I have picked are the types of content that can be easily written in any website.
+
+Now, let's see how we can make all these types of content. Let's say, our main keyword is Best Dental Clinic in Delhi. For Best Dental Clinic in Delhi keyword, how can you write a guide? Should we write a guide on how to make Best Dental Clinic in Delhi? But that is not our target audience.
+
+What is our target audience? Which are the patients? The patient has to search for Best Dental Clinic in Delhi. We want to go in front of the patient. If there is a patient, he has a toothache, he has a problem, he has to get a surgery, and he searches for Best Dental Clinic in Delhi.
+
+So we go in front of the patients, not those who want to make a dental clinic. So what is the guide here? I start typing right here. Our guide will be How to choose Best Dental Clinic in Delhi.
+
+This will be my guide. My guide will be How to choose Best Dental Clinic in Delhi. We have to explain the method that if someone is searching for Best Dental Clinic in Delhi, then how can he decide which dental clinic is best.
+
+Here, my primary keyword automatically comes in its own title. Best Dental Clinic in Delhi. How to choose? What can be the criteria? Our dentist should be experienced.
+
+The staff should be very experienced. He should do post-procedure care easily. His prices should be good.
+
+The appointment should be very timely. The dental clinic should be trustworthy in its area. It should not be that the dentist keeps coming there.
+
+Along with that, the overall review of the entire clinic should be very good. You can mention all these factors in your guide. And your content piece will be ready.
+
+How to choose Best Dental Clinic in Delhi. Let's come to the second content type, which is Tutorial. How can the tutorial be? The topic of the tutorial is also very easy to make.
+
+How to prepare for first dental appointment in Delhi. This is my tutorial. How are you ready for your first dental appointment? Dental Appointment in Delhi is written.
+
+This is our secondary supporting keyword. I have not written yet. Dental Appointment in Delhi.
+
+But with whom is the dental appointment? With the dentist. And where is it? With the dental clinic. How to prepare for first dental appointment in Delhi.
+
+Will write on this topic. Automatically, you can use Dental Clinic in Delhi word in your content. And this content will be ready.
+
+Let's say someone has to go to the dental clinic for braces. Or to get another surgery. To get a root canal.
+
+To get a tooth extraction. There can be any other problem. You have to go to the dental clinic for all of them.
+
+To go to the dental clinic. Before the appointment. How can you prepare yourself? What things should be taken? What precautions should be taken? How can you prepare yourself for all of them? You can mention all of these things in this tutorial.
+
+Two content types are ready. The third is case study. What can be the case study? What will be the case study in the dental clinic? I deliberately caught a small keyword like this.
+
+Because if I catch a big element of B2B. Let's say phone, mobile, computer, laptop. If I catch a big element.
+
+Real estate, etc. So making a success story there. Or making a case study there.
+
+Or making an FAQ there. It becomes very easy. The topic is big.
+
+You can show a little importance. But Dental Clinic. Like a small one.
+
+And after coming in a very specific niche. How will you make a case study? The topic of the case study will be. How we made a groom confident before his wedding? There was a groom.
+
+There was some issue in his teeth. How did this dental clinic improve his oral look? What are the procedures of teeth whitening? Or any other procedure. Whatever you want to name in this case study.
+
+You can use all of them. And you can publish this content. Marriage or any.
+
+Even people. Teeth cleaning or teeth whitening. Such procedures have been done before the interview.
+
+To look their best. And the wedding day itself is very big. So before that.
+
+People take plastic surgery appointments. Do a lot of procedures. Dental appointment.
+
+There is a very small element in all these lists. It is a thing of 1-2 hours. But this type of content.
+
+How we made a groom confident before his wedding? You can also publish content about the bride with the groom. You can do two different success stories. And this will add a different type of content to your website.
+
+Then comes another type of content. Which is a success story. What kind of success story? Invisible braces.
+
+Rising cricket star transformed in Delhi. There is a cricket player. There is a selection in IPL.
+
+There was some problem in the teeth. His look was not right. If you want good advertisements.
+
+You have to look good on the field. You have to look good in interviews. Let's fix the teeth.
+
+But he is a player. Right. There is a story that I am telling.
+
+By which you can use. To develop your content like this. But he is a player.
+
+Always have to live publicly. So he can't use normal braces. That's why he used invisible braces.
+
+He put invisible braces in our dental clinic. He put invisible braces. Gradually over the month.
+
+His teeth look changed. Now he is very confident. And how a dental clinic.
+
+Helped a normal cricket player. Turned into a superstar. So you can publish such a success story.
+
+Then comes the topic of the video. What will be the topic of the video? A day in the life of the best dentist in Delhi. Okay.
+
+This is the topic of the video. Our dentists. How do dentists get ready from their home.
+
+And reach in the morning. In their dental clinic. After going to the best dental clinic.
+
+How their assistant comes. And prepares a whole roaster for them. How do they navigate different problems throughout the day.
+
+How do they go out in the evening with a lock in the shop. You can make such a day in the life type of videos. And then after this.
+
+That video can be published. That will also be a content type for you. Then comes the pillar page.
+
+Pillar page is a very normal thing in itself. But those who are new. I will explain them a little bit.
+
+What is a pillar page? All the pages on your website. Supporting. Let's say you have a lot of content on services.
+
+In this dental clinic website. How to get a root canal. How to get a cup.
+
+Or how to get a tooth extraction. Or for services like braces. There will be different pages.
+
+There will be some pages where there will be information about prices. There will be some pages where care tips will be given. But all these pages are different.
+
+Maybe you have connected it from the header above. Will be linked. But still.
+
+If we make a pillar page. Which brings all these content pieces together. For individual topics.
+
+So how good it will be. Your page will also be made. The chances of that page being ranked will increase.
+
+And the internal link will also be very good. And if there is an orphan page somewhere. Then that will also be covered.
+
+So let's make a pillar page. The topic of the pillar page will be. Best Dental Clinic in Delhi.
+
+Let's give it a name here. Services. Prices.
+
+And Care Guide. If you have any other special type of content. Let's say FAQs.
+
+Then we can add it here. Prices. FAQs.
+
+And Care Guide. So you will cover many such pages together. In one page, your page is ready and you have collected all your pages at one place.
+
+Next type is FAQ. FAQ means Frequently Asked Questions. How can FAQs be made in FAQ? Let's make a topic. 
+
+Let's say, how often should I visit dentist? I know, in some topics, I am not adding keyword intentionally. Because, if you force it again and again, the creativity reduces. It is not necessary that every time we put it in the title, only then Google will know that this is our target keyword.
+
+If target keyword is not in your title, then you can also install your keyword in H1, H2, H3, etc. But, we will know the details of content writing in the next class. For now, my FAQ will be one. 
+
+How often I should visit d

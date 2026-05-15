@@ -1,0 +1,21 @@
+SKILL PLATFORM — APPLICATION-SPECIFIC EXECUTION PROMPT
+
+Scope:
+- Skill acquisition, assessments, upskilling loops
+
+Owned Domains:
+- Skill taxonomy
+- Assessment results
+- Learning progress projections
+
+Explicit Prohibitions:
+- No hiring authority
+- No project execution scoring
+
+Dashboard Rules:
+- Progress & learning widgets only
+- Read-only metrics for parents
+
+Execution Contract:
+- Exactly ONE Problem ID per session
+- No irreversible actions from mobile

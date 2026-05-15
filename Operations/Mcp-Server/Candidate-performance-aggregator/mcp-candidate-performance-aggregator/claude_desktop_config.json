@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "mcp-candidate-performance-aggregator": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-candidate-performance-aggregator/target/mcp-candidate-performance-aggregator.jar"],
+      "env": {
+        "CPA_JWT_SECRET": "your-keycloak-realm-secret-here",
+        "CPA_STRICT_MODE": "false",
+        "CPA_DEFAULT_GD_WEIGHT": "0.35",
+        "CPA_DEFAULT_INT_WEIGHT": "0.40",
+        "CPA_DEFAULT_DOJO_WEIGHT": "0.25",
+        "CPA_LOCK_TTL_SECONDS": "30",
+        "CPA_DEDUP_TTL_HOURS": "48"
+      }
+    }
+  }
+}

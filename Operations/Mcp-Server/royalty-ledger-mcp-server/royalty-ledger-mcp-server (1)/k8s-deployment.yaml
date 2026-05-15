@@ -1,0 +1,105 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: royalty-ledger-secrets
+  namespace: revenue
+type: Opaque
+stringData:
+  jwt-secret: "REPLACE_WITH_KEYCLOAK_JWT_SECRET"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: royalty-ledger-config
+  namespace: revenue
+data:
+  ROYALTY_DOMAIN:             "ecoskiller.io"
+  ROYALTY_DB_HOST:            "postgres.revenue.svc.cluster.local"
+  ROYALTY_CLICKHOUSE_HOST:    "clickhouse.revenue.svc.cluster.local"
+  ROYALTY_REDIS_ENABLED:      "true"
+  ROYALTY_AUDIT_ENABLED:      "true"
+  ROYALTY_RATE_PER_SEC:       "100"
+  ROYALTY_RATE_PER_MIN:       "1000"
+  ROYALTY_PAYOUT_THRESHOLD:   "5000"
+  ROYALTY_TDS_RATE_INDIVIDUAL:"10"
+  ROYALTY_TDS_RATE_FOREIGN:   "30"
+  ROYALTY_GST_RATE:           "18"
+  ROYALTY_FRAUD_VELOCITY_LIMIT:"100"
+  ROYALTY_MAX_DAILY_SUBMISSIONS:"50"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: royalty-ledger-mcp
+  namespace: revenue
+  labels:
+    app: royalty-ledger-mcp
+    component: royalty
+    version: "1.0.0"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: royalty-ledger-mcp
+  template:
+    metadata:
+      labels:
+        app: royalty-ledger-mcp
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: royalty-ledger-mcp
+          image: harbor.ecoskiller.io/ecoskiller/royalty-ledger-mcp-server:1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: ROYALTY_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: royalty-ledger-secrets
+                  key: jwt-secret
+          envFrom:
+            - configMapRef:
+                name: royalty-ledger-config
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: royalty-ledger-mcp-netpol
+  namespace: revenue
+spec:
+  podSelector:
+    matchLabels:
+      app: royalty-ledger-mcp
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: revenue
+      ports:
+        - port: 5432   # PostgreSQL
+        - port: 9000   # ClickHouse HTTP
+        - port: 9440   # ClickHouse native (TLS)
+        - port: 6379   # Redis
+        - port: 9092   # Kafka

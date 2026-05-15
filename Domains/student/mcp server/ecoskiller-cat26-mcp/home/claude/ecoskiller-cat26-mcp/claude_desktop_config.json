@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "ecoskiller-cat26-organizer-network-management": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/path/to/cat26-organizer-network-management-mcp-1.0.0-ANTIGRAVITY.jar"
+      ],
+      "metadata": {
+        "name": "CAT-26: Organizer & Network Management",
+        "platform": "ECOSKILLER ANTIGRAVITY",
+        "version": "1.0.0-ANTIGRAVITY-SEALED",
+        "transport": "stdio",
+        "total_agents": 29,
+        "total_tools": 58
+      }
+    }
+  }
+}

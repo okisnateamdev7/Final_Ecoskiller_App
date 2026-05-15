@@ -1,0 +1,42 @@
+server:
+  port: 8220
+  servlet:
+    context-path: /mcp-20-trust
+
+spring:
+  application:
+    name: mcp-20-trust
+
+mcp:
+  server:
+    id: mcp-20-trust
+    name: "Ecoskiller Trust, Identity & Safeguards"
+    version: "1.0.0"
+    namespace: core
+    category: CAT-20
+    priority: HIGH
+    agents:
+      - AGENT_ACCESS_PERMISSION_FIREWALL
+      - AGENT_FAILURE_RECOVERY_AGENT
+      - CHILD_PROTECTION_EVIDENCE_AGENT
+      - CONSENT_AND_PARENT_PERMISSION_AGENT
+      - CROSS_PLATFORM_TRUST_SCORE_AGENT
+      - EVIDENCE_PRESERVATION_AGENT
+      - IDEA_DISPUTE_RESOLUTION_AGENT
+      - IDENTITY_ASSURANCE_AGENT
+      - USER_RIGHTS_EXPLANATION_AGENT
+      - VENDOR_RISK_EVALUATION_AGENT
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.ecoskiller: DEBUG
+    root: INFO

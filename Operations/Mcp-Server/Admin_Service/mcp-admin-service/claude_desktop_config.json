@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "mcp-admin-service": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-admin-service/target/mcp-admin-service-1.0.0.jar"],
+      "env": {
+        "KEYCLOAK_ISSUER": "https://keycloak.ecoskiller.internal/realms/ecoskiller",
+        "JWT_STRICT_SIGNATURE": "false",
+        "AUDIT_LOG_FILE": "/tmp/ecoskiller-admin-audit.log"
+      }
+    }
+  }
+}

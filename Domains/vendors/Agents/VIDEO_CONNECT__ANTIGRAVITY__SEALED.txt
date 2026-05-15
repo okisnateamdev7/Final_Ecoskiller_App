@@ -1,0 +1,1394 @@
+
+╔══════════════════════════════════════════════════════════════════════════════════════════════╗
+║        🔒 SEALED & LOCKED MODULE PROMPT — ECOSKILLER PLATFORM                              ║
+║        MODULE ID         :  VIDEO_CONNECT                                                   ║
+║        MODULE CODENAME   :  ANTIGRAVITY — MEDIA LAYER                                       ║
+║        MODULE TYPE       :  REAL-TIME VIDEO / VOICE / MEDIA ENGINE                          ║
+║        VERSION           :  1.0.0-LOCKED                                                    ║
+║        PARENT SYSTEM     :  ECOSKILLER ENTERPRISE MULTI-TENANT SAAS                        ║
+║        PARENT MODULE     :  ANALYTICS_CONNECT (ANTIGRAVITY)                                 ║
+║        STAGE             :  STAGE 2 — INTELLIGENCE (SEQUENTIAL DEPENDENCY ENFORCED)        ║
+║        MUTATION POLICY   :  ADD_ONLY                                                        ║
+╚══════════════════════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔐 EXECUTION POLICY (HARD LOCK — ABSOLUTE — NO EXCEPTIONS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EXECUTION_MODE                = LOCKED
+MUTATION_POLICY               = ADD_ONLY
+CREATIVE_INTERPRETATION       = FORBIDDEN
+ASSUMPTION_FILLING            = FORBIDDEN
+DEFAULT_BEHAVIOR              = DENY
+FAILURE_MODE                  = STOP_EXECUTION
+OVERRIDE_AUTHORITY            = PLATFORM_ADMIN_ONLY
+DUPLICATION_POLICY            = FORBIDDEN (inherit, do not redeclare)
+CONFLICT_POLICY               = DENY
+CROSS_TENANT_ACCESS           = FORBIDDEN → SECURITY_FAILURE
+CROSS_DOMAIN_LEAK             = FORBIDDEN → SECURITY_FAILURE
+AI_APPROVAL_AUTHORITY         = NONE (AI ADVISES ONLY — NEVER ACTS)
+HARDCODED_ROLES               = FORBIDDEN
+BACKEND_IN_FRONTEND           = FORBIDDEN
+MEDIA_THROUGH_API             = FORBIDDEN (media plane strictly separate)
+TRANSPORT_MODEL_CHANGE        = REQUIRES VERSION BUMP (not a patch)
+PROVIDER_SWAP                 = ALLOWED (architecture is not swappable)
+REACT_IN_LIVE_ROOM            = FORBIDDEN
+RECORDING_WITHOUT_CONSENT     = FORBIDDEN → BLOCK EXECUTION
+UNSIGNED_MEDIA_TOKEN          = FORBIDDEN → SECURITY_FAILURE
+ANONYMOUS_PARTICIPANT         = FORBIDDEN
+SKIP_STAGE_POLICY             = INVALID BUILD → STOP EXECUTION
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣  MODULE IDENTITY (NON-NEGOTIABLE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MODULE_CODENAME               = ANTIGRAVITY — MEDIA LAYER
+MODULE_CLASS                  = VIDEO_CONNECT
+MODULE_ROLE                   = Platform-wide real-time voice, video, recording,
+                                proctoring, and media infrastructure engine
+MODULE_SCOPE                  = All real-time sessions: Dojo GD rooms,
+                                Interview rooms, Trainer live classrooms,
+                                Mock interview rooms, Mentor control sessions,
+                                Arena live sessions
+MODULE_ISOLATION              = Hard per-tenant room namespacing
+                                + per-session signed token isolation
+MODULE_ACCESS                 = RBAC + ABAC inherited from parent
+STAGE_DEPENDENCY              = STAGE 1 (Foundation) complete
+                                + Auth Service, Session Service operational
+                                + Consent Management Service operational
+
+PURPOSE:
+  VIDEO_CONNECT is the isolated, hardened real-time media engine of the
+  Ecoskiller platform. It governs all voice, video, recording, screen-share,
+  proctoring, and quality-of-service operations across every session type.
+
+  VIDEO_CONNECT:
+    ─ Issues short-lived, signed media tokens (never raw credentials)
+    ─ Manages room lifecycle (creation → join → session → teardown)
+    ─ Enforces turn-based speaking, forced mute/unmute (Dojo GD)
+    ─ Captures recording only after explicit, per-session consent
+    ─ Monitors real-time QoS (audio/video latency, jitter, packet loss)
+    ─ Reconnects participants gracefully within 3 seconds of drop
+    ─ Generates immutable audit logs for every media event
+    ─ Feeds session signals to ANALYTICS_CONNECT via Kafka events
+
+WHAT VIDEO_CONNECT IS NOT:
+    ─ NOT a general-purpose CDN or file server (MinIO handles storage)
+    ─ NOT a signaling proxy for business logic (business logic stays in services)
+    ─ NOT accessible from React web layer (Flutter app only for live rooms)
+    ─ NOT a recording store (recordings stored in MinIO / object store)
+    ─ NOT a decision-making system (all outputs are advisory or enforced
+      only within the media plane per pre-configured session rules)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2️⃣  INHERITANCE CONTRACT (DO NOT RE-DECLARE — REFERENCE ONLY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+VIDEO_CONNECT inherits and enforces (already finalized in parent):
+
+  ✅ Authorization              → RBAC + ABAC at token issuance boundary
+  ✅ Authentication             → JWT + OAuth2 + MFA (no room join without auth)
+  ✅ Tenant Isolation           → Hard: rooms namespaced by tenant_id
+  ✅ Domain Track Isolation     → Arts | Commerce | Science | Technology | Admin
+  ✅ Consent Management (CM-*)  → Explicit per-session consent before recording
+                                  (CM-A through CM-O fully enforced)
+  ✅ Audit Logging (AL-*)       → All media events immutably logged
+  ✅ Data Access Logging (DAL-*)→ Recording access, replay access logged
+  ✅ PII Masking (PM-*)         → No PII overlay in recordings; transcripts redacted
+  ✅ Rate Limiting (RL-*)       → Message rate, join/leave, recording access throttled
+  ✅ Data Integrity (DI-*)      → Recording metadata immutable; score locked
+  ✅ Backup & Restore (BR-*)    → Recording backups; media opt-in only
+  ✅ Encryption at Rest         → AES-256 (all recording files)
+  ✅ Encryption in Transit      → TLS 1.3 (signaling), SRTP (media plane)
+  ✅ AI Advisory Policy         → AI advises only (QoS, anti-cheat scores);
+                                  never blocks participants without human command
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3️⃣  MEDIA STACK ARCHITECTURE (HARD LOCKED — ALL COMPONENTS REQUIRED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TRAFFIC CLASS ISOLATION (LOCKED — NO MIXING):
+  CLASS 1 — HTTP APIs        → Business logic, CRUD, queries
+  CLASS 2 — WebSocket        → Backend control channel (mute/unmute, timers,
+                               session state, mentor commands)
+  CLASS 3 — Media (WebRTC)   → Voice/Video — NEVER through API layer
+  CLASS 4 — Async Events     → Kafka (analytics, scoring, billing signals)
+
+  RULE: Media plane (CLASS 3) is FULLY ISOLATED from API plane (CLASS 1/2).
+        Control plane commands MUST NOT be blocked by video transmission.
+        WebSocket channel (CLASS 2) is the ONLY backend→frontend command path
+        for GD orchestration — no REST polling for real-time commands.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  A. MEDIA SERVER COMPONENTS (ALL REQUIRED — ABSENCE = STOP EXECUTION)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ┌──────────────────────────────────────────────────────────────────────────┐
+  │ COMPONENT 1 — JITSI (VOICE GD ENGINE)                                   │
+  │ USE CASE    : Dojo Group Discussion (GD) rooms — voice only             │
+  │ TYPE        : Self-hosted, audio-only SFU                               │
+  │ DEPLOYMENT  : Kubernetes namespace: media                               │
+  │ SUB-COMPONENTS:                                                          │
+  │   Jitsi Videobridge  → Server-side audio routing, multi-participant SFU  │
+  │   Jicofo            → Participant coordination, conference focus mgmt    │
+  │   Prosody (XMPP)    → Signaling backbone for room management            │
+  │ RULES:                                                                   │
+  │   - Video DISABLED in GD rooms (audio only, by configuration lock)       │
+  │   - Forced mute/unmute via Jitsi REST API (backend command only)         │
+  │   - Room ID = session_id (deterministic, backend-generated)              │
+  │   - Max participants per GD room: enforced by Jitsi config + orchestrator│
+  │   - Room creation: backend only, never client-initiated                  │
+  │   - JWT authentication required for room join (short-lived tokens)       │
+  │   - Self-hosted: no cloud SaaS dependency                                │
+  └──────────────────────────────────────────────────────────────────────────┘
+
+  ┌──────────────────────────────────────────────────────────────────────────┐
+  │ COMPONENT 2 — LIVEKIT (VIDEO + AUDIO ENGINE)                            │
+  │ USE CASE    : Dojo Match rooms, Interview rooms, Trainer classrooms,     │
+  │               Mock interview rooms, Mentor sessions, Arena sessions      │
+  │ TYPE        : Self-hosted SFU (Selective Forwarding Unit)                │
+  │ DEPLOYMENT  : Kubernetes namespace: media                               │
+  │ FEATURES USED:                                                           │
+  │   - Simulcast (adaptive layer selection per participant bandwidth)        │
+  │   - Codec: VP8 / VP9 (video), Opus (audio)                              │
+  │   - E2E encryption: per-room configurable (mentor sessions)              │
+  │   - Participant metadata: role binding in JWT payload                    │
+  │   - Room recording: cloud recorder plugin (output to MinIO)              │
+  │   - Active speaker detection: feeds speaking-time analytics              │
+  │ CLIENT SDK:                                                              │
+  │   Flutter: livekit_client (LiveKit Flutter SDK) — required               │
+  │   React web: NOT USED for live rooms (React layer forbidden in live room)│
+  │ RULES:                                                                   │
+  │   - Room ID = match_id / interview_id / session_id (backend-generated)   │
+  │   - Token = short-lived JWT signed by Token Service (max 4 hours)        │
+  │   - Participant metadata = {user_id, tenant_id, domain_track, role}      │
+  │   - Role binding verified on join (Egress hook → Token Verification Svc) │
+  │   - Provider swappable (architecture not swappable per Dojo Section B)   │
+  └──────────────────────────────────────────────────────────────────────────┘
+
+  ┌──────────────────────────────────────────────────────────────────────────┐
+  │ COMPONENT 3 — COTURN (NAT TRAVERSAL)                                    │
+  │ USE CASE    : TURN / STUN server for all WebRTC connections             │
+  │ TYPE        : Self-hosted (coturn)                                       │
+  │ DEPLOYMENT  : Kubernetes namespace: media (or dedicated VM for UDP perf) │
+  │ PORTS:                                                                   │
+  │   STUN: UDP 3478 + TLS 5349                                             │
+  │   TURN: UDP 3478, TCP 3478, TLS 5349                                     │
+  │   Relay UDP: 49152–65535 (configurable range)                            │
+  │ RULES:                                                                   │
+  │   - TURN credentials: time-limited, HMAC-generated per session           │
+  │   - TURN credential TTL: matches session token TTL (max 4 hours)         │
+  │   - No static TURN credentials in any codebase or config map             │
+  │   - Bandwidth quota per session enforced at TURN level                   │
+  │   - Metrics exported to Prometheus (relay bytes, session count, errors)  │
+  │   - Mobile / restricted network fallback: TURN TCP 443 enabled          │
+  └──────────────────────────────────────────────────────────────────────────┘
+
+  ┌──────────────────────────────────────────────────────────────────────────┐
+  │ COMPONENT 4 — RECORDING ENGINE (MinIO + LiveKit Egress)                 │
+  │ USE CASE    : Session recording for Dojo, Interviews, Trainer classrooms │
+  │ STORAGE     : MinIO (self-hosted S3-compatible object store)             │
+  │ TRIGGER     : Only after explicit per-session consent confirmed          │
+  │ OUTPUT      : WebM (VP8 + Opus) or MP4 (H.264 + AAC) per config        │
+  │ PIPELINE:                                                                │
+  │   LiveKit Egress → recording process → MinIO bucket                     │
+  │   MinIO event → Kafka topic: media.recording.complete                   │
+  │   Kafka → Analytics Service (session analytics trigger)                  │
+  │   Kafka → Scoring Engine (post-session scoring trigger)                  │
+  │ STORAGE PATH: /tenant_id/session_type/year/month/session_id/             │
+  │ RULES:                                                                   │
+  │   - Recordings NEVER stored without explicit consent (CM-E enforced)     │
+  │   - Consent captured per-session, per-participant (not blanket)          │
+  │   - Recording access URL: presigned MinIO URL (TTL = 24h max)            │
+  │   - Recording access = logged (DAL-E enforced)                           │
+  │   - Replay access = logged separately from recording access              │
+  │   - PII overlay in recordings: FORBIDDEN (PM-G enforced)                 │
+  │   - Transcripts: generated only with explicit consent; PII redacted       │
+  │   - Recording files encrypted at rest: AES-256 (MinIO SSE)              │
+  │   - Recording backup: aligned with BR-K (media backups per retention)    │
+  │   - Recording deleted on GDPR/DPDP erasure request                       │
+  │   - No permanent recordings by default (opt-in only)                     │
+  └──────────────────────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  B. KUBERNETES MEDIA NAMESPACE (FIXED LAYOUT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  NAMESPACE: media
+    Deployments:
+      jitsi-videobridge       (audio SFU for GD rooms)
+      jicofo                  (conference coordinator)
+      prosody                 (XMPP signaling)
+      livekit-server          (video SFU for match/interview/classroom)
+      livekit-egress          (recording controller)
+      coturn                  (TURN/STUN server)
+
+  NAMESPACE: realtime
+    Deployments:
+      voice-gd-orchestrator   (GD state machine + WebSocket command channel)
+      dojo-match-engine       (match creation, scenario, role binding)
+      interview-service       (scheduling, token gen, interview lifecycle)
+      session-token-service   (short-lived media token issuance)
+
+  NAMESPACE RULES:
+    - media namespace has NO outbound internet access (isolated)
+    - realtime namespace communicates with media namespace via internal DNS
+    - No cross-namespace ingress from public internet to media namespace
+    - All external traffic to realtime via API Gateway (Traefik)
+    - WebSocket gateway: dedicated ingress route (not HTTP API ingress)
+    - UDP traffic for WebRTC: LoadBalancer service (not ClusterIP)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4️⃣  SESSION TYPES & ROOM SPECIFICATIONS (ALL REQUIRED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ┌─────────────────────────────────────────────────────────────────────────────────────────┐
+  │ SESSION TYPE            │ ENGINE   │ MODE       │ MAX PAX │ RECORDING │ TURN-BASED │ PROCTOR │
+  ├─────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Dojo GD Room            │ Jitsi    │ Audio Only │ 2–10    │ Opt-in    │ YES        │ YES     │
+  │ Dojo Match Room         │ LiveKit  │ Audio+Video│ 2–6     │ Opt-in    │ NO         │ YES     │
+  │ Interview Room          │ LiveKit  │ Audio+Video│ 2–4     │ Opt-in    │ NO         │ NO      │
+  │ Trainer Live Classroom  │ LiveKit  │ Audio+Video│ 2–200   │ Opt-in    │ NO         │ NO      │
+  │ Mock Interview Room     │ LiveKit  │ Audio+Video│ 2–4     │ Opt-in    │ NO         │ NO      │
+  │ Mentor Session          │ LiveKit  │ Audio+Video│ 2–6     │ Opt-in    │ NO         │ NO      │
+  │ Arena Live Session      │ LiveKit  │ Audio+Video│ 2–10    │ Opt-in    │ NO         │ YES     │
+  └─────────────────────────────────────────────────────────────────────────────────────────┘
+
+  ROOM IDENTITY RULES (LOCKED):
+    - Room ID = deterministically generated by backend (session_id or match_id)
+    - Rooms are NEVER client-created or client-named
+    - Room names are OPAQUE (UUID-based, not human-readable externally)
+    - One room per active session — no room reuse across sessions
+    - Expired rooms: automatically terminated by orchestrator after session TTL
+
+  PARTICIPANT ROLES IN ROOMS (LOCKED):
+    - HOST          : Trainer (classroom), Recruiter (interview), Platform admin
+    - SPEAKER       : Student (when speaking turn active in GD)
+    - LISTENER      : Student (when not speaking turn in GD), evaluator-only joins
+    - EVALUATOR     : Evaluator / Mentor (scoring, no turn-based restriction)
+    - MODERATOR     : Mentor, Proctor, Admin (can mute/remove, has command priority)
+    - PROCTOR       : Assigned proctor in Arena / Dojo match (anti-cheat oversight)
+    - OBSERVER      : Parent (read-only, zero media send capability)
+
+  ROLE BINDING RULES:
+    - Role embedded in JWT token payload at issuance
+    - Role verified by LiveKit / Jitsi on join (hook validation)
+    - Role changes mid-session: requires new token reissue + audit log
+    - Cross-role privilege escalation mid-session: FORBIDDEN
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5️⃣  TOKEN SERVICE (MEDIA TOKEN ISSUANCE — LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SERVICE NAME          = Session Token Service (media namespace: realtime)
+PROTOCOL              = Internal REST API (not publicly exposed)
+CALLER                = Voice GD Orchestrator, Interview Service, Dojo Match Engine,
+                        Trainer Session Service, Arena Service ONLY
+TOKEN TYPE            = Short-lived signed JWT (LiveKit room token / Jitsi JWT)
+TOKEN TTL             = Maximum 4 hours; minimum = session duration estimate + 10 min
+SIGNING KEY           = Managed via Hashicorp Vault OSS (auto-rotated every 7 days)
+SIGNING ALGORITHM     = HS256 (shared secret) or RS256 (asymmetric — enterprise tier)
+
+TOKEN PAYLOAD SPEC (MANDATORY FIELDS):
+  {
+    "sub"          : user_id (UUID),
+    "iss"          : "ecoskiller-token-service",
+    "room"         : room_id (= session_id / match_id — backend assigned),
+    "tenant_id"    : UUID (mandatory — non-nullable),
+    "domain_track" : ENUM [Arts|Commerce|Science|Technology|Administration],
+    "role"         : ENUM [HOST|SPEAKER|LISTENER|EVALUATOR|MODERATOR|PROCTOR|OBSERVER],
+    "can_publish"  : Boolean (controlled by role + turn engine state),
+    "can_subscribe": Boolean (always true for valid participants),
+    "can_record"   : Boolean (only if recording consent confirmed + role=HOST/MODERATOR),
+    "metadata"     : { "display_name_masked": String, "belt_tier": String },
+    "exp"          : Unix timestamp (TTL enforced),
+    "iat"          : Unix timestamp (issued at),
+    "jti"          : UUID (token ID — for revocation tracking)
+  }
+
+TOKEN RULES (HARD LOCK):
+  - Backend issues token ONLY after:
+      (1) User authenticated + session authorized (RBAC/ABAC check)
+      (2) Consent captured (if recording session)
+      (3) Join window validated (GD: batch join window must be open)
+  - Token is single-use per room join attempt
+  - Token revocation: via jti blocklist in Redis (TTL = token TTL)
+  - Expired tokens: rejected at media server level (not retried silently)
+  - Token never transmitted via URL parameter (header or WebSocket handshake only)
+  - Unsigned tokens: FORBIDDEN → SECURITY_FAILURE
+  - TURN credentials: generated alongside token using HMAC-SHA1
+    (coturn time-limited credential model) — TTL matches token TTL
+  - No static API keys in any client code, config, or environment file
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6️⃣  VOICE GD ORCHESTRATOR — DOJO ENGINE (CRITICAL MODULE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DESCRIPTION:
+  The Voice GD Orchestrator is the CRITICAL real-time control brain of the
+  Dojo GD engine. It replaces human moderators with a deterministic,
+  Redis-backed state machine. It controls every speaking turn, timer,
+  mute/unmute command, and session state transition.
+
+  RUNTIME: Node.js (preferred) or Spring Boot
+  STATE ENGINE: Redis deterministic state machine (append-only state transitions)
+  COMMAND CHANNEL: WebSocket (backend → Flutter client)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  A. GD SESSION LIFECYCLE STATE MACHINE (LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  STATES (Canonical — immutable enum):
+    GD_CREATED        → Room allocated, tokens not yet issued
+    GD_JOIN_WINDOW    → Batch join window open (fixed duration, e.g. 5 min)
+    GD_BRIEFING       → All participants joined; scenario/topic announced
+    GD_IN_PROGRESS    → Turn-based discussion active
+    GD_PAUSE          → System-initiated pause (network issue, admin command)
+    GD_CLOSING        → Final remarks phase (all-speak window)
+    GD_EVALUATING     → Discussion ended; scoring window open
+    GD_COMPLETED      → Scores submitted; session closed; room deallocated
+    GD_ABANDONED      → Quorum not met or catastrophic failure; session void
+
+  TRANSITIONS (Enforced by Orchestrator — no client-driven transitions):
+    GD_CREATED        → GD_JOIN_WINDOW    (scheduler trigger at batch time)
+    GD_JOIN_WINDOW    → GD_BRIEFING       (quorum met: min participants joined)
+    GD_JOIN_WINDOW    → GD_ABANDONED      (quorum not met at window close)
+    GD_BRIEFING       → GD_IN_PROGRESS    (briefing timer expired)
+    GD_IN_PROGRESS    → GD_PAUSE          (admin command / system trigger)
+    GD_IN_PROGRESS    → GD_CLOSING        (all turns completed / time limit)
+    GD_PAUSE          → GD_IN_PROGRESS    (admin resume command)
+    GD_CLOSING        → GD_EVALUATING     (closing timer expired)
+    GD_EVALUATING     → GD_COMPLETED      (all evaluations submitted)
+    GD_EVALUATING     → GD_COMPLETED      (evaluation timeout — auto-close)
+    Any state         → GD_ABANDONED      (admin force-abandon)
+
+  STATE STORAGE (Redis):
+    KEY FORMAT: gd:session:{session_id}:state
+    VALUE: {
+      current_state: ENUM,
+      entered_at: Unix timestamp,
+      participant_count: Int,
+      current_speaker_id: UUID | null,
+      turn_index: Int,
+      turn_order: [UUID, ...],
+      time_remaining_seconds: Int,
+      anti_cheat_flags: Int,
+      recording_active: Boolean
+    }
+
+  RULES:
+    - State transitions are ATOMIC (Redis Lua script or WATCH/MULTI/EXEC)
+    - No state can be skipped (Custom state machines: FORBIDDEN)
+    - Invalid transition attempt = REJECTED + audit log entry
+    - State replicated to PostgreSQL on every transition (durable record)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  B. TURN-BASED SPEAKING ENGINE (LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ALGORITHM (Deterministic — not randomized in production):
+    1. Turn order computed by Orchestrator at GD_BRIEFING state
+       (round-robin seeded by session_id — deterministic across runs)
+    2. On turn start:
+       → Orchestrator sends WebSocket command: UNMUTE {user_id}
+       → Jitsi API: participant.setAudioMuted(false) for speaker
+       → All other participants: setAudioMuted(true) by Jitsi API
+       → Speaking timer started in Redis (countdown key with TTL)
+    3. During turn:
+       → Speaking time logged in real-time (Orchestrator listens to
+         Jitsi audio activity events via REST hook)
+       → Speaking time delta written to Redis: gd:session:{id}:speaking:{uid}
+    4. On turn end (timer expiry or early hand-off):
+       → Orchestrator sends MUTE {user_id} via WebSocket + Jitsi API
+       → Turn index incremented
+       → Next participant UNMUTED
+       → Analytics event emitted: gd.turn.completed
+    5. Interruption handling:
+       → Participant speaks when not their turn → detected by audio activity
+       → Interrupt count incremented: gd:session:{id}:interrupts:{uid}
+       → Above threshold: AUTO-MUTE + anti-cheat flag
+    6. Turn skipping (participant disconnected):
+       → FIFO processing: skip disconnected participant's turn
+       → Continue to next in order
+       → Reconnect: if within reconnect window (3s), resume turn
+
+  NUMERIC DATA CAPTURE (per turn, per participant):
+    - speaking_time_seconds      (from Jitsi audio activity hook)
+    - interruption_count         (from audio detection)
+    - unmute_attempts_blocked    (attempts while muted)
+    - words_estimated            (audio duration proxy — not transcript)
+    - turn_completed             (Boolean)
+    - turn_skipped_reason        (null | DISCONNECTED | TIMEOUT | SKIPPED)
+
+  All turn data written atomically to Redis + emitted to Kafka:
+    Topic: gd.turn.data
+    Consumer: Analytics Service + Scoring Engine
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  C. FORCED MUTE / UNMUTE CONTROL (HARD LOCK)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  COMMANDS (Backend → Client only — client CANNOT self-unmute if muted by system):
+    SYSTEM_MUTE    : Participant muted by Orchestrator (turn management)
+    SYSTEM_UNMUTE  : Participant unmuted for their turn
+    MENTOR_MUTE    : Mentor/Moderator manual mute (logged + audited)
+    MENTOR_UNMUTE  : Mentor/Moderator manual unmute (logged + audited)
+    AUTO_MUTE      : Anti-cheat triggered auto-mute (interrupt threshold breach)
+    REMOVE         : Mentor/Admin removes participant from room (audit log required)
+
+  EXECUTION PATH:
+    Orchestrator / Mentor command
+      → WebSocket command to Flutter client (UI indication)
+      → Jitsi REST API: PATCH /colibri/conferences/{room}/participants/{id}
+        { "muted": true/false }
+      → Jitsi enforces server-side (client cannot override)
+      → Audit log entry: {actor, command_type, target_user, session_id, ts}
+
+  RULES:
+    - System mute/unmute: ALWAYS server-enforced (not client-side toggle)
+    - Client mute toggle: allowed ONLY for self-mute when it is the user's turn
+    - Self-mute during someone else's turn: no effect (already system-muted)
+    - Mentor commands: require MODERATOR role in JWT
+    - All mute/unmute commands: immutably logged (AL-D enforced)
+    - Auto-mute for repeated offenders (RL-H: flooding/spam = AUTO-MUTE)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  D. JOIN WINDOW & BATCH MANAGEMENT (LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  BATCH CREATION:
+    - GD sessions created in configurable batches (e.g. 4–10 participants)
+    - Batch composition: domain-track-isolated (Arts batch ≠ Commerce batch)
+    - Tenant-isolated batches (cross-tenant batch: FORBIDDEN)
+    - Batch created by Orchestrator scheduler (Airflow DAG or cron job)
+    - Participants notified N minutes before join window opens (Notification Svc)
+
+  JOIN WINDOW:
+    - Window duration: configurable per session type (default: 5 minutes)
+    - Window opens at scheduled session time
+    - Token issuance: ONLY within join window
+    - Late join (after window): FORBIDDEN (token rejected)
+    - Quorum threshold: configurable (default: minimum 2 participants)
+    - Below quorum at window close: → GD_ABANDONED (participants notified)
+
+  NO-SHOW HANDLING:
+    - No-show recorded per participant: gd_no_show event → Kafka
+    - Repeated no-shows: flagged for Analytics (churn risk signal)
+    - No automatic penalty scoring (human admin review for patterns)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7️⃣  CONSENT MANAGEMENT — VIDEO_CONNECT ENFORCEMENT (CM-E BINDING)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CONSENT GATE: Recording CANNOT start without confirmed consent from ALL participants.
+CONSENT MODEL: Per-session, per-participant (not account-level blanket consent).
+
+CONSENT CAPTURE FLOW:
+  1. Session scheduled → Pre-session notification sent (includes recording notice)
+  2. On room join → Flutter UI renders Consent Modal BEFORE audio/video starts:
+       "This session will be recorded. Do you consent?"
+       [YES, I CONSENT] [NO, JOIN WITHOUT RECORDING]
+  3. Consent response captured:
+       → POST /consent/capture {session_id, user_id, consent_type: "recording",
+                                 response: "granted"|"denied", timestamp}
+       → Consent record stored (PostgreSQL: consent_records — immutable)
+       → Consent event emitted: Kafka topic: consent.captured
+  4. Token Service checks consent status before issuing can_record: true
+  5. Recording START:
+       → ALL participants must have responded (granted or denied)
+       → If ANY participant denies: recording DISABLED for full session
+       → If ALL grant: recording enabled; livekit-egress activated
+  6. Mid-session consent withdrawal:
+       → Participant can withdraw consent via UI button
+       → Signal sent to Orchestrator via WebSocket
+       → Recording STOPPED within 30 seconds of withdrawal
+       → Existing recording segment retained (already captured; legal basis)
+       → New segments after withdrawal: NOT recorded
+       → Withdrawal event: immutable audit log
+
+DOMAIN-AWARE CONSENT ISOLATION (CM-D):
+  - Arts session consent ≠ Commerce or Science session consent
+  - Consent record scoped to: session_id + domain_track + tenant_id
+  - Domain reuse forbidden
+
+CONSENT STORAGE:
+  TABLE: consent_records
+    id              UUID PK
+    session_id      UUID NOT NULL
+    user_id         UUID NOT NULL
+    tenant_id       UUID NOT NULL
+    domain_track    ENUM NOT NULL
+    consent_type    ENUM (recording | transcript | replay_access)
+    response        ENUM (granted | denied | withdrawn)
+    ip_address      Nullable(String) [masked in display]
+    device_id       Nullable(String)
+    captured_at     DateTime NOT NULL
+    withdrawn_at    Nullable(DateTime)
+    is_active       Boolean DEFAULT TRUE
+  IMMUTABILITY: No UPDATE or DELETE on consent_records (append-only)
+
+TRANSCRIPT CONSENT (separate gate):
+  - Transcript generation requires separate explicit consent
+  - Transcript = opt-in beyond recording consent
+  - Transcripts stored separately; PII redacted before storage (PM-G)
+  - Transcripts deleted when parent recording is deleted
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8️⃣  ANTI-CHEAT & PROCTORING ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCOPE: Dojo GD rooms, Dojo Match rooms, Arena live sessions.
+AUTHORITY: AI generates advisory signals; human Proctor/Moderator acts.
+           AI CANNOT auto-ban, auto-score, or terminate rooms without human command.
+
+DETECTION SIGNALS (all real-time, all advisory-labeled):
+
+  SIGNAL-01: SPEAKING_TURN_VIOLATION
+    TRIGGER  : Audio activity detected from non-speaking participant
+    METHOD   : Jitsi audio activity webhook → Orchestrator
+    ACTION   : auto-mute if threshold exceeded; flag emitted to Proctor UI
+    THRESHOLD: Configurable per session type (default: 2 violations = flag)
+
+  SIGNAL-02: MULTIPLE_DEVICE_JOIN
+    TRIGGER  : Same user_id joining from >1 device in same session
+    METHOD   : Token Service detects duplicate active jti for same user+room
+    ACTION   : Second join rejected; alert to Proctor; audit log
+    EXCEPTION: Reconnect from same device (same jti reuse within 30s grace)
+
+  SIGNAL-03: NETWORK_MANIPULATION
+    TRIGGER  : Abnormal disconnect/reconnect pattern (>3 reconnects in 5 min)
+    METHOD   : Orchestrator tracks reconnect events per participant
+    ACTION   : Advisory flag; above threshold: Proctor notified + auto-pause turn
+
+  SIGNAL-04: AUDIO_INJECTION
+    TRIGGER  : AI audio classifier detects non-human audio pattern
+               (pre-recorded speech, synthetic voice indicators)
+    METHOD   : Optional: audio stream sampling (only if proctoring enabled)
+    ACTION   : Advisory flag sent to Proctor UI (human reviews)
+    AI LABEL : "AI-Suggested: Possible Audio Injection — Review Required"
+
+  SIGNAL-05: SCORE_GAMING
+    TRIGGER  : Peer scores submitted with statistical outlier pattern
+               (variance detection — Scoring Engine)
+    METHOD   : Variance analysis post-session
+    ACTION   : Flags variance_flag in scoring record; mentor review required
+    RULE     : Belt promotion blocked if variance_flag = true AND unreviewed
+
+  PROCTOR UI (Flutter — MODERATOR role):
+    - Live participant list with real-time flag indicators
+    - Anti-cheat event feed (signal type, timestamp, participant)
+    - One-click MUTE / REMOVE controls (all actions logged)
+    - Flag escalation button (→ Admin Governance Service)
+    - Session recording status indicator
+
+  ANTI-CHEAT EVENT STORAGE:
+    TABLE: anti_cheat_events
+      id              UUID PK
+      session_id      UUID NOT NULL
+      tenant_id       UUID NOT NULL
+      domain_track    ENUM NOT NULL
+      participant_id  UUID NOT NULL
+      signal_type     ENUM (all signals above)
+      ai_confidence   Float32 (0.0–1.0, labeled)
+      proctor_action  Nullable(ENUM) (muted|removed|dismissed|escalated)
+      reviewed_by     Nullable(UUID) (Proctor user_id)
+      reviewed_at     Nullable(DateTime)
+      created_at      DateTime NOT NULL
+    IMMUTABILITY: No UPDATE or DELETE (append-only)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9️⃣  QUALITY OF SERVICE (QoS) ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PERFORMANCE SLOs (HARD LOCK — from R49.5):
+  Room Join Time           ≤ 2 seconds (from token received to in-room)
+  Audio Latency            ≤ 150 ms    (end-to-end, measured at SFU)
+  Video Latency            ≤ 300 ms    (end-to-end, measured at SFU)
+  Mentor Control Signal    ≤ 100 ms    (WebSocket command → execution)
+  Reconnect Recovery       ≤ 3 seconds (from drop to active in-room)
+  Recording Start Lag      ≤ 5 seconds (from consent confirmed to egress active)
+
+VIOLATION POLICY:
+  - SLO breach logged as media_qos_breach event → Kafka
+  - Repeated breach (>3 in session): P2 alert → Slack + Grafana annotation
+  - Scoring integrity preserved on bandwidth downgrade
+    (score not penalized for network-induced speaking interruptions)
+
+QoS METRICS COLLECTED (per participant, per session):
+  - audio_jitter_ms             (measured at SFU, per participant stream)
+  - audio_packet_loss_pct       (%)
+  - video_resolution            (captured)
+  - video_bitrate_kbps          (adaptive)
+  - round_trip_time_ms          (ICE candidate RTT)
+  - reconnect_count             (session total)
+  - freeze_duration_seconds     (video freeze events)
+  - join_time_ms                (actual join duration)
+
+QoS DATA PIPELINE:
+  LiveKit metrics webhook / Jitsi Colibri API
+    → Orchestrator / Media QoS Collector
+    → Kafka topic: media.qos.events
+    → ANALYTICS_CONNECT (AntiGravity) → ClickHouse (dw_fact_media_qos)
+
+ADAPTIVE BITRATE (Simulcast — LiveKit):
+  LAYERS:     Low (180p), Mid (360p), High (720p) — auto-selected per receiver BW
+  AUDIO-ONLY FALLBACK:
+    TRIGGER   : Participant bandwidth < threshold (configurable, default 200 kbps)
+    ACTION    : Video layer dropped; audio-only mode activated (UI banner shown)
+    SCORING   : Audio-only fallback does NOT affect evaluation score
+    RECOVERY  : When bandwidth recovers: video layers restored automatically
+
+NETWORK QUALITY INDICATOR (Flutter UI):
+  - 5-bar signal indicator per participant (computed from RTT + jitter + loss)
+  - Shown to participant for self-awareness
+  - Low quality: yellow warning banner
+  - Critical quality: red banner + audio-only mode auto-triggered
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔟  RECONNECT & RESILIENCE ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RECONNECT POLICY (LOCKED):
+  DETECTION:
+    - Participant WebSocket connection drop → Orchestrator detects within 2s
+    - LiveKit participant disconnect event → Orchestrator receives callback
+  GRACE WINDOW: 30 seconds (participant reconnect allowed without penalty)
+  RECONNECT PROCESS:
+    1. Flutter client detects WebSocket/LiveKit drop
+    2. Flutter auto-reconnect attempt (exponential backoff: 1s, 2s, 4s, 8s)
+    3. New token issued automatically (if within grace window):
+       → GET /session/reconnect-token {session_id, user_id}
+       → Returns new short-lived token (same room, same role)
+    4. Flutter re-joins LiveKit/Jitsi room with new token
+    5. Role re-binding on reconnect: new token carries original role
+    6. UI: reconnecting spinner + "Reconnecting..." banner
+    7. If within speaking turn: turn timer paused during grace window
+    8. After grace window: turn skipped (FIFO processing resumes)
+  POST-RECONNECT:
+    - FIFO queue of pending WebSocket commands replayed (ordered)
+    - Session state synced from Orchestrator (full state dump on reconnect)
+    - Score submission queue replayed if pending (offline queue pattern)
+
+  CATASTROPHIC FAILURE (SFU crash):
+    - Jitsi / LiveKit pod crash → Kubernetes auto-restart (readiness probe)
+    - Session state preserved in Redis (survives SFU pod restart)
+    - All participants reconnect automatically on SFU recovery
+    - If SFU down > 60s: session paused (GD_PAUSE state)
+    - If SFU down > 300s: session abandoned (GD_ABANDONED) + participants notified
+    - Incident logged: P1 alert → PagerDuty
+
+  FLUTTER UX REQUIREMENTS (P7 LOCK):
+    - Reconnect UX for live match: in-app reconnecting screen
+    - Background resume handling: foreground return triggers reconnect
+    - Network drop recovery: auto-reconnect (no manual user action required)
+    - Crash recovery screen: graceful UI with "Rejoining session..." state
+    - Push notifications: "Your session is waiting" if app backgrounded during GD
+    - Queued score submit: pending submissions queued; replayed on reconnect
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣1️⃣  DATABASE SCHEMA — VIDEO_CONNECT (PostgreSQL)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TABLE: media_sessions
+  PURPOSE: Master record for every video/voice session
+  id                UUID           PK
+  session_type      ENUM           (gd_room|dojo_match|interview|trainer_classroom|
+                                    mock_interview|mentor_session|arena_session)
+  tenant_id         UUID           NOT NULL
+  domain_track      ENUM           NOT NULL
+  room_id           TEXT           NOT NULL UNIQUE (= session_id/match_id)
+  media_engine      ENUM           (jitsi|livekit)
+  scheduled_at      TIMESTAMP
+  join_window_open  TIMESTAMP
+  join_window_close TIMESTAMP
+  started_at        TIMESTAMP
+  ended_at          TIMESTAMP
+  state             ENUM           (see GD lifecycle states)
+  participant_count INT
+  quorum_met        BOOLEAN
+  recording_enabled BOOLEAN        DEFAULT FALSE
+  recording_path    TEXT           NULL (MinIO path, populated after recording)
+  anti_cheat_flags  INT            DEFAULT 0
+  created_at        TIMESTAMP
+  updated_at        TIMESTAMP
+
+TABLE: session_participants
+  PURPOSE: Participant roster per session
+  id                UUID           PK
+  session_id        UUID           FK → media_sessions
+  user_id           UUID           NOT NULL
+  tenant_id         UUID           NOT NULL
+  role              ENUM           (HOST|SPEAKER|LISTENER|EVALUATOR|
+                                    MODERATOR|PROCTOR|OBSERVER)
+  joined_at         TIMESTAMP
+  left_at           TIMESTAMP
+  reconnect_count   INT            DEFAULT 0
+  no_show           BOOLEAN        DEFAULT FALSE
+  speaking_time_sec INT            DEFAULT 0
+  turn_count        INT            DEFAULT 0
+  interruption_count INT           DEFAULT 0
+  token_jti         UUID           (for revocation tracking)
+
+TABLE: session_turn_log
+  PURPOSE: Immutable per-turn record (GD only)
+  id                UUID           PK
+  session_id        UUID           FK → media_sessions
+  participant_id    UUID           FK → session_participants
+  turn_index        INT
+  started_at        TIMESTAMP
+  ended_at          TIMESTAMP
+  speaking_time_sec INT
+  turn_status       ENUM           (completed|skipped|interrupted|system_ended)
+  skip_reason       ENUM NULL      (disconnected|timeout|no_audio)
+
+TABLE: media_audit_log
+  PURPOSE: Immutable audit log for all media events (AL-D enforced)
+  id                UUID           PK
+  session_id        UUID           NOT NULL
+  tenant_id         UUID           NOT NULL
+  domain_track      ENUM           NOT NULL
+  actor_id          UUID           NULL (system events: null)
+  actor_type        ENUM           (user|system|orchestrator|proctor|admin)
+  event_type        ENUM           (room_created|room_deleted|participant_join|
+                                    participant_leave|role_change|recording_start|
+                                    recording_stop|mute_command|unmute_command|
+                                    remove_command|consent_captured|consent_withdrawn|
+                                    anti_cheat_flag|turn_start|turn_end|
+                                    session_state_change|reconnect|token_revoked)
+  target_user_id    UUID           NULL
+  event_detail      JSONB          (event-specific payload, no PII)
+  timestamp         TIMESTAMP      NOT NULL
+  IMMUTABILITY: No UPDATE or DELETE. Append-only enforced at DB level.
+
+TABLE: recording_index
+  PURPOSE: Index of all session recordings
+  id                UUID           PK
+  session_id        UUID           FK → media_sessions
+  tenant_id         UUID           NOT NULL
+  domain_track      ENUM           NOT NULL
+  minio_path        TEXT           NOT NULL
+  format            ENUM           (webm|mp4)
+  duration_seconds  INT
+  file_size_bytes   BIGINT
+  sha256_checksum   TEXT           NOT NULL (integrity verification)
+  transcript_path   TEXT           NULL (MinIO path if transcript exists)
+  recording_status  ENUM           (processing|ready|failed|deleted)
+  created_at        TIMESTAMP
+  deleted_at        TIMESTAMP      NULL (soft delete — erasure flow)
+  legal_hold        BOOLEAN        DEFAULT FALSE
+
+TABLE: consent_records
+  [Defined in §7 — do not re-declare schema here]
+
+TABLE: anti_cheat_events
+  [Defined in §8 — do not re-declare schema here]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣2️⃣  KAFKA EVENT CONTRACTS (VIDEO_CONNECT → PLATFORM)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ALL EVENTS FOLLOW THE PLATFORM EVENT ENVELOPE (from ANALYTICS_CONNECT §3).
+Additional VIDEO_CONNECT-specific event topics:
+
+  TOPIC: media.session.created
+    PAYLOAD: { session_id, session_type, tenant_id, domain_track,
+               room_id, media_engine, scheduled_at }
+    CONSUMERS: Analytics Service, Notification Service
+
+  TOPIC: media.session.state_changed
+    PAYLOAD: { session_id, tenant_id, domain_track,
+               from_state, to_state, timestamp }
+    CONSUMERS: Analytics Service, Scoring Engine, Dojo Match Engine
+
+  TOPIC: media.participant.joined
+    PAYLOAD: { session_id, user_id, tenant_id, domain_track, role, joined_at }
+    CONSUMERS: Analytics Service, Anti-Cheat Monitor, Notification Service
+
+  TOPIC: media.participant.left
+    PAYLOAD: { session_id, user_id, tenant_id, domain_track,
+               left_at, speaking_time_sec, reconnect_count }
+    CONSUMERS: Analytics Service, Scoring Engine
+
+  TOPIC: media.turn.completed
+    PAYLOAD: { session_id, participant_id, tenant_id, domain_track,
+               turn_index, speaking_time_sec, turn_status }
+    CONSUMERS: Analytics Service, Scoring Engine
+
+  TOPIC: media.recording.started
+    PAYLOAD: { session_id, tenant_id, domain_track, recording_id,
+               consent_all_granted: true }
+    CONSUMERS: Analytics Service, Audit Service
+
+  TOPIC: media.recording.completed
+    PAYLOAD: { session_id, recording_id, tenant_id, minio_path,
+               duration_seconds, sha256_checksum }
+    CONSUMERS: Analytics Service, Scoring Engine, Notification Service
+
+  TOPIC: media.anti_cheat.flagged
+    PAYLOAD: { session_id, participant_id, tenant_id, domain_track,
+               signal_type, ai_confidence }
+    CONSUMERS: Proctor Service, Analytics Service, Admin Governance
+
+  TOPIC: media.qos.events
+    PAYLOAD: { session_id, participant_id, tenant_id, domain_track,
+               metric_name, metric_value, timestamp }
+    CONSUMERS: ANALYTICS_CONNECT (AntiGravity)
+
+  TOPIC: gd.completed
+    PAYLOAD: { session_id, tenant_id, domain_track,
+               participant_summaries: [{user_id, speaking_time_sec,
+               turn_count, anti_cheat_flags}] }
+    CONSUMERS: Scoring Engine, Belt Engine, Analytics Service
+
+  TOPIC: interview.completed
+    PAYLOAD: { session_id, job_id, applicant_id, recruiter_id,
+               tenant_id, domain_track, duration_seconds }
+    CONSUMERS: Interview Service, Analytics Service, Notification Service
+
+EVENT RULES:
+  - All events follow Avro schema (registered in schema registry)
+  - All events include tenant_id (non-nullable)
+  - Deduplication: source_event_id prevents replay from double-processing
+  - No PII in event payloads (user_id reference only)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣3️⃣  INTEGRATION WIRING — CROSS-ENGINE (P6 LOCK — MANDATORY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ALL WIRING IS EVENT-DRIVEN. NO MANUAL SYNC ALLOWED.
+
+  MATCH ENGINE ↔ VIDEO ROOM LIFECYCLE:
+    Dojo Match Engine creates match → emits match.created
+    Voice GD Orchestrator consumes → creates room → issues tokens
+    Match end → emits match.ended → Orchestrator tears down room
+
+  MATCH END ↔ RECORDING FINALIZE:
+    media.session.state_changed (→ GD_EVALUATING)
+    → livekit-egress stop recording
+    → Recording uploaded to MinIO
+    → media.recording.completed emitted
+
+  RECORDING FINALIZE ↔ ANALYTICS TRIGGER:
+    media.recording.completed consumed by Analytics Service
+    → Session analytics job triggered (speaking time, QoS summary)
+    → Results written to ClickHouse (dw_fact_dojo_session,
+      dw_fact_dojo_participant_score)
+
+  ANALYTICS RESULT ↔ BELT ELIGIBILITY CHECK:
+    gd.completed consumed by Belt Engine
+    → Eligibility check: match_count, score_threshold, pressure_pass
+    → If eligible: mentor confirmation requested (not auto-promoted)
+    → Belt.eligible event emitted → Notification Service → Mentor
+
+  MENTOR OVERRIDE ↔ RATING RECOMPUTE:
+    Mentor submits score override (MODERATOR role required)
+    → Scoring Engine recomputes merged score
+    → Variance detection re-run
+    → Recomputed score stored (immutable new record, not update)
+    → Audit log entry (mentor_id, override_reason, original_score, new_score)
+
+  CERTIFICATION ↔ CERTIFICATE GENERATOR:
+    Belt Engine confirms promotion → certification.awarded emitted
+    → Certificate Generator (PDF) → stored in MinIO
+    → Notification Service → User + Institute (if applicable)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣4️⃣  FLUTTER CLIENT IMPLEMENTATION (VIDEO_CONNECT LAYER)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CLIENT STACK (LOCKED):
+  Framework     = Flutter (stable channel)
+  State Mgmt    = Riverpod
+  WebRTC Plugin = livekit_client (LiveKit Flutter SDK) — mandatory
+  WebSocket     = dart:io WebSocket (custom command channel client)
+  Permissions   = permission_handler (microphone, camera, notifications)
+
+REQUIRED FLUTTER SCREENS:
+
+  SCREEN-01: ConsentModal
+    TRIGGER : Before room join (recording sessions)
+    ELEMENTS:
+      - Session name, session type indicator
+      - Clear consent statement (legal-reviewed text)
+      - [CONSENT & JOIN] button
+      - [JOIN WITHOUT RECORDING] button (if non-recording option available)
+      - Consent withdrawal instructions
+    RULES   : Cannot be dismissed without selection (blocking modal)
+              Must render before any audio/video device access
+
+  SCREEN-02: LiveGDRoom (Jitsi — Audio Only)
+    ELEMENTS:
+      - Participant list with role badge + speaking indicator ring
+      - Turn indicator: "NOW SPEAKING: [Username]" (animated)
+      - Timer bar (countdown for current turn)
+      - Self-mute indicator (system-muted vs self-muted visual distinction)
+      - Anti-cheat warning banner (if auto-mute triggered)
+      - Network quality indicator (5-bar signal)
+      - [Reconnecting...] overlay (on disconnect)
+      - Session state banner (BRIEFING / IN_PROGRESS / CLOSING / EVALUATING)
+      - Proctor overlay (MODERATOR role only): participant flags + controls
+
+  SCREEN-03: LiveMatchRoom (LiveKit — Audio + Video)
+    ELEMENTS:
+      - Video tiles (participant grid, active speaker highlighted)
+      - Self camera preview (corner)
+      - Audio/video toggle (within user's allowed state)
+      - Network quality indicator
+      - Session timer
+      - Chat panel (rate-limited, RL-H enforced)
+      - Screen share button (if MODERATOR/HOST role)
+      - [Reconnecting...] overlay
+      - Proctor controls (PROCTOR role only)
+
+  SCREEN-04: InterviewRoom (LiveKit)
+    ELEMENTS:
+      - Two-party video tiles (candidate + recruiter)
+      - Timer (interview duration)
+      - Network quality indicator
+      - [End interview] button (HOST/recruiter only)
+      - Post-session satisfaction rating prompt (on end)
+
+  SCREEN-05: TrainerClassroom (LiveKit — up to 200 participants)
+    ELEMENTS:
+      - Trainer video tile (prominent)
+      - Participant roster (count + names)
+      - Chat panel
+      - Raise hand feature
+      - Screen share (HOST role)
+      - Attendance counter
+      - Recording status indicator (live recording dot if active)
+      - Download recording link (post-session, if consented)
+
+  SCREEN-06: RecordingLibrary
+    ELEMENTS:
+      - List of accessible recordings (per user's consent + role)
+      - Playback controls
+      - Download button (if role permits)
+      - Access log notice: "This access is recorded"
+      - Delete request button (GDPR/DPDP right-to-erasure)
+
+  SCREEN-07: RecordingConsentWithdrawal
+    TRIGGER : In-session UI button for active recording sessions
+    ELEMENTS:
+      - Confirmation dialog
+      - Effect explanation: "Recording will stop. Already recorded content
+        remains per platform policy."
+      - [WITHDRAW CONSENT] / [CANCEL] buttons
+
+  RULES FOR ALL SCREENS:
+    - Sensitive screens MUST disable screenshots and screen recording
+      (Flutter: FLAG_SECURE on Android / SecureView on iOS)
+    - No PII overlay on any participant video stream (PM-G)
+    - DECORATIVE_UI = FORBIDDEN (inherited from platform UI rules)
+    - React web layer MUST NOT render any live room screen
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣5️⃣  API CONTRACTS (VIDEO_CONNECT SERVICE ENDPOINTS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ALL APIs: JWT-authenticated, RBAC-gated, rate-limited (RL-G enforced).
+ALL APIs: Internal VPC only (no public exposure for media token endpoints).
+
+  POST /media/session/create
+    CALLER  : Orchestrator / Scheduler (internal, not user-facing)
+    BODY    : { session_type, tenant_id, domain_track, scheduled_at,
+               participant_ids, match_id | interview_id }
+    RETURNS : { session_id, room_id, join_window_open, join_window_close }
+
+  POST /media/token/issue
+    CALLER  : Flutter client (authenticated user)
+    AUTH    : JWT required, within join window
+    BODY    : { session_id }
+    RETURNS : { livekit_token | jitsi_jwt, turn_credentials,
+               room_id, role, token_expiry }
+    RULES   : Consent checked before token issued for recording sessions
+              TURN credentials included in same response
+
+  POST /media/token/reconnect
+    CALLER  : Flutter client (on reconnect)
+    AUTH    : JWT required, within grace window (30s)
+    BODY    : { session_id, original_jti }
+    RETURNS : { new_token, turn_credentials }
+
+  POST /consent/capture
+    CALLER  : Flutter client (user action)
+    BODY    : { session_id, consent_type, response }
+    RETURNS : { consent_id, captured_at, status }
+
+  POST /consent/withdraw
+    CALLER  : Flutter client (user action, in-session)
+    BODY    : { session_id, consent_type }
+    RETURNS : { withdrawn_at, recording_stop_eta_seconds }
+
+  GET  /media/session/{session_id}/state
+    CALLER  : Flutter client (for state sync on reconnect)
+    RETURNS : { current_state, turn_order, current_speaker_id,
+               time_remaining_sec, recording_active }
+
+  POST /media/command/mute
+    CALLER  : Orchestrator (system), Mentor/Proctor (MODERATOR role)
+    BODY    : { session_id, target_user_id, command_type, reason }
+    RETURNS : { command_id, executed_at }
+    AUDIT   : Immutable log entry on every call
+
+  GET  /recording/{recording_id}/access
+    CALLER  : Authenticated user (RBAC: allowed roles only)
+    RETURNS : { presigned_url (TTL: 2 hours), expires_at }
+    AUDIT   : Access log entry: DAL-E enforced
+
+  DELETE /recording/{recording_id}
+    CALLER  : Data subject (own data) or Compliance Admin
+    AUTH    : GDPR/DPDP erasure workflow (multi-step, consent-aware)
+    RETURNS : { deletion_scheduled_at, legal_hold: Boolean }
+
+  API SLO (R49.3 — inherited):
+    /media/token/issue     ≤ 250 ms P95
+    /media/session/state   ≤ 150 ms P95
+    /media/command/mute    ≤ 100 ms P95 (mentor commands — Class-1 Interactive)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣6️⃣  SECURITY HARDENING (P1 SECURITY LOCK — MEDIA-SPECIFIC)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MEDIA SECURITY CONTROLS (ALL REQUIRED):
+
+  SIGNED VIDEO ROOM TOKENS:
+    - Every room join requires signed JWT (see §5 Token Service)
+    - Tokens verified by LiveKit / Jitsi on join (hook validation)
+    - Unsigned tokens: REJECTED → SECURITY_FAILURE
+
+  SIGNED RECORDING URLS:
+    - Recording files served ONLY via MinIO presigned URL
+    - TTL: maximum 2 hours per presigned URL
+    - URL generated fresh on each /recording/{id}/access call
+    - No permanent public URLs for recordings
+
+  TIME-LIMITED REPLAY ACCESS:
+    - Replay access authenticated (no anonymous replay)
+    - Role-based replay permission (RBAC enforced)
+    - Replay access logged (DAL-E: separate log entry per replay)
+
+  ENCRYPTED MEDIA PLANE:
+    - SRTP encryption for all WebRTC audio/video streams (mandatory)
+    - DTLS-SRTP handshake enforced (no unencrypted fallback)
+    - LiveKit room-level encryption: enabled for mentor sessions (E2E option)
+
+  TURN CREDENTIAL SECURITY:
+    - HMAC-SHA1 time-limited credentials (coturn TURN REST API model)
+    - No static TURN passwords in any config, secret, or code
+    - Credentials expire at token TTL (≤ 4 hours)
+    - Separate TURN credentials per session (not shared)
+
+  NETWORK ISOLATION:
+    - Jitsi / LiveKit ports: NOT exposed via HTTP ingress
+    - WebRTC UDP: exposed via dedicated LoadBalancer (not HTTP proxy)
+    - TURN: exposed on UDP 3478 / TLS 5349 (dedicated service)
+    - Media namespace: no egress to internet (except STUN/TURN relay path)
+    - All inter-service: mTLS
+
+  SCREEN & DEVICE SECURITY:
+    - Sensitive live room screens: FLAG_SECURE (Android) / SecureView (iOS)
+    - Screenshot + screen recording disabled on live room screens
+    - Camera/microphone permission: requested only when entering room
+    - Permission denied: graceful degradation (audio-only or observer mode)
+
+  RATE LIMITING (RL-H — Dojo real-time):
+    - Message send rate: 1 message/500ms per participant
+    - Reaction/chat: 5 reactions/10s per participant
+    - Join/leave events: throttled (prevent rapid join/leave abuse)
+    - Recording access: 10 requests/hour per user
+    - Flooding → AUTO-MUTE + TEMP BLOCK
+
+  SECRETS MANAGEMENT:
+    - LiveKit API key/secret: Hashicorp Vault OSS (auto-rotated 7-day cycle)
+    - Jitsi JWT secret: Hashicorp Vault OSS
+    - coturn HMAC secret: Hashicorp Vault OSS
+    - MinIO recording bucket credentials: Vault OSS
+    - No plaintext secrets in environment files or config maps in production
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣7️⃣  OBSERVABILITY & MEDIA MONITORING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+METRICS (Prometheus — all media components):
+
+  Jitsi:
+    - jitsi_videobridge_conferences_total
+    - jitsi_videobridge_participants_total
+    - jitsi_videobridge_endpoints_with_high_outbound_loss_total
+    - jitsi_videobridge_bit_rate_download / _upload (kbps)
+
+  LiveKit:
+    - livekit_room_count
+    - livekit_participant_count
+    - livekit_publish_track_count
+    - livekit_room_join_duration_ms (histogram)
+    - livekit_egress_active_count
+    - livekit_egress_failed_total
+
+  coturn:
+    - coturn_sessions_total
+    - coturn_bytes_relayed_total
+    - coturn_errors_total
+    - coturn_udp_relay_ports_active
+
+  Voice GD Orchestrator:
+    - gd_sessions_active
+    - gd_sessions_completed_total
+    - gd_sessions_abandoned_total
+    - gd_turn_duration_seconds (histogram)
+    - gd_reconnect_events_total
+    - gd_anti_cheat_flags_total
+    - gd_mute_commands_total
+
+  Interview Service:
+    - interviews_scheduled_total
+    - interviews_completed_total
+    - interviews_no_show_total
+    - interview_satisfaction_avg (post-session)
+
+ALERTING THRESHOLDS:
+  P1 (PagerDuty immediate):
+    - Jitsi/LiveKit pod crash (health check failure > 30s)
+    - GD session fail to start (missed batch start)
+    - Recording egress failure (consecutive)
+    - TURN server unreachable > 60s
+    - SFU down causing GD_ABANDONED for batch
+
+  P2 (Slack + Grafana annotation):
+    - Room join time P95 > 4 seconds (double SLO)
+    - Audio packet loss > 5% sustained 2 minutes
+    - Reconnect rate > 10% of participants in any session
+    - Recording file not uploaded within 10 min of session end
+    - Anti-cheat flags > 20% of participants in a session
+
+REQUIRED GRAFANA DASHBOARDS:
+  - GD Session Health Dashboard (active sessions, state distribution, failures)
+  - Interview Room Dashboard (active rooms, no-shows, satisfaction)
+  - Media QoS Dashboard (jitter, latency, packet loss, reconnect rate)
+  - Coturn Relay Dashboard (sessions, bytes, error rate)
+  - Recording Pipeline Dashboard (egress active, processing lag, failure rate)
+  - Anti-Cheat Monitor Dashboard (flags by signal type, by session, by domain)
+
+TRACING:
+  - OpenTelemetry spans: token issuance → room join → session lifecycle → teardown
+  - Jaeger trace sampling: 10% for normal sessions; 100% for error traces
+  - Trace IDs correlate: HTTP request → WebSocket event → Kafka event
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣8️⃣  TESTING REQUIREMENTS (P4 QA LOCK — MEDIA-SPECIFIC)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ALL TESTS MUST PASS BEFORE PRODUCTION DEPLOYMENT CLAIM.
+
+  REALTIME TESTS (required):
+    - WebSocket event ordering tests (command delivery order preserved)
+    - Reconnect tests (drop + rejoin within 3s SLO)
+    - Duplicate event handling (idempotent command processing)
+    - FIFO queue replay on reconnect
+
+  VIDEO TESTS (required):
+    - 2–10 participant rooms (Jitsi GD + LiveKit match)
+    - Join/leave mid-session (turn engine continues correctly)
+    - Bandwidth downgrade tests (simulcast layer selection)
+    - Audio-only fallback trigger and recovery
+    - Recording start/stop (consent gate enforcement)
+    - Token expiry during live session (graceful handling)
+
+  GD ORCHESTRATOR TESTS (required):
+    - Full state machine traversal (all state transitions)
+    - Turn rotation correctness (round-robin validation)
+    - Forced mute/unmute execution (Jitsi API mock)
+    - Anti-cheat signal detection (audio interrupt threshold)
+    - Quorum failure → GD_ABANDONED flow
+    - Batch creation correctness (domain + tenant isolation)
+
+  LOAD TESTS (required — R49.12):
+    - 10× students joining concurrently (spike join)
+    - Reconnect storm simulation (all participants drop + rejoin within 5s)
+    - Concurrent room simulation (50 simultaneous GD rooms per tenant)
+    - Scoring concurrency (100 simultaneous score submissions)
+
+  SECURITY TESTS (required):
+    - Unsigned token rejected
+    - Expired token rejected
+    - Cross-tenant room join rejected
+    - Self-unmute when system-muted: blocked
+    - Recording without consent: blocked
+    - TURN credential expiry enforcement
+
+  TEST COVERAGE THRESHOLD:
+    - Unit test coverage: ≥ 80% (Orchestrator, Token Service, Scoring Engine)
+    - Integration tests: all critical wiring paths (§13)
+    - No production deploy without passing test gates
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣9️⃣  LEGAL & COMPLIANCE (P9 LOCK — MEDIA-SPECIFIC)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MANDATORY DOCUMENTS (must exist before any recording session goes live):
+  - Recording Consent Terms (legal-reviewed, displayed at consent modal)
+  - Performance Assessment Disclosure (scoring methodology transparency)
+  - Mentor Conduct Terms (moderator command rights and limits)
+  - Student Data Use Disclosure (speaking time, scores, anti-cheat data)
+  - Platform Privacy Policy (covering media data)
+
+JURISDICTION READINESS:
+  GDPR (EU):
+    - Lawful basis for recording: explicit consent (Art. 6(1)(a))
+    - Right to erasure: recording delete workflow (§11 recording_index.deleted_at)
+    - Data portability: recording export via presigned URL
+    - DPA (Data Processing Agreement) template for enterprise tenants
+
+  India DPDP (Digital Personal Data Protection Act, 2023):
+    - Consent notice in simple language (CM-F requirement)
+    - Data Principal rights: access, correction, erasure, nomination
+    - Purpose limitation: recording data used only for session + scoring
+    - Processing restricted to declared purpose (CM-B)
+
+  MINOR PROTECTION:
+    - Parental consent captured (OBSERVER role parent flow)
+    - Minor participant flag on consent_records
+    - Additional masking level for minor PII in recordings (PM-G + PM-C)
+
+  DATA DELETION WORKFLOW (recording erasure):
+    1. User submits erasure request (in-app: Settings → Privacy → My Data)
+    2. Request logged: data_deletion_requests table
+    3. Recording files in MinIO: soft-deleted (recording_index.deleted_at set)
+    4. Legal hold check: if legal_hold = TRUE, erasure blocked (user notified)
+    5. After legal hold cleared: hard delete from MinIO
+    6. Transcript deleted with parent recording
+    7. consent_records: cannot be deleted (legal evidence of consent)
+    8. Audit log entry: data_deletion event (immutable)
+    9. Confirmation sent to user (within 30 days — DPDP / GDPR deadline)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2️⃣0️⃣  INFRASTRUCTURE SIZING (R25 — STARTUP STAGE DEFAULTS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STARTUP-STAGE MINIMAL VIABLE DEFAULTS:
+
+  Jitsi Videobridge:
+    - 1 node | 8 vCPU / 16GB RAM | 1Gbps NIC (audio SFU, low CPU with audio-only)
+    - Scale: add nodes horizontally as GD session count grows
+    - Target: 50 concurrent GD rooms (audio-only) per node
+
+  LiveKit Server:
+    - 1 node | 8 vCPU / 32GB RAM | 1Gbps NIC
+    - Scale: horizontal pod scaling (HPA on active room count)
+    - Target: 20 concurrent video rooms per node (mixed audio+video)
+
+  LiveKit Egress:
+    - 1 node | 4 vCPU / 8GB RAM (CPU-intensive for recording)
+    - Scale: 1 egress pod per 5 concurrent recordings
+    - Max concurrent recordings: configurable (default: 10 at startup)
+
+  coturn:
+    - 1 dedicated VM | 4 vCPU / 8GB RAM | 1Gbps NIC | Public IP required
+    - TURN relay bandwidth: 100 Mbps sustained (scale NIC on demand)
+    - Scale: add coturn instances behind DNS round-robin
+
+  Voice GD Orchestrator:
+    - 1–2 pods | 2 vCPU / 4GB RAM | HPA on concurrent GD sessions
+    - Redis: same cluster as platform Redis (separate keyspace prefix)
+
+  Interview Service:
+    - 1–2 pods | 2 vCPU / 4GB RAM
+
+  Session Token Service:
+    - 2 pods (HA required — token issuance is on critical path)
+    - 1 vCPU / 2GB RAM per pod
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2️⃣1️⃣  DEVELOPMENT BUILD ORDER (SEQUENTIAL — VIDEO_CONNECT SPECIFIC)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PREREQUISITES (must be complete before VIDEO_CONNECT build):
+  ✅ STAGE 1: Auth Service, User Service, Tenant/Domain model live
+  ✅ Consent Management Service operational
+  ✅ Kafka event bus live + schema registry operational
+  ✅ MinIO object store operational
+  ✅ PostgreSQL with media_sessions schema deployed
+
+VIDEO_CONNECT BUILD ORDER (Sequential — skipping = INVALID BUILD):
+
+  STEP 01 : coturn deployment + HMAC credential generation verification
+  STEP 02 : Jitsi Videobridge + Jicofo + Prosody (Kubernetes media namespace)
+            → Audio GD room smoke test (2 participants, mute/unmute)
+  STEP 03 : LiveKit Server deployment (Kubernetes media namespace)
+            → Video room smoke test (2 participants)
+  STEP 04 : Session Token Service (Vault integration, JWT signing)
+            → Token issuance + Jitsi/LiveKit join test
+  STEP 05 : PostgreSQL schema migrations (Flyway):
+            media_sessions, session_participants, session_turn_log,
+            media_audit_log, recording_index, consent_records,
+            anti_cheat_events
+  STEP 06 : Voice GD Orchestrator — Redis state machine
+            → State machine unit tests (all transitions)
+  STEP 07 : Voice GD Orchestrator — Turn-based speaking engine
+            → Turn rotation test, mute/unmute Jitsi API integration
+  STEP 08 : Voice GD Orchestrator — WebSocket command channel (Flutter SDK)
+  STEP 09 : Consent Management integration (CM-E enforcement at token gate)
+  STEP 10 : LiveKit Egress (recording controller) + MinIO integration
+            → Recording consent gate enforcement test
+            → Recording upload + SHA-256 checksum verification
+  STEP 11 : Kafka event producers (all topics per §12)
+  STEP 12 : Anti-Cheat Engine (signal detection, Proctor WebSocket alerts)
+  STEP 13 : QoS Metrics Collector (LiveKit webhook + Jitsi Colibri API)
+            → Prometheus export, Grafana dashboards
+  STEP 14 : Flutter screens (ConsentModal, LiveGDRoom, LiveMatchRoom,
+            InterviewRoom, TrainerClassroom, RecordingLibrary)
+  STEP 15 : Reconnect engine (token refresh + FIFO queue replay)
+  STEP 16 : Screen security (FLAG_SECURE Android, SecureView iOS)
+  STEP 17 : Integration wiring (§13 — all cross-engine event hooks)
+  STEP 18 : Security tests (unsigned token, expired token, cross-tenant)
+  STEP 19 : Load tests (R49.12: 10× students, reconnect storms)
+  STEP 20 : Legal document integration (consent modal text, privacy policy)
+  STEP 21 : Production readiness checklist sign-off
+            (CM-O ✅ AL-D ✅ DAL-E ✅ PM-G ✅ RL-H ✅ R49.5 ✅)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔒  SEAL DECLARATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MODULE                   : VIDEO_CONNECT (ANTIGRAVITY — MEDIA LAYER)
+PARENT MODULE            : ANALYTICS_CONNECT (ANTIGRAVITY)
+PARENT SYSTEM            : ECOSKILLER ENTERPRISE MULTI-TENANT SAAS
+SEALED BY                : PLATFORM ARCHITECTURE AUTHORITY
+MUTATION AUTHORITY       : PLATFORM_ADMIN_ONLY + ADD_ONLY POLICY
+OVERRIDE AUTHORITY       : NONE — no creative interpretation permitted
+
+COMPLIANCE SEALS:
+  → RBAC + ABAC              ✅
+  → MFA + Auth               ✅
+  → Tenant Isolation         ✅ (room namespacing + token tenant_id binding)
+  → Domain Isolation         ✅ (batch isolation, consent isolation)
+  → Consent Management CM-*  ✅ (per-session, per-participant, per-purpose)
+  → Audit Logging AL-D       ✅ (all media events, mute commands, recordings)
+  → Data Access Logging DAL-E✅ (recording access + replay access logged)
+  → PII Masking PM-G         ✅ (no PII overlay in recordings, transcripts)
+  → Rate Limiting RL-H       ✅ (Dojo real-time throttling, auto-mute)
+  → Data Integrity DI-H      ✅ (recording metadata immutable, scores locked)
+  → Backup BR-K              ✅ (recording backups, opt-in only)
+  → Media SLOs R49.5         ✅ (join ≤2s, audio ≤150ms, reconnect ≤3s)
+  → GDPR + India DPDP        ✅ (erasure workflow, consent capture)
+  → Security P1              ✅ (signed tokens, SRTP, TURN credentials)
+
+AI POLICY                : ADVISORY ONLY — Anti-cheat AI flags advisory;
+                           human Proctor acts. AI never auto-bans or terminates.
+REACT IN LIVE ROOM       : FORBIDDEN (Flutter only for all live rooms)
+MEDIA THROUGH API        : FORBIDDEN (media plane strictly isolated)
+RECORDING W/O CONSENT    : FORBIDDEN → BLOCK EXECUTION
+ANONYMOUS PARTICIPANTS   : FORBIDDEN
+CROSS-TENANT ROOMS       : FORBIDDEN → SECURITY_FAILURE
+TRANSPORT MODEL CHANGE   : REQUIRES VERSION BUMP
+STAGE DEPENDENCY         : STAGE 1 COMPLETE + ANALYTICS_CONNECT LIVE
+
+🔐 THIS MODULE IS SEALED AND LOCKED.
+   ALL ADDITIONS MUST FOLLOW ADD_ONLY MUTATION POLICY.
+   MODIFICATIONS REQUIRE PLATFORM_ADMIN AUTHORITY + FULL AUDIT LOG ENTRY.
+   ANY DEVIATION FROM THIS SPECIFICATION = INVALID BUILD → STOP EXECUTION.
+
+╔══════════════════════════════════════════════════════════════════════════════════════════════╗
+║  🔒 VIDEO_CONNECT — ANTIGRAVITY MEDIA LAYER — SEALED & LOCKED ✅                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════════╝

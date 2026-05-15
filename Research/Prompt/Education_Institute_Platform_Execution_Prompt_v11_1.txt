@@ -1,0 +1,22 @@
+EDUCATION / INSTITUTE PLATFORM — APPLICATION-SPECIFIC EXECUTION PROMPT
+
+Scope:
+- Curriculum management
+- Certification & institute governance
+
+Owned Domains:
+- Courses & curricula
+- Certification issuance
+- Trainer & institute records
+
+Explicit Prohibitions:
+- No hiring decisions
+- No project execution override
+
+Dashboard Rules:
+- Curriculum & compliance widgets
+- Desktop-only certification approvals
+
+Execution Contract:
+- Exactly ONE Problem ID per session
+- All certifications require human approval

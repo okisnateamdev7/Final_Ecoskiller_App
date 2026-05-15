@@ -1,0 +1,1120 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║         🔒 PAYMENT_CONNECT — SEALED & LOCKED PROMPT                        ║
+║         EXECUTION_ENGINE         = ANTIGRAVITY                              ║
+║         PROMPT_CLASS             = FINANCIAL_MODULE_LOCK                    ║
+║         PARENT_SYSTEM            = ECOSKILLER ENTERPRISE SAAS (MASTER)     ║
+║         MODULE_VERSION           = 1.0.0                                    ║
+║         MUTATION_POLICY          = ADD_ONLY                                 ║
+║         ASSUMPTION_POLICY        = FORBIDDEN                                ║
+║         CREATIVE_INTERPRETATION  = FORBIDDEN                                ║
+║         DEFAULT_BEHAVIOR         = DENY                                     ║
+║         FAILURE_MODE             = HARD_STOP                                ║
+║         AI_FINANCIAL_AUTHORITY   = ZERO                                     ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+0. INHERITANCE DECLARATION (NON-NEGOTIABLE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PAYMENT_CONNECT is a sealed financial sub-module of the Ecoskiller Master Prompt.
+
+This module MUST INHERIT — do not redeclare:
+  ✔  RBAC + ABAC Authorization model (AUTHZ-A through AUTHZ-S)
+  ✔  Billing & Entitlement Gated Access (AUTHZ-L)
+  ✔  Multi-tenant hard isolation (per-tenant ledger isolation)
+  ✔  Domain isolation (Arts | Commerce | Science | Technology | Admin)
+  ✔  Four-stage development model (FOUNDATION → INTELLIGENCE → ECOSYSTEM → COMPLIANCE)
+  ✔  Flutter-first UI authority + React SEO-clone rules
+  ✔  Delegation of Authority (DoA) Compliance — no self-approval
+  ✔  Payment Settlement Compliance (sections 31304–31522) — FULL INHERITANCE
+  ✔  Escrow & Fund Custody Compliance (sections 31524–31708) — FULL INHERITANCE
+  ✔  Expense Management Compliance — no expense bypasses billing
+  ✔  Idempotency Compliance (IDP-1 through IDP-16) — ALL WRITE OPS IDEMPOTENT
+  ✔  GST / VAT / Sales Tax Compliance (IVT-A through IVT-U)
+  ✔  Corporate Tax Filing Compliance (TFC-A through TFC-Y)
+  ✔  Banking Relationship Compliance (BRC-A through BRC-S)
+  ✔  Third-Party Financial Provider Risk (TPRAC-N through TPRAC-X)
+  ✔  Audit immutability + OpenTelemetry tracing
+  ✔  MFA enforcement for all billing-tier-3 and tier-4 actions
+  ✔  API Gateway enforcement (Kong) before all payment service calls
+  ✔  Wazuh SIEM for financial anomaly detection
+  ✔  AI advisory-only constraint (AI never approves, initiates, or moves funds)
+
+Conflict between PAYMENT_CONNECT and Master Prompt →
+  MASTER PROMPT WINS. STOP EXECUTION. Do not resolve silently.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. MODULE IDENTITY (LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MODULE_ID              = PAYMENT_CONNECT
+MODULE_TYPE            = FINANCIAL_TRANSACTION_ORCHESTRATION_LAYER
+PARENT_MODULE          = Billing & Subscription Service (microservice #13)
+TENANT_CLASS           = ALL (Students · Trainers · Institutes · Corporates · Platform)
+EXECUTION_STAGE        = STAGE_1 (Foundation) + STAGE_3 (Ecosystem) + STAGE_4 (Compliance)
+CRITICAL_PATH          = YES — no feature access without billing check middleware
+STATUS                 = SEALED
+
+Purpose:
+  PAYMENT_CONNECT is the single, sealed, deterministic bridge between the
+  Ecoskiller platform and all monetary flows — inbound payments, subscription
+  management, wallet operations, fund custody, payout settlement, tax
+  computation, invoice generation, refunds, dispute resolution, and
+  financial reconciliation.
+
+  No monetary flow may exist outside this module.
+  No module may define its own payment rules.
+  Any feature that touches money automatically inherits PAYMENT_CONNECT.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. SCOPE & MODULE BOUNDARIES (HARD LOCK)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PAYMENT_CONNECT governs ONLY:
+
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │  A. Payment Gateway Abstraction Layer                                   │
+  │  B. Subscription Plan Engine & Feature Gating                          │
+  │  C. Custodial Wallet Architecture                                       │
+  │  D. Payment Settlement & Payout Orchestration                          │
+  │  E. Invoice & Tax Computation Engine (GST / VAT / TDS)                 │
+  │  F. Refund, Chargeback & Dispute Engine                                 │
+  │  G. Revenue Share & Commission Calculator                               │
+  │  H. Usage Metering & Quota Enforcement                                  │
+  │  I. Idempotency Registry & Duplicate-Payment Prevention                │
+  │  J. Ledger, Reconciliation & Audit Trail                               │
+  │  K. Payment Webhook Listener & Event Processing                        │
+  │  L. Financial Compliance & Regulatory Reporting                        │
+  │  M. Billing Admin Console (UI)                                         │
+  │  N. Trainer / Mentor Wallet & Payout Dashboard (UI)                    │
+  └─────────────────────────────────────────────────────────────────────────┘
+
+PAYMENT_CONNECT does NOT govern:
+  ✗  Expense Management (→ Expense Management Compliance)
+  ✗  Dojo match logic (→ Group_Discussion module)
+  ✗  Academic records (→ UNIVERSITY_SYNC)
+  ✗  Job portal matching (→ Job_Portal_UI)
+  ✗  User authentication (→ Auth Service)
+  ✗  Corporate hiring ERP core (→ Corporate_ERP)
+
+Cross-module calls are explicit API contracts ONLY — no shared database tables.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. USER ROLES & PAYMENT AUTHORITY (STRICTLY ENFORCED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE                       PAYMENT AUTHORITY (SCOPED)
+────────────────────────── ─────────────────────────────────────────────────────
+Platform Financial Admin   Full read + approve settlements/refunds (dual-approval req.)
+Compliance Admin           Audit access, freeze wallets, regulatory export
+Billing Ops Admin          Subscription management, plan assignment, invoice ops
+Finance / Treasury Role    Bank account registry, reconciliation, escrow view
+Tax Operator               Tax computation review, GST/VAT filing prep
+Tax Reviewer               Approve tax filings (maker-checker — cannot be Tax Operator)
+Authorized Signatory       Final approval on tax filings + high-value settlements
+Domain Admin (scoped)      Domain-scoped settlement approval only
+Institute Admin            Subscription management for own tenant only
+Corporate Admin            Corporate escrow + milestone-based payment management
+Trainer / Mentor           View own wallet, request payout — CANNOT approve own payout
+Student                    View own payment history, request refund — read-only wallet
+Parent                     Read-only view of student payment activity (trust layer)
+AI / Automation Agent      ZERO financial authority — advisory, flag, forecast ONLY
+
+CRITICAL RULES:
+  • No self-approval on any financial action
+  • Maker–checker mandatory for all tax filings and high-value settlements
+  • AI systems cannot trigger, accelerate, or approve any payment action
+  • MFA required for all billing actions at Tier-3 and Tier-4 roles
+  • All financial actions require MFA re-authentication in Commerce domain
+  • Platform Financial Admin cannot act as both approver and authorizer
+  • Only incorporated entities may: process payments, receive payouts, issue invoices
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. MODULE A — PAYMENT GATEWAY ABSTRACTION LAYER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ARCHITECTURE:
+  Provider abstraction is MANDATORY — payment gateway is swappable
+  without changing business logic. All gateway calls go through
+  the abstraction interface; no service calls Stripe/Razorpay directly.
+
+PRIMARY_GATEWAY     = Stripe (global)
+SECONDARY_GATEWAY   = Razorpay (India — UPI, NEFT, IMPS, NetBanking)
+FALLBACK_POLICY     = Auto-failover to secondary on primary outage
+PROVIDER_CONTRACT   = Regulated entity only — unlicensed intermediary FORBIDDEN
+
+GATEWAY INTERFACE (sealed contract):
+  PaymentGatewayProvider {
+    initiatePayment(order_id, amount, currency, idempotency_key) → PaymentIntent
+    capturePayment(payment_intent_id) → CaptureResult
+    refundPayment(charge_id, amount, reason, idempotency_key) → RefundResult
+    createSubscription(customer_id, plan_id) → Subscription
+    cancelSubscription(subscription_id, reason) → CancellationResult
+    handleWebhook(payload, signature) → WebhookEvent
+    verifyWebhookSignature(payload, header_sig) → Boolean
+  }
+
+RULES:
+  • All webhook payloads MUST be signature-verified (unsigned webhooks = FORBIDDEN)
+  • Gateway retry must not charge again — idempotency key enforced (IDP-5)
+  • Webhook duplicate events → ignored via IDP-10
+  • Gateway outage or compliance suspension → AUTOMATIC PAYMENT HALT
+  • Real payment gateway activation = human-only action (not AI-executable)
+  • Separate gateway credentials per environment (DEV ≠ STAGING ≠ PROD)
+  • No hardcoded gateway credentials anywhere in codebase
+  • All gateway API keys stored in HashiCorp Vault — never in config files
+
+PAYMENT METHODS SUPPORTED:
+  India  : UPI, NEFT, IMPS, NetBanking, Credit/Debit Card, Wallet
+  Global : Credit/Debit Card, Bank Transfer, SEPA, ACH
+  Crypto : FORBIDDEN (platform policy)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. MODULE B — SUBSCRIPTION PLAN ENGINE & FEATURE GATING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PLAN TIERS (locked — modify only via ADD_ONLY SEMVER bump):
+
+  ┌──────────────┬─────────────────────────────────────────────────────────┐
+  │ PLAN         │ ENTITLEMENTS                                            │
+  ├──────────────┼─────────────────────────────────────────────────────────┤
+  │ FREE         │ Basic profile, limited Dojo rooms, no certification,    │
+  │              │ no analytics, capped matches/month                      │
+  ├──────────────┼─────────────────────────────────────────────────────────┤
+  │ BASIC        │ Limited Dojo rooms, skill assessments, no analytics     │
+  ├──────────────┼─────────────────────────────────────────────────────────┤
+  │ PRO          │ Full evaluation + analytics, full Dojo, certifications  │
+  ├──────────────┼─────────────────────────────────────────────────────────┤
+  │ ENTERPRISE   │ Seat-based, mentor licenses, tournament access,         │
+  │              │ custom branding, dedicated support, SLA                 │
+  ├──────────────┼─────────────────────────────────────────────────────────┤
+  │ INSTITUTE    │ TPO dashboard, cohort analytics, campus drive engine,   │
+  │              │ student roster sync, compliance reports                 │
+  └──────────────┴─────────────────────────────────────────────────────────┘
+
+BILLING CYCLES:
+  MONTHLY   — standard rolling cycle
+  ANNUAL    — discounted, invoice upfront
+
+PRICING MODELS (all supported simultaneously):
+  SEAT_BASED         — per active user/month (Enterprise, Institute)
+  MENTOR_LICENSE     — per licensed mentor per month
+  TOURNAMENT_FEE     — per tournament entry (one-time)
+  CERTIFICATION_FEE  — per certification attempt (one-time)
+  USAGE_METERED      — per Dojo match, per recording hour, per API call
+
+FEATURE GATING RULES:
+  • No feature access without billing check middleware passing FIRST
+  • API Gateway (Kong) enforces billing entitlement before service execution
+  • Undeclared entitlement = DENY (never assume free access)
+  • Billing entitlement AND contractual feature permission both required
+  • Billing entitlement without price binding → FEATURE DISABLED
+  • Plan downgrade → immediate feature restriction (no grace period for restricted features)
+  • Plan upgrade → immediate feature unlock
+  • Freemium conversion flow: lock icon + upgrade prompt (never intrusive)
+
+COUPON / PROMO RULES:
+  • Coupons are time-bounded and amount/percentage-bounded
+  • Coupon abuse detection via Analytics Service
+  • Coupons never bypass settlement compliance
+  • Free trial expiry → subscription required before next billing cycle
+
+SCHEMAS:
+  SubscriptionPlan  { plan_id, name, tier, billing_cycle, base_price,
+                      currency, features_json, seat_limit, status }
+  TenantSubscription { sub_id, tenant_id, plan_id, start_date, end_date,
+                       status, seats_used, billing_anchor, gateway_sub_id }
+  FeatureEntitlement { entitlement_id, tenant_id, plan_id, feature_key,
+                       limit_value, metered, usage_current, reset_date }
+  Coupon            { coupon_id, code, discount_type, value, max_uses,
+                      uses_count, valid_from, valid_to, applicable_plans[] }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. MODULE C — CUSTODIAL WALLET ARCHITECTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WALLET ARCHITECTURE (7 isolated wallets — non-negotiable):
+
+  ┌──────────────────────────────────┬──────────────────────────────────────┐
+  │ WALLET                           │ CUSTODY SCOPE                        │
+  ├──────────────────────────────────┼──────────────────────────────────────┤
+  │ Escrow Wallet                    │ Collected fees, pre-settlement hold  │
+  │ Student Protection Wallet        │ Student-paid fees, full refund window │
+  │ Grant Custody Wallet             │ Govt / NGO grants, program-locked    │
+  │ Corporate Custody Wallet         │ Corporate payments, milestone-gated  │
+  │ Refund Reserve Wallet            │ Ring-fenced for pending refunds      │
+  │ Compliance Hold Wallet           │ Frozen funds under investigation     │
+  │ Dojo Sponsorship Wallet          │ Sponsor funds for Dojo programs only │
+  └──────────────────────────────────┴──────────────────────────────────────┘
+
+NON-COMMINGLING LAW (absolute):
+  • Funds from different sources MUST NEVER MIX — even temporarily
+  • No wallet serves both custody and revenue purposes
+  • Ledger isolation enforced at: database level + service level + audit level
+  • Platform revenue wallet is SEPARATE from all custodial wallets
+
+CUSTODY MOVEMENT RESTRICTIONS:
+  Funds under custody CANNOT:
+    ✗  Earn interest
+    ✗  Be pledged as collateral
+    ✗  Be invested
+    ✗  Be used as working capital or platform float
+    ✗  Be netted against revenue
+
+  Every fund movement requires:
+    → Compliance state validation
+    → Ledger checkpoint
+    → Audit stamp
+    → Human approver (AI cannot release)
+
+CUSTODY RELEASE CONDITIONS (all must be true):
+  ✓  Settlement eligibility confirmed
+  ✓  Dispute window closed
+  ✓  Domain obligations fulfilled
+  ✓  Identity & tax details verified
+  ✓  Compliance engine greenlit
+  If ANY fails → FUNDS REMAIN LOCKED
+
+SAFE MODE:
+  On ledger mismatch, wallet inconsistency, custody breach, or audit failure:
+    → Enter Custody Safe Mode
+    → Freeze ALL custodial wallets
+    → Disable all payouts and settlements
+    → Preserve all balances intact
+    → Alert Compliance Admin + Financial Admin
+    → Manual resolution required before resumption
+
+SCHEMAS:
+  Wallet         { wallet_id, wallet_type, tenant_id, domain, currency,
+                   balance, reserved_balance, status, created_at }
+  WalletMovement { movement_id, wallet_id, direction (CREDIT|DEBIT),
+                   amount, source_ref, compliance_state, approver_id,
+                   audit_hash, created_at }
+  EscrowEntry    { escrow_id, wallet_id, payer_id, payee_id, amount,
+                   hold_start, hold_expiry, domain, status, release_conditions_json }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. MODULE D — PAYMENT SETTLEMENT & PAYOUT ORCHESTRATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SETTLEMENT DEFINITION (immutable):
+  Settlement is the IRREVERSIBLE resolution of who ultimately owns the money.
+  Settlement ≠ payment
+  Settlement ≠ wallet credit
+  Settlement ≠ invoice generation
+  Settlement = FINAL STATE
+
+SETTLEMENT LIFECYCLE FSM (no step may be skipped):
+  INITIATED
+    → AUTHORIZED
+    → COLLECTED
+    → HELD (Cooling / Escrow — domain-specific hold period)
+    → ELIGIBLE_FOR_SETTLEMENT
+    → SETTLED
+    → CLOSED
+
+  Branches:
+    → DISPUTE (freeze immediately)
+    → UNDER_REVIEW
+    → REVERSED
+    → FORFEITED
+
+MANDATORY HOLDING PERIODS (domain-enforced):
+  Arts Domain      : 7–14 days minimum cool-off (no instant payout)
+  Commerce Domain  : Milestone-based (completion + employer confirmation)
+  Science Domain   : Completion + institutional approval required
+  Early settlement (before hold expiry) → INVALID SETTLEMENT → STOP
+
+PAYEE ELIGIBILITY CHECK (all required before settlement):
+  ✓  Identity verification complete (KYC confirmed)
+  ✓  Role authorization valid
+  ✓  Domain eligibility confirmed
+  ✓  Tax details available (PAN / GSTIN / VAT ID)
+  ✓  No active compliance flags
+  ✓  No open disputes
+  ✓  Bank account KYC verified
+  If ANY fails → SETTLEMENT BLOCKED
+
+SPLIT SETTLEMENT RULES:
+  Supported models:
+    • Platform commission (fixed %)
+    • Trainer/Mentor share
+    • Institute share
+    • Co-teacher revenue split (declared in co-teaching agreement)
+    • Government subsidy offset
+    • Mentor override adjustment share
+
+  All splits MUST:
+    • Be pre-declared in RevenueShareRule before any collection
+    • Be contract-linked (immutable reference)
+    • Sum to exactly 100% — if not, REJECT settlement
+
+  FORBIDDEN split patterns:
+    ✗  Dynamic split after settlement initiation
+    ✗  Retroactive percentage change
+    ✗  AI-calculated ownership allocation
+    ✗  Manual admin redistribution post-settlement
+
+PAYOUT RULES:
+  • Trainers/Mentors never receive funds directly from payers
+  • Earnings remain in Escrow Wallet until all conditions met
+  • Payout to trainer → via verified bank account only
+  • Corporate funds released only per milestone confirmation
+  • Payout request workflow: Trainer initiates → Finance Admin reviews → Compliance clears → Authorized Signatory approves
+  • Instant payout = FORBIDDEN (domain holding periods enforced)
+
+DOJO SETTLEMENT SPECIFICS:
+  • No per-message settlement
+  • No attention-based payout
+  • No peer-to-peer settlement
+  • Allowed: Institutional sponsorship settlement, Facilitator stipend (program-level)
+  • Arts Dojo = zero settlement unless sponsor-designated
+
+SCHEMAS:
+  Transaction       { txn_id, payer_id, payee_id, amount, currency,
+                      domain, status, gateway_ref, idempotency_key,
+                      created_at, settled_at, audit_hash }
+  RevenueShareRule  { rule_id, context_type, platform_pct, trainer_pct,
+                      institute_pct, mentor_pct, govt_offset_pct,
+                      valid_from, valid_to, contract_ref }
+  PayoutRequest     { payout_id, payee_id, wallet_id, amount, status,
+                      requested_at, approved_by, settled_at, bank_ref }
+  SettlementRecord  { settlement_id, txn_id, pre_state_hash, validation_checklist,
+                      approver_id, settled_at, irreversibility_marker, audit_hash }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. MODULE E — INVOICE & TAX COMPUTATION ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TAX REGIMES SUPPORTED:
+  GST     — India (GSTIN mandatory for B2B, HSN/SAC codes required)
+  VAT     — EU / UK / GCC (VAT ID, OSS rules for digital services)
+  Sales Tax — US state-based
+  TDS     — India withholding (on trainer payouts, professional fees)
+  Mixed   — geo-segmented per entity's declared regime
+
+TAX ENGINE RULES:
+  • Tax computed PRE-PAYMENT — tax line displayed separately at checkout
+  • Tax displayed: taxable_value + tax_rate + tax_amount (never hidden in total)
+  • Post-payment tax mutation = FORBIDDEN
+  • Tax rate derived by rule engine (supply type × jurisdiction) — no manual override without audit flag
+  • Rate is version-controlled (immutable historical rates)
+  • Refund reverses tax proportionally — credit note auto-generated
+  • RCM (Reverse Charge Mechanism) applicability checked per transaction
+  • Cross-border digital supply → OSS / non-resident rules enforced
+  • Implicit tax exemption = FORBIDDEN — all exemptions must reference statutory basis
+
+INVOICE MANDATORY FIELDS:
+  invoice_number (sequential, tenant-scoped)
+  invoice_date
+  supplier_legal_name + GSTIN/VAT ID
+  recipient_legal_name + GSTIN/VAT ID (if B2B)
+  supply_type (goods | services | digital_services | education | certification | subscription)
+  taxable_value
+  tax_rate (CGST+SGST / IGST / VAT %)
+  tax_amount (per head)
+  total_amount
+  HSN / SAC code (India)
+  place_of_supply (intra/inter state / jurisdiction)
+  payment_reference
+
+FILING COMPLIANCE:
+  • Returns: GSTR-1, GSTR-3B (India); VAT returns (EU/UK); periodic sales tax (US)
+  • All filings prepared by Tax Operator and reviewed by Tax Reviewer (maker-checker)
+  • Filing submissions require Authorized Signatory
+  • No blind auto-filing — human override always available
+  • Submission ID + authority acknowledgement stored per filing
+  • Amendment/revised returns must reference original return (silent revision = ILLEGAL)
+
+TDS RULES (trainer payouts):
+  • TDS deducted at source on all payout amounts above threshold
+  • TDS certificate issued to trainer
+  • TDS deposited with tax authority per compliance schedule
+  • TDS mismatch → PAYMENT HOLD
+
+SCHEMAS:
+  Invoice        { invoice_id, invoice_no, tenant_id, payer_id, payee_id,
+                   supply_type, taxable_value, tax_regime, tax_rate,
+                   tax_amount, total_amount, hsn_sac, place_of_supply,
+                   status, issued_at, audit_hash }
+  TaxRate        { rate_id, regime, supply_type, jurisdiction_code,
+                   rate_pct, effective_from, effective_to }
+  TDSRecord      { tds_id, payee_id, payout_id, gross_amount, tds_rate,
+                   tds_amount, deposited_at, certificate_ref }
+  TaxFiling      { filing_id, entity_id, regime, period, return_type,
+                   preparer_id, reviewer_id, signatory_id, submission_id,
+                   acknowledgement_ref, filed_at, status }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9. MODULE F — REFUND, CHARGEBACK & DISPUTE ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+REFUND LIFECYCLE FSM:
+  REQUESTED
+    → VERIFIED (eligibility check)
+    → APPROVED (Finance Admin)
+    → PROCESSING (gateway reversal)
+    → COMPLETED
+    → REJECTED (with stated reason)
+
+REFUND RULES:
+  • Student-initiated refund window: domain-specific (Arts = longest window)
+  • Refund reverses tax proportionally — credit note generated automatically
+  • Settled funds CANNOT be clawed back — refund only from Refund Reserve Wallet
+  • Refund approval requires Finance Admin (no self-approval by billing ops)
+  • AI cannot approve refunds — human authority mandatory
+  • Refund abuse detection: Analytics Service flags repeat patterns → Compliance review
+
+CHARGEBACK RULES:
+  • Chargebacks reverse ONLY unsettled funds
+  • Settled funds → platform absorbs liability (no retroactive claw-back)
+  • Chargeback evidence collection → Admin Governance Service
+  • Chargeback loops (repeat chargebacks by same user) → account flag + Compliance review
+
+DISPUTE LIFECYCLE FSM:
+  OPENED
+    → EVIDENCE_COLLECTED
+    → UNDER_REVIEW (Compliance Admin)
+    → RESOLVED
+    → CLOSED
+
+DISPUTE IMPACT (immediate):
+  • Settlement freezes instantly on dispute open
+  • Escrow lock applied to all related funds
+  • No partial settlement allowed while dispute open
+  • No admin bypass of dispute freeze
+
+REFUND FORBIDDEN PATTERNS:
+  ✗  Refund beyond original payment amount
+  ✗  Refund to a different payment method without compliance approval
+  ✗  AI-initiated refunds
+  ✗  Silent refund (no notification to payer + payee)
+  ✗  Refund from custodial wallets not designated as Refund Reserve
+
+SCHEMAS:
+  RefundRequest  { refund_id, txn_id, payer_id, amount, reason,
+                   status, requested_at, approved_by, gateway_ref,
+                   completed_at, idempotency_key, audit_hash }
+  Dispute        { dispute_id, txn_id, initiator_id, dispute_type,
+                   evidence_refs[], status, opened_at, resolved_at,
+                   resolution, resolver_id }
+  Chargeback     { chargeback_id, txn_id, gateway_ref, amount,
+                   status, received_at, outcome, liability_bearer }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+10. MODULE G — REVENUE SHARE & COMMISSION CALCULATOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COMMISSION MODELS (supported simultaneously):
+  PLATFORM_COMMISSION    — fixed % taken from every transaction
+  TRAINER_REVENUE_SHARE  — % of course/session fee to trainer after platform cut
+  INSTITUTE_SHARE        — % to institute for bringing student into platform
+  CO_TEACHING_SPLIT      — declared split between co-teachers (pre-agreed, contract-linked)
+  MENTOR_OVERRIDE_SHARE  — compensation for mentor adjustments to scores/evaluations
+  REFERRAL_REWARD        — points/cash from Referral Rewards Wallet (not from escrow)
+  CREATOR_EARNINGS       — content creator share (Creator Earnings Wallet)
+
+CALCULATION RULES:
+  • All percentages declared in RevenueShareRule before any collection begins
+  • Splits computed by Revenue Share Calculator service (rule-based — no AI ownership)
+  • Splits must sum to 100% — rejection on mismatch
+  • Co-teacher split confirmed in CoTeachingAgreement screen before session starts
+  • Platform commission = first deduction after tax; trainer/institute shares after
+  • Referral and creator rewards drawn from designated wallets only — never escrow
+
+TRAINER WALLET:
+  TrainerWallet { wallet_id, trainer_id, available_balance, pending_balance,
+                  lifetime_earned, last_payout_at, kyc_status, bank_verified }
+
+  Available balance = settled + approved; Pending = in escrow + under review
+  Trainer can VIEW earnings, REQUEST payout — CANNOT approve own payout
+
+CREATOR EARNINGS WALLET:
+  Separate from TrainerWallet — for content/course creators vs session trainers
+
+SCREENS REQUIRED:
+  • Revenue Dashboard (trainer-facing — earnings graph, pending, available)
+  • Payout Request Screen (trainer initiates — status tracking)
+  • Pricing Editor Screen (trainer sets course price within platform limits)
+  • Commission Rule Editor (Finance Admin only — rate setting)
+  • Co-Teaching Revenue Split Confirmation UI (before session activation)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+11. MODULE H — USAGE METERING & QUOTA ENFORCEMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+METERED EVENTS (tracked in ClickHouse via Kafka):
+  • Dojo match sessions (count + duration)
+  • Recording hours consumed
+  • API calls (developer/enterprise tier)
+  • AI inference calls (usage-based billing)
+  • Certification attempts
+  • Tournament entries
+  • Profile boost views
+  • Application credits consumed
+
+METERING ENGINE RULES:
+  • All metering events published to Kafka → Analytics Service → ClickHouse
+  • Metering is idempotent — duplicate events deduped by event_id (IDP-10)
+  • Quota limits enforced in real-time via Redis (counter + TTL per tenant)
+  • At 80% quota usage → warning notification to tenant admin
+  • At 100% quota → feature block (not silent degradation)
+  • Quota reset tied to billing anchor date (not calendar month)
+  • Usage data used for invoice generation at billing cycle end (Apache Airflow)
+
+SCHEMAS:
+  MeteringEvent  { event_id, tenant_id, user_id, event_type, quantity,
+                   timestamp, idempotency_key, processed }
+  QuotaTracker   { quota_id, tenant_id, feature_key, limit_value,
+                   used_value, billing_period_start, billing_period_end }
+  UsageInvoiceLine { line_id, invoice_id, feature_key, units_used,
+                     unit_price, total_amount }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+12. MODULE I — IDEMPOTENCY REGISTRY & DUPLICATE-PAYMENT PREVENTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+UNIVERSAL RULE (inherited from IDP-COMPLIANCE-1.0):
+  ALL WRITE OPERATIONS ARE IDEMPOTENT.
+  RETRIES MUST NEVER CAUSE DUPLICATE SIDE EFFECTS.
+  THE IDEMPOTENCY REGISTRY IS AUTHORITATIVE OVER EXECUTION.
+  PAYMENTS, CERTIFICATIONS, AND SCORES MUST EXECUTE EXACTLY ONCE.
+  NON-IDEMPOTENT PAYMENT SERVICES SHALL FAIL BUILD.
+
+PAYMENT-SPECIFIC IDEMPOTENCY:
+  Protected operations (IDP-5):
+    • subscription purchase
+    • subscription renewal
+    • plan upgrade / downgrade
+    • refund issuance
+    • wallet credit
+    • invoice generation
+    • payout release
+
+  Rules:
+    • Same idempotency key → same payment result (no re-execution)
+    • Gateway retry must NOT charge again
+    • Webhook duplicates → ignored (event_id stored + checked)
+    • Double charge = PLATFORM CONTRACT FAILURE
+
+IDEMPOTENCY REGISTRY SCHEMA:
+  IdempotencyRecord { idem_key, endpoint, user_id, tenant_id, request_hash,
+                      response_hash, status (PROCESSING|COMPLETED|FAILED),
+                      created_at, expiry_at }
+
+  Retention:
+    General operations  : 24 hours
+    Financial actions   : 7 days
+    Certification ops   : permanent audit reference
+
+  Conflict rule:
+    Same key + different payload → REJECT 409 CONFLICT (replay attack protection)
+
+SAGA PATTERN (distributed financial transactions):
+  • Two-phase commit (2PC) = FORBIDDEN across services
+  • Saga patterns required for multi-step financial flows
+  • Compensation logs mandatory for every saga step
+  • Partial commit → rollback + compensate (never half-executed payment)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+13. MODULE J — LEDGER, RECONCILIATION & AUDIT TRAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LEDGER ARCHITECTURE:
+  • Per-tenant ledgers (cross-billing = CRITICAL VIOLATION)
+  • Separate ledger per wallet type (escrow, revenue, refund reserve, etc.)
+  • Double-entry bookkeeping enforced — every debit has a matching credit
+  • Ledger is append-only (no updates, no deletes — EVER)
+  • All entries carry: amount, currency, wallet_id, tenant_id, domain,
+                       source_ref, purpose_code, approver_id, timestamp, audit_hash
+
+RECONCILIATION RULES:
+  • Daily automated reconciliation: ledger ↔ gateway settlement reports ↔ bank statements
+  • Invoice ↔ ledger ↔ tax return reconciliation (IVT-N)
+  • Unidentified funds → Compliance Hold Wallet (never platform revenue)
+  • Variance investigation workflow triggers on any mismatch
+  • Ledger mismatch → PAYMENT HALT (no new settlements until resolved)
+  • Reconciliation run via Apache Airflow (scheduled daily, on-demand available)
+  • Reconciliation reports: exportable to Finance + Compliance Admin
+
+AUDIT TRAIL RULES:
+  Every settlement, payout, refund, and custody movement must log:
+    • Pre-state hash
+    • Validation checklist (all checks performed)
+    • Approving authority (human ID — not AI)
+    • Timestamp (UTC, microsecond precision)
+    • Irreversibility marker (for settlements)
+    • Post-state hash
+
+  Audit logs are:
+    • Append-only (no modification ever)
+    • Tamper-evident (hash-chained)
+    • Long-retention (minimum 10 years for financial records)
+    • Regulator-exportable (structured JSON / CSV / PDF with signature)
+    • Stored in MinIO with hash verification
+
+SCHEMAS:
+  LedgerEntry       { entry_id, tenant_id, wallet_id, txn_type, amount,
+                      currency, debit_wallet, credit_wallet, source_ref,
+                      purpose_code, domain, approver_id, created_at, audit_hash }
+  ReconciliationRun { run_id, run_date, status, mismatches_found,
+                      resolved_by, resolved_at, report_ref }
+  AuditLog          { log_id, entity_type, entity_id, action, actor_id,
+                      pre_state_hash, post_state_hash, details_json,
+                      timestamp, immutable_marker }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+14. MODULE K — PAYMENT WEBHOOK LISTENER & EVENT PROCESSING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WEBHOOK EVENTS HANDLED:
+  From Stripe/Razorpay:
+    payment.captured        → update txn status, credit Escrow Wallet
+    payment.failed          → notify user, release held idempotency
+    subscription.renewed    → extend TenantSubscription, re-activate entitlements
+    subscription.cancelled  → restrict features, notify admin
+    refund.created          → update RefundRequest, trigger credit note
+    chargeback.received     → open Dispute, freeze escrow, notify Compliance
+    payout.paid             → update PayoutRequest to COMPLETED, notify trainer
+
+WEBHOOK PROCESSING RULES:
+  • Signature verification FIRST — unsigned webhooks = FORBIDDEN (API-L)
+  • Event_id stored on receipt → duplicate events = IGNORED (IDP-10)
+  • Webhook processing is idempotent — same event processed exactly once
+  • Webhook handler MUST complete or rollback — no partial state (IDP-13)
+  • All webhook events published to Kafka → downstream services react
+  • Failed webhook processing → dead letter queue → manual review + alert
+  • Webhook secrets stored in HashiCorp Vault (never hardcoded)
+  • Plaintext webhooks = FORBIDDEN (API-L inheritance)
+
+KAFKA TOPICS (PAYMENT_CONNECT specific):
+  payment.collected          → Settlement Service, Analytics Service
+  payment.failed             → Notification Service, Analytics Service
+  payment.refunded           → Settlement Service, Notification Service
+  subscription.activated     → Feature Gating Middleware, Notification Service
+  subscription.expired       → Feature Gating Middleware, Notification Service
+  payout.requested           → Finance Admin Queue
+  payout.settled             → TrainerWallet, Notification Service
+  wallet.frozen              → Compliance Admin Alert
+  invoice.generated          → Storage (MinIO), Notification Service
+  reconciliation.mismatch    → Compliance Admin Alert, Payment HALT trigger
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+15. MODULE L — FINANCIAL COMPLIANCE & REGULATORY REPORTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+KYC REQUIREMENTS:
+  All payees (trainers, institutes, corporates) must complete KYC before:
+    ✓  Receiving payouts
+    ✓  Issuing invoices
+    ✓  Accessing corporate escrow
+  KYC documents: PAN / GSTIN / bank account + IFSC + cancelled cheque
+  KYC verification: document check + bank account penny-drop verification
+  Unverified payee → payout BLOCKED
+
+REGULATORY REPORTING:
+  GST Returns    : GSTR-1 (monthly/quarterly), GSTR-3B (monthly) — India
+  TDS Returns    : Quarterly TDS filing + annual Form 26Q — India
+  VAT Returns    : Jurisdiction-specific periodic returns — EU/UK
+  Financial Audit: Annual statutory audit of all ledgers
+  Bank Reporting : Transaction reporting per RBI / FEMA norms — India
+  Data Residency : Financial data stored per declared jurisdiction (geo-fenced)
+
+BANKING RELATIONSHIP COMPLIANCE:
+  • All platform bank accounts KYC-verified with financial institution
+  • Purpose-bound fund flows (each account mapped to specific purpose)
+  • Dojo revenue segregated from platform revenue
+  • Cross-border banking complies with FEMA / SWIFT norms
+  • Bank de-risking event (bank suspending relationship) → AUTOMATIC PAYMENT HALT
+  • Alternate banking partner identified and pre-qualified (de-risking plan)
+
+PAYMENT INTERMEDIARY RULES:
+  • All payment aggregators must be regulated in their operating jurisdiction
+  • Contractually bound for compliance obligations
+  • Mapped to permitted transaction types only
+  • Unlicensed intermediary = FORBIDDEN
+  • Gateway SLA declared + uptime guarantees verified
+  • Gateway outage → automatic failover to secondary (or HALT if both down)
+
+FINANCIAL SANCTIONS & FRAUD:
+  • OFAC / sanctions screening on all corporate and international payees
+  • Fraud detection via Wazuh SIEM (financial anomaly patterns)
+  • Velocity checks: unusual payout volume → freeze + Compliance alert
+  • Chargeback loops → account flag
+  • Economic incidents classified as ELEVATED in incident response (IRC-F)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+16. MODULE M — BILLING ADMIN CONSOLE (UI)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCREENS (max 15 per Antigravity run — ERP_UI / Billing_Module):
+
+  1.  Billing Overview Dashboard (KPIs: MRR, ARR, churn, active subs, overdue)
+  2.  Subscription & Plan Manager (assign, upgrade, downgrade, cancel)
+  3.  Tenant Invoice List (filter: date, status, tenant, plan)
+  4.  Invoice Detail & Download (PDF — compliant format)
+  5.  Payout Queue & Approval Board (Finance Admin view)
+  6.  Wallet Status Dashboard (all 7 wallets — balances, movements)
+  7.  Escrow & Hold Monitor (by domain, by tenant, hold expiry tracker)
+  8.  Refund Requests Board (approve, reject, with reason)
+  9.  Dispute Management Console (evidence, resolution workflow)
+  10. Commission Rule Editor (set/edit revenue share rules)
+  11. Reconciliation Report Viewer (daily run status, mismatches, exports)
+  12. KYC Status Dashboard (unverified payees, pending actions)
+  13. Usage Metering Report (per tenant, per feature, per period)
+  14. Tax Filing Console (GST, VAT, TDS — preparer / reviewer / signatory)
+  15. Financial Audit Export Tool (regulator-ready, encrypted, signed)
+
+UI RULES:
+  • Dashboard composition: 40% FIXED / 60% CUSTOMIZABLE (inherited)
+  • Financial data visible ONLY to declared financial roles
+  • No student / trainer sees another user's financial data
+  • All financial screens require MFA step-up authentication (Tier-3 / Tier-4)
+  • Payout approval requires dual-approval UI flow (no single-click approve)
+  • All actions show audit trail inline (who approved what, when)
+  • Error states: payment-specific codes (ERR-PAY-5104 = Duplicate payment attempt)
+
+GENERATE_UI COMMAND TEMPLATE:
+  GENERATE_UI
+    ROLE = [Platform_Financial_Admin | Billing_Ops_Admin | Finance_Admin |
+            Tax_Operator | Tax_Reviewer | Trainer | Student]
+    MODULE = PAYMENT_CONNECT / [M_1 through M_15 screen]
+    FEATURE = [screen feature name]
+    ENTITY_STATE = [ACTIVE | FROZEN | DISPUTED | PENDING_REVIEW]
+    STAGE = [FOUNDATION_UI | ECOSYSTEM_UI | COMPLIANCE_UI]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+17. MODULE N — TRAINER / MENTOR WALLET & PAYOUT DASHBOARD (UI)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TRAINER-FACING SCREENS (Stage 3 — Ecosystem):
+
+  1.  Revenue Dashboard (earnings graph — daily/weekly/monthly/annual)
+  2.  Payout Request Screen (initiate, track status, history)
+  3.  Wallet Detail (available vs pending, lifetime earned)
+  4.  Invoice Download (issued invoices to students/platform)
+  5.  Pricing Editor Screen (set course price within platform limits)
+  6.  Subscription Plan Builder (for trainers offering own plans)
+  7.  Co-Teaching Revenue Split Confirmation (before co-session starts)
+  8.  TDS Certificate Viewer (download issued TDS certificates)
+  9.  Referral Reward Wallet (referral points + redemption history)
+  10. Tax Details Profile (PAN, GSTIN, bank account — KYC status)
+
+RULES:
+  • Trainer can VIEW earnings, REQUEST payout — CANNOT approve own payout
+  • Trainer sees ONLY own wallet — no cross-trainer visibility
+  • Payout status tracking: Requested → Finance Review → Compliance Clear → Approved → Paid
+  • Price experiment toggles available (A/B pricing — within declared bounds)
+  • Co-teaching split UI: both trainers must confirm before session activates
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+18. DATA ARCHITECTURE (PAYMENT_CONNECT SPECIFIC)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PRIMARY DB:     PostgreSQL (row-level security per tenant_id — shared nothing)
+ANALYTICS:      ClickHouse (metering events, revenue analytics, reconciliation)
+CACHE:          Redis (quota tracking, idempotency TTL counters, rate limiting)
+ASYNC:          Kafka (all payment events — see Module K topic list)
+SCHEDULER:      Apache Airflow (billing cycles, reconciliation runs, tax reports)
+STORAGE:        MinIO (invoices, TDS certs, tax filings, audit exports — hash-verified)
+SECRETS:        HashiCorp Vault (gateway keys, webhook secrets, bank credentials)
+MONITORING:     Prometheus + Grafana (billing error rate, payout SLA, metering lag)
+TRACING:        OpenTelemetry (full distributed trace per payment transaction)
+SIEM:           Wazuh (financial anomaly detection, unauthorized payout attempts)
+
+KEY FINANCIAL TABLES:
+  transactions, settlements, payout_requests, wallets, wallet_movements,
+  escrow_entries, refund_requests, disputes, chargebacks, invoices,
+  ledger_entries, tax_rates, tax_filings, tds_records, subscription_plans,
+  tenant_subscriptions, feature_entitlements, metering_events, quota_trackers,
+  revenue_share_rules, idempotency_registry, reconciliation_runs, audit_logs,
+  coupon_codes, coupon_redemptions, co_teaching_agreements, trainer_wallets,
+  creator_earnings_wallets, referral_reward_ledger
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+19. MICROSERVICE ARCHITECTURE (PAYMENT_CONNECT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CORE SERVICE: Billing & Subscription Service (#13 in master)
+  Namespaced: k8s namespace = billing
+  Responsibilities:
+    • Plan management + entitlement enforcement
+    • Payment intent creation (via Gateway Abstraction)
+    • Webhook ingestion + verification
+    • Invoice generation + tax computation
+    • Subscription lifecycle management
+    • Usage metering aggregation
+    • Reconciliation scheduling (via Airflow)
+    • Idempotency registry management
+    • Settlement + payout orchestration (with DoA compliance)
+
+CALLS TO EXISTING SERVICES (explicit contracts — no cross-DB):
+  Auth Service         → Validate financial role + MFA step-up
+  User Service         → KYC status, payee profile, bank account verification
+  Analytics Service    → Metering event ingestion, revenue dashboards
+  Notification Service → Payment confirmations, payout alerts, invoice delivery
+  Admin Governance Service → Dispute escalation, chargeback evidence
+  Institute Sync Service → Institute subscription, cohort analytics billing
+  Open Policy Agent    → Enforce billing entitlement policy at API Gateway
+
+PERFORMANCE REQUIREMENTS:
+  • Payment intent creation: P99 < 500ms
+  • Webhook processing: P99 < 200ms
+  • Invoice generation: P99 < 2 seconds (async acceptable for PDFs)
+  • Reconciliation run: complete within 30 minutes (daily batch)
+  • Billing error rate: < 0.01% of transactions
+  • Handle 10,000+ concurrent subscription checks via Redis entitlement cache
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+20. DOMAIN-SPECIFIC PAYMENT RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Arts Domain:
+  • Low-cost / freemium dominant — high refund probability expected
+  • Longest custody hold windows (7–14 days minimum)
+  • Sponsored settlements allowed; sponsor-backed custody common
+  • No instant trainer payout under any circumstance
+  • Dojo = zero settlement unless sponsor-designated
+  • Subscription revenue taxability: training services classification
+
+Commerce Domain:
+  • Milestone-based settlement (most common)
+  • Certification completion gating on payouts
+  • Corporate escrow common; partial settlement allowed
+  • Commerce billing actions ALWAYS require MFA re-authentication
+  • Subscription + commissions + marketplace fees: primary revenue streams
+  • ROI traceability mandatory on all corporate payments
+
+Science Domain:
+  • Multi-stage settlement; institution approval required before any payout
+  • Grant compliance checks mandatory before release
+  • Strict audit retention (longest)
+  • Multi-approval mandatory for bulk settlement runs
+  • Research grant income separately classified (taxable/exempt mapping)
+  • Science billing = elevated priority (equal to critical)
+
+Cross-Domain Payment (e.g., Science student paying Arts Dojo fee):
+  • Requires explicit cross-domain mapping in transaction record
+  • Domain lead approval required
+  • Logged in compliance audit
+  • Tax classification follows dominant domain of the supply
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+21. STAGE ROLLOUT (DEVELOPMENT SEQUENCE — LOCKED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STAGE 1 (FOUNDATION) ← START HERE:
+  • Gateway abstraction layer (Stripe + Razorpay)
+  • Idempotency registry
+  • Basic subscription plans (FREE, BASIC, PRO)
+  • Feature gating middleware at API Gateway
+  • Custodial wallet schema (7 wallets, isolated)
+  • Invoice generation (basic GST/VAT)
+  • Kafka event bus for payment events
+  • Webhook listener + signature verification
+
+STAGE 2 (INTELLIGENCE):
+  • Usage metering engine (ClickHouse)
+  • Revenue analytics dashboards
+  • AI anomaly detection (advisory only — Wazuh integration)
+  • Automated quota alerts
+
+STAGE 3 (ECOSYSTEM):   ← PAYMENT_CONNECT PRIMARY STAGE
+  • Full payout orchestration + trainer wallets
+  • Revenue share + commission calculator
+  • Refund & dispute engine
+  • Co-teaching split workflow
+  • Referral & creator earnings wallets
+  • ENTERPRISE plan + seat-based billing
+  • Institute subscription tier
+  • Full billing admin console (Module M)
+  • Trainer / mentor payout dashboard (Module N)
+  • TDS deduction + certificate generation
+
+STAGE 4 (COMPLIANCE):
+  • Full tax filing suite (GST returns, VAT returns, TDS returns)
+  • Maker-checker tax filing workflow
+  • Automated daily reconciliation (Airflow)
+  • Regulator-export audit tools
+  • KYC enforcement for all payees
+  • Banking relationship compliance monitoring
+  • Sanctions screening integration
+  • Long-retention audit archive (10 years)
+
+STAGES MUST EXECUTE SEQUENTIALLY.
+SKIPPING A STAGE = INVALID BUILD → STOP EXECUTION.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+22. ABSOLUTE PROHIBITIONS (PAYMENT_CONNECT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✗  AI initiating, accelerating, approving, or releasing any payment/settlement
+✗  Direct payer → payee settlement (always via platform intermediary)
+✗  Commingling of custodial funds with revenue funds
+✗  Treating custodial funds as platform revenue or working capital
+✗  Settlement before domain hold period expires
+✗  Self-approval of any financial action at any tier
+✗  Unsigned webhooks processed
+✗  Non-idempotent write operations in any payment flow
+✗  Two-phase commit (2PC) across services (saga patterns required)
+✗  Hardcoded gateway credentials in code or config
+✗  Crypto-currency as a payment method
+✗  Post-payment tax mutation (compute tax BEFORE payment, lock after)
+✗  Dynamic split change after settlement initiation
+✗  Silent refund (without notifying both payer and payee)
+✗  Refund beyond original payment amount
+✗  Cross-billing (one tenant's ledger bleeding into another)
+✗  Unlicensed payment intermediary
+✗  Audit log modification (append-only forever)
+✗  AI auto-filing of tax returns (human override always required)
+✗  Blank screens or silent failures on payment errors (every error has code + explanation + next action)
+✗  Sharing billing entitlements across tenants
+✗  Granting feature access without billing entitlement check passing first
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+23. ERROR CODE REGISTRY (PAYMENT_CONNECT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ERR-PAY-5101  Payment gateway unavailable
+  ERR-PAY-5102  Insufficient funds / card declined
+  ERR-PAY-5103  Payment intent expired
+  ERR-PAY-5104  Duplicate payment attempt (idempotency key conflict)
+  ERR-PAY-5105  Unsupported payment method for jurisdiction
+  ERR-PAY-5106  KYC not verified — payout blocked
+  ERR-PAY-5107  Settlement hold period not expired
+  ERR-PAY-5108  Open dispute — settlement frozen
+  ERR-PAY-5109  Revenue share split does not sum to 100%
+  ERR-PAY-5110  Wallet frozen — compliance hold active
+  ERR-PAY-5111  Tax registration unverified — invoice blocked
+  ERR-PAY-5112  Refund amount exceeds original charge
+  ERR-PAY-5113  Unsigned webhook — rejected
+  ERR-PAY-5114  Billing entitlement not met — feature access denied
+  ERR-PAY-5115  Unauthorized payout requester
+  ERR-PAY-5116  Ledger mismatch — payment halt active
+  ERR-PAY-5117  Cross-tenant billing violation
+  ERR-PAY-5118  AI financial action attempt — DENIED
+
+  All errors: user-facing explanation + next action + correlation ID for trace.
+  No silent failures. No blank payment screens.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+24. FAILURE & SAFE-MODE RULES (PAYMENT_CONNECT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+GLOBAL PAYMENT HALT triggers:
+  • Ledger mismatch detected
+  • Wallet inconsistency or custody breach
+  • Compliance breach (unauthorized payout, AI financial action)
+  • Escrow inconsistency (funds unaccounted)
+  • AI anomaly spike (Wazuh SIEM alert)
+  • Bank de-risking event (banking partner suspends relationship)
+  • Gateway dual-failure (both primary + secondary down)
+
+ON PAYMENT HALT:
+  1. Pause ALL settlement and payout processing globally
+  2. Freeze all custodial wallets (no reads-as-writes, no movements)
+  3. No new settlements authorized
+  4. Platform Financial Admin + Compliance Admin alerted immediately (Wazuh + Notification Service)
+  5. All queued payment events held in Kafka — not dropped
+  6. Incident logged in Wazuh SIEM with ELEVATED classification
+  7. Manual resolution required before resumption
+  8. Resumption requires dual-approval: Financial Admin + Compliance Admin
+
+PARTIAL PAYMENT FAILURE (single transaction):
+  • Complete or rollback — never partial state (saga compensation)
+  • Failed payment → user notified with ERR-PAY code + retry guidance
+  • Dead letter queue for webhook failures → manual review
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+25. EXTENSIBILITY GUARANTEE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Any FUTURE feature that:
+  • Collects money
+  • Promises payout
+  • Distributes value
+  • Holds funds conditionally
+  • Generates an invoice
+  • Applies a discount or coupon
+  • Meters usage for billing
+
+AUTOMATICALLY INHERITS PAYMENT_CONNECT compliance.
+No opt-out. No partial inheritance. No self-defined payment rules.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HOW TO USE PAYMENT_CONNECT IN ANTIGRAVITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  Paste Master Prompt once (already sealed — do not regenerate)
+2️⃣  Paste PAYMENT_CONNECT once (seals the financial layer)
+3️⃣  Run generation commands per screen or service:
+
+    Example — Billing Admin Console:
+    GENERATE_UI
+      ROLE = Platform_Financial_Admin
+      MODULE = PAYMENT_CONNECT / M_Billing_Admin_Console
+      FEATURE = Wallet_Status_Dashboard
+      ENTITY_STATE = ACTIVE
+      STAGE = ECOSYSTEM_UI
+
+    Example — Trainer Payout Dashboard:
+    GENERATE_UI
+      ROLE = Trainer
+      MODULE = PAYMENT_CONNECT / N_Trainer_Wallet
+      FEATURE = Payout_Request_Screen
+      ENTITY_STATE = ACTIVE
+      STAGE = ECOSYSTEM_UI
+
+    Example — Billing & Subscription Service:
+    GENERATE_SERVICE
+      SERVICE = Billing_Subscription_Service
+      FEATURE = Subscription_Plan_Engine
+      ENTITY_STATE = ACTIVE
+      STAGE = FOUNDATION
+
+    Example — Invoice Engine:
+    GENERATE_SERVICE
+      SERVICE = Billing_Subscription_Service
+      FEATURE = Invoice_Tax_Computation_GST
+      ENTITY_STATE = ACTIVE
+      STAGE = ECOSYSTEM
+
+⚠️  Never regenerate this prompt. Append-only modifications only.
+⚠️  No real payment gateway activation may be performed by AI — humans only.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔒 FINAL SEAL — PAYMENT_CONNECT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THIS PROMPT IS:
+  ✔  MODULE_LOCKED
+  ✔  SEALED
+  ✔  DETERMINISTIC
+  ✔  ENTERPRISE_SAFE
+  ✔  ANTIGRAVITY_COMPATIBLE
+  ✔  MASTER_PROMPT_COMPLIANT
+  ✔  AUDIT_GRADE
+  ✔  MULTI_TENANT_SAFE
+  ✔  DOMAIN_ISOLATED
+  ✔  AI_FINANCIAL_AUTHORITY = ZERO
+
+PAYMENT_CONNECT STATUS       = COMPLETE
+QUALITY_SCORE                = 10 / 10
+CHANGE_POLICY                = APPEND_ONLY
+ANTIGRAVITY_CONFUSION        = IMPOSSIBLE
+ALL_WRITE_OPERATIONS         = IDEMPOTENT
+PAYMENTS_EXECUTE_EXACTLY_ONCE = ENFORCED
+
+ANY DEVIATION:
+  ✗  Cross-tenant ledger access
+  ✗  AI-initiated financial action
+  ✗  Non-idempotent payment write
+  ✗  Settlement without hold period
+  ✗  Unsigned webhook processed
+  ✗  Self-approval of financial action
+  ✗  Custodial fund commingling
+  ✗  Silent payment failure
+
+⇒ MUST STOP EXECUTION IMMEDIATELY. REPORT VIOLATION. HUMAN REVIEW REQUIRED.
+
+🔒 PAYMENT_CONNECT IS NOW SEALED.

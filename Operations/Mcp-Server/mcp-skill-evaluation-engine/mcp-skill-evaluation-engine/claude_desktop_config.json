@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "mcp-skill-evaluation-engine": {
+      "command": "java",
+      "args": ["-jar", "/absolute/path/to/mcp-skill-evaluation-engine-1.0.0.jar"],
+      "env": {
+        "MCP_ENV": "prod",
+        "MCP_JWT_VALIDATION_ENABLED": "true",
+        "MCP_KEYCLOAK_ISSUER": "https://auth.ecoskiller.com/realms/",
+        "MCP_RATE_LIMIT_PER_MINUTE": "100",
+        "MCP_LOG_LEVEL": "WARNING"
+      }
+    }
+  }
+}

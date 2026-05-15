@@ -1,0 +1,123 @@
+---
+# ServiceAccount used by the MCP server pod
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ecoskiller-mcp-networkpolicy
+  namespace: ops
+  labels:
+    app: ecoskiller-mcp
+    component: networkpolicy-server
+
+---
+# ClusterRole — grants NetworkPolicy CRUD + read access to required resources
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ecoskiller-mcp-networkpolicy-role
+  labels:
+    app: ecoskiller-mcp
+rules:
+
+  # Core NetworkPolicy operations
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["networkpolicies"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  # Namespace and pod listing (for isolation reports, connectivity checks)
+  - apiGroups: [""]
+    resources: ["namespaces", "pods"]
+    verbs: ["get", "list", "watch"]
+
+  # Kubernetes Events (for audit trail)
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["get", "list", "watch"]
+
+  # Flux GitRepository annotation (for GitOps sync)
+  - apiGroups: ["source.toolkit.fluxcd.io"]
+    resources: ["gitrepositories"]
+    verbs: ["get", "patch"]
+
+---
+# Bind the ClusterRole to the ServiceAccount
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ecoskiller-mcp-networkpolicy-binding
+  labels:
+    app: ecoskiller-mcp
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ecoskiller-mcp-networkpolicy-role
+subjects:
+  - kind: ServiceAccount
+    name: ecoskiller-mcp-networkpolicy
+    namespace: ops
+
+---
+# Optional: NetworkPolicy for the MCP server pod itself (zero-trust baseline)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ecoskiller-mcp-networkpolicy-server-policy
+  namespace: ops
+  labels:
+    managed-by: ecoskiller-mcp
+    policy-type: server-self-protection
+spec:
+  podSelector:
+    matchLabels:
+      app: ecoskiller-mcp
+      component: networkpolicy-server
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Only allow connections from Claude Desktop / orchestrator (adjust CIDR to your setup)
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: ops
+    ports:
+    - protocol: TCP
+      port: 8080
+  egress:
+  # Allow outbound to Kubernetes API server
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+        except:
+        - 169.254.169.254/32  # Block cloud metadata service
+    ports:
+    - protocol: TCP
+      port: 6443
+    - protocol: TCP
+      port: 443
+  # Allow DNS
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  # Allow Prometheus scrape
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: monitoring
+    ports:
+    - protocol: TCP
+      port: 9090
+  # Allow OpenSearch audit log queries
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: ops
+    ports:
+    - protocol: TCP
+      port: 9200
