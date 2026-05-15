@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:ecoskiller_mobile_app/core/theme/app_theme.dart';
+import 'package:ecoskiller_mobile_app/features/auth/presentation/pages/login_page.dart';
+import 'package:ecoskiller_mobile_app/features/auth/data/providers/auth_service.dart';
 
 class StudentDashboardPage extends StatelessWidget {
   final Map<String, dynamic> user;
@@ -69,6 +71,19 @@ class StudentDashboardPage extends StatelessWidget {
         IconButton(
           icon: const Icon(LucideIcons.bell, color: AppTheme.linkedinBlue),
           onPressed: () {},
+        ),
+        IconButton(
+          icon: const Icon(LucideIcons.logOut, color: Colors.redAccent),
+          onPressed: () async {
+            await AuthService().logout();
+            if (context.mounted) {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+                (route) => false,
+              );
+            }
+          },
         ),
         const SizedBox(width: 8),
         CircleAvatar(
